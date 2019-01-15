@@ -1,0 +1,38 @@
+- name: Prueba 7 Remover una VM
+  hosts: localhost
+  remote_user: root
+  become: true
+  gather_facts: False
+  vars_files:
+    - vcenter_vars.yml
+  #vars:
+  #  ansible_pyhton_interpreter: "/usr/bin/env python3"
+  tasks:
+    - name: Get VM "{{ vm_name }}" uuid
+      vmware_guest_facts:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: False
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vm_name }}"
+      register: vm_factss
+    - name: Set powerstate of a virtual machine to poweroff by using UUID (change the state module)
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        uuid: "{{ vm_factss.instance.hw_product_uuid }}"
+        state: poweredoff
+      delegate_to: localhost
+    - name: Remove a virtual machine by uuid
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        uuid: "{{ vm_factss.instance.hw_product_uuid }}"
+        state: absent
+      delegate_to: localhost

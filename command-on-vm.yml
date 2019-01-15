@@ -1,0 +1,10 @@
+- name: Prueba 9 Ejecutar comando
+  gather_facts: False
+  vars_files:
+    - vcenter_vars.yml
+  hosts: Centos7-86x-64x_423ad153-152c-cfed-26c1-0f9ba884890e
+  become_user: "{{ user }}"
+  remote_user: "{{ user }}"
+  tasks:
+    - name: Comand inside {{ vm_name }}
+      command: ls

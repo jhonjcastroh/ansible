@@ -1,0 +1,23 @@
+- name: Prueba 3 obtener datos de una VM ya creada
+  gather_facts: no
+  vars_files:
+    - vcenter_vars.yml
+  hosts: localhost
+  tasks:
+    - name: Manage Log level setting for all ESXi Host in given Cluster
+      vmware_host_config_manager:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        cluster_name: "{{ cluster }}"
+        options:
+          "Config.HostAgent.log.level": "info"
+    - name: Find Guest's Folder using name
+      vmware_guest_find:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        name: "{{ vm_name }}"
+      delegate_to: localhost
+      register: vm_folder
