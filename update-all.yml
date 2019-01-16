@@ -1,6 +1,5 @@
 - name: Yum Update
   gather_facts: False
-  hosts: "{ { vm_name } }"
   tasks:
     - name: upgrade all packages
       yum:
