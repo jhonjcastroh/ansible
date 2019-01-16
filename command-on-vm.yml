@@ -5,4 +5,4 @@
   hosts: "{{ vm_target_name }}"
   tasks:
     - name: Comand inside
-      command: mkdir test
+      command: ifconfig
