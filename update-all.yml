@@ -1,5 +1,8 @@
----
 - name: Yum Update
+  gather_facts: False
+  vars_files:
+    - vcenter_vars.yml
+  hosts: localhost
   tasks:
     - name: upgrade all packages
       yum:
