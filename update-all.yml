@@ -1,0 +1,7 @@
+---
+- name: Yum Update
+  tasks:
+    - name: upgrade all packages
+      yum:
+        name: "*"
+        state: latest
