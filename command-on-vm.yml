@@ -1,5 +1,5 @@
 - name: Prueba 9 Ejecutar comando
-  gather_facts: true
+  gather_facts: false
   # vars_files:
   #   - vcenter_vars.yml
   hosts: "{{ vm_name }}"
