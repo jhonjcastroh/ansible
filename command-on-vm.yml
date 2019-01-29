@@ -4,5 +4,5 @@
   #   - vcenter_vars.yml
   hosts: "{{ vm_name }}"
   tasks:
-    - name: Comand inside {{ vm_name }}
+    - name: Comand inside
       command: ifconfig
