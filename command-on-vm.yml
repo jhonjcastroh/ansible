@@ -2,7 +2,7 @@
   gather_facts: true
   # vars_files:
   #   - vcenter_vars.yml
-  hosts: "{{ vm_name }}"
+  hosts: all
   tasks:
     - name: Comand inside
       command: ifconfig
