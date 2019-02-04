@@ -1,0 +1,14 @@
+---
+- name: Creación de usuario Linux
+  hosts: localhost
+  tasks:
+    - name: Create a login user
+      user:
+        name: newuser
+        password: 1234
+        groups: # Empty by default, here we give it some groups
+          - docker
+          - sudo
+        state: present
+        shell: /bin/bash # Defaults to /bin/bash
+        system: no # Defaults to no
