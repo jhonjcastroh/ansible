@@ -2,13 +2,15 @@
 - name: Creación de usuario Linux
   hosts: localhost
   tasks:
-    - name: Create a login user
+    - name: Install aplications for create pass encrypte
+      shell: sudo apt-get install -y whois
+    - name: Creations encrypte password
+      command: mkpasswd --method=sha-512
+      register: pass
+    - name: Create a login user with {{ pass.stdout }}
       user:
-        name: newuser
-        password: 1234
-        groups: # Empty by default, here we give it some groups
-          - docker
-          - sudo
+        name: NewUser
+        password: "{{ pass.stdout }}"
+        system: yes
+        groups: sudo
         state: present
-        shell: /bin/bash # Defaults to /bin/bash
-        system: no # Defaults to no
