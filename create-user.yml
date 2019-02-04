@@ -4,7 +4,7 @@
   become_user: yes
   tasks:
     - name: Install aplications for create pass encrypte
-      shell: sudo apt-get install -y whois
+      shell: apt-get install -y whois
     - name: Creations encrypte password
       command: mkpasswd --method=sha-512
       register: pass
