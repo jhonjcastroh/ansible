@@ -2,6 +2,7 @@
 - name: Creación de usuario Linux
   hosts: localhost
   become_user: yes
+  become: yes
   tasks:
     - name: Install aplications for create pass encrypte
       shell: apt-get install -y whois
