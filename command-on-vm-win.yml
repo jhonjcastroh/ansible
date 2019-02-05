@@ -1,5 +1,4 @@
 - name: Prueba 9 Ejecutar comando
-  gather_facts: true
   # vars_files:
   #   - vcenter_vars.yml
   hosts: all
