@@ -1,6 +1,7 @@
 ---
 - name: Creación de usuario Linux
   hosts: localhost
+  become: true
   gather_facts: yes
   tasks:
     #- name: Install aplications for create pass encrypte
