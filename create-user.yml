@@ -1,6 +1,7 @@
 ---
 - name: Creación de usuario Linux
   hosts: localhost
+  gather_facts: yes
   become_user: yes
   become: yes
   tasks:
