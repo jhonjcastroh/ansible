@@ -1,10 +1,7 @@
-- name: Ejecutar comando en Windows
-  gather_facts: yes
+- name: test raw module
   hosts: all
-  become: true
-  become_method: sudo
   tasks:
-    - name: Comand inside
+    - name: run ipconfig
       raw: ipconfig
       register: ipconfig
     - debug: var=ipconfig
