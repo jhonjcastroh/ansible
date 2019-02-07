@@ -11,6 +11,5 @@
         state: latest
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - name: Install Package
-      apt:
-        name: httpd
+      apt: name=apache2 state=present
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
