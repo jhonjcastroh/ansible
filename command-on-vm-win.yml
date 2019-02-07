@@ -1,7 +1,7 @@
 - name: Ejecutar comando en Windows
-  gather_facts: no
+  gather_facts: yes
   hosts: all
-  ansible_become: false
+  become: false
   tasks:
     - name: Comand inside
       win_command: ipconfig
