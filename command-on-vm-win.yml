@@ -1,6 +1,6 @@
 ---
-- hosts: wintest
-  remote_user: administrador
+- hosts: all
+  remote_user: Administrator
   tasks:
     - name: run ipconfig
       win_command: ipconfig
