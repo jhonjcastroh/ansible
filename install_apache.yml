@@ -2,7 +2,7 @@
 - name: Instalacion de servidor Apache
   hosts: all
   gather_facts: yes
-  remote_user: root
+  remote_user: ansibleadmin
   tasks:
     - name: Install Package
       yum:
