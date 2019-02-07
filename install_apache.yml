@@ -2,7 +2,7 @@
 - name: Instalacion de servidor Apache
   hosts: all
   become: yes
-  ansible_user: ansibleadmin
+  ansible_become_user: ansibleadmin
   gather_facts: yes
   tasks:
     - name: Install Package
