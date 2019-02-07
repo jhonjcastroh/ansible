@@ -4,7 +4,7 @@
   gather_facts: yes
   remote_user: ansibleadmin
   sudo: yes
-  ansible_sudo_pass: tsoft*2018
+  sudo_pass: tsoft*2018
   tasks:
     - name: Install Package
       yum:
