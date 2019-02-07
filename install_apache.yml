@@ -1,17 +1,16 @@
 ---
 - name: Instalacion de servidor Apache
   hosts: all
+  become: yes
   gather_facts: yes
   remote_user: ansibleadmin
   tasks:
     - name: Install Package
-      become: yes
       yum:
         name: httpd
         state: latest
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - name: Install Package
-      become: yes
       apt:
         name: httpd
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
