@@ -3,6 +3,8 @@
   hosts: all
   gather_facts: yes
   remote_user: ansibleadmin
+  become: yes
+  become_user: ansibleadmin
   tasks:
     - name: Install Package
       yum:
