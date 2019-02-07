@@ -1,7 +1,7 @@
 ---
 - name: Instalacion de servidor Apache
   hosts: all
-  gather_facts: yes
+  gather_facts: no
   remote_user: ansibleadmin
   become: yes
   become_user: ansibleadmin
