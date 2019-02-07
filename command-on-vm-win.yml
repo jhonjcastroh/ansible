@@ -1,7 +1,8 @@
-- name: test raw module
-  hosts: all
+---
+- hosts: wintest
+  remote_user: administrador
   tasks:
     - name: run ipconfig
-      raw: ipconfig
+      win_command: ipconfig
       register: ipconfig
     - debug: var=ipconfig
