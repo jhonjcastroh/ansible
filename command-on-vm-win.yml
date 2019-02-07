@@ -4,4 +4,6 @@
   become: true
   tasks:
     - name: Comand inside
-      win_command: ipconfig
+      raw: ipconfig
+      register: ipconfig
+    - debug: var=ipconfig
