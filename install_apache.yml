@@ -2,6 +2,7 @@
 - name: Instalacion de servidor Apache
   hosts: all
   gather_facts: yes
+  remote_user: root
   tasks:
     - name: Install Package
       become: yes
