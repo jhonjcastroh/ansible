@@ -1,7 +1,7 @@
 - name: Ejecutar comando en Windows
   gather_facts: yes
   hosts: all
-  become: false
+  become: true
   tasks:
     - name: Comand inside
       win_command: ipconfig
