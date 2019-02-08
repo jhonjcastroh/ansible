@@ -1,0 +1,4 @@
+- name: Check if a service is installed
+  win_service:
+    name: service name
+  register: service_info
