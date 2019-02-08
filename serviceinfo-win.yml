@@ -1,4 +1,4 @@
 - name: Check if a service is installed
   win_service:
-    name: service name
+    name: Dhcp
   register: service_info
