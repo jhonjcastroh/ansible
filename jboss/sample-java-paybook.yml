@@ -1,0 +1,38 @@
+- hosts: 10.41.101.235
+  gather_facts: yes
+  remote_user: root
+  #sudo: yes
+  tasks:
+    ##################################################################
+    #Respaldo de Algunos Ejemplos
+    #  - name: Create file
+    #    file: path=/home/gabo/probe-ansible.txt state=touch
+    #  - name: Copia Archivo
+    #    copy:
+    #            src: /home/gabo/probe-ansible.txt
+    #            dest: /home/ansible.txt
+    #            remote_src: yes
+    ##################################################################
+    ############################### (Instalacion JAVA) ##################################
+    - name: Crea Carpeta JAVA
+      command: mkdir /usr/java
+    - name: Descomprime Archivo
+      command: tar -xzvf /home/medios/jre-7u79-linux-x64.tar.gz -C /usr/java
+    - name: Renombra carpeta java
+      command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
+    - name: Crea Variable JAVA
+      shell: JAVA_HOME=/usr/java/jre-java
+    - name: Export JAVA_HOME
+      shell: export JAVA_HOME
+    - name: Crea Variable PATH
+      shell: PATH=$JAVA_HOME/bin:$PATH
+    - name: Export PATH
+      shell: export PATH
+    - name: Respaldo Archivo Profile
+      command: cp /etc/profile /etc/profile.bkp
+    - name: Agrega JAVA_HOME archivo Profile
+      shell: sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile
+    - name: Modifica Archivo PROFILE
+      shell: sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
+    - name: Source Archivo Profile
+      shell: source /etc/profile
