@@ -1,4 +1,4 @@
-- hosts: webservers
+- hosts: 10.41.101.201
   gather_facts: yes
   remote_user: root
   #sudo: yes
@@ -13,11 +13,10 @@
     #                    dest: /home/ansible.txt
     #                    remote_src: yes
     ###################################################################
-
     ################## Comandos Ya Ejecutados (Instalacion JBOSS)#########################
     - name: Descomprime Archivo
       unarchive:
-        src: /home/medios/jboss-eap-6.4.0.zip
+        src: /root/jboss-eap-6.4.0.zip
         dest: /home/medios
         remote_src: yes
     - name: Crea Usuario JBOSS
@@ -25,26 +24,31 @@
     - name: Crea Password Usuario JBOSS
       command: echo 123456 |passwd jboss --stdin
     - name: Rename Folder
-      command: mv /home/medios/jboss-eap-6.4 /home/jboss/jboss-6
+      command: mv /home/medios/jboss-eap-6.4 /home/jboss/jboss-6.4
     - name: Usuario JBOSS Owner carpeta JBOSS
-      command: chown -R jboss:jboss /home/jboss/jboss-6
+      command: chown -R jboss:jboss /home/jboss/jboss-6.4
     - name: Permiso al directorio JBOSS
-      command: chmod -R 775 /home/jboss/jboss-6
+      command: chmod -R 775 /home/jboss/jboss-6.4
     - name: Modifica Archivo Profile
-      shell: sed -i '$a JBOSS_HOME=/home/jboss/jboss-6' /etc/profile
+      shell: sed -i '$a JBOSS_HOME=/home/jboss/jboss-6.4' /etc/profile
     - name: Actualiza Cambios
       shell: source /etc/profile
     - name: Respalda Archivo StandAlone
-      shell: mv /home/jboss/jboss-6/standalone/configuration/standalone.xml /home/jboss/jboss-6/standalone/configuration/standalone.xml.bkp
+      shell: mv /home/jboss/jboss-6.4/standalone/configuration/standalone.xml /home/jboss/jboss-6.4/standalone/configuration/standalone.xml.bkp
     - name: Copia Archivo StandAlone
-      shell: cp /home/medios/ConfArchivos/standalone.xml /home/jboss/jboss-6/standalone/configuration
+      shell: cp /home/medios/ConfArchivos/standalone.xml /home/jboss/jboss-6.4/standalone/configuration
     - name: Copia JBOSS CONF
-      shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6/
+      shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6.4/
     - name: Copia BIN de JBOSS
       shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
+    - name: Dando permiso de ejecucion al Servicio jboss
+      shell: chmod -R 777 /etc/init.d/jboss
     - name: Inicializa Servicio JBOSS
-      shell: service jboss start
+      service:
+        name: jboss
+        state: started
+      #shell: service jboss start
     - name: Creación Usuario APP JBOSS
-      shell: /home/jboss/jboss-6/bin/add-user.sh tsoft Tsoft*2018
+      shell: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
       shell: chkconfig jboss on

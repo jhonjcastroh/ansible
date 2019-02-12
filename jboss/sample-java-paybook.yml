@@ -1,4 +1,4 @@
-- hosts: 10.41.101.235
+- hosts: 10.41.101.201
   gather_facts: yes
   remote_user: root
   #sudo: yes
@@ -17,7 +17,7 @@
     - name: Crea Carpeta JAVA
       command: mkdir /usr/java
     - name: Descomprime Archivo
-      command: tar -xzvf /home/medios/jre-7u79-linux-x64.tar.gz -C /usr/java
+      command: tar -xzvf /root/jre-7u79-linux-x64.tar.gz -C /usr/java
     - name: Renombra carpeta java
       command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
     - name: Crea Variable JAVA
