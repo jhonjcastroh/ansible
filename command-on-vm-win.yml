@@ -4,6 +4,6 @@
   remote_user: Administrator
   tasks:
     - name: run ipconfig
-      win_command: ipconfig
+      win_command: dir
       register: ipconfig
     - debug: var=ipconfig
