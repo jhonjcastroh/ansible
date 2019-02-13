@@ -1,7 +1,7 @@
 - name: Guest Creation
   gather_facts: no
   vars_files:
-    - ../vmware/vcenter_vars.yml
+    - ../vcenter_vars.yml
   hosts: localhost
   tasks:
     - name: Clone a virtual machine {{ vm_name }} from existing template {{ template_name }}
