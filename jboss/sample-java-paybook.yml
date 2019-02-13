@@ -1,5 +1,5 @@
 - hosts: all
-  limit: {{ hosts }}
+  limit: "{{ hosts }}"
   gather_facts: yes
   remote_user: root
   #sudo: yes
