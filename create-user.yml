@@ -10,25 +10,25 @@
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
     - name: Creations encrypte password for Debion or Ubuntu
       command: mkpasswd --method=sha-512
-      register: pass
+      register: pass_crypt
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
     - name: Creations encrypte password for Centos or Redhat
-      command: python -c 'import crypt,getpass; print crypt.crypt("1234")'
-      register: pass
+      command: python -c 'import crypt,getpass; print crypt.crypt("{{ pass }}")'
+      register: pass_crypt
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-    - name: Create a login user with {{ pass.stdout }} for Ubuntu
+    - name: Create a login user with {{ pass_crypt.stdout }} for Ubuntu
       user:
-        name: NewUser
-        password: "{{ pass.stdout }}"
+        name: "{{ name_user }}"
+        password: "{{ pass_crypt.stdout }}"
         system: yes
         shell: /bin/bash
         groups: sudo
         state: present
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-    - name: Create a login user with {{ pass.stdout }} for Ubuntu
+    - name: Create a login user with {{ pass_crypt.stdout }} for Ubuntu
       user:
-        name: NewUser
-        password: "{{ pass.stdout }}"
+        name: "{{ name_user }}"
+        password: "{{ pass_crypt.stdout }}"
         system: yes
         shell: /bin/bash
         groups: adm
