@@ -6,7 +6,7 @@
   tasks:
     - name: Clone a virtual machine {{ vm_name }} from existing template {{ template_name }}
       vmware_guest:
-        name: "vm-jboss"
+        name: "vm-for-jboss-installation"
         template: template-jboss-old
         hostname: "{{ vcenter_server }}"
         username: "{{ vcenter_user }}"
