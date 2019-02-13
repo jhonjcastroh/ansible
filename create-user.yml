@@ -1,18 +1,36 @@
 ---
 - name: Creación de usuario Linux
-  hosts: localhost
-  become: true
+  hosts: all
   gather_facts: yes
+  remote_user: root
   tasks:
-    #- name: Install aplications for create pass encrypte
-    #  shell: apt-get install -y whois
-    - name: Creations encrypte password
+    - name: Install aplication for create pass encrypte for Ubuntu
+      apt:
+        name: whois
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - name: Creations encrypte password for Debion or Ubuntu
       command: mkpasswd --method=sha-512
       register: pass
-    - name: Create a login user with {{ pass.stdout }}
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - name: Creations encrypte password for Centos or Redhat
+      command: python -c 'import crypt,getpass; print crypt.crypt("1234")'
+      register: pass
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    - name: Create a login user with {{ pass.stdout }} for Ubuntu
       user:
         name: NewUser
         password: "{{ pass.stdout }}"
         system: yes
+        shell: /bin/bash
         groups: sudo
         state: present
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - name: Create a login user with {{ pass.stdout }} for Ubuntu
+      user:
+        name: NewUser
+        password: "{{ pass.stdout }}"
+        system: yes
+        shell: /bin/bash
+        groups: adm
+        state: present
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
