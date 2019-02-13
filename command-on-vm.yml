@@ -2,7 +2,7 @@
   gather_facts: true
   # vars_files:
   #   - vcenter_vars.yml
-  hosts: Ansible_centos
+  hosts: all
   tasks:
     - name: Comand inside
       command: ifconfig
