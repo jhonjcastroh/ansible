@@ -1,0 +1,9 @@
+---
+- name: Eliminación de usuario Windows
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Ensure user bob is absent
+      win_user:
+        name: "{{ user }}"
+        state: absent
