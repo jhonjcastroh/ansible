@@ -1,7 +1,6 @@
 ---
 - name: Creación de usuario Windows
   hosts: all
-  gather_facts: yes
   remote_user: Administrator
   tasks:
     - name: Ensure user bob is present
