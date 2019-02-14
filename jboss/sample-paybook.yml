@@ -20,7 +20,7 @@
           - zip
           - unzip
       apt:
-        name: "{{ packeges }}"
+        name: "{{ packages }}"
         state: latest
     - name: Descomprime Archivo
       unarchive:
