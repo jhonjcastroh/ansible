@@ -19,7 +19,7 @@
         packages:
           - zip
           - unzip
-      apt:
+      yum:
         name: "{{ packages }}"
         state: latest
     - name: Descomprime Archivo
