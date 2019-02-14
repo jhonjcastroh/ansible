@@ -14,6 +14,14 @@
     #                    remote_src: yes
     ###################################################################
     ################## Comandos Ya Ejecutados (Instalacion JBOSS)#########################
+    - name: Instalacion de zip-unzip
+      vars:
+        packages:
+          - zip
+          - unzip
+      apt:
+        name: "{{ packeges }}"
+        state: latest
     - name: Descomprime Archivo
       unarchive:
         src: /root/jboss-eap-6.4.0.zip
