@@ -36,6 +36,7 @@
     #   shell: sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
     # - name: Source Archivo Profile
     #   shell: source /etc/profile
-
+    - name: directorio
+      file: path=/usr/java state=directory
     - name: Instalar JAVA
       shell: mkdir /usr/java; tar -xzvf /root/jre-7u79-linux-x64.tar.gz -C /usr/java; mv /usr/java/jre1.7.0_79 /usr/java/jre-java; JAVA_HOME=/usr/java/jre-java; export JAVA_HOME; PATH=$JAVA_HOME/bin:$PATH; export PATH; cp /etc/profile /etc/profile.bkp; sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a;PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile; source /etc/profile
