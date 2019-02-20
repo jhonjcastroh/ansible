@@ -53,10 +53,10 @@
     - name: Dando permiso de ejecucion al Servicio jboss
       shell: chmod -R 777 /etc/init.d/jboss
     - name: Inicializa Servicio JBOSS
-      service:
-        name: jboss
-        state: started
-      #shell: service jboss start
+      #service:
+      #  name: jboss
+      #  state: started
+      shell: service jboss start
     - name: Creación Usuario APP JBOSS
       shell: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
