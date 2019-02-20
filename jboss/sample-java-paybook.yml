@@ -30,7 +30,7 @@
     - name: Export JAVA_HOME
       shell: export JAVA_HOME
     - name: Crea Variable PATH
-      shell: PATH=$JAVA_HOME/bin:$PATH
+      shell: PATH=$JAVA_HOME/bin/bin:$PATH
     - name: Export PATH
       shell: export PATH
     # - name: Respaldo Archivo Profile
