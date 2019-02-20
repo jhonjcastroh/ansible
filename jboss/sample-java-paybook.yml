@@ -20,6 +20,7 @@
       unarchive:
         src: /root/jre-7u79-linux-x64.tar.gz
         dest: /usr/java
+        remote_src: yes
     - name: Renombra carpeta java
       command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
     # - name: Crea Variable JAVA
