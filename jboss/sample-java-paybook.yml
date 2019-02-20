@@ -25,12 +25,14 @@
     #   command: rm -rf /usr/java/jre-java
     # - name: Renombra carpeta java
     #   command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
-    - name: Crea Variable PATH
+    - name: Variable PATH
       shell: echo $PATH
-      environment:
-        PATH: $PATH:/usr/java/jre-java
       register: path
     - debug: var=path.stdout
+    - name: Configurando PATH
+      shell: echo $PATH
+      environment:
+        PATH: "{{path.stdout}}/usr/java/jre-java"
     # - name: Imprimiendo Path
     #   shell: echo $PATH
     # - name: Export PATH
