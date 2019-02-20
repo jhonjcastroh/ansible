@@ -14,23 +14,27 @@
     #            remote_src: yes
     ##################################################################
     ############################### (Instalacion JAVA) ##################################
-    - name: Crea Carpeta JAVA
-      file: path=/usr/java state=directory
-    - name: Descomprime Archivo
-      unarchive:
-        src: /root/jre-7u79-linux-x64.tar.gz
-        dest: /usr/java
-        remote_src: yes
-    - name: Eliminar carperta
-      command: rm -rf /usr/java/jre-java
-    - name: Renombra carpeta java
-      command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
+    # - name: Crea Carpeta JAVA
+    #   file: path=/usr/java state=directory
+    # - name: Descomprime Archivo
+    #   unarchive:
+    #     src: /root/jre-7u79-linux-x64.tar.gz
+    #     dest: /usr/java
+    #     remote_src: yes
+    # - name: Eliminar carperta
+    #   command: rm -rf /usr/java/jre-java
+    # - name: Renombra carpeta java
+    #   command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
     - name: Crea Variable PATH
-      shell: PATH=/usr/java/jre-java/bin:$PATH
-    - name: Imprimiendo Path
-      shell: echo $PATH
-    - name: Export PATH
-      shell: export PATH; echo $PATH
+      shell: echo JAVA_HOME is $JAVA_HOME
+      environment:
+        JAVA_HOME: /usr/java/jre-java
+      register: shellout
+    - debug: var=shellout
+    # - name: Imprimiendo Path
+    #   shell: echo $PATH
+    # - name: Export PATH
+    #   shell: export PATH; echo $PATH
     # - name: Respaldo Archivo Profile
     #   command: cp /etc/profile /etc/profile.bkp
     # - name: Agrega JAVA_HOME archivo Profile
