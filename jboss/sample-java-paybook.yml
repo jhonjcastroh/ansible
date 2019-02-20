@@ -25,16 +25,12 @@
       command: rm -rf /usr/java/jre-java
     - name: Renombra carpeta java
       command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
-    - name: Crea Variable JAVA
-      shell: echo $JAVA_HOME
-      environment:
-        JAVA_HOME: /usr/java/jre-java
-    - name: Imprimiendo JAVA_HOME
-      shell: echo $JAVA_HOME
-    # - name: Crea Variable PATH
-    #   shell: PATH=$JAVA_HOME/bin:$PATH
-    # - name: Export PATH
-    #   shell: export PATH
+    - name: Crea Variable PATH
+      shell: PATH=/usr/java/jre-java/bin:$PATH
+    - name: Imprimiendo Path
+      shell: echo $PATH
+    - name: Export PATH
+      shell: export PATH; echo $PATH
     # - name: Respaldo Archivo Profile
     #   command: cp /etc/profile /etc/profile.bkp
     # - name: Agrega JAVA_HOME archivo Profile
