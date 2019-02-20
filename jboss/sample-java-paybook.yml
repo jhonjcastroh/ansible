@@ -29,8 +29,8 @@
       shell: echo $JAVA_HOME
       environment:
         JAVA_HOME: /usr/java/jre-java
-    # - name: Export JAVA_HOME
-    #   shell: export JAVA_HOME
+    - name: Export JAVA_HOME
+      shell: export JAVA_HOME
     # - name: Crea Variable PATH
     #   shell: PATH=$JAVA_HOME/bin:$PATH
     # - name: Export PATH
