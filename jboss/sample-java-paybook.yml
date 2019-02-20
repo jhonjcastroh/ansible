@@ -14,12 +14,14 @@
     #            remote_src: yes
     ##################################################################
     ############################### (Instalacion JAVA) ##################################
-    # - name: Crea Carpeta JAVA
-    #   command: mkdir /usr/java
-    # - name: Descomprime Archivo
-    #   command: tar -xzvf /root/jre-7u79-linux-x64.tar.gz -C /usr/java
-    # - name: Renombra carpeta java
-    #   command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
+    - name: Crea Carpeta JAVA
+      file: path=/usr/java state=directory
+    - name: Descomprime Archivo
+      unarchive:
+        src: /root/jre-7u79-linux-x64.tar.gz
+        dest: /usr/java
+    - name: Renombra carpeta java
+      command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
     # - name: Crea Variable JAVA
     #   shell: JAVA_HOME=/usr/java/jre-java
     # - name: Export JAVA_HOME
@@ -36,7 +38,5 @@
     #   shell: sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
     # - name: Source Archivo Profile
     #   shell: source /etc/profile
-    - name: directorio
-      file: path=/usr/java state=directory
     - name: Instalar JAVA
-      shell: tar -xzvf /root/jre-7u79-linux-x64.tar.gz -C /usr/java; mv /usr/java/jre1.7.0_79 /usr/java/jre-java; JAVA_HOME=/usr/java/jre-java; export JAVA_HOME; PATH=$JAVA_HOME/bin:$PATH; export PATH; cp /etc/profile /etc/profile.bkp; sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a;PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile; source /etc/profile
+      shell: JAVA_HOME=/usr/java/jre-java; export JAVA_HOME; PATH=$JAVA_HOME/bin:$PATH; export PATH; cp /etc/profile /etc/profile.bkp; sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile; source /etc/profile
