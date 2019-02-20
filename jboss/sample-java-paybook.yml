@@ -21,12 +21,14 @@
         src: /root/jre-7u79-linux-x64.tar.gz
         dest: /usr/java
         remote_src: yes
+    - name: Eliminar carperta
+      command: rm -rf /usr/java/jre-java
     - name: Renombra carpeta java
       command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
-    # - name: Crea Variable JAVA
-    #   shell: JAVA_HOME=/usr/java/jre-java
-    # - name: Export JAVA_HOME
-    #   shell: export JAVA_HOME
+    - name: Crea Variable JAVA
+      shell: JAVA_HOME=/usr/java/jre-java
+    - name: Export JAVA_HOME
+      shell: export JAVA_HOME
     # - name: Crea Variable PATH
     #   shell: PATH=$JAVA_HOME/bin:$PATH
     # - name: Export PATH
@@ -39,5 +41,3 @@
     #   shell: sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
     # - name: Source Archivo Profile
     #   shell: source /etc/profile
-    - name: Instalar JAVA
-      shell: JAVA_HOME=/usr/java/jre-java; export JAVA_HOME; PATH=$JAVA_HOME/bin:$PATH; export PATH; cp /etc/profile /etc/profile.bkp; sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile; source /etc/profile
