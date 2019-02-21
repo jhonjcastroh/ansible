@@ -1,6 +1,6 @@
-- hosts: webservers
+- hosts: all
   user: root
-  #sudo: yes
+  become: yes
   tasks:
     ###################################################################
     #Respaldo de Algunos Ejemplos
