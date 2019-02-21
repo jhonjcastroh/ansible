@@ -47,7 +47,7 @@
       # service:
       #   name: jboss
       #   state: started
-      shell: service jboss-eap-rhel.sh start
+      shell: service jboss start
     - name: Creación Usuario APP JBOSS
       shell: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
