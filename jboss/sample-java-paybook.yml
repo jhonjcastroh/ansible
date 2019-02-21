@@ -34,7 +34,7 @@
     - name: Crea Variable PATH
       shell: echo $PATH
       environment:
-        PATH: "{{ shellout.stdout }}/bin/bin:$PATH"
+        PATH: "{{ shellout.stdout }}/bin/bin:{{ ansible_env.PATH }}"
       register: shellout2
     - debug: var=shellout2
     - name: Crea Variable PRUEBA
