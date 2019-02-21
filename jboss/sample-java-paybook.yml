@@ -33,7 +33,9 @@
     - debug: var=shellout
     - name: Crea Variable PATH
       shell: echo $PATH
-      environment: PATH="{{ shellout }}"/bin/bin:$PATH
+      environment: PATH="{{ shellout.stdout }}"/bin/bin:$PATH
+      register: shellout2
+    - debug: var=shellout2
     # - name: Respaldo Archivo Profile
     #   command: cp /etc/profile /etc/profile.bkp
     # - name: Agrega JAVA_HOME archivo Profile
