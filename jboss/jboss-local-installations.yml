@@ -3,16 +3,6 @@
   remote_user: root
   become: yes
   tasks:
-    ###################################################################
-    #Respaldo de Algunos Ejemplos
-    #          - name: Create file
-    #            file: path=/home/gabo/probe-ansible.txt state=touch
-    #          - name: Copia Archivo
-    #            copy:
-    #                    src: /home/gabo/probe-ansible.txt
-    #                    dest: /home/ansible.txt
-    #                    remote_src: yes
-    ###################################################################
     ################## Comandos Ya Ejecutados (Instalacion JBOSS)#########################
     # - name: Descomprime Archivo
     #   unarchive:
@@ -47,7 +37,7 @@
     #   shell: service iptables stop
     # - name: Inicializa Servicio JBOSS
     #   shell: /home/jboss/jboss-6.4/bin/./standalone.sh
-    - name: Creación Usuario APP JBOSS
-      shell: /home/jboss/jboss-6.4/bin/./add-user.sh tsoft Tsoft*2018
+    # - name: Creación Usuario APP JBOSS
+    #   shell: /home/jboss/jboss-6.4/bin/./add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
       shell: chkconfig jboss on
