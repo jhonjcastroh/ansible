@@ -1,7 +1,7 @@
 - hosts: all
   gather_facts: yes
   remote_user: root
-  #sudo: yes
+  become: yes
   tasks:
     ##################################################################
     #Respaldo de Algunos Ejemplos
@@ -34,13 +34,13 @@
     - name: Crea Variable PATH
       shell: echo $PATH
       environment:
-        PATH: "{{ ansible_env.PATH }}:$JAVA_HOME/bin/bin"
+        PATH: "{{ ansible_env.PATH }}:{{ shellout.stdout }}/bin/bin"
       register: shellout2
     - debug: var=shellout2
     - name: Crea Variable PRUEBA
       shell: echo $PRUEBA
       environment:
-        PRUEBA: "$PATH:{{ shellout.stdout }}/bin/bin"
+        PRUEBA: "$PATH:$JAVA_HOME/bin/bin"
       register: shellout3
     - debug: var=shellout3
     # - name: Respaldo Archivo Profile
