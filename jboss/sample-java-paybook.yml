@@ -33,7 +33,8 @@
     - debug: var=shellout
     - name: Crea Variable PATH
       shell: echo $PATH
-      environment: PATH="{{ shellout.stdout }}"/bin/bin:$PATH
+      environment:
+        PATH: "{{ shellout.stdout }}/bin/bin:$PATH"
       register: shellout2
     - debug: var=shellout2
     # - name: Respaldo Archivo Profile
