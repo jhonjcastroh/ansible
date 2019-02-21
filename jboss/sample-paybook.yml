@@ -1,42 +1,54 @@
-- hosts: all
+- hosts: 10.41.101.201
   gather_facts: yes
   remote_user: root
   #sudo: yes
   tasks:
-    ##################################################################
+    ###################################################################
     #Respaldo de Algunos Ejemplos
-    #  - name: Create file
-    #    file: path=/home/gabo/probe-ansible.txt state=touch
-    #  - name: Copia Archivo
-    #    copy:
-    #            src: /home/gabo/probe-ansible.txt
-    #            dest: /home/ansible.txt
-    #            remote_src: yes
-    ##################################################################
-    ############################### (Instalacion JAVA) ##################################
-    # - name: Crea Carpeta JAVA
-    #   command: mkdir /usr/java
-    # - name: Descomprime Archivo
-    #   command: tar -xzvf /root/jre-7u79-linux-x64.tar.gz -C /usr/java
-    # - name: Renombra carpeta java
-    #   command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
-    # - name: Crea Variable JAVA
-    #   shell: JAVA_HOME=/usr/java/jre-java
-    # - name: Export JAVA_HOME
-    #   shell: export JAVA_HOME
-    # - name: Crea Variable PATH
-    #   shell: PATH=$JAVA_HOME/bin:$PATH
-    # - name: Export PATH
-    #   shell: export PATH
-    # - name: Respaldo Archivo Profile
-    #   command: cp /etc/profile /etc/profile.bkp
-    # - name: Agrega JAVA_HOME archivo Profile
-    #   shell: sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile
-    # - name: Modifica Archivo PROFILE
-    #   shell: sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
-    # - name: Source Archivo Profile
-    #   shell: source /etc/profile
-    - name: Crear Carpeta
-      file: path=/usr/java state=directory
-    - name: Instalar JAVA
-      shell: tar -xzvf /root/jre-7u79-linux-x64.tar.gz -C /usr/java; mv /usr/java/jre1.7.0_79 /usr/java/jre-java; JAVA_HOME=/usr/java/jre-java; export JAVA_HOME; PATH=$JAVA_HOME/bin:$PATH; export PATH; cp /etc/profile /etc/profile.bkp; sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a;PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile; source /etc/profile
+    #          - name: Create file
+    #            file: path=/home/gabo/probe-ansible.txt state=touch
+    #          - name: Copia Archivo
+    #            copy:
+    #                    src: /home/gabo/probe-ansible.txt
+    #                    dest: /home/ansible.txt
+    #                    remote_src: yes
+    ###################################################################
+    ################## Comandos Ya Ejecutados (Instalacion JBOSS)#########################
+    - name: Descomprime Archivo
+      unarchive:
+        src: /root/jboss-eap-6.4.0.zip
+        dest: /home/medios
+        remote_src: yes
+    - name: Crea Usuario JBOSS
+      command: useradd -d /home/jboss -s /bin/bash -m jboss
+    - name: Crea Password Usuario JBOSS
+      command: echo 123456 |passwd jboss --stdin
+    - name: Rename Folder
+      command: mv /home/medios/jboss-eap-6.4 /home/jboss/jboss-6.4
+    - name: Usuario JBOSS Owner carpeta JBOSS
+      command: chown -R jboss:jboss /home/jboss/jboss-6.4
+    - name: Permiso al directorio JBOSS
+      command: chmod -R 775 /home/jboss/jboss-6.4
+    - name: Modifica Archivo Profile
+      shell: sed -i '$a JBOSS_HOME=/home/jboss/jboss-6.4' /etc/profile
+    - name: Actualiza Cambios
+      shell: source /etc/profile
+    - name: Respalda Archivo StandAlone
+      shell: mv /home/jboss/jboss-6.4/standalone/configuration/standalone.xml /home/jboss/jboss-6.4/standalone/configuration/standalone.xml.bkp
+    - name: Copia Archivo StandAlone
+      shell: cp /home/medios/ConfArchivos/standalone.xml /home/jboss/jboss-6.4/standalone/configuration
+    - name: Copia JBOSS CONF
+      shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6.4/
+    - name: Copia BIN de JBOSS
+      shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
+    - name: Dando permiso de ejecucion al Servicio jboss
+      shell: chmod -R 777 /etc/init.d/jboss
+    - name: Inicializa Servicio JBOSS
+      # service:
+      #   name: jboss
+      #   state: started
+      shell: service jboss-eap-rhel.sh start
+    - name: Creación Usuario APP JBOSS
+      shell: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
+    - name: Configuración Run Level
+      shell: chkconfig jboss on
