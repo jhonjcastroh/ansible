@@ -34,13 +34,13 @@
     - name: Crea Variable PATH
       shell: echo $PATH
       environment:
-        PATH: "{{ shellout.stdout }}/bin/bin:{{ ansible_env.PATH }}"
+        PATH: "{{ ansible_env.PATH }}:$JAVA_HOME/bin/bin"
       register: shellout2
     - debug: var=shellout2
     - name: Crea Variable PRUEBA
       shell: echo $PRUEBA
       environment:
-        PRUEBA: "{{ shellout.stdout }}/bin/bin:$PATH"
+        PRUEBA: "$PATH:{{ shellout.stdout }}/bin/bin"
       register: shellout3
     - debug: var=shellout3
     # - name: Respaldo Archivo Profile
