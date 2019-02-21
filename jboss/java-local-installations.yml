@@ -45,6 +45,8 @@
         PRUEBA: "$PATH:$JAVA_HOME/bin/bin"
       register: shellout3
     - debug: var=shellout3
+    - name: Export PRUEBA
+      shell: export PRUEBA
     # - name: Respaldo Archivo Profile
     #   command: cp /etc/profile /etc/profile.bkp
     # - name: Agrega JAVA_HOME archivo Profile
