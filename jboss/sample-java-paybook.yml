@@ -26,13 +26,14 @@
     - name: Renombra carpeta java
       command: mv /usr/java/jre1.7.0_79 /usr/java/jre-java
     - name: Crea Variable JAVA
-      shell: JAVA_HOME=/usr/java/jre-java
-    - name: Export JAVA_HOME
-      shell: export JAVA_HOME
+      shell: echo $JAVA_HOME
+      environment:
+        JAVA_HOME: /usr/java/jre-java
+      register: shellout
+    - debug: var=shellout
     - name: Crea Variable PATH
-      shell: PATH=$JAVA_HOME/bin/bin:$PATH
-    - name: Export PATH
-      shell: export PATH
+      shell: echo $PATH
+      environment: PATH="{{ shellout }}"/bin/bin:$PATH
     # - name: Respaldo Archivo Profile
     #   command: cp /etc/profile /etc/profile.bkp
     # - name: Agrega JAVA_HOME archivo Profile
