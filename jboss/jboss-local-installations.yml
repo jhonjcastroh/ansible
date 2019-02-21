@@ -43,9 +43,11 @@
     #   shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
     # - name: Dando permiso de ejecucion al Servicio jboss
     #   shell: chmod -R 777 /etc/init.d/jboss
+    # - name: Detención del servicio de enrutamiento
+    #   shell: service iptables stop
     # - name: Inicializa Servicio JBOSS
     #   shell: /home/jboss/jboss-6.4/bin/./standalone.sh
     - name: Creación Usuario APP JBOSS
-      shell: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
+      shell: /home/jboss/jboss-6.4/bin/./add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
       shell: chkconfig jboss on
