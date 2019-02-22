@@ -1,7 +1,6 @@
 - hosts: all
   gather_facts: yes
   remote_user: root
-  become: yes
   tasks:
     ################# Comandos Ya Ejecutados (Instalacion JBOSS)#########################
     # - name: Descomprime Archivo
@@ -38,7 +37,6 @@
 
     - name: Inicializa Servicio JBOSS
       script: /home/jboss/jboss-6.4/bin/standalone.sh
-      remote_user: yes
     - name: Creación Usuario APP JBOSS
       script: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
