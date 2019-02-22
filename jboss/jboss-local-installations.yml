@@ -34,9 +34,9 @@
     #   shell: chmod -R 777 /etc/init.d/jboss
     # - name: Detención del servicio de enrutamiento
     #   shell: service iptables stop
-    - name: Permiso de ejecución
-      command:
-    - name: Inicializa Servicio JBOSS
+    - name: Inicializa Servicio JBOSS 1
+      shell: sh /home/jboss/jboss-6.4/bin/standalone.sh
+    - name: Inicializa Servicio JBOSS 2
       script: /home/jboss/jboss-6.4/bin/standalone.sh
     - name: Creación Usuario APP JBOSS
       script: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
