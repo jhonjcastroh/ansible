@@ -42,6 +42,7 @@
     - name: Inicializa Servicio JBOSS 1.2
       command: sh /home/jboss/jboss-6.4/bin/standalone.sh
       ignore_errors: yes
+      delegate_to: localhost
 
     - name: Inicializa Servicio JBOSS 2.1
       script: /home/jboss/jboss-6.4/bin/standalone.sh
