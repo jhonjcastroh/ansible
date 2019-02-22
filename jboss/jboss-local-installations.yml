@@ -37,7 +37,7 @@
 
     - name: Inicializa Servicio JBOSS
       script: /home/jboss/jboss-6.4/bin/standalone.sh
-      remote_src: yes
+        remote_src: yes
     - name: Creación Usuario APP JBOSS
       script: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
