@@ -35,10 +35,9 @@
     #   shell: chmod -R 777 /etc/init.d/jboss
     # - name: Detención del servicio de enrutamiento
     #   shell: service iptables stop
+
     - name: Inicializa Servicio JBOSS
-      script: standalone.sh
-      args:
-        chdir: /home/jboss/jboss-6.4/bin/
+      script: /home/jboss/jboss-6.4/bin/standalone.sh
       remote_user: yes
     - name: Creación Usuario APP JBOSS
       script: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
