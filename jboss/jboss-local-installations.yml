@@ -1,6 +1,7 @@
 - hosts: all
   gather_facts: yes
   remote_user: root
+  become: yes
   tasks:
     ################# Comandos Ya Ejecutados (Instalacion JBOSS)#########################
     # - name: Descomprime Archivo
