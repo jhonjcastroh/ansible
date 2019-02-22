@@ -42,15 +42,25 @@
       command: sh /home/jboss/jboss-6.4/bin/standalone.sh
       ignore_errors: yes
 
-    - name: Inicializa Servicio JBOSS 2
+    - name: Inicializa Servicio JBOSS 2.1
       script: /home/jboss/jboss-6.4/bin/standalone.sh
       ignore_errors: yes
+    - name: Inicializa Servicio JBOSS 2.2
+      script: /home/jboss/jboss-6.4/bin/standalone.sh
+      ignore_errors: yes
+      remote_src: yes
 
-    - name: Inicializa Servicio JBOSS 3
+    - name: Inicializa Servicio JBOSS 3.1
       script: standalone.sh
       args:
         chdir: /home/jboss/jboss-6.4/bin
       ignore_errors: yes
+    - name: Inicializa Servicio JBOSS 3.2
+      script: standalone.sh
+      args:
+        chdir: /home/jboss/jboss-6.4/bin
+      ignore_errors: yes
+      remote_src: yes
 
     - name: Inicializa Servicio JBOSS 4.1
       shell: /home/jboss/jboss-6.4/bin/./standalone.sh
@@ -61,5 +71,8 @@
 
     - name: Creación Usuario APP JBOSS
       script: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
+      ignore_errors: yes
+      remote_src: yes
+
     - name: Configuración Run Level
       shell: chkconfig jboss on
