@@ -34,10 +34,31 @@
     #   shell: chmod -R 777 /etc/init.d/jboss
     # - name: Detención del servicio de enrutamiento
     #   shell: service iptables stop
-    - name: Inicializa Servicio JBOSS 1
+
+    - name: Inicializa Servicio JBOSS 1.1
       shell: sh /home/jboss/jboss-6.4/bin/standalone.sh
+      ignore_errors: yes
+    - name: Inicializa Servicio JBOSS 1.2
+      command: sh /home/jboss/jboss-6.4/bin/standalone.sh
+      ignore_errors: yes
+
     - name: Inicializa Servicio JBOSS 2
       script: /home/jboss/jboss-6.4/bin/standalone.sh
+      ignore_errors: yes
+
+    - name: Inicializa Servicio JBOSS 3
+      script: standalone.sh
+      args:
+        chdir: /home/jboss/jboss-6.4/bin
+      ignore_errors: yes
+
+    - name: Inicializa Servicio JBOSS 4.1
+      shell: /home/jboss/jboss-6.4/bin/./standalone.sh
+      ignore_errors: yes
+    - name: Inicializa Servicio JBOSS 4.2
+      command: /home/jboss/jboss-6.4/bin/./standalone.sh
+      ignore_errors: yes
+
     - name: Creación Usuario APP JBOSS
       script: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
     - name: Configuración Run Level
