@@ -45,7 +45,7 @@
     #     JAVA_OPTS: -server -XX:+UseCompressedOops -verbose:gc -Xloggc:"/home/jboss/jboss-6.4/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -Xms1303m -Xmx1303m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.modules.policy-permissions=true
     - name: Creación Usuario APP JBOSS
       at:
-        shell: sh /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
+        script_file: /home/jboss/jboss-6.4/bin/add-user.sh tsoft Tsoft*2018
         count: 1
         units: minutes
 
