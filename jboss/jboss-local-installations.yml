@@ -39,9 +39,9 @@
     - name: Inicializa Servicio JBOSS 1
       shell: sh /home/jboss/jboss-6.4/bin/standalone.sh
       environment:
-        JBOSS_HOME: ansible_env.$JBOSS_HOME
-        JAVA: ansible_env.$JAVA
-        JAVA_OPTS: ansible_env.$JAVA_OPTS
+        JBOSS_HOME: ansible_env.JBOSS_HOME
+        JAVA: ansible_env.JAVA
+        JAVA_OPTS: ansible_env.JAVA_OPTS
       ignore_errors: yes
 
     - name: Inicializa Servicio JBOSS 2
