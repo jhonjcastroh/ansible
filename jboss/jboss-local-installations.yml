@@ -35,13 +35,13 @@
     #   shell: chmod -R 777 /etc/init.d/jboss
     # - name: Detención del servicio de enrutamiento
     #   shell: service iptables stop
+    - name: Impriir variables de entorno
+      shell: echo {{ ansible_env.JAVA }} | echo {{ ansible_env.JAVA_HOME }}
 
     - name: Inicializa Servicio JBOSS 1
       shell: sh /home/jboss/jboss-6.4/bin/standalone.sh
       environment:
-        JBOSS_HOME: "{{ ansible_env.JBOSS_HOME }}"
-        JAVA: "{{ ansible_env.JAVA }}"
-        JAVA_OPTS: "{{ ansible_env.JAVA_OPTS }}"
+        JAVA_HOME: "{{ ansible_env.JAVA_HOME }}"
       ignore_errors: yes
 
     - name: Inicializa Servicio JBOSS 2
