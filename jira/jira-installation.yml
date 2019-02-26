@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+    - name: Crear carpeta para instaladores
+      command: mkdir /tmp/jira
+    - name: Transfer file from ServerA to ServerB
+      synchronize:
+        src: /home/ansibleadmin/jira/atlassian-jira-core-8.0.1.tar.gz
+        dest: /tmp/jira/
+        delegate_to: localhost
