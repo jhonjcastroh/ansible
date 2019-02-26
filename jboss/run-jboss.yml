@@ -1,0 +1,9 @@
+- name: Instalación de Java y Jboss
+  hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Instalación de Java
+      include: java-local-installations.yml
+    - name: Instalación de Jboss
+      include: jboss-local-installations.yml
