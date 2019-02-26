@@ -15,9 +15,9 @@
         folder: "{{ folder }}"
         datacenter: "{{ datacenter }}"
         cluster: "{{ cluster }}"
-        # networks:
-        #   - name: "{{ network }}"
-        #     ip: 10.41.101.235
+        networks:
+          - name: INT-TS
+        #     type: dhcp
         #     netmask: 255.255.255.0
         #     gateway: 10.41.101.1
         # customization:
