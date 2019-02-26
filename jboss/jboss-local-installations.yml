@@ -38,7 +38,7 @@
     - name: Iniciando Servicio JBOSS
       at:
         command: sh /home/jboss/jboss-6.4/bin/standalone.sh
-        count: 0.5
+        count: 1
         units: minutes
       environment:
         JAVA_HOME: /usr/java/jre-java
