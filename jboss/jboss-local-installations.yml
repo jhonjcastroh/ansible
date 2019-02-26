@@ -3,49 +3,49 @@
   remote_user: root
   become: yes
   tasks:
-    ################# Comandos Ya Ejecutados (Instalacion JBOSS)#########################
-    # - name: Descomprime Archivo
-    #   unarchive:
-    #     src: /root/jboss-eap-6.4.0.zip
-    #     dest: /home/medios
-    #     remote_src: yes
-    # - name: Crea Usuario JBOSS
-    #   command: useradd -d /home/jboss -s /bin/bash -m jboss
-    # - name: Crea Password Usuario JBOSS
-    #   command: echo 123456 | passwd jboss --stdin
-    # - name: Rename Folder
-    #   command: mv /home/medios/jboss-eap-6.4 /home/jboss/jboss-6.4
-    # - name: Usuario JBOSS Owner carpeta JBOSS
-    #   command: chown -R jboss:jboss /home/jboss/jboss-6.4
-    # - name: Permiso al directorio JBOSS
-    #   command: chmod -R 775 /home/jboss/jboss-6.4
-    # - name: Modifica Archivo Profile
-    #   shell: sed -i '$a JBOSS_HOME=/home/jboss/jboss-6.4' /etc/profile
-    # - name: Actualiza Cambios
-    #   shell: source /etc/profile
-    # - name: Respalda Archivo StandAlone
-    #   shell: mv /home/jboss/jboss-6.4/standalone/configuration/standalone.xml /home/jboss/jboss-6.4/standalone/configuration/standalone.xml.bkp
-    # - name: Copia Archivo StandAlone
-    #   shell: cp /home/medios/ConfArchivos/standalone.xml /home/jboss/jboss-6.4/standalone/configuration
-    # - name: Copia JBOSS CONF
-    #   shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6.4/
-    # - name: Copia BIN de JBOSS
-    #   shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
-    # - name: Dando permiso de ejecucion al Servicio jboss
-    #   shell: chmod -R 777 /etc/init.d/jboss
-    # - name: Detención del servicio de enrutamiento
-    #   shell: service iptables stop
-    # - name: Iniciando Servicio JBOSS
-    #   at:
-    #     command: sh /home/jboss/jboss-6.4/bin/standalone.sh
-    #     count: 1
-    #     units: minutes
-    #   environment:
-    #     JAVA_HOME: /usr/java/jre-java
-    #     JAVA_OPTS: -server -XX:+UseCompressedOops -verbose:gc -Xloggc:"/home/jboss/jboss-6.4/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -Xms1303m -Xmx1303m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.modules.policy-permissions=true
-    # - name: Creación Usuario APP JBOSS
-    #   shell: sh /home/jboss/jboss-6.4/bin/add-user.sh -u tsoft -p Tsoft*2018
-    #   environment:
-    #     JAVA_HOME: /usr/java/jre-java
+    ################ Comandos Ya Ejecutados (Instalacion JBOSS)#########################
+    - name: Descomprime Archivo
+      unarchive:
+        src: /root/jboss-eap-6.4.0.zip
+        dest: /home/medios
+        remote_src: yes
+    - name: Crea Usuario JBOSS
+      command: useradd -d /home/jboss -s /bin/bash -m jboss
+    - name: Crea Password Usuario JBOSS
+      command: echo 123456 | passwd jboss --stdin
+    - name: Rename Folder
+      command: mv /home/medios/jboss-eap-6.4 /home/jboss/jboss-6.4
+    - name: Usuario JBOSS Owner carpeta JBOSS
+      command: chown -R jboss:jboss /home/jboss/jboss-6.4
+    - name: Permiso al directorio JBOSS
+      command: chmod -R 775 /home/jboss/jboss-6.4
+    - name: Modifica Archivo Profile
+      shell: sed -i '$a JBOSS_HOME=/home/jboss/jboss-6.4' /etc/profile
+    - name: Actualiza Cambios
+      shell: source /etc/profile
+    - name: Respalda Archivo StandAlone
+      shell: mv /home/jboss/jboss-6.4/standalone/configuration/standalone.xml /home/jboss/jboss-6.4/standalone/configuration/standalone.xml.bkp
+    - name: Copia Archivo StandAlone
+      shell: cp /home/medios/ConfArchivos/standalone.xml /home/jboss/jboss-6.4/standalone/configuration
+    - name: Copia JBOSS CONF
+      shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6.4/
+    - name: Copia BIN de JBOSS
+      shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
+    - name: Dando permiso de ejecucion al Servicio jboss
+      shell: chmod -R 777 /etc/init.d/jboss
+    - name: Detención del servicio de enrutamiento
+      shell: service iptables stop
+    - name: Iniciando Servicio JBOSS
+      at:
+        command: sh /home/jboss/jboss-6.4/bin/standalone.sh
+        count: 0.5
+        units: minutes
+      environment:
+        JAVA_HOME: /usr/java/jre-java
+        JAVA_OPTS: -server -XX:+UseCompressedOops -verbose:gc -Xloggc:"/home/jboss/jboss-6.4/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -Xms1303m -Xmx1303m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.modules.policy-permissions=true
+    - name: Creación Usuario APP JBOSS
+      shell: sh /home/jboss/jboss-6.4/bin/add-user.sh -u tsoft -p Tsoft*2018
+      environment:
+        JAVA_HOME: /usr/java/jre-java
     - name: Configuración Run Level
       shell: chkconfig jboss on
