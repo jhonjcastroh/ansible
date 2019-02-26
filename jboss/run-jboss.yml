@@ -5,6 +5,6 @@
   user: root
   tasks:
     - name: Instalación de Java
-      include: java-local-installations.yml
+      include_tasks: java-local-installations.yml
     - name: Instalación de Jboss
-      include: jboss-local-installations.yml
+      include_tasks: jboss-local-installations.yml
