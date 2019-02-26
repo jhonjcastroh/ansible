@@ -34,6 +34,7 @@
         datacenter: "{{ datacenter }}"
         folder: "{{ folder }}"
         name: "{{ vm_name }}"
+        wait_for_ip_address: yes
       register: vm_factss
     - name: Set powerstate of a virtual machine to poweron u poweroff by using UUID (change the state module)
       vmware_guest:
@@ -44,7 +45,6 @@
         uuid: "{{ vm_factss.instance.hw_product_uuid }}"
         state: poweredon
       delegate_to: localhost
-      wait_for_ip_address: yes
       notify:
         - PowerON
   handlers:
