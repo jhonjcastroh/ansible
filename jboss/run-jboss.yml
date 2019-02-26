@@ -77,7 +77,7 @@
         JAVA_HOME: /usr/java/jre-java
         JAVA_OPTS: -server -XX:+UseCompressedOops -verbose:gc -Xloggc:"/home/jboss/jboss-6.4/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -Xms1303m -Xmx1303m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.modules.policy-permissions=true
     - name: Creación Usuario APP JBOSS
-      shell: sh /home/jboss/jboss-6.4/bin/add-user.sh -u admin -p Tsoft*2019
+      shell: sh /home/jboss/jboss-6.4/bin/add-user.sh -u {{ user_jboss }} -p {{ password_jboss }}
       environment:
         JAVA_HOME: /usr/java/jre-java
     - name: Configuración Run Level
