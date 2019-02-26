@@ -40,7 +40,19 @@
         hostname: "{{ vcenter_server }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
-        validate_certs: no
+        validate_certs: off
+        uuid: "{{ vm_factss.instance.hw_product_uuid }}"
+        state: poweredon
+      delegate_to: localhost
+      notify:
+        - PowerON
+  handlers:
+    - name: PowerON
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: on
         uuid: "{{ vm_factss.instance.hw_product_uuid }}"
         state: poweredon
       delegate_to: localhost
