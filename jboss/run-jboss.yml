@@ -2,6 +2,7 @@
   hosts: all
   gather_facts: yes
   become: yes
+  user: root
   tasks:
     - name: Instalación de Java
       include: java-local-installations.yml
