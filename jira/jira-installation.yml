@@ -28,11 +28,11 @@
     #   ignore_errors: yes
     - name: Descomprimiendo archivo de instalacion
       unarchive:
-        src: /tmp/jira/atlassian-jira-core-8.0.1.tar.gz
+        src: /tmp/jira/atlassian-jira-software-8.0.1.tar.gz
         dest: /tmp/jira/jirasoftware
         remote_src: yes
     - name:
       unarchive:
-        src: /tmp/jira/jirasoftware/atlassian-jira-core-8.0.1.tar
+        src: /tmp/jira/jirasoftware/atlassian-jira-software-8.0.1.tar
         dest: /tmp/jira/jirasoftware
         remote_src: yes
