@@ -1,35 +1,32 @@
 - name: tranferir archivo
   hosts: all
   tasks:
-    - name: Crear carpeta para instaladores
-      command: mkdir /tmp/jira
-      ignore_errors: yes
-    - name: Download file from a file path
-      get_url:
-        url: file:///home/ansibleadmin/jira/credentials.csv
-        dest: /tmp/jira/credentials.csv
-      delegate_to: localhost
-      ignore_errors: yes
-    - name: copy file at root dir of flash in slot 3 of sw1(ios)
-      net_put:
-        src: /home/ansibleadmin/jira/credentials.csv
-        protocol: sftp
-        dest: root@10.41.101.200:/tmp/jira/credentials.csv
-      ignore_errors: yes
-    - name: synchronize between nodes
-      environment:
-        RSYNC_PASSWORD: root
-      synchronize:
-        src: rsync://ansibleadmin@Ansible-Server:/home/ansibleadmin/jira/credentials.csv
-        dest: /tmp/jira/
-        mode: pull
-      delegate_to: localhost
-      ignore_errors: yes
+    # - name: Crear carpeta para instaladores
+    #   command: mkdir /tmp/jira
+    #   ignore_errors: yes
+    # - name: Download file from a file path
+    #   get_url:
+    #     url: file:///home/ansibleadmin/jira/credentials.csv
+    #     dest: /tmp/jira/credentials.csv
+    #   delegate_to: localhost
+    #   ignore_errors: yes
+    # - name: synchronize between nodes
+    #   environment:
+    #     RSYNC_PASSWORD: root
+    #   synchronize:
+    #     src: rsync://ansibleadmin@Ansible-Server:/home/ansibleadmin/jira/credentials.csv
+    #     dest: /tmp/jira/
+    #     mode: pull
+    #   delegate_to: localhost
+    #   ignore_errors: yes
     - name: Transfer file from ServerA to ServerB
       synchronize:
         src: /home/ansibleadmin/jira/credentials.csv
         dest: /tmp/jira/
-        verify_host: yes
-        recursive: yes
-      delegate_to: localhost
+      delegate_to: Ansible-Server
       ignore_errors: yes
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /tmp/jira/atlassian-jira-core-8.0.1.tar.gz
+        dest: /tmp/jira
+        remote_src: yes
