@@ -2,9 +2,9 @@
   hosts: all
   become: yes
   tasks:
-    - name: Crear carpeta para instaladores
-      command: mkdir /tmp/jira/jirasoftware
-      ignore_errors: yes
+    # - name: Crear carpeta para instaladores
+    #   command: mkdir /tmp/jira/jirasoftware
+    #   ignore_errors: yes
     # - name: Download file from a file path
     #   get_url:
     #     url: file:///home/ansibleadmin/jira/credentials.csv
@@ -26,13 +26,16 @@
     #     dest: /tmp/jira/
     #   delegate_to: Ansible
     #   ignore_errors: yes
-    - name: Descomprimiendo archivo de instalacion
-      unarchive:
-        src: /tmp/jira/atlassian-jira-software-8.0.1.tar.gz
-        dest: /tmp/jira/jirasoftware
-        remote_src: yes
-    - name:
-      unarchive:
-        src: /tmp/jira/jirasoftware/atlassian-jira-software-8.0.1.tar
-        dest: /tmp/jira/jirasoftware
-        remote_src: yes
+    # - name: Descomprimiendo archivo de instalacion
+    #   unarchive:
+    #     src: /tmp/jira/atlassian-jira-software-8.0.1.tar.gz
+    #     dest: /tmp/jira/jirasoftware
+    #     remote_src: yes
+    - name: Crea Usuario Jira
+      command: useradd -d /home/jboss -s /bin/bash -m jira
+    - name: Crea Password Usuario Jira
+      command: echo 1234 | passwd jira --stdin
+    - name: Usuario JBOSS Owner carpeta JBOSS
+      command: chown -R jira:jira /tmp/jira/jirasoftware
+    - name: Usuario JBOSS Owner carpeta JBOSS
+      command: chmod -R u=rwx,go-rwx /tmp/jira/jirasoftware
