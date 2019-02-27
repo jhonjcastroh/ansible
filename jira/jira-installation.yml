@@ -1,5 +1,6 @@
 - name: tranferir archivo
   hosts: all
+  become: yes
   tasks:
     # - name: Crear carpeta para instaladores
     #   command: mkdir /tmp/jira
