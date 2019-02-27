@@ -6,5 +6,7 @@
     - name: Transfer file from ServerA to ServerB
       synchronize:
         src: /home/ansibleadmin/jira/credentials.csv
-        dest: /tmp/jira/credentials.csv
+        dest: /tmp/jira/
       delegate_to: localhost
+      verify_host: yes
+      recursive: yes
