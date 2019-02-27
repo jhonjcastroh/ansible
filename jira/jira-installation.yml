@@ -41,17 +41,18 @@
     #   command: chmod -R u=rwx,go-rwx /tmp/jira/jirasoftware
     # - name: Crear carpeta para instaladores
     #   command: mkdir /home/jirasoftware-home
-    - name: Usuario JBOSS Owner carpeta JBOSS
-      command: chown -R jira /home/jirasoftware-home
-    - name: Usuario JBOSS Owner carpeta JBOSS
-      command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
-    - name: Crea Variable JAVA
-      shell: JIRA_HOME=/home/jirasoftware-home
-    - name: Export JIRA_HOME
-      shell: export JIRA_HOME
+    # - name: Usuario JBOSS Owner carpeta Jira
+    #   command: chown -R jira /home/jirasoftware-home
+    # - name: Usuario JBOSS Owner carpeta Jira
+    #   command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
+    # - name: Crea Variable JAVA
+    #   shell: JIRA_HOME=/home/jirasoftware-home
+    # - name: Export JIRA_HOME
+    #   shell: export JIRA_HOME
     - name: Start Jira
       become_user: jira
       become: yes
       shell: sh /tmp/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       environment:
         JIRA_HOME: /home/jirasoftware-home
+        JAVA_HOME: /usr/java/jre-java
