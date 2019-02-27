@@ -7,6 +7,6 @@
       synchronize:
         src: /home/ansibleadmin/jira/credentials.csv
         dest: /tmp/jira/
+        verify_host: yes
+        recursive: yes
       delegate_to: localhost
-      verify_host: yes
-      recursive: yes
