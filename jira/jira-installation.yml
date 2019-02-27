@@ -4,6 +4,7 @@
   tasks:
     # - name: Crear carpeta para instaladores
     #   file: path=/tmp/jira/jirasoftware state=directory
+    ######################################################################
     # - name: Download file from a file path
     #   get_url:
     #     url: file:///home/ansibleadmin/jira/credentials.csv
@@ -25,6 +26,7 @@
     #     dest: /tmp/jira/
     #   delegate_to: Ansible
     #   ignore_errors: yes
+    #########################################################################
     # - name: Descomprimiendo archivo de instalacion
     #   unarchive:
     #     src: /tmp/jira/atlassian-jira-software-8.0.1.tar.gz
@@ -48,10 +50,15 @@
     #   shell: JIRA_HOME=/home/jirasoftware-home
     # - name: Export JIRA_HOME
     #   shell: export JIRA_HOME
-    - name: Start Jira
-      become_user: jira
-      become: yes
-      shell: sh /tmp/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
-      environment:
-        JIRA_HOME: /home/jirasoftware-home
-        JAVA_HOME: /usr/java/jre-java
+    # - name: Start Jira
+    #   become_user: jira
+    #   become: yes
+    #   shell: sh /tmp/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
+    #   environment:
+    #     JIRA_HOME: /home/jirasoftware-home
+    #     JAVA_HOME: /usr/java/jre-java
+    #########################################################################
+    - name: Dar permiso al Instalador Jira
+      shell: chmod a+x atlassian-jira-software-8.0.1-x64.bin
+    - name: Ejecutar Instalador de Jira
+      shell: sh /tmp/atlassian-jira-software-8.0.1-x64.bin
