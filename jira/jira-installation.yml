@@ -13,8 +13,8 @@
     - name: copy file at root dir of flash in slot 3 of sw1(ios)
       net_put:
         src: /home/ansibleadmin/jira/credentials.csv
-        protocol: scp
-        dest: flash3:/tmp/jira/credentials.csv
+        protocol: sftp
+        dest: root@10.41.101.200:/tmp/jira/credentials.csv
       ignore_errors: yes
     - name: synchronize between nodes
       environment:
