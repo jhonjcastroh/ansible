@@ -23,7 +23,7 @@
     - name: Eliminar carperta
       command: rm -rf /usr/java/jre-java
     - name: Renombra carpeta java
-      command: mv /usr/java/jre-8u201 /usr/java/jre-java
+      command: mv /usr/java/jre1.8.0_201 /usr/java/jre-java
     - name: Crea Variable JAVA
       shell: JAVA_HOME=/usr/java/jre-java
     - name: Export JAVA_HOME

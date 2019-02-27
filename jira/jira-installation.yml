@@ -3,8 +3,7 @@
   become: yes
   tasks:
     # - name: Crear carpeta para instaladores
-    #   command: mkdir /tmp/jira/jirasoftware
-    #   ignore_errors: yes
+    #   file: path=/tmp/jira/jirasoftware state=directory
     # - name: Download file from a file path
     #   get_url:
     #     url: file:///home/ansibleadmin/jira/credentials.csv
