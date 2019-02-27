@@ -39,8 +39,8 @@
     #   command: chown -R jira /tmp/jira/jirasoftware
     # - name: Usuario JBOSS Owner carpeta JBOSS
     #   command: chmod -R u=rwx,go-rwx /tmp/jira/jirasoftware
-    - name: Crear carpeta para instaladores
-      command: mkdir /home/jirasoftware-home
+    # - name: Crear carpeta para instaladores
+    #   command: mkdir /home/jirasoftware-home
     - name: Usuario JBOSS Owner carpeta JBOSS
       command: chown -R jira /home/jirasoftware-home
     - name: Usuario JBOSS Owner carpeta JBOSS
