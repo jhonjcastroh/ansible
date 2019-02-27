@@ -4,8 +4,32 @@
     - name: Crear carpeta para instaladores
       command: mkdir /tmp/jira
       ignore_errors: yes
+    - name: Download file from a file path
+      get_url:
+        url: file:///home/ansibleadmin/jira/credentials.csv
+        dest: /tmp/jira/credentials.csv
+      delegate_to: localhost
+      ignore_errors: yes
     - name: copy file at root dir of flash in slot 3 of sw1(ios)
       net_put:
         src: /home/ansibleadmin/jira/credentials.csv
         protocol: scp
         dest: flash3:/tmp/jira/credentials.csv
+      ignore_errors: yes
+    - name: synchronize between nodes
+      environment:
+        RSYNC_PASSWORD: root
+      synchronize:
+      src: rsync://root@puente:/home/ansibleadmin/jira/credentials.csv
+      dest: /destination/directory/
+      mode: pull
+      delegate_to: localhost
+      ignore_errors: yes
+    - name: Transfer file from ServerA to ServerB
+      synchronize:
+        src: /home/ansibleadmin/jira/credentials.csv
+        dest: /tmp/jira/
+        verify_host: yes
+        recursive: yes
+      delegate_to: localhost
+      ignore_errors: yes
