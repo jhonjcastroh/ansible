@@ -17,15 +17,15 @@
       file: path=/usr/java state=directory
     - name: Descomprime Archivo
       unarchive:
-        src: /root/jdk-11.0.2_linux-x64_bin.tar.gz
+        src: /root/jre-8u201-linux-x64.tar.gz
         dest: /usr/java
         remote_src: yes
     - name: Eliminar carperta
-      command: rm -rf /usr/java/jdk-java
+      command: rm -rf /usr/java/jre-java
     - name: Renombra carpeta java
-      command: mv /usr/java/jdk-11.0.2 /usr/java/jdk-java
+      command: mv /usr/java/jre-8u201 /usr/java/jre-java
     - name: Crea Variable JAVA
-      shell: JAVA_HOME=/usr/java/jdk-java
+      shell: JAVA_HOME=/usr/java/jre-java
     - name: Export JAVA_HOME
       shell: export JAVA_HOME
     - name: Crea Variable PATH
@@ -35,7 +35,7 @@
     - name: Respaldo Archivo Profile
       command: cp /etc/profile /etc/profile.bkp
     - name: Agrega JAVA_HOME archivo Profile
-      shell: sed -i '$a JAVA_HOME=/usr/java/jdk-java' /etc/profile
+      shell: sed -i '$a JAVA_HOME=/usr/java/jre-java' /etc/profile
     - name: Modifica Archivo PROFILE
       shell: sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
     - name: Source Archivo Profile
