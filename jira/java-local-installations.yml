@@ -23,7 +23,7 @@
     - name: Eliminar carperta
       command: rm -rf /usr/java/jdk-java
     - name: Renombra carpeta java
-      command: mv /usr/java/jdk-11.0.2 /usr/java/jre-java
+      command: mv /usr/java/jdk-11.0.2 /usr/java/jdk-java
     - name: Crea Variable JAVA
       shell: JAVA_HOME=/usr/java/jdk-java
     - name: Export JAVA_HOME
