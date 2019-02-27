@@ -8,6 +8,7 @@
       get_url:
         url: file:///home/ansibleadmin/jira/credentials.csv
         dest: /tmp/jira/credentials.csv
+      delegate_to: localhost
       ignore_errors: yes
     - name: Transfer file from ServerA to ServerB
       synchronize:
