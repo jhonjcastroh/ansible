@@ -1,7 +1,13 @@
-- hosts: all
+- name: tranferir archivo
+  hosts: all
   tasks:
     - name: Crear carpeta para instaladores
       command: mkdir /tmp/jira
+      ignore_errors: yes
+    - name: Download file from a file path
+      get_url:
+        url: file:///home/ansibleadmin/jira/credentials.csv
+        dest: /tmp/jira/credentials.csv
       ignore_errors: yes
     - name: Transfer file from ServerA to ServerB
       synchronize:
