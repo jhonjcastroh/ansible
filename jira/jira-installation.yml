@@ -20,9 +20,9 @@
       environment:
         RSYNC_PASSWORD: root
       synchronize:
-      src: rsync://root@puente:/home/ansibleadmin/jira/credentials.csv
-      dest: /destination/directory/
-      mode: pull
+        src: rsync://root@puente:/home/ansibleadmin/jira/credentials.csv
+        dest: /destination/directory/
+        mode: pull
       delegate_to: localhost
       ignore_errors: yes
     - name: Transfer file from ServerA to ServerB
