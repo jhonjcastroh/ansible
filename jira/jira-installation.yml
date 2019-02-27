@@ -22,7 +22,7 @@
       synchronize:
         src: rsync://ansibleadmin@Ansible-Server:/home/ansibleadmin/jira/credentials.csv
         dest: /tmp/jira/
-        mode: push
+        mode: pull
       delegate_to: localhost
       ignore_errors: yes
     - name: Transfer file from ServerA to ServerB
