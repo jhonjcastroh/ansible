@@ -17,7 +17,7 @@
       file: path=/usr/java state=directory
     - name: Descomprime Archivo
       unarchive:
-        src: /root/jdk-8u201-linux-x64.tar.gz
+        src: /tmp/jdk-8u201-linux-x64.tar.gz
         dest: /usr/java
         remote_src: yes
     - name: Eliminar carperta

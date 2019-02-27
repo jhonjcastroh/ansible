@@ -2,8 +2,8 @@
   hosts: all
   become: yes
   tasks:
-    # - name: Crear carpeta para instaladores
-    #   file: path=/tmp/jira/jirasoftware state=directory
+    - name: Crear carpeta para instaladores
+      file: path=/tmp/jira/jirasoftware state=directory
     ######################################################################
     # - name: Download file from a file path
     #   get_url:
