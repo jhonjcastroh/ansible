@@ -23,7 +23,7 @@
       synchronize:
         src: /home/ansibleadmin/jira/credentials.csv
         dest: /tmp/jira/
-      delegate_to: Ansible-Server
+      delegate_to: Ansible
       ignore_errors: yes
     # - name: Descomprimiendo archivo de instalacion
     #   unarchive:
