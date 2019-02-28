@@ -13,10 +13,10 @@
     #     src: /opt/atlassian-jira-software-8.0.1.tar
     #     dest: /opt/jirasoftware
     #     remote_src: yes
-    # - name: Usuario Jira Owner carpeta Jira
-    #   command: chown -R jira /home/jirasoftware/atlassian-jira-software-8.0.1-standalone
     - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /home/jirasoftware/atlassian-jira-software-8.0.1-standalone
+      command: chown -R jira /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
+    - name: Usuario Jira Owner carpeta Jira
+      command: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
     - name: Crear carpeta para instaladores
       file: path=/home/jirasoftware-home state=directory
     - name: Usuario Jira Owner carpeta Jira
