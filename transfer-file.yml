@@ -2,22 +2,16 @@
   hosts: jhon
   gather_facts: yes
   tasks:
-    # - name: get_url
+    # - name: get_url con un servidor ftp
     #   get_url:
     #     url: file:///home/ansibleadmin/jira/credentials.csv
-    #     dest: /tmp/jira/credentials.csv
+    #     dest: /tmp/credentials.csv
     #   delegate_to: localhost
-    #   ignore_errors: yes
-    # - name: synchronize 1
-    #   environment:
-    #     RSYNC_PASSWORD: root
+    # - name: Con synchronize rsync debe estar instalado en ambos servidores (RHEL no lo tiene por defecto)
     #   synchronize:
-    #     src: rsync://ansibleadmin@Ansible-Server:/home/ansibleadmin/jira/credentials.csv
-    #     dest: /tmp/jira/
-    #     mode: pull
-    #   delegate_to: localhost
-    #   ignore_errors: yes
-    - name: synchronize 2
-      synchronize:
-        src: /home/ansibleadmin/jira
-        dest: /tmp
+    #     src: /home/ansibleadmin/jira
+    #     dest: /tmp
+    - name: copy
+      copy:
+        src: /home/ansibleadmin/jiracredentials.csv
+        dest: /tmp/credentials.csv
