@@ -11,16 +11,27 @@
     #   synchronize:
     #     src: /home/ansibleadmin/jira
     #     dest: /tmp
-    - name: copy
-      become: yes
-      become_user: root
+    # - name: copy en la misma maquina
+    #   become: yes
+    #   become_user: root
+    #   copy:
+    #     src: /tmp/jdk-8u201-linux-x64.tar.gz
+    #     dest: /root
+    #     remote_src: yes
+    #     mode: 0664
+    #   ignore_errors: yes
+    - name: Copy 2
       copy:
-        #src: /home/ansibleadmin/jira/credentials.csv
-        src: /tmp/jdk-8u201-linux-x64.tar.gz
-        dest: /root
-        remote_src: yes
-        mode: 0664
-      ignore_errors: yes
+        dest: /temp
+        src: /home/ansibleadmin/jira/credentials.csv
+        remote_src: no
+        owner: user
+        group: group
+        mode: 0644
+      delegate_to: remote_server
+      become_user: awx
+      become: no
+    delegate_to: localhost
       #delegate_to: remote_server
     # # transfer local pub-key to remote authorized_keys
     # - name: fetch local ssh key from root user
