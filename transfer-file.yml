@@ -20,7 +20,6 @@
         dest: /tmp
         remote_src: yes
         mode: 0664
-      delegate_to: localhost
       ignore_errors: yes
     # # transfer local pub-key to remote authorized_keys
     # - name: fetch local ssh key from root user
