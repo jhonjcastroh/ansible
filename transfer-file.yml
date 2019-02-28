@@ -19,5 +19,5 @@
     #   ignore_errors: yes
     - name: synchronize 2
       synchronize:
-        src: /home/ansibleadmin/jira/credentials.csv
+        src: /home/ansibleadmin/jira
         dest: /tmp
