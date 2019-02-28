@@ -1,7 +1,6 @@
 - name: tranferir archivo
   hosts: jhon
   gather_facts: yes
-
   tasks:
     # - name: get_url con un servidor ftp
     #   get_url:
@@ -16,7 +15,8 @@
       become: yes
       become_user: root
       copy:
-        src: /home/ansibleadmin/jira/credentials.csv
+        #src: /home/ansibleadmin/jira/credentials.csv
+        src: /tmp/jdk-8u201-linux-x64.tar.gz
         dest: /tmp
         remote_src: yes
       delegate_to: localhost
