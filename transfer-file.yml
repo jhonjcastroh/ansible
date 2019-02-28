@@ -13,7 +13,7 @@
     #     dest: /tmp
     - name: copy
       copy:
-        src: /home/ansibleadmin/jira/credentials.csv
+        src: /tmp/jdk-8u201-linux-x64.tar.gz
         dest: /tmp
         remote_src: yes
       delegate_to: localhost
