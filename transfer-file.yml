@@ -1,5 +1,5 @@
 - name: tranferir archivo
-  hosts: all
+  hosts: jhon
   gather_facts: yes
   tasks:
     # - name: get_url
