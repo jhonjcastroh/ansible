@@ -14,7 +14,7 @@
     #     dest: /tmp
     - name: copy
       become: yes
-      become_user: ansibleadmin
+      become_user: root
       copy:
         src: /home/ansibleadmin/jira/credentials.csv
         dest: /tmp
