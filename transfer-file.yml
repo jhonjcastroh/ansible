@@ -15,8 +15,8 @@
       copy:
         src: /home/ansibleadmin/jira/credentials.csv
         dest: /tmp
-        remote_src: no
-      ignore_errors: yes
+        remote_src: yes
+      delegate_to: localhost
     # # transfer local pub-key to remote authorized_keys
     # - name: fetch local ssh key from root user
     #   shell: cat /root/.ssh/id_rsa.pub
