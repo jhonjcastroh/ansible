@@ -1,6 +1,6 @@
 - name: tranferir archivo
   hosts: all
-  become: yes
+  gather_facts: yes
   tasks:
     # - name: get_url
     #   get_url:
@@ -19,7 +19,5 @@
     #   ignore_errors: yes
     - name: synchronize 2
       synchronize:
-        src: /root/jre-7u79-linux-x64.tar.gz
-        dest: /tmp/jira/
-      delegate_to: vm_for_jboss
-      ignore_errors: yes
+        src: /home/ansibleadmin/jira/credentials.csv
+        dest: /tmp
