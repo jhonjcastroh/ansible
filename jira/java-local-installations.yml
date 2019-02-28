@@ -24,14 +24,10 @@
       command: rm -rf /usr/java/jdk-java
     - name: Renombra carpeta java
       command: mv /usr/java/jdk1.8.0_201 /usr/java/jdk-java
-    - name: Crea Variable JAVA
-      shell: JAVA_HOME=/usr/java/jdk-java
-    - name: Export JAVA_HOME
-      shell: export JAVA_HOME
-    - name: Crea Variable PATH
-      shell: PATH=$JAVA_HOME/bin:$PATH
-    - name: Export PATH
-      shell: export PATH
+    - name: Crea y exportar Variable JAVA
+      shell: export JAVA_HOME=/usr/java/jdk-java
+    - name: Crea y exporta Variable PATH
+      shell: export PATH=$JAVA_HOME/bin:$PATH
     - name: Respaldo Archivo Profile
       command: cp /etc/profile /etc/profile.bkp
     - name: Agrega JAVA_HOME archivo Profile

@@ -1,0 +1,25 @@
+- name: tranferir archivo
+  hosts: all
+  become: yes
+  tasks:
+    # - name: get_url
+    #   get_url:
+    #     url: file:///home/ansibleadmin/jira/credentials.csv
+    #     dest: /tmp/jira/credentials.csv
+    #   delegate_to: localhost
+    #   ignore_errors: yes
+    # - name: synchronize 1
+    #   environment:
+    #     RSYNC_PASSWORD: root
+    #   synchronize:
+    #     src: rsync://ansibleadmin@Ansible-Server:/home/ansibleadmin/jira/credentials.csv
+    #     dest: /tmp/jira/
+    #     mode: pull
+    #   delegate_to: localhost
+    #   ignore_errors: yes
+    - name: synchronize 2
+      synchronize:
+        src: /root/jre-7u79-linux-x64.tar.gz
+        dest: /tmp/jira/
+      delegate_to: vm_for_jboss
+      ignore_errors: yes
