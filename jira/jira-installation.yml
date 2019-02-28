@@ -3,35 +3,29 @@
   become: yes
   tasks:
     - name: Crear carpeta para instaladores
-      file: path=/home/jira/jirasoftware state=directory
+      file: path=/opt/jirasoftware state=directory
     # - name: Tranferir archivo (tarea en desarrollo)
+    - name: Crea Usuario Jira
+      shell: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
     - name: Descomprimiendo archivo de instalacion
       unarchive:
-        src: /home/atlassian-jira-software-8.0.1.tar.gz
-        dest: /home/jira/jirasoftware
+        src: /opt/jirasoftware/atlassian-jira-software-8.0.1.tar.gz
+        dest: /opt/jirasoftware
         remote_src: yes
-    - name: Crea Usuario Jira
-      command: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
-    # - name: Crea Usuario Jira 2
-    #   command: useradd -d /home/jboss -s /bin/bash -m jira
     - name: Usuario Jira Owner carpeta Jira
       command: chown -R jira /home/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone
     - name: Usuario Jira Owner carpeta Jira
       command: chmod -R u=rwx,go-rwx /home/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone
     - name: Crear carpeta para instaladores
-      file: path=/opt/jirasoftware-home state=directory
+      file: path=/home/jirasoftware-home state=directory
     - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira /opt/jirasoftware-home
+      command: chown -R jira /home/jirasoftware-home
     - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /opt/jirasoftware-home
+      command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
     - name: Crea y exporta Variable JIRA_HOME
-      become_user: jira
-      become: yes
-      shell: export JIRA_HOME=/opt/jirasoftware-home
+      shell: export JIRA_HOME=/home/jirasoftware-home
     - name: Start Jira
-      become_user: jira
-      become: yes
       shell: sh /home/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       environment:
-        JIRA_HOME: /opt/jirasoftware-home
-        JAVA_HOME: /usr/java/jre-java
+        JIRA_HOME: /home/jirasoftware-home
+        JAVA_HOME: /usr/java/jdk-java

@@ -1,17 +1,6 @@
 - hosts: all
   become: yes
   tasks:
-    ###################################################################
-    #Respaldo de Algunos Ejemplos
-    #          - name: Create file
-    #            file: path=/home/gabo/probe-ansible.txt state=touch
-    #          - name: Copia Archivo
-    #            copy:
-    #                    src: /home/gabo/probe-ansible.txt
-    #                    dest: /home/ansible.txt
-    #                    remote_src: yes
-    ###################################################################
-
     ################################ (Instalacion JAVA) ##################################
     - name: Crea Carpeta JAVA
       file: path=/usr/java state=directory
@@ -20,8 +9,6 @@
         src: /tmp/jdk-8u201-linux-x64.tar.gz
         dest: /usr/java
         remote_src: yes
-    - name: Eliminar carperta
-      command: rm -rf /usr/java/jdk-java
     - name: Renombra carpeta java
       command: mv /usr/java/jdk1.8.0_201 /usr/java/jdk-java
     - name: Crea y exportar Variable JAVA
