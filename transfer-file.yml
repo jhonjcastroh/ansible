@@ -19,6 +19,7 @@
         src: /tmp/jdk-8u201-linux-x64.tar.gz
         dest: /tmp
         remote_src: yes
+        mode: 0664
       delegate_to: localhost
       ignore_errors: yes
     # # transfer local pub-key to remote authorized_keys
