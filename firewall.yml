@@ -1,0 +1,8 @@
+- name: Comandos para bajar servicios y suban las aplicaciones por el pto 8080 en linux
+  hosts: all
+  become: yes
+  tasks:
+    - name: selinux
+      command: setenforce 0
+    - name: firewall rhel7
+      command: systemctl stop firewalld

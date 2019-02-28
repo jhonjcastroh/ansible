@@ -1,4 +1,4 @@
-- name: instalacion de Jira
+- name: Instalacion de Jira
   hosts: all
   become: yes
   tasks:
@@ -14,9 +14,9 @@
         dest: /opt/jirasoftware
         remote_src: yes
     - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira /home/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone
+      command: chown -R jira /home/jirasoftware/atlassian-jira-software-8.0.1-standalone
     - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /home/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone
+      command: chmod -R u=rwx,go-rwx /home/jirasoftware/atlassian-jira-software-8.0.1-standalone
     - name: Crear carpeta para instaladores
       file: path=/home/jirasoftware-home state=directory
     - name: Usuario Jira Owner carpeta Jira
@@ -26,7 +26,7 @@
     - name: Crea y exporta Variable JIRA_HOME
       shell: export JIRA_HOME=/home/jirasoftware-home
     - name: Start Jira
-      shell: sh /home/jira/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
+      shell: sh /home/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
