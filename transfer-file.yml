@@ -17,7 +17,7 @@
       copy:
         #src: /home/ansibleadmin/jira/credentials.csv
         src: /tmp/jdk-8u201-linux-x64.tar.gz
-        dest: /tmp
+        dest: /root
         remote_src: yes
         mode: 0664
       ignore_errors: yes
