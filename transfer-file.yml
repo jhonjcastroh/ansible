@@ -1,5 +1,5 @@
 - name: tranferir archivo
-  hosts: jhon
+  hosts: all
   gather_facts: yes
   tasks:
     # - name: get_url con un servidor ftp
@@ -17,10 +17,11 @@
       copy:
         #src: /home/ansibleadmin/jira/credentials.csv
         src: /tmp/jdk-8u201-linux-x64.tar.gz
-        dest: ansibleadmin@10.41.101.198:/root
+        dest: /tmp
         remote_src: yes
         mode: 0664
       ignore_errors: yes
+      #delegate_to: remote_server
     # # transfer local pub-key to remote authorized_keys
     # - name: fetch local ssh key from root user
     #   shell: cat /root/.ssh/id_rsa.pub
