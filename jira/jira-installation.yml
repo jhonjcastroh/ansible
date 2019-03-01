@@ -1,6 +1,6 @@
 - name: Instalacion de Jira
   hosts: all
-  become: yes
+  #become: yes
   tasks:
     # - name: Crear carpeta para instaladores
     #   file: path=/opt/jirasoftware state=directory
