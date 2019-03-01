@@ -2,36 +2,31 @@
   hosts: all
   become: yes
   tasks:
-    - name: Crear carpeta para instaladores
-      file: path=/opt/jirasoftware state=directory
+    # - name: Crear carpeta para instaladores
+    #   file: path=/opt/jirasoftware state=directory
     # # - name: Tranferir archivo (tarea en desarrollo)
     # - name: Crea Usuario Jira
     #   shell: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
-    - name: Descomprimiendo archivo de instalacion
-      unarchive:
-        src: /opt/atlassian-jira-software-8.0.1.tar
-        dest: /opt/jirasoftware
-        remote_src: yes
+    # - name: Descomprimiendo archivo de instalacion
+    #   unarchive:
+    #     src: /opt/atlassian-jira-software-8.0.1.tar
+    #     dest: /opt/jirasoftware
+    #     remote_src: yes
     # - name: Usuario Jira Owner carpeta Jira
     #   command: chown -R jira /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
-    - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
-    - name: Crear carpeta para instaladores
-      file: path=/home/jirasoftware-home state=directory
-    - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira /home/jirasoftware-home
-    - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
-    - name: Crea y exporta Variable JIRA_HOME
-      shell: export JIRA_HOME=/home/jirasoftware-home
-    - name: Source Archivo Profile
-      shell: source /etc/profile
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
+    # - name: Crear carpeta para instaladores
+    #   file: path=/home/jirasoftware-home state=directory
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chown -R jira /home/jirasoftware-home
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
+    # - name: Crea y exporta Variable JIRA_HOME
+    #   shell: export JIRA_HOME=/home/jirasoftware-home
+    # - name: Source Archivo Profile
+    #   shell: source /etc/profile
     # - name: Agregar a Jira como un servicio
     #   shell: /etc/init.d/jira start; /etc/init.d/jira stop
     - name: Start Jira
       shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
-      become: yes
-      remote_src: yes
-      environment:
-        JIRA_HOME: /home/jirasoftware-home
-        JAVA_HOME: /usr/java/jdk-java
