@@ -31,3 +31,4 @@
       shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       environment:
         JAVA_HOME: /usr/java/jdk-java
+        JIRA_HOME: /home/jirasoftware-home
