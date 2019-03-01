@@ -28,7 +28,7 @@
     - name: Start Jira
       shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       become: yes
-      become_method: su
+      become_method: sudo
       become_user: jira
       environment:
         JAVA_HOME: /usr/java/jdk-java
