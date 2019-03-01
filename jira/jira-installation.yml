@@ -1,46 +1,46 @@
 - name: Instalacion de Jira
   hosts: all
   tasks:
-    - name: Crear carpeta para instaladores
-      file: path=/opt/jirasoftware state=directory
-    # - name: Tranferir archivo (tarea en desarrollo)
-    - name: Crea Usuario Jira
-      shell: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
-    - name: Descomprimiendo archivo de instalacion
-      unarchive:
-        src: /opt/atlassian-jira-software-8.0.1.tar
-        dest: /opt/jirasoftware
-        remote_src: yes
-    - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira:jira /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
-    - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
+    # - name: Crear carpeta para instaladores
+    #   file: path=/opt/jirasoftware state=directory
+    # # - name: Tranferir archivo (tarea en desarrollo)
+    # - name: Crea Usuario Jira
+    #   shell: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
+    # - name: Descomprimiendo archivo de instalacion
+    #   unarchive:
+    #     src: /opt/atlassian-jira-software-8.0.1.tar
+    #     dest: /opt/jirasoftware
+    #     remote_src: yes
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chown -R jira:jira /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
 
-    - name: Crear carpeta home de Jira
-      file: path=/home/jirasoftware-home state=directory
-    - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira:jira /home/jirasoftware-home
-    - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
+    # - name: Crear carpeta home de Jira
+    #   file: path=/home/jirasoftware-home state=directory
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chown -R jira:jira /home/jirasoftware-home
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
 
-    - name: Crea y exporta Variable JIRA_HOME
-      shell: export JIRA_HOME=/home/jirasoftware-home
-    - name: Respaldo Archivo Profile
-      command: cp /etc/profile /etc/profile2.bkp
-    - name: Agrega JAVA_HOME archivo Profile
-      shell: sed -i '$a JIRA_HOME=/home/jirasoftware-home' /etc/profile
-    - name: Modifica Archivo PROFILE
-      shell: sed -i '$a export JIRA_HOME' /etc/profile; sed -i '$a PATH=$JIRA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
-    - name: Source Archivo Profile
-      shell: source /etc/profile
+    # - name: Crea y exporta Variable JIRA_HOME
+    #   shell: export JIRA_HOME=/home/jirasoftware-home
+    # - name: Respaldo Archivo Profile
+    #   command: cp /etc/profile /etc/profile2.bkp
+    # - name: Agrega JAVA_HOME archivo Profile
+    #   shell: sed -i '$a JIRA_HOME=/home/jirasoftware-home' /etc/profile
+    # - name: Modifica Archivo PROFILE
+    #   shell: sed -i '$a export JIRA_HOME' /etc/profile; sed -i '$a PATH=$JIRA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
+    # - name: Source Archivo Profile
+    #   shell: source /etc/profile
 
-    - name: Source Archivo Profile
-      shell: source /etc/profile
+    # - name: Source Archivo Profile
+    #   shell: source /etc/profile
     - name: Start Jira
       shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
-      become: yes
-      become_method: sudo
-      become_user: jira
+      # become: yes
+      # become_method: sudo
+      # become_user: jira
       environment:
         JAVA_HOME: /usr/java/jdk-java
         JIRA_HOME: /home/jirasoftware-home
