@@ -40,5 +40,5 @@
       # become: yes
       # become_method: su
       # become_user: jira
-      environment:
-        JAVA_HOME: /usr/java/jdk-java
+      # environment:
+      #   JAVA_HOME: /usr/java/jdk-java
