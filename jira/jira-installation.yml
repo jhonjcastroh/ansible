@@ -29,7 +29,7 @@
     # - name: Agregar a Jira como un servicio
     #   shell: /etc/init.d/jira start; /etc/init.d/jira stop
     - name: Start Jira
-      command: sh /opt/jirasoftware/agtlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
+      shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
