@@ -21,10 +21,10 @@
     #   command: chown -R jira:jira /home/jirasoftware-home
     # - name: Usuario Jira Owner carpeta Jira
     #   command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
-    # - name: Crea y exporta Variable JIRA_HOME
-    #   shell: export JIRA_HOME=/home/jirasoftware-home
-    # - name: Source Archivo Profile
-    #   shell: source /etc/profile
+    - name: Crea y exporta Variable JIRA_HOME
+      shell: export JIRA_HOME=/home/jirasoftware-home
+    - name: Source Archivo Profile
+      shell: source /etc/profile
     - name: Start Jira
       shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
       become: yes
