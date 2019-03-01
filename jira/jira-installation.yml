@@ -6,8 +6,6 @@
     # - name: Tranferir archivo (tarea en desarrollo)
     - name: Crea Usuario Jira
       shell: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
-    - name: Crea Password Usuario Jira
-      command: passwd jira 123
     - name: Descomprimiendo archivo de instalacion
       unarchive:
         src: /opt/atlassian-jira-software-8.0.1.tar
