@@ -1,4 +1,5 @@
-- hosts: all
+- nombre: Instalación de JBOSS
+  hosts: all
   gather_facts: yes
   become: yes
   tasks:
@@ -27,9 +28,9 @@
     - name: Copia Archivo StandAlone
       shell: cp /home/medios/ConfArchivos/standalone.xml /home/jboss/jboss-6.4/standalone/configuration
     - name: Copia JBOSS CONF
-      shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6.4/
+      shell: cp /home/medios/ConfArchivos/jboss-as.conf /home/jboss/jboss-6.4
     - name: Copia BIN de JBOSS
-      shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
+      shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d
     - name: Dando permiso de ejecucion al Servicio jboss
       shell: chmod -R 777 /etc/init.d/jboss
     - name: Detención del servicio de enrutamiento
