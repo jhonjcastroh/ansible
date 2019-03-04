@@ -82,5 +82,5 @@
         count: 1
         units: minutes
       become: yes
-      become_method: su
+      become_method: sudo
       become_user: jira
