@@ -10,7 +10,7 @@
       user:
         name: jira
         groups: jira
-        system: yes
+        system: no
         state: present
 
     - name: Descomprimiendo archivo de instalacion
@@ -72,9 +72,8 @@
         path: /etc/environment
         line: "JIRA_HOME=/home/jirasoftware-home"
         create: yes
-
-    - name: Start Jira
-      script: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
-      become: yes
-      become_method: sudo
-      become_user: jira
+    # - name: Start Jira
+    #   script: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
+    #   become: yes
+    #   become_method: sudo
+    #   become_user: jira
