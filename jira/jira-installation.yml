@@ -18,7 +18,7 @@
         remote_src: yes
     - name: Crear carpeta y permisos para instaladores
       file:
-        path: /opt/jirasoftware/opt/jirasoftware/atlassian-jira-software-8.0.0-standalone
+        path: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/
         state: directory
         owner: jira
         group: jira
@@ -26,7 +26,7 @@
         recurse: yes
     - name: Crear carpeta y permisos para instaladores
       file:
-        path: /home/jirasoftware-home
+        path: /home/jirasoftware-home/
         state: directory
         owner: jira
         group: jira
