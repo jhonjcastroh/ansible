@@ -9,8 +9,6 @@
     - name: Crea Usuario Jira
       user:
         name: jira
-        groups: jira
-        system: no
         state: present
 
     - name: Descomprimiendo archivo de instalacion
