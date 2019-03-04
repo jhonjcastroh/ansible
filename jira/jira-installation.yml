@@ -46,13 +46,26 @@
         dest: /etc/profile-b-jira.bkp
         remote_src: yes
         mode: 0664
-    - name: Agrega JIRA_HOME archivo Profile
+    - name: Agrega JIRA_HOME al archivo Profile
       lineinfile:
         path: /etc/profile
         line: "JIRA_HOME=/home/jirasoftware-home"
         create: yes
-    - name: Modifica Archivo PROFILE
-      shell: sed -i '$a export JIRA_HOME' /etc/profile; sed -i '$a PATH=$JIRA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
+    - name: Agrega export JIRA_HOME al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "export JIRA_HOME"
+        create: yes
+    - name: Agrega PATH al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "PATH=$JIRA_HOME/bin:$PATH"
+        create: yes
+    - name: Agrega export PATH al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "export PATH"
+        create: yes
     - name: Source Archivo Profile
       shell: source /etc/profile
     - name: Agrega JIRA_HOME al anchivo Environment
