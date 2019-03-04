@@ -16,7 +16,7 @@
         src: /opt/atlassian-jira-software-8.0.0.tar.gz
         dest: /opt/jirasoftware
         remote_src: yes
-    - name: Crear carpeta para instaladores
+    - name: Crear carpeta y permisos para instaladores
       file:
         path: /opt/jirasoftware/opt/jirasoftware/atlassian-jira-software-8.0.0-standalone
         state: directory
@@ -28,13 +28,20 @@
     #   shell: chown -R jira:jira /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone
     # - name: Usuario Jira Owner carpeta Jira
     #   shell: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone
-
-    - name: Crear carpeta home de Jira
-      file: path=/home/jirasoftware-home state=directory
-    - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira:jira /home/jirasoftware-home
-    - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
+    - name: Crear carpeta y permisos para instaladores
+      file:
+        path: /home/jirasoftware-home
+        state: directory
+        owner: jira
+        group: jira
+        mode: u=rwx,go-rwx
+        recurse: yes
+    # - name: Crear carpeta home de Jira
+    #   file: path=/home/jirasoftware-home state=directory
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chown -R jira:jira /home/jirasoftware-home
+    # - name: Usuario Jira Owner carpeta Jira
+    #   command: chmod -R u=rwx,go-rwx /home/jirasoftware-home
 
     - name: Crea y exporta Variable JIRA_HOME
       shell: export JIRA_HOME=/home/jirasoftware-home
@@ -50,7 +57,7 @@
       shell: sed -i '$a export JIRA_HOME=/home/jirasoftware-home' /etc/environment
 
     - name: Start Jira
-      shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin/start-jira.sh
+      shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
       become: yes
       become_method: su
       become_user: jira
