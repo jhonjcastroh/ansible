@@ -11,7 +11,6 @@
         name: jira
         groups: jira
         system: yes
-        shell: /bin/bash
         state: present
 
     - name: Descomprimiendo archivo de instalacion
@@ -75,8 +74,7 @@
         create: yes
 
     - name: Start Jira
-      shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
+      script: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
       become: yes
       become_method: sudo
       become_user: jira
-      become_flags: "-s /bin/sh"
