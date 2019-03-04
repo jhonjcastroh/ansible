@@ -75,6 +75,7 @@
     #     reboot_timeout: 300
     - name: Start Jira
       script: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
+      remote_src: yes
       become: yes
-      become_method: sudo
+      become_method: sudo -su
       become_user: jira
