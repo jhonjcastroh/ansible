@@ -38,7 +38,10 @@
     - name: Respaldo Archivo Profile
       command: cp /etc/profile /etc/profile-b-jira.bkp
     - name: Agrega JIRA_HOME archivo Profile
-      shell: sed -i '$a JIRA_HOME=/home/jirasoftware-home' /etc/profile
+      lineinfile:
+        path: /etc/profile
+        line: "JIRA_HOME=/home/jirasoftware-home"
+        create: yes
     - name: Modifica Archivo PROFILE
       shell: sed -i '$a export JIRA_HOME' /etc/profile; sed -i '$a PATH=$JIRA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
     - name: Source Archivo Profile
