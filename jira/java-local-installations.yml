@@ -22,4 +22,4 @@
     - name: Source Archivo Profile
       shell: source /etc/profile
     - name: Agrega JAVA_HOME al anchivo Environment
-      shell: sed -i '$a export JAVA_HOME=/usr/java/jdk-java' /etc/environment
+      shell: echo 'JAVA_HOME=/usr/java/jdk-java' >> /etc/environment
