@@ -2,19 +2,31 @@
   hosts: all
   tasks:
     - name: Crear carpeta para instaladores
-      file: path=/opt/jirasoftware state=directory
+      file:
+        path: /opt/jirasoftware
+        state: directory
     # - name: Tranferir archivo (tarea en desarrollo)
     - name: Crea Usuario Jira
-      shell: sudo /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
+      become: yes
+      become_method: sudo
+      become_user: root
+      shell: /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
     - name: Descomprimiendo archivo de instalacion
       unarchive:
         src: /opt/atlassian-jira-software-8.0.0.tar.gz
         dest: /opt/jirasoftware
         remote_src: yes
-    - name: Usuario Jira Owner carpeta Jira
-      command: chown -R jira:jira /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
-    - name: Usuario Jira Owner carpeta Jira
-      command: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone
+    - name: Crear carpeta para instaladores
+      file:
+        path: /opt/jirasoftware
+        state: directory
+        owner: jira
+        group: jira
+        mode: u=rwx,go-rwx
+    # - name: Usuario Jira Owner carpeta Jira
+    #   shell: chown -R jira:jira /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone
+    # - name: Usuario Jira Owner carpeta Jira
+    #   shell: chmod -R u=rwx,go-rwx /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone
 
     - name: Crear carpeta home de Jira
       file: path=/home/jirasoftware-home state=directory
