@@ -6,12 +6,7 @@
         path: /opt/jirasoftware
         state: directory
     # - name: Tranferir archivo (tarea en desarrollo)
-    # - name: Crea Usuario Jira
-    #   become: yes
-    #   become_method: sudo
-    #   become_user: root
-    #   shell: /usr/sbin/useradd --create-home --comment "Account for running Jira Software" --shell /bin/bash jira
-    - name: Create a login user Jira
+    - name: Crea Usuario Jira
       user:
         name: jira
         groups: jira
@@ -24,7 +19,7 @@
         src: /opt/atlassian-jira-software-8.0.0.tar.gz
         dest: /opt/jirasoftware
         remote_src: yes
-    - name: Crear carpeta y permisos para instaladores
+    - name: Permisos para carpeta de instaladores
       file:
         path: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/
         state: directory
@@ -43,8 +38,14 @@
 
     - name: Crea y exporta Variable JIRA_HOME
       shell: export JIRA_HOME=/home/jirasoftware-home
+    # - name: Respaldo Archivo Profile
+    #   command: cp /etc/profile /etc/profile-b-jira.bkp
     - name: Respaldo Archivo Profile
-      command: cp /etc/profile /etc/profile-b-jira.bkp
+      copy:
+        src: /etc/profile
+        dest: /etc/profile-b-jira.bkp
+        remote_src: yes
+        mode: 0664
     - name: Agrega JIRA_HOME archivo Profile
       lineinfile:
         path: /etc/profile
