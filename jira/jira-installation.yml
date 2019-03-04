@@ -82,5 +82,9 @@
         count: 1
         units: minutes
       become: yes
-      become_method: sudo
+      become_method: su
       become_user: jira
+      environment:
+        PATH: /home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+        JAVA_HOME: /usr/java/jdk-java
+        JIRA_HOME: /home/jirasoftware-home
