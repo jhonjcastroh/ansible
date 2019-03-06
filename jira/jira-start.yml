@@ -1,15 +1,20 @@
 - name:
-  hosts: Ansible
+  hosts: all
   become_user: ansibleadmin
   become: yes
   tasks:
-    - name: Copiar Archivo para Starting JIRA Automaticamente
+    # - name: Copiar Archivo para Starting JIRA Automaticamente
+    #   copy:
+    #     dest: /etc/init.d/
+    #     src: /home/ansibleadmin/jira/jira
+    #     remote_src: no
+    #     mode: 0751
+    #   delegate_to: Ansible
+    - name: Copy the file from master to mwiapp02
       copy:
         dest: /etc/init.d/
         src: /home/ansibleadmin/jira/jira
-        remote_src: no
-        mode: 0751
-      #delegate_to: Ansible
+      when: "{{ ansible_hostname == 'vm-jira' }}"
     # - name: Start Jira
     #   shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
     #   # - name: Iniciando Servicio Jira
