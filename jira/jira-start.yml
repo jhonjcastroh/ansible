@@ -25,10 +25,10 @@
       become: yes
       become_user: jira
       become_method: su
-      shell: service jira start
-      # service:
-      #   name: jira
-      #   state: started
+      # shell: service jira start
+      service:
+        name: jira
+        state: started
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
