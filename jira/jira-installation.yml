@@ -1,98 +1,99 @@
 - name: Instalacion de Jira
   hosts: all
   tasks:
-    # - name: Crear carpeta para instaladores
-    #   file:
-    #     path: /opt/jirasoftware
-    #     state: directory
-    # # - name: Tranferir archivo (tarea en desarrollo)
-    # - name: Crea Usuario Jira
-    #   user:
-    #     name: jira
-    #     state: present
-
-    # - name: Descomprimiendo archivo de instalacion
-    #   unarchive:
-    #     src: /opt/atlassian-jira-software-8.0.0.tar.gz
-    #     dest: /opt/jirasoftware
-    #     remote_src: yes
-    # - name: Permisos para carpeta de instaladores
-    #   file:
-    #     path: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/
-    #     state: directory
-    #     owner: jira
-    #     group: jira
-    #     mode: u=rwx,go-rwx
-    #     recurse: yes
-    # - name: Crear carpeta y permisos para instaladores
-    #   file:
-    #     path: /home/jirasoftware-home/
-    #     state: directory
-    #     owner: jira
-    #     group: jira
-    #     mode: u=rwx,go-rwx
-    #     recurse: yes
-
-    # - name: Crea y exporta Variable JIRA_HOME
-    #   shell: export JIRA_HOME=/home/jirasoftware-home
-    # # - name: Respaldo Archivo Profile
-    # #   command: cp /etc/profile /etc/profile-b-jira.bkp
+    - name: Crear carpeta para instaladores
+      file:
+        path: /opt/jirasoftware
+        state: directory
+    # - name: Tranferir archivo (tarea en desarrollo)
+    - name: Crea Usuario Jira
+      user:
+        name: jira
+        state: present
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /opt/atlassian-jira-software-8.0.0.tar.gz
+        dest: /opt/jirasoftware
+        remote_src: yes
+    - name: Permisos para carpeta de instaladores
+      file:
+        path: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/
+        state: directory
+        owner: jira
+        group: jira
+        mode: u=rwx,go-rwx
+        recurse: yes
+    - name: Crear carpeta y permisos para instaladores
+      file:
+        path: /home/jirasoftware-home/
+        state: directory
+        owner: jira
+        group: jira
+        mode: u=rwx,go-rwx
+        recurse: yes
+    - name: Crea y exporta Variable JIRA_HOME
+      shell: export JIRA_HOME=/home/jirasoftware-home
     # - name: Respaldo Archivo Profile
-    #   copy:
-    #     src: /etc/profile
-    #     dest: /etc/profile-b-jira.bkp
-    #     remote_src: yes
-    #     mode: 0664
-    # - name: Agrega JIRA_HOME al archivo Profile
-    #   lineinfile:
-    #     path: /etc/profile
-    #     line: "JIRA_HOME=/home/jirasoftware-home"
-    #     create: yes
-    # - name: Agrega export JIRA_HOME al archivo Profile
-    #   lineinfile:
-    #     path: /etc/profile
-    #     line: "export JIRA_HOME"
-    #     create: yes
-    # - name: Agrega PATH al archivo Profile
-    #   lineinfile:
-    #     path: /etc/profile
-    #     line: "PATH=$JIRA_HOME/bin:$PATH"
-    #     create: yes
-    # - name: Agrega export PATH al archivo Profile
-    #   lineinfile:
-    #     path: /etc/profile
-    #     line: "export PATH"
-    #     create: yes
-    # - name: Source Archivo Profile
-    #   shell: source /etc/profile
-    # - name: Agrega JIRA_HOME al anchivo Environment
-    #   lineinfile:
-    #     path: /etc/environment
-    #     line: "JIRA_HOME=/home/jirasoftware-home"
-    #     create: yes
-    # - name: reboot
-    #   reboot:
-    #     reboot_timeout: 300
-    - name: Copiar Archivo para Starting JIRA Automaticamente
+    #   command: cp /etc/profile /etc/profile-b-jira.bkp
+    - name: Respaldo Archivo Profile
       copy:
-        dest: /etc/init.d/
-        src: /home/ansibleadmin/jira/jira
-        remote_src: no
-        mode: 0751
-      delegate_to: Ansible
-      become_user: ansibleadmin
-      become: yes
-    # - name: Start Jira
-    #   shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
-    #   # - name: Iniciando Servicio Jira
-    #   #   at:
-    #   #     command: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
-    #   #     count: 1
-    #   #     units: minutes
-    #   become: yes
-    #   become_method: su
-    #   become_user: jira
-    #   environment:
-    #     PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
-    #     JAVA_HOME: /usr/java/jdk-java
-    #     JIRA_HOME: /home/jirasoftware-home
+        src: /etc/profile
+        dest: /etc/profile-b-jira.bkp
+        remote_src: yes
+        mode: 0664
+    - name: Agrega JIRA_HOME al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "JIRA_HOME=/home/jirasoftware-home"
+        create: yes
+    - name: Agrega export JIRA_HOME al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "export JIRA_HOME"
+        create: yes
+    - name: Agrega PATH al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "PATH=$JIRA_HOME/bin:$PATH"
+        create: yes
+    - name: Agrega export PATH al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "export PATH"
+        create: yes
+    - name: Source Archivo Profile
+      shell: source /etc/profile
+    - name: Agrega JIRA_HOME al anchivo Environment
+      lineinfile:
+        path: /etc/environment
+        line: "JIRA_HOME=/home/jirasoftware-home"
+        create: yes
+    - name: reboot
+      reboot:
+        reboot_timeout: 300
+# - name: Start Jira
+#   hosts: Ansible
+#   become_user: ansibleadmin
+#   become: yes
+#   tasks:
+#     - name: Copiar Archivo para Starting JIRA Automaticamente
+#       copy:
+#         dest: /etc/init.d/
+#         src: /home/ansibleadmin/jira/jira
+#         remote_src: no
+#         mode: 0751
+#   delegate_to: Ansible
+# - name: Start Jira
+#   shell: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
+#   # - name: Iniciando Servicio Jira
+#   #   at:
+#   #     command: sh /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh
+#   #     count: 1
+#   #     units: minutes
+#   become: yes
+#   become_method: su
+#   become_user: jira
+#   environment:
+#     PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+#     JAVA_HOME: /usr/java/jdk-java
+#     JIRA_HOME: /home/jirasoftware-home
