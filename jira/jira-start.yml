@@ -26,10 +26,19 @@
       become: yes
       become_user: jira
       become_method: su
-      expect:
-        command: service jira start
-        responses:
-          (?i)password: "123"
+      shell: |
+        service jira start
+
+        expect "password:"
+        send "123"
+
+        exit 0
+      args:
+        executable: /usr/bin/expect
+      # expect:
+      #   command: service jira start
+      #   responses:
+      #     (?i)password: "123"
       # command: service jira start
       # service:
       #   name: jira
