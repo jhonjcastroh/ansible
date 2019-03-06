@@ -29,10 +29,10 @@
     #   become_user: ansibleadmin
     #   become: yes
     - name: Transferir un archivo por scp
-      #shell: scp /home/ansibleadmin/jira/jira root@10.41.101.200:/tmp
+      #shell: scp /home/ansibleadmin/jira/jira root@10.41.101.206:/tmp
       shell: |
         set timeout 300
-        scp /home/ansibleadmin/jira/jira root@10.41.101.200:/tmp
+        scp /home/ansibleadmin/jira/jira root@10.41.101.206:/tmp
 
         expect "root@10.41.101.206's password:"
         send "root"
