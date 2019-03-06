@@ -1,8 +1,6 @@
 - name:
   hosts: all
   become: yes
-  become_user: jira
-  become_method: su
   tasks:
     # - name: Copiar Archivo para Starting JIRA Automaticamente
     #   copy:
@@ -21,4 +19,6 @@
     - name: Habilitar servicio jira
       shell: /sbin/chkconfig --add jira
     - name: Start Jira
+      become_user: jira
+      become_method: su
       shell: service jira start
