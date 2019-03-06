@@ -25,11 +25,11 @@
     - name: Start Jira
       become: yes
       become_user: jira
-      become_method: sudo
+      become_method: su
       expect:
-      command: service jira start
-      responses:
-        (?i)password: "123"
+        command: service jira start
+        responses:
+          (?i)password: "123"
       # command: service jira start
       # service:
       #   name: jira
