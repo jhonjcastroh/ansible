@@ -1,6 +1,5 @@
 - name:
   hosts: all
-  become: yes
   tasks:
     # - name: Copiar Archivo para Starting JIRA Automaticamente
     #   copy:
