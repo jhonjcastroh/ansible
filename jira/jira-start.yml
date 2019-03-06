@@ -21,16 +21,16 @@
     # - name: Habilitar servicio jira
     #   shell: /sbin/chkconfig --add jira
     #   become: yes
-
+    - name: reset ssh connection to allow user changes to affect 'current login user'
+      meta: reset_connection
     - name: Start Jira
       become: yes
       become_user: jira
-      # become_method: su
+      become_method: su
       # command: service jira start
       service:
         name: jira
         state: started
-        arguments:
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
