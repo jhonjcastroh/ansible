@@ -21,6 +21,7 @@
 
     - name: Habilitar servicio jira
       shell: /sbin/chkconfig --add jira
+      become: yes
 
     - name: Start Jira
       # become: yes
@@ -31,3 +32,5 @@
         command: service jira start
         count: 1
         units: minutes
+      environment:
+        JIRA_HOME: /home/jirasoftware-home
