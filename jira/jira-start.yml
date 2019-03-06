@@ -13,28 +13,22 @@
     #     dest: /etc/init.d/
     #     src: /home/ansibleadmin/jira/jira
     #   when: "{{ ansible_hostname == 'vm-jira' }}"
-    - name: Hacer Jira ejecutable
-      #shell: chmod \+x /etc/init.d/jira
-      file:
-        path: /etc/init.d/jira
-        mode: +x
 
-    - name: Habilitar servicio jira
-      shell: /sbin/chkconfig --add jira
-      become: yes
+    # - name: Hacer Jira ejecutable
+    #   file:
+    #     path: /etc/init.d/jira
+    #     mode: +x
+    # - name: Habilitar servicio jira
+    #   shell: /sbin/chkconfig --add jira
+    #   become: yes
 
     - name: Start Jira
+      become: yes
+      become_user: jira
+      become_method: su
       service:
         name: jira
         state: started
-      # become: yes
-      # become_user: jira
-      # become_method: su
-      # shell: service jira start
-      # at:
-      #   command: service jira start
-      #   count: 1
-      #   units: minutes
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java

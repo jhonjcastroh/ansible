@@ -10,6 +10,8 @@
       user:
         name: jira
         state: present
+    - name: Crea Password Usuario Jira
+      command: echo 123 | passwd jira --stdin
     - name: Descomprimiendo archivo de instalacion
       unarchive:
         src: /opt/atlassian-jira-software-8.0.0.tar.gz
