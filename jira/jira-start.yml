@@ -28,10 +28,11 @@
       become_method: su
       shell: service jira start
 
-        expect "Password:"
+        expect "Stopping jira\nPassword:"
         send "123"
       args:
         executable: /usr/bin/expect
+      warn: False
       # expect:
       #   command: service jira start
       #   responses:
