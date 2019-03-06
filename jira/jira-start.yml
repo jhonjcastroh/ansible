@@ -30,7 +30,7 @@
       service:
         name: jira
         state: started
-        user: jira
+        user: true
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
