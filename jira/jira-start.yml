@@ -1,6 +1,6 @@
 - name:
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
     # - name: Copiar Archivo para Starting JIRA Automaticamente
     #   copy:
