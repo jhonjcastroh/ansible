@@ -24,10 +24,13 @@
       become: yes
 
     - name: Start Jira
+      service:
+        name: jira
+        state: started
       # become: yes
       # become_user: jira
       # become_method: su
-      shell: service jira start
+      # shell: service jira start
       # at:
       #   command: service jira start
       #   count: 1
