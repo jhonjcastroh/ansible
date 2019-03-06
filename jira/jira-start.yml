@@ -27,11 +27,11 @@
       # become: yes
       # become_user: jira
       # become_method: su
-      # shell: service jira start
-      at:
-        command: service jira start
-        count: 1
-        units: minutes
+      shell: service jira start
+      # at:
+      #   command: service jira start
+      #   count: 1
+      #   units: minutes
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
