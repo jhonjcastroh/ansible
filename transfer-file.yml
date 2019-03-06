@@ -38,4 +38,3 @@
         send "root"
       args:
         executable: /usr/bin/expect
-      delegate_to: localhost
