@@ -1,6 +1,5 @@
 - name:
   hosts: all
-  gather_facts: true
   tasks:
     # - name: Copiar Archivo para Starting JIRA Automaticamente
     #   copy:
@@ -27,9 +26,14 @@
       become: yes
       become_user: jira
       become_method: sudo
-      service:
-        name: jira
-        state: started
+      expect:
+      command: service jira start
+      responses:
+        (?i)password: "123"
+      # command: service jira start
+      # service:
+      #   name: jira
+      #   state: started
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
