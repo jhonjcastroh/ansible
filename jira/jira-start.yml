@@ -23,13 +23,14 @@
     #   become: yes
 
     - name: Start Jira
-      become: yes
-      become_user: jira
-      become_method: su
+      # become: yes
+      # become_user: jira
+      # become_method: su
       # command: service jira start
       service:
         name: jira
         state: started
+        user: jira
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
