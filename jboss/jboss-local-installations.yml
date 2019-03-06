@@ -1,4 +1,4 @@
-- nombre: Instalación de JBOSS
+- name: Instalación de JBOSS
   hosts: all
   gather_facts: yes
   become: yes
