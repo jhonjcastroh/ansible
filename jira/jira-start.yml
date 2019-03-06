@@ -8,27 +8,22 @@
     #     remote_src: no
     #     mode: 0751
     #   delegate_to: Ansible
-    # - name: Copy the file from master to mwiapp02
-    #   copy:
-    #     dest: /etc/init.d/
-    #     src: /home/ansibleadmin/jira/jira
-    #   when: "{{ ansible_hostname == 'vm-jira' }}"
-
-    # - name: Hacer Jira ejecutable
-    #   file:
-    #     path: /etc/init.d/jira
-    #     mode: +x
-    # - name: Habilitar servicio jira
-    #   shell: /sbin/chkconfig --add jira
-    #   become: yes
+    - name: Copiar archivo para start de servicio jira
+      copy:
+        dest: /etc/init.d/
+        src: /tmp/jira
+    - name: Hacer Jira ejecutable
+      file:
+        path: /etc/init.d/jira
+        mode: +x
+    - name: Habilitar servicio jira
+      shell: /sbin/chkconfig --add jira
+      become: yes
     - name: Start Jira
       become: yes
       become_user: jira
       become_method: su
-      # shell: service jira start
-      service:
-        name: jira
-        state: started
+      shell: service jira start
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
