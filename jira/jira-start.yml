@@ -1,6 +1,8 @@
 - name:
   hosts: all
   become: yes
+  become_user: jira
+  become_method: su
   tasks:
     # - name: Copiar Archivo para Starting JIRA Automaticamente
     #   copy:
