@@ -1,0 +1,6 @@
+- name: Ejecución
+  hosts: all
+  tasks:
+    - terraform:
+        project_path: "{{ project_dir }}"
+        state: present
