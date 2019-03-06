@@ -28,7 +28,7 @@
       become_method: su
       shell: service jira start
 
-        expect "password:"
+        expect "Password:"
         send "123"
       args:
         executable: /usr/bin/expect
