@@ -12,9 +12,7 @@
       copy:
         dest: /etc/init.d/
         src: /tmp/jira
-    - name: Hacer Jira ejecutable
-      file:
-        path: /etc/init.d/jira
+        remote_src: yes
         mode: +x
     - name: Habilitar servicio jira
       shell: /sbin/chkconfig --add jira
