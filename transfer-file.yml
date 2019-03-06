@@ -29,4 +29,4 @@
     #   become_user: ansibleadmin
     #   become: yes
     - name: Transferir un archivo por scp
-      shell: scp /home/ansibleadmin/jira/jira root@10.41.101.200:/tmp
+      shell: scp /home/ansibleadmin/jira/jira root@10.41.101.200:/tmp;root
