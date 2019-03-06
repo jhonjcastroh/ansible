@@ -1,5 +1,6 @@
 - name:
   hosts: all
+  gather_facts: false
   tasks:
     # - name: Copiar Archivo para Starting JIRA Automaticamente
     #   copy:
@@ -25,7 +26,7 @@
     - name: Start Jira
       become: yes
       become_user: jira
-      become_method: su
+      become_method: sudo
       service:
         name: jira
         state: started
