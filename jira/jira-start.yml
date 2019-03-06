@@ -34,3 +34,5 @@
         units: minutes
       environment:
         JIRA_HOME: /home/jirasoftware-home
+        JAVA_HOME: /usr/java/jdk-java
+        PATH: /home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
