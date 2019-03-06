@@ -79,7 +79,7 @@
         src: /home/ansibleadmin/jira/jira
         remote_src: no
         mode: 0751
-      delegate_to: localhost
+      delegate_to: Ansible-Server
       become_user: ansibleadmin
       become: yes
     # - name: Start Jira
