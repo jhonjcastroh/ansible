@@ -11,7 +11,7 @@
     #   synchronize:
     #     src: /home/ansibleadmin/jira
     #     dest: /tmp
-    # - name: copy en la misma maquina
+    # - name: copy en la misma vm
     #   become: yes
     #   become_user: root
     #   copy:
@@ -19,44 +19,14 @@
     #     dest: /root
     #     remote_src: yes
     #     mode: 0664
-    #   ignore_errors: yes
-    - name: Copy 2
-      copy:
-        dest: /temp
-        src: /home/ansibleadmin/jira/credentials.csv
-        remote_src: no
-        mode: 0644
-      delegate_to: localhost
-      become_user: ansibleadmin
-      become: yes
-    # # transfer local pub-key to remote authorized_keys
-    # - name: fetch local ssh key from root user
-    #   shell: cat /root/.ssh/id_rsa.pub
-    #   register: ssh_keys
-    #   changed_when: false
-    # - name: deploy ssh key to remote server
-    #   authorized_key:
-    #     user: "root"
-    #     key: "{{ item }}"
-    #   delegate_to: "server-b"
-    #   with_items:
-    #     - "{{ ssh_keys.stdout }}"
-    # # fetch remote host key and add to local known_hosts
-    # # to omit key accept prompt
-    # - name: fetch ssh rsa host key from remote server
-    #   shell: cat /etc/ssh/ssh_host_rsa_key.pub
-    #   register: ssh_host_rsa_key
-    #   delegate_to: server-b
-    #   changed_when: false
-    # - name: create /root/.ssh/ if not existant
-    #   file:
-    #     path: "/root/.ssh/"
-    #     owner: root
-    #     group: root
-    #     mode: 0700
-    #     state: directory
-    # - name: add hostkey to root known host file
-    #   lineinfile:
-    #     path: "/root/.ssh/known_hosts"
-    #     line: "{{ server-b.inventory_hostname }} {{ ssh_host_rsa_key.stdout }}"
-    #     mode: 0600
+    # - name: Copy 2 a otra vm no funciona
+    #   copy:
+    #     dest: /temp
+    #     src: /home/ansibleadmin/jira/jira
+    #     remote_src: no
+    #     mode: 0644
+    #   delegate_to: localhost
+    #   become_user: ansibleadmin
+    #   become: yes
+    - name: Transferir un archivo por scp
+      shell: scp /home/ansibleadmin/jira/jira root@10.41.101.200:/tmp
