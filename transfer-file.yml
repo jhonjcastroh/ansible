@@ -31,6 +31,10 @@
     - name: Transferir un archivo por scp
       #shell: scp /home/ansibleadmin/jira/jira root@10.41.101.206:/tmp
       shell: |
+<<<<<<< Updated upstream
+=======
+        set timeout 300
+>>>>>>> Stashed changes
         scp /home/ansibleadmin/jira/jira root@10.41.101.206:/tmp
 
         expect "root@10.41.101.206's password:"
