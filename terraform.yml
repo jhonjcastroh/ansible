@@ -1,7 +1,9 @@
 - name: Ejecución
   hosts: all
+  gather_facts: yes
+  become: yes
   tasks:
       - name: Ejecucion de Terraform Jmeter
         terraform:
-            project_path: /etc/terraform/telefonica/jmiter
+            project_path: path_
             state: present
