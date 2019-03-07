@@ -2,6 +2,8 @@
   hosts: all
   gather_facts: yes
   become: yes
+  become_user: ansibleadmin
+  become_method: sudo
   tasks:
       - name: Ejecucion de Terraform Jmeter
         terraform:
