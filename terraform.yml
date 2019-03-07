@@ -1,11 +1,10 @@
-- name: Ejecución
+- name: Ejecución de Terraform
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: yes
   become_user: ansibleadmin
   become_method: sudo
   tasks:
-      - name: Ejecucion de Terraform Jmeter
-        terraform:
-            project_path: path_
+      - terraform:
+            project_path: /etc/terraform/telefonica/jmiter
             state: present
