@@ -6,9 +6,9 @@
   become_method: enable
   tasks:
       - terraform:
-            project_path: /etc/terraform/telefonica/jmiter
+            project_path: /home/ansibleadmin/terraform/telefonica/jmiter
             state: present
-            #variables_file: /etc/terraform/telefonica/jmiter/variable.tfvars
+            #variables_file: /home/ansibleadmin/terraform/telefonica/jmiter/variable.tfvars
             variables:
                   region: sa-chile-1
                   vm_name: jmeter_server
