@@ -1,20 +1,20 @@
 - name: Ejecución de Terraform
   hosts: all
   gather_facts: false
-  become: yes
   tasks:
-      - name: Permisos para carpeta de instaladores
-        file:
-            path: /etc/terraform/telefonica/jmiter
-            state: directory
-            owner: ansibleadmin
-            group: ansibleadmin
-            mode: u=rwx,go-rwx
-            recurse: yes
+      # - name: Permisos para carpeta de instaladores
+      #   file:
+      #       path: /etc/terraform/telefonica/jmiter
+      #       state: directory
+      #       owner: ansibleadmin
+      #       group: ansibleadmin
+      #       mode: u=rwx,go-rwx
+      #       recurse: yes
       - terraform:
             project_path: /etc/terraform/telefonica/jmiter
             state: present
             variables:
                   region: sa-chile-1
+        become: yes
         become_user: ansibleadmin
-        become_method: su
+        become_method: enable
