@@ -1,6 +1,6 @@
 - name: Ejecución de Terraform
   hosts: all
-  gather_facts: true
+  gather_facts: false
   become: yes
   tasks:
       - name: Permisos para carpeta de instaladores
