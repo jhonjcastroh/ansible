@@ -1,6 +1,9 @@
 - name: Ejecución de Terraform
   hosts: all
   gather_facts: false
+  become: yes
+  become_user: ansibleadmin
+  become_method: enable
   tasks:
       - terraform:
             project_path: /etc/terraform/telefonica/jmiter
@@ -9,6 +12,3 @@
             variables:
                   region: sa-chile-1
                   vm_name: jmeter_server
-        become: yes
-        become_user: ansibleadmin
-        become_method: enable
