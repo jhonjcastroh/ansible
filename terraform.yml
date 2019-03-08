@@ -2,6 +2,14 @@
   hosts: all
   gather_facts: true
   tasks:
+      - name: Permisos para carpeta de instaladores
+        file:
+            path: /etc/terraform/telefonica/jmiter
+            state: directory
+            owner: ansibleadmin
+            group: ansibleadmin
+            mode: u=rwx,go-rwx
+            recurse: yes
       - terraform:
             project_path: /etc/terraform/telefonica/jmiter
             state: present
