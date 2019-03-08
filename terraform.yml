@@ -5,6 +5,8 @@
       - terraform:
             project_path: /etc/terraform/telefonica/jmiter
             state: present
+            variables:
+                  region: sa-chile-1
         become: yes
         become_user: ansibleadmin
         become_method: sudo
