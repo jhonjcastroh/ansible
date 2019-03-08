@@ -8,5 +8,5 @@
             variables:
                   region: sa-chile-1
         become: yes
-        become_user: su
+        become_user: root
         become_method: sudo
