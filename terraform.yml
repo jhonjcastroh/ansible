@@ -1,6 +1,7 @@
 - name: Ejecución de Terraform
   hosts: all
   gather_facts: true
+  become: yes
   tasks:
       - name: Permisos para carpeta de instaladores
         file:
@@ -15,6 +16,5 @@
             state: present
             variables:
                   region: sa-chile-1
-        become: yes
         become_user: ansibleadmin
         become_method: su
