@@ -1,0 +1,14 @@
+- name: Ejecución de Terraform
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: ansibleadmin
+  become_method: enable
+  tasks:
+      - terraform:
+            project_path: /home/ansibleadmin/terraform/openstack/jira
+            state: present
+            variables_file: /home/ansibleadmin/terraform/openstack/jira/variable.tfvars
+            variables:
+                  vm_name: "{{ vm_name }}"
+            force_init: yes
