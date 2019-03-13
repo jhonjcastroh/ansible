@@ -11,3 +11,4 @@
             variables_file: /home/ansibleadmin/terraform/telefonica/jmiter/variable.tfvars
             variables:
                   vm_name: "{{ vm_name }}"
+            force_init: yes
