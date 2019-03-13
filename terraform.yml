@@ -11,6 +11,3 @@
             variables_file: /home/ansibleadmin/terraform/telefonica/jmiter/variable.tfvars
             variables:
                   vm_name: "{{ vm_name }}"
-
-"Terraform plan could not be created\r\nSTDOUT: \r\n\r\nSTDERR: \nError: Error locking state: Error acquiring the state lock: open terraform.tfstate: permission denied\n\nTerraform acquires a state lock to protect the state from being written\nby multiple users at the same time. Please resolve the issue above and try\nagain. For most commands, you can disable locking with the \"-lock=false\"\nflag, but this is not recommended.\n\n\n"
-}                  
