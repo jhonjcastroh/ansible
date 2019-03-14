@@ -26,9 +26,9 @@
         path: /etc/environment
         line: "JAVA_HOME=/usr/java/jdk-java"
         create: yes
-    # - name: reboot
-    #   reboot:
-    #     reboot_timeout: 300
+    - name: reboot
+      reboot:
+        reboot_timeout: 300
     - name: Crear carpeta para instaladores
       file:
         path: /opt/jirasoftware
@@ -109,12 +109,12 @@
     - name: Habilitar servicio jira
       shell: /sbin/chkconfig --add jira
       become: yes
-    - name: Start Jira
-      become: yes
-      become_user: jira
-      become_method: su
-      shell: service jira start
-      environment:
-        JIRA_HOME: /home/jirasoftware-home
-        JAVA_HOME: /usr/java/jdk-java
-        PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+    # - name: Start Jira
+    #   become: yes
+    #   become_user: jira
+    #   become_method: su
+    #   shell: service jira start
+    #   environment:
+    #     JIRA_HOME: /home/jirasoftware-home
+    #     JAVA_HOME: /usr/java/jdk-java
+    #     PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin

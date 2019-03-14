@@ -14,7 +14,7 @@
       command: passwd -d jira
     - name: Descomprimiendo archivo de instalacion
       unarchive:
-        src: /opt/atlassian-jira-software-8.0.0.tar.gz
+        src: /tmp/atlassian-jira-software-8.0.0.tar.gz
         dest: /opt/jirasoftware
         remote_src: yes
     - name: Permisos para carpeta de instaladores
