@@ -118,6 +118,7 @@
               Type=forking\n
               User=jira\n
               Environment=JAVA_HOME=/usr/java/jdk-java\n
+              Environment=JIRA_HOME=/home/jirasoftware-home\n
               ExecStart=/opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh\n
               ExecStop=/opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/stop-jira.sh\n
               \n
