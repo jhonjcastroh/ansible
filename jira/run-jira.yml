@@ -26,9 +26,6 @@
         path: /etc/environment
         line: "JAVA_HOME=/usr/java/jdk-java"
         create: yes
-    - name: reboot
-      reboot:
-        reboot_timeout: 300
     - name: Crear carpeta para instaladores
       file:
         path: /opt/jirasoftware
@@ -96,9 +93,6 @@
         path: /etc/environment
         line: "JIRA_HOME=/home/jirasoftware-home"
         create: yes
-    - name: reboot
-      reboot:
-        reboot_timeout: 300
     # - name: Copiar Archivo para Starting JIRA Automaticamente desde un hosts remoto
     - name: Copiar archivo para start de servicio jira
       copy:
@@ -109,12 +103,32 @@
     - name: Habilitar servicio jira
       shell: /sbin/chkconfig --add jira
       become: yes
-    # - name: Start Jira
-    #   become: yes
-    #   become_user: jira
-    #   become_method: su
-    #   shell: service jira start
-    #   environment:
-    #     JIRA_HOME: /home/jirasoftware-home
-    #     JAVA_HOME: /usr/java/jdk-java
-    #     PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+    - name: selinux
+      command: setenforce 0
+    - name: firewall rhel7
+      command: systemctl stop firewalld
+    - name: systemctl 0
+      lineinfile:
+        path: /usr/lib/systemd/system/jira.service
+        line: "[Unit]\n
+              Description=JIRA Service\n
+              After=network.target iptables.service firewalld.service firewalld.service httpd.service\n
+              \n
+              [Service]\n
+              Type=forking\n
+              User=jira\n
+              Environment=JAVA_HOME=/usr/java/jdk-java\n
+              ExecStart=/opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/start-jira.sh\n
+              ExecStop=/opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin/stop-jira.sh\n
+              \n
+              [Install]\n
+              \n
+              WantedBy=multi-user.target"
+        create: yes
+    - name: systemctl 1
+      become: yes
+      shell: systemctl daemon-reload
+    - name: systemctl 2
+      become: yes
+      shell: systemctl start jira
+    
