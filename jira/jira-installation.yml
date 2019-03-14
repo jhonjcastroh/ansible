@@ -14,12 +14,12 @@
       command: passwd -d jira
     - name: Descomprimiendo archivo de instalacion
       unarchive:
-        src: /opt/atlassian-jira-software-8.0.0.tar.gz
+        src: /opt/atlassian-jira-software-8.0.1.tar
         dest: /opt/jirasoftware
         remote_src: yes
     - name: Permisos para carpeta de instaladores
       file:
-        path: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/
+        path: /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/
         state: directory
         owner: jira
         group: jira
@@ -89,4 +89,4 @@
       environment:
         JIRA_HOME: /home/jirasoftware-home
         JAVA_HOME: /usr/java/jdk-java
-        PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+        PATH: /opt/jirasoftware/atlassian-jira-software-8.0.1-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
