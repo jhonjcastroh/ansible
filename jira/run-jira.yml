@@ -26,9 +26,9 @@
         path: /etc/environment
         line: "JAVA_HOME=/usr/java/jdk-java"
         create: yes
-    - name: reboot
-      reboot:
-        reboot_timeout: 300
+    # - name: reboot
+    #   reboot:
+    #     reboot_timeout: 300
     - name: Crear carpeta para instaladores
       file:
         path: /opt/jirasoftware
