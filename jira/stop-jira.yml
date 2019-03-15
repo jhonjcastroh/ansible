@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Stop Jira
+      become: yes
+      shell: systemctl stop jira
+    
