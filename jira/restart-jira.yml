@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Start Jira
+      become: yes
+      shell: systemctl restart jira
+    
