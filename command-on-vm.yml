@@ -3,6 +3,7 @@
   # vars_files:
   #   - vcenter_vars.yml
   hosts: all
+  become: yes
   tasks:
     - name: Comand inside
       command: ifconfig
