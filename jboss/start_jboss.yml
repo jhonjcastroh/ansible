@@ -1,0 +1,14 @@
+- name: Start Jboss
+  hosts: all
+  gather_facts: yes
+  become: yes
+  user: root
+  tasks:
+    - name: Iniciando Servicio JBOSS
+      at:
+        command: sh /home/jboss/jboss-6.4/bin/standalone.sh
+        count: 1
+        units: minutes
+      environment:
+        JAVA_HOME: /usr/java/jre-java
+        JAVA_OPTS: -server -XX:+UseCompressedOops -verbose:gc -Xloggc:"/home/jboss/jboss-6.4/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -Xms1303m -Xmx1303m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.modules.policy-permissions=true
