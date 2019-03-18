@@ -1,0 +1,6 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Start Jira
+      shell: systemctl start mysqld
+    

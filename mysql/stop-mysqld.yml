@@ -1,0 +1,6 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Stop Jira
+      shell: systemctl stop mysqld
+    
