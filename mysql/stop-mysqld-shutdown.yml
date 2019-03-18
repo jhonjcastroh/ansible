@@ -1,0 +1,24 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Stop MySQL
+      shell: systemctl stop mysqld
+    - name: Get VM "{{ vm_name }}" uuid
+      vmware_guest_facts:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: False
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vm_name }}"
+      register: vm_factss
+    - name: Set powerstate of a virtual machine to poweron u poweroff by using UUID (change the state module)
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        uuid: "{{ vm_factss.instance.hw_product_uuid }}"
+        state: poweredoff
+      delegate_to: localhost
