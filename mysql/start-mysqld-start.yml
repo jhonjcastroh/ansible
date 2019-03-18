@@ -1,0 +1,32 @@
+- hosts: all
+  become: yes
+  vars_files:
+    - ../vcenter_vars.yml
+  vars:
+    vm_name: "{{ ansible_limit }}"
+  tasks: 
+    - name: Get VM "{{ vm_name }}" uuid
+      vmware_guest_facts:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: False
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vm_name }}"
+      register: vm_factss
+      delegate_to: localhost
+    - name: Set powerstate of a virtual machine to poweron u poweroff by using UUID (change the state module)
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        uuid: "{{ vm_factss.instance.hw_product_uuid }}"
+        state: poweredoff
+      delegate_to: localhost
+    - name: Start MySQL
+      at:
+        command: service start mysqld
+        count: 2
+        units: minutes
