@@ -32,5 +32,5 @@
       delegate_to: localhost
     - name: Start MySQL
       service:
-        name: httpd
+        name: mysqld
         state: started
