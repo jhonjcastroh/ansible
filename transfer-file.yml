@@ -31,8 +31,8 @@
     - name: Copiar archivo desde una vm
       run_once: yes
       fetch: 
-        src: /root/mysql57-community-release-el7-9.noarch.rpm
-        dest: /home/ansibleadmin
+        src: /home/hola.txt
+        dest: /home
         flat: yes
     # - name: Copy 2 a otra vm no funciona
     #   copy:
