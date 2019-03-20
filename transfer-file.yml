@@ -28,15 +28,15 @@
     #     send "root"
     #   args:
     #     executable: /usr/bin/expect
-    # - name: Copiar archivo desde una vm no funciona
-    #   run_once: yes
-    #   fetch: 
-    #     src: /home/hola.txt
-    #     dest: /tmp/
-    #     flat: yes
-    - name: Copy 2 a otra vm no funciona {{ansible_limit}}
-      copy:
+    - name: Copiar archivo desde una vm no funciona
+      run_once: yes
+      fetch: 
         src: /home/hola.txt
-        dest: /tmp/- {{ ansible_limit }}
-        remote_src: yes 
+        dest: /tmp/ prefix- {{ ansible_limit }}
+        flat: yes
+    # - name: Copy 2 a otra vm no funciona {{ansible_limit}}
+    #   copy:
+    #     src: /home/hola.txt
+    #     dest: /tmp/ prefix- {{ ansible_limit }}
+    #     remote_src: yes 
       #delegate_to: localhost
