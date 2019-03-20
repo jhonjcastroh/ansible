@@ -32,11 +32,11 @@
     #   run_once: yes
     #   fetch: 
     #     src: /home/hola.txt
-    #     dest: /home/
+    #     dest: /tmp/
     #     flat: yes
-    - name: Copy 2 a otra vm no funciona
+    - name: Copy 2 a otra vm no funciona {{ansible_limit}}
       copy:
         src: /home/hola.txt
-        dest: /tmp/
+        dest: /tmp/- {{ ansible_limit }}
         remote_src: yes 
       #delegate_to: localhost
