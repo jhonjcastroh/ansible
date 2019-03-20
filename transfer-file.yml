@@ -38,5 +38,5 @@
       copy:
         src: /home/hola.txt
         dest: /tmp/
+        remote_src: yes 
       delegate_to: localhost
-      remote_src: yes 
