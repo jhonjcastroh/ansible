@@ -66,6 +66,10 @@
       shell: cp /home/medios/ConfArchivos/jboss  /etc/init.d/
     - name: Dando permiso de ejecucion al Servicio jboss
       shell: chmod -R 777 /etc/init.d/jboss
+    - name: Eliminar archivos de instalacion JBOSS
+      file:
+        path: /root/jboss-eap-6.4.0.zip
+        state: absent
     - name: Detención del servicio de enrutamiento
       shell: service iptables stop
     - name: Iniciando Servicio JBOSS

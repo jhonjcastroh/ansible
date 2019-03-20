@@ -3,7 +3,9 @@
   tasks:
     ################################ (Instalacion JAVA) ##################################
     - name: Crea Carpeta JAVA
-      file: path=/usr/java state=directory
+      file: 
+        path: /usr/java
+        state: directory
     - name: Descomprime Archivo
       unarchive:
         src: /tmp/jdk-8u201-linux-x64.tar.gz
@@ -96,8 +98,8 @@
     # - name: Copiar Archivo para Starting JIRA Automaticamente desde un hosts remoto
     - name: Copiar archivo para start de servicio jira
       copy:
-        dest: /etc/init.d/
         src: /tmp/jira
+        dest: /etc/init.d/
         remote_src: yes
         mode: +x
     - name: Habilitar servicio jira
