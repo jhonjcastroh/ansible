@@ -29,7 +29,6 @@
     #   args:
     #     executable: /usr/bin/expect
     - name: Copiar archivo desde una vm no funciona
-      run_once: yes
       fetch: 
         src: /home/hola.txt
         dest: /tmp/prefix-{{ ansible_limit }}
