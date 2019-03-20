@@ -28,7 +28,7 @@
     #     send "root"
     #   args:
     #     executable: /usr/bin/expect
-    # - name: Copiar archivo desde una vm
+    # - name: Copiar archivo desde una vm no funciona
     #   run_once: yes
     #   fetch: 
     #     src: /home/hola.txt
@@ -38,3 +38,4 @@
       copy:
         src: /home/hola.txt
         dest: /tmp/
+      delegate_to: localhost
