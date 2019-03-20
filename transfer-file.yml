@@ -39,3 +39,4 @@
         src: /home/hola.txt
         dest: /tmp/
       delegate_to: localhost
+      remote_src: yes 
