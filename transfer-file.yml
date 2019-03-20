@@ -28,13 +28,13 @@
     #     send "root"
     #   args:
     #     executable: /usr/bin/expect
-    - name: Copiar archivo desde una vm
-      run_once: yes
-      fetch: 
+    # - name: Copiar archivo desde una vm
+    #   run_once: yes
+    #   fetch: 
+    #     src: /home/hola.txt
+    #     dest: /home/
+    #     flat: yes
+    - name: Copy 2 a otra vm no funciona
+      copy:
         src: /home/hola.txt
-        dest: /home/
-        flat: yes
-    # - name: Copy 2 a otra vm no funciona
-    #   copy:
-    #     src: /home/ansibleadmin/jira/jira
-    #     dest: /temp
+        dest: /tmp/
