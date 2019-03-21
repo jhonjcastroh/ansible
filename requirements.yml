@@ -1,0 +1,3 @@
+- src: https://github.com/idealista/jira_role
+  version: master
+  name: jira
