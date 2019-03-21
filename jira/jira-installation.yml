@@ -8,4 +8,4 @@
         dest: /opt/
         mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: printf 'y\no\n1\ni\ny\n' | ./atlassian-jira-software-8.0.2-x64.bin
+      shell: printf 'y\no\n1\ni\ny\n' | /opt/./atlassian-jira-software-8.0.2-x64.bin
