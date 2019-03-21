@@ -1,13 +1,13 @@
 - name: Instalacion de Jira Software
   hosts: all
   become: yes
-  roles:
-    - role: jira
-  # tasks:
-  #   - name: Descargar bin y darle permiso de ejecución
-  #     get_url:
-  #       url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
-  #       dest: /opt/
-  #       mode: a+x
-  #   - name: Ejecutar archivo de Instalación
-  #     shell: echo y | echo o | echo 1 | sh /opt/atlassian-jira-software-8.0.2-x64.bin --stdin
+  # roles:
+  #   - role: jira
+  tasks:
+    - name: Descargar bin y darle permiso de ejecución
+      get_url:
+        url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
+        dest: /opt/
+        mode: a+x
+    - name: Ejecutar archivo de Instalación
+      shell: printf 'y\no\n1\ni\ny\n' | ./atlassian-jira-software-8.0.2-x64.bin
