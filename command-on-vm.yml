@@ -1,7 +1,7 @@
 - name: Prueba 9 Ejecutar comando
   gather_facts: true
-  # vars_files:
-  #   - vcenter_vars.yml
+  vars:
+    vm_name: "{{ ansible_limit }}"
   hosts: all
   become: yes
   tasks:

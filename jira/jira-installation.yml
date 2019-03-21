@@ -1,6 +1,8 @@
 - name: Instalacion de Jira Software
   hosts: all
   become: yes
+  vars:
+    vm_name: "{{ ansible_limit }}"
   tasks:
     - name: Descargar bin y darle permiso de ejecución
       get_url:
@@ -11,8 +13,9 @@
       expect:
         command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
         responses:
-          question:
-            - y
+          Question:
+            - '\n'
+            - '\n'
             - 1
-            - y
-            - y
+            - 'y'
+            - 'y'
