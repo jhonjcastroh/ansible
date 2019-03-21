@@ -2,11 +2,10 @@
   hosts: all
   become: yes
   tasks:
-    - name: Descargar bin 
-      shell: wget -P /opt https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
-    - name: Instalar Jira when SO Centos or RHEL
-      file:
-        path: /opt/atlassian-jira-software-8.0.2-x64.bin
+    - name: Descargar bin
+      get_url:
+        url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
+        dest: /opt/
         mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: ./atlassian-jira-software-8.0.2-x64.bin
+      shell: sh /opt/atlassian-jira-software-8.0.2-x64.bin
