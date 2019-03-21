@@ -1,8 +1,6 @@
 - name: Instalacion de Jira Software
   hosts: all
   become: yes
-  # roles:
-  #   - role: jira
   tasks:
     - name: Descargar bin y darle permiso de ejecución
       get_url:
