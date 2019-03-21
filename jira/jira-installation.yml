@@ -14,8 +14,8 @@
         command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
         responses:
           Question:
-            - '\n'
-            - '\n'
-            - '\n'
+            - 'y'
+            - 'y'
+            - '1'
             - 'y'
             - 'y'
