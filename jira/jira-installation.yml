@@ -7,13 +7,10 @@
     #     url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
     #     dest: /opt/
     #     mode: a+x
-    - name: install ntpdate
-      package:
-        name: pip
-        state: present
     - name: install pexpect
-      pip:
-        name: pexpect==3.3
+      yum:
+        name: pexpect-3.3
+        state: latest
     - name: Ejecutar archivo de Instalación
       expect:
         command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
