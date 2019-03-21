@@ -7,19 +7,15 @@
     #     url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
     #     dest: /opt/
     #     mode: a+x
-    - name: install pexpect
-      yum:
-        update_only: yes
-        name: pexpect
-        state: latest
     - name: Ejecutar archivo de Instalación
-      expect:
-        command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
-        responses:
-          Question:
-            - y
-            - o
-            - 1
-            - y
-            - y
-      
+      shell: |
+        sh /opt/atlassian-jira-software-8.0.2-x64.bin
+
+        expect "Are you sure you want to continue?\nYes [y, Enter], No [n]"
+        send "y\n"
+
+        exit 0
+      ignore_errors: true
+    - name: Ejecutar archivo de Instalacio 2
+      shell: echo y | sh /opt/atlassian-jira-software-8.0.2-x64.bin
+        
