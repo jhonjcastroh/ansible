@@ -2,10 +2,17 @@
   hosts: all
   become: yes
   tasks:
-    - name: Descargar bin
+    - name: Descargar bin y darle permiso de ejecución
       get_url:
         url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
         dest: /opt/
         mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: sh /opt/atlassian-jira-software-8.0.2-x64.bin
+      expect:
+        command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
+        response:
+          Question:
+            - y
+            - 1
+            - y
+            - y
