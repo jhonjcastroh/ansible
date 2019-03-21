@@ -10,8 +10,8 @@
     - name: Ejecutar archivo de Instalación
       expect:
         command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
-        response:
-          Question:
+        responses:
+          question:
             - y
             - 1
             - y
