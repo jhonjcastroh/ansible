@@ -8,14 +8,5 @@
     #     dest: /opt/
     #     mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: |
-        sh /opt/atlassian-jira-software-8.0.2-x64.bin
-
-        expect "Are you sure you want to continue?\nYes [y, Enter], No [n]"
-        send "y\n"
-
-        exit 0
-      ignore_errors: true
-    - name: Ejecutar archivo de Instalacio 2
-      shell: echo y | sh /opt/atlassian-jira-software-8.0.2-x64.bin
+      shell: echo y | sh /opt/atlassian-jira-software-8.0.2-x64.bin --stdin
         
