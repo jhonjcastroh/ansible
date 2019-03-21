@@ -1,21 +1,24 @@
 - name: Instalacion de Jira Software
   hosts: all
   become: yes
-  vars:
-    vm_name: "{{ ansible_limit }}"
   tasks:
-    - name: Descargar bin y darle permiso de ejecución
-      get_url:
-        url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
-        dest: /opt/
-        mode: a+x
+    # - name: Descargar bin y darle permiso de ejecución
+    #   get_url:
+    #     url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
+    #     dest: /opt/
+    #     mode: a+x
+    - name: install pexpect
+      package:
+        name: pexpect
+        state: present
     - name: Ejecutar archivo de Instalación
       expect:
         command: sh /opt/atlassian-jira-software-8.0.2-x64.bin
         responses:
           Question:
-            - 'y'
-            - 'y'
-            - '1'
-            - 'y'
-            - 'y'
+            - y
+            - o
+            - 1
+            - y
+            - y
+      
