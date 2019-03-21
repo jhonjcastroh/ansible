@@ -9,6 +9,7 @@
     #     mode: a+x
     - name: install pexpect
       yum:
+        update_only: yes
         name: pexpect-3.3
         state: latest
     - name: Ejecutar archivo de Instalación
