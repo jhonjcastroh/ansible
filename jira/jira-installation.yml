@@ -10,7 +10,7 @@
     - name: install pexpect
       yum:
         update_only: yes
-        name: pexpect-3.3
+        name: pexpect
         state: latest
     - name: Ejecutar archivo de Instalación
       expect:
