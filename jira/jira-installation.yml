@@ -9,7 +9,7 @@
     #     mode: a+x
     - name: install pexpect
       package:
-        name: pexpect
+        name: pexpect-3.3
         state: present
     - name: Ejecutar archivo de Instalación
       expect:
