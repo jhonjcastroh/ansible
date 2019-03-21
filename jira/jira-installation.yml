@@ -8,4 +8,4 @@
         dest: /opt/
         mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: echo y | echo y | echo 1 | echo y | echo y | sh /opt/atlassian-jira-software-8.0.2-x64.bin --stdin
+      shell: echo y | echo o | sh /opt/atlassian-jira-software-8.0.2-x64.bin --stdin
