@@ -16,3 +16,5 @@
         path: /etc/selinux/config
         regexp: '^SELINUX=' 
         line: 'SELINUX=disabled'
+    - name: Reiniciar Instancia
+      command: shutdown -r now
