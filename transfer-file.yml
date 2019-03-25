@@ -28,10 +28,10 @@
     #     send "root"
     #   args:
     #     executable: /usr/bin/expect
-    - name: Copiar archivo desde una vm no funciona
+    - name: Traer archivo desde una vm no funciona
       fetch: 
         src: /home/hola.txt
-        dest: /tmp/prefix-{{ ansible_limit }}
+        dest: /tmp
         flat: yes
     # - name: Copy 2 a otra vm no funciona {{ansible_limit}}
     #   copy:
