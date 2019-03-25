@@ -1,14 +1,14 @@
 - name: tranferir archivo
   hosts: all
   tasks:
-    - name: Traer archivo desde una vm no funciona
-      fetch: 
-        src: /home/hola.txt
-        dest: /root/
-        flat: yes
-    # - name: Copy 2 a otra vm no funciona {{ansible_limit}}
-    #   copy:
+    # - name: Traer archivo desde una vm no funciona
+    #   fetch: 
     #     src: /home/hola.txt
-    #     dest: /tmp/ prefix- {{ ansible_limit }}
-    #     remote_src: yes 
-      #delegate_to: localhost
+    #     dest: /root/
+    #     flat: yes
+    - name: Copy 2 a otra vm no funciona {{ansible_limit}}
+      copy:
+        src: /home/hola.txt
+        dest: /tmp/
+        remote_src: yes 
+      # delegate_to: localhost
