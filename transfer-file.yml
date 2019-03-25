@@ -1,37 +1,10 @@
 - name: tranferir archivo
   hosts: all
-  # gather_facts: yes
-  # become_user: root
   tasks:
-    # - name: get_url con un servidor ftp (no tenemos el servidor ftp)
-    #   get_url:
-    #     url: file:///home/ansibleadmin/jira/credentials.csv
-    #     dest: /tmp/credentials.csv
-    #   delegate_to: localhost
-    # - name: Con synchronize rsync debe estar instalado en ambos servidores (RHEL no lo tiene por defecto)
-    #   synchronize:
-    #     src: /home/ansibleadmin/jira
-    #     dest: /tmp
-    # - name: copy en la misma vm (funciona)
-    #   become: yes
-    #   become_user: root
-    #   copy:
-    #     src: /tmp/jdk-8u201-linux-x64.tar.gz
-    #     dest: /root
-    #     remote_src: yes
-    #     mode: 0664
-    # - name: Transferir un archivo por scp (no funciona)
-    #   #shell: scp /home/ansibleadmin/jira/jira root@10.41.101.206:/tmp
-    #   shell: 
-    #     scp /home/ansibleadmin/jira/jira root@10.41.101.206:/tmp
-    #     expect "root@10.41.101.206's password:"
-    #     send "root"
-    #   args:
-    #     executable: /usr/bin/expect
     - name: Traer archivo desde una vm no funciona
       fetch: 
         src: /home/hola.txt
-        dest: /tmp
+        dest: /root/
         flat: yes
     # - name: Copy 2 a otra vm no funciona {{ansible_limit}}
     #   copy:
