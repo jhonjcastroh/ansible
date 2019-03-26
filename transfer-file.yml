@@ -7,7 +7,7 @@
         src: "{{ path_source }}{{ name_file }}"
         dest: /tmp/
         flat: yes
-      when: "{{ ansible_hostname == 'vm_repository' }}"
+      when: "{{ ansible_hostname == 'jhon' }}"
 - name: Pegar archivo en una vm
   hosts: all:!jhon
   tasks:
