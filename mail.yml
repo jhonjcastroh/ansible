@@ -5,6 +5,6 @@
     - mail:
         host: 10.10.20.103
         port: 25
-        to: Janina Segura <janina.segura@tsoftlatam.com>
+        to: Janina Segura <"{{ owner_email }}">
         subject: Ansible-report
         body: 'Tu servidor {{ ansible_hostname }} ha sido aprovisionado satisfactoriamente.'
