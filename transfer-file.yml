@@ -6,11 +6,10 @@
     - fetch: 
         src: "{{ path_source }}{{ name_file }}"
         dest: /tmp/
-        flat: yes
+        flat: yes   
 - name: Pegar archivo en una vm
-  hosts: "{{ ansible_limit }}"
+  hosts: all:!jhon
   tasks:
-    - name: Copy a otra vm no funciona
-      copy:
+    - copy:
         src: /tmp/"{{ name_file }}"
         dest: "{{ path_dest }}"
