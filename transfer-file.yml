@@ -1,10 +1,6 @@
 - name: Traer archivo desde una vm
   hosts: jhon
-  remote_user: root
   vars:
-    ansible_connection: ssh
-    ansible_user: root
-    ansible_ssh_pass: root
   tasks:
     - fetch: 
         src: "{{ path_source }}{{ name_file }}"
