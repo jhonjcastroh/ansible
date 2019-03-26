@@ -1,0 +1,7 @@
+- name: Pegar archivo en una vm
+  hosts: all
+  tasks:
+    - name: Copy 2 a otra vm no funciona
+      copy:
+        src: /tmp/hola.txt
+        dest: "{{ path_dest }}"

@@ -5,8 +5,4 @@
         src: "{{ path_source }}{{ name_file }}"
         dest: /tmp/
         flat: yes
-      delegate_to: jhon
-    - name: Copy 2 a otra vm no funciona
-      copy:
-        src: /tmp/"{{ name_file }}"
-        dest: "{{ path_dest }}"
+    
