@@ -1,7 +1,6 @@
 ---
 - name: Traer archivo desde una vm
   hosts: all
-  vars:
   tasks:
     - fetch: 
         src: "{{ path_source }}{{ name_file }}"
