@@ -8,7 +8,7 @@
     #     flat: yes
     - name: Copy 2 a otra vm no funciona {{ansible_limit}}
       copy:
-        src: /home/hola.txt
+        src: /tmp/hola.txt
         dest: /tmp/
         remote_src: yes 
       delegate_to: localhost
