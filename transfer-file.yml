@@ -5,8 +5,6 @@
       fetch: 
         src: /home/hola.txt
         dest: /root/
-        change: true
-        flat: yes
     # - name: Copy 2 a otra vm no funciona {{ansible_limit}}
     #   copy:
     #     src: /home/hola.txt
