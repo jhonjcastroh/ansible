@@ -14,4 +14,4 @@
     - copy:
         src: /tmp/"{{ name_file }}"
         dest: "{{ path_dest }}"
-      remote_src: yes
+        remote_src: yes
