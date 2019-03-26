@@ -19,7 +19,7 @@
         flat: yes
       when: "{{ ansible_hostname == 'jhon' }}"
 - name: Instalacion de Jira
-  hosts: "all!{{ vm_repository }}"
+  hosts: "all:!{{ vm_repository }}"
   tasks:
     - name: Tranfiriendo archivos de Instalación
       copy:
