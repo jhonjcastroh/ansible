@@ -7,7 +7,7 @@
         src: "{{ path_source }}{{ name_file_1 }}"
         dest: /tmp/
         flat: yes
-      when: "{{ ansible_hostname == {% vm_repository %} }}"
+      when: "{{ ansible_hostname == 'jhon' }}"
     - fetch: 
         src: "{{ path_source }}{{ name_file_2 }}"
         dest: /tmp/
