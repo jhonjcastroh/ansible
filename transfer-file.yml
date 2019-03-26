@@ -1,5 +1,5 @@
 - name: Traer archivo desde una vm
-  hosts: jhon
+  hosts: "jhon"
   remote_user: root
   ansible_connection: ssh
   ansible_user: root
