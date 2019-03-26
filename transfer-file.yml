@@ -1,14 +1,18 @@
 - name: Traer archivo desde una vm
   hosts: jhon
+  remote_user: root
+  ansible_connection: ssh
+  ansible_user: root
+  ansible_ssh_pass: root
   tasks:
     - fetch: 
         src: "{{ path_source }}{{ name_file }}"
         dest: /tmp/
         flat: yes
-- name: Traer archivo desde una vm
+- name: Pegar archivo en una vm
   hosts: "{{ ansible_limit }}"
   tasks:
-    - name: Copy 2 a otra vm no funciona
+    - name: Copy a otra vm no funciona
       copy:
         src: /tmp/"{{ name_file }}"
         dest: "{{ path_dest }}"
