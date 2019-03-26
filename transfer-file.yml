@@ -7,11 +7,10 @@
         src: "{{ path_source }}{{ name_file }}"
         dest: /tmp/
         flat: yes
-      when: "{{ ansible_hostname == 'jhon' }}"
+      when: "{{ ansible_hostname == 'vm_repository' }}"
 - name: Pegar archivo en una vm
   hosts: all:!jhon
   tasks:
     - copy:
         src: "/tmp/{{ name_file }}"
         dest: "{{ path_dest }}"
-        #remote_src: yes
