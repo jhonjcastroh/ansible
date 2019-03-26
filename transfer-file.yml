@@ -1,10 +1,10 @@
-- name: tranferir archivo
+- name: Tranferir archivos
   hosts: all
   tasks:
-    - name: Traer archivo desde una vm no funciona
+    - name: Traer archivo desde una vm
       fetch: 
         src: /home/hola.txt
-        dest: /root
+        dest: /root/
         flat: yes
     # - name: Copy 2 a otra vm no funciona {{ansible_limit}}
     #   copy:
