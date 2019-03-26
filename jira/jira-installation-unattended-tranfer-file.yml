@@ -1,0 +1,104 @@
+---
+- name: Traer archivo de instalación
+  hosts: all
+  vars:
+  tasks:
+    - fetch: 
+        src: "{{ path_source }}{{ name_file }}"
+        dest: /tmp/
+        flat: yes
+      when: "{{ ansible_hostname == vm_repository }}"
+- name: Instalacion de Jira
+  hosts: "all!{{ vm_repository }}"
+  tasks:
+    - copy:
+        src: "/tmp/{{ name_file }}"
+        dest: "{{ path_dest }}"
+    - name: Crear carpeta para instaladores
+      file:
+        path: /opt/jirasoftware
+        state: directory
+    - name: Crea Usuario Jira
+      user:
+        name: jira
+        state: present
+    - name: Remover Password Usuario Jira
+      command: passwd -d jira
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /tmp/atlassian-jira-software-8.0.0.tar.gz
+        dest: /opt/jirasoftware
+        remote_src: yes
+    - name: Permisos para carpeta de instaladores
+      file:
+        path: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/
+        state: directory
+        owner: jira
+        group: jira
+        mode: u=rwx,go-rwx
+        recurse: yes
+    - name: Crear carpeta y permisos para instaladores
+      file:
+        path: /home/jirasoftware-home/
+        state: directory
+        owner: jira
+        group: jira
+        mode: u=rwx,go-rwx
+        recurse: yes
+    - name: Crea y exporta Variable JIRA_HOME
+      shell: export JIRA_HOME=/home/jirasoftware-home
+    - name: Respaldo Archivo Profile
+      copy:
+        src: /etc/profile
+        dest: /etc/profile-b-jira.bkp
+        remote_src: yes
+        mode: 0664
+    - name: Agrega JIRA_HOME al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "JIRA_HOME=/home/jirasoftware-home"
+        create: yes
+    - name: Agrega export JIRA_HOME al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "export JIRA_HOME"
+        create: yes
+    - name: Agrega PATH al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "PATH=$JIRA_HOME/bin:$PATH"
+        create: yes
+    - name: Agrega export PATH al archivo Profile
+      lineinfile:
+        path: /etc/profile
+        line: "export PATH"
+        create: yes
+    - name: Source Archivo Profile
+      shell: source /etc/profile
+    - name: Agrega JIRA_HOME al anchivo Environment
+      lineinfile:
+        path: /etc/environment
+        line: "JIRA_HOME=/home/jirasoftware-home"
+        create: yes
+    - name: reboot
+      reboot:
+        reboot_timeout: 300
+    # - name: Copiar Archivo para Starting JIRA Automaticamente desde un hosts remoto
+    - name: Copiar archivo para start de servicio jira
+      copy:
+        dest: /etc/init.d/
+        src: /tmp/jira
+        remote_src: yes
+        mode: +x
+    - name: Habilitar servicio jira
+      shell: /sbin/chkconfig --add jira
+      become: yes
+    - name: Start Jira
+      become: yes
+      become_user: jira
+      become_method: su
+      shell: service jira start
+      environment:
+        JIRA_HOME: /home/jirasoftware-home
+        JAVA_HOME: /usr/java/jdk-java
+        PATH: /opt/jirasoftware/atlassian-jira-software-8.0.0-standalone/bin:/home/jirasoftware-home/bin:/usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
