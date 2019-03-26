@@ -1,11 +1,13 @@
+---
 - name: Traer archivo desde una vm
-  hosts: jhon
+  hosts: all
   vars:
   tasks:
     - fetch: 
         src: "{{ path_source }}{{ name_file }}"
         dest: /tmp/
         flat: yes
+---
 - name: Pegar archivo en una vm
   hosts: "{{ ansible_limit }}"
   tasks:
