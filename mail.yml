@@ -5,7 +5,7 @@
     - mail:
         host: 10.10.20.103
         port: 25
-        username: jhon.catro
+        username: tsoft\jhon.catro
         password: Tsoft2018
         to: Janina Segura <janina.segura@tsoftlatam.com>
         subject: Ansible-report
