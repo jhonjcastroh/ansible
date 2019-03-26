@@ -12,6 +12,6 @@
   hosts: all:!jhon
   tasks:
     - copy:
-        src: /tmp/"{{ name_file }}"
+        src: "/tmp/{{ name_file }}"
         dest: "{{ path_dest }}"
         remote_src: yes
