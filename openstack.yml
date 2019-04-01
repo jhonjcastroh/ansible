@@ -1,23 +1,14 @@
 clouds:
-  vexxhost:
-    profile: vexxhost
+  test:
     auth:
+      auth_url: https://ecs.sa-chile-1.telefonicaopencloud.com/
       project_name: sa-chile-1
       username: nebulatsoft
       password: nebula@2019
-  rax:
-    cloud: telefonicaopencloud
-    auth:
-      username: nebulatsoft
-      password: nebula@2019
+      user_domain_name: tsoft
       project_id: 131d890deb5247d7a847128e90dca946
-    region_name: sa-chile-1
-  devstack:
-    auth:
-      auth_url: https://ecs.sa-chile-1.telefonicaopencloud.com/v3/auth/tokens
-      username: nebulatsoft
-      password: nebula@2019
-      project_name: sa-chile-1
+    region_name: AZ1
+    identity_api_version: 3
 ansible:
   use_hostnames: True
   expand_hostvars: False
