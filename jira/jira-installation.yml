@@ -4,11 +4,11 @@
   tasks:
     - name: Descargar bin y darle permiso de ejecución
       get_url:
-        url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-"{{ version-jira }}".bin
+        url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-"{{ version_jira }}".bin
         dest: /opt/
         mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: printf 'y\no\n1\ni\ny\n' | /opt/./atlassian-jira-software-"{{ version-jira }}".bin
+      shell: printf 'y\no\n1\ni\ny\n' | /opt/./atlassian-jira-software-"{{ version_jira }}".bin
     - name: selinux
       command: setenforce 0
     - name: Deshabilitar SELinux
