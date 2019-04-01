@@ -1,0 +1,20 @@
+- name: Instalacion de Jira Software
+  hosts: all
+  become: yes
+  tasks:
+    - name: Descargar bin y darle permiso de ejecución
+      get_url:
+        url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.0.2-x64.bin
+        dest: /opt/
+        mode: a+x
+    - name: Ejecutar archivo de Instalación
+      shell: printf 'y\no\n1\ni\ny\n' | /opt/./atlassian-jira-software-8.0.2-x64.bin
+    - name: selinux
+      command: setenforce 0
+    - name: Deshabilitar SELinux
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX=' 
+        line: 'SELINUX=disabled'
+    - name: firewall rhel7
+      command: systemctl stop firewalld
