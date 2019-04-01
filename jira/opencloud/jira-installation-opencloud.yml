@@ -1,5 +1,5 @@
 - name: Instalacion de Jira Software
-  hosts: server
+  hosts: all
   become: yes
   tasks:
     - name: Descargar bin y darle permiso de ejecución
