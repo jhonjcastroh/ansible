@@ -1,0 +1,9 @@
+---
+- name: Ejecutar comando Win
+  hosts: all
+  remote_user: Administrator
+  tasks:
+    - name: run ipconfig
+      win_command: ipconfig
+      register: ipconfig
+    - debug: var=ipconfig

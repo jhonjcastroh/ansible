@@ -1,0 +1,12 @@
+---
+- name: Creación de usuario Windows
+  hosts: all
+  remote_user: Administrator
+  tasks:
+    - name: Ensure user bob is present
+      win_user:
+        name: "{{ user }}"
+        password: "{{ pass }}"
+        state: present
+        groups:
+          - Administrators

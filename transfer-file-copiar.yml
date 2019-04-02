@@ -1,8 +1,0 @@
-- name: Traer archivo desde una vm
-  hosts: all
-  tasks:
-    - fetch: 
-        src: "{{ path_source }}{{ name_file }}"
-        dest: /tmp/
-        flat: yes
-    

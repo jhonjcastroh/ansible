@@ -1,0 +1,11 @@
+---
+- name: Eliminación de usuario Linux
+  hosts: all
+  gather_facts: yes
+  remote_user: root
+  tasks:
+    - name: Delete User of Template
+      user:
+        name: "{{ user_to_remove }}"
+        state: absent
+        remove: yes

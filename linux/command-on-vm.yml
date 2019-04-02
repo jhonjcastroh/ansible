@@ -1,0 +1,9 @@
+- name: Prueba 9 Ejecutar comando
+  gather_facts: true
+  vars:
+    vm_name: "{{ ansible_limit }}"
+  hosts: all
+  become: yes
+  tasks:
+    - name: Comand inside
+      command: ifconfig

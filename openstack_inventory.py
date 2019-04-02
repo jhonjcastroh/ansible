@@ -65,7 +65,7 @@ import openstack as sdk
 from openstack.cloud import inventory as sdk_inventory
 from openstack.config import loader as cloud_config
 
-CONFIG_FILES = ['/etc/ansible/openstack.yaml', '/etc/ansible/openstack.yml']
+CONFIG_FILES = ['/home/ansibleadmin/ansible/openstack.yaml', '/home/ansibleadmin/ansible/openstack.yml']
 
 
 def get_groups_from_server(server_vars, namegroup=True):
@@ -248,7 +248,7 @@ def main():
             inventory_args.update(dict(
                 config_key='ansible',
                 config_defaults={
-                    'use_hostnames': False,
+                    'use_hostnames': True,
                     'expand_hostvars': True,
                     'fail_on_errors': True,
                 }

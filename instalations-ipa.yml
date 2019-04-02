@@ -1,7 +1,0 @@
----
-- name: instalar el cliente ipa
-  yum:
-    name: ipa-client
-    state: latest
-- name: unirse al dominio ipa
-  command: ipa-client-install --server='{{ ipa_server }}' --domain='{{ domain }}' --principal='{{ ipa_user }}' --password='{{ ipa_password }}' --unattended

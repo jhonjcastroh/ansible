@@ -1,0 +1,8 @@
+- name: Yum Update
+  gather_facts: False
+  hosts: "{{ vm_target_name }}"
+  tasks:
+    - name: upgrade all packages
+      yum:
+        name: "*"
+        state: latest
