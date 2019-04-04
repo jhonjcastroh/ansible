@@ -44,3 +44,5 @@
       ignore_errors: yes
     - name: 
       shell: java -jar jenkins.war
+      args:
+        chdir: /tmp/
