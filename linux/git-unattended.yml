@@ -1,0 +1,14 @@
+- name: Instalación de Git
+  hosts: all
+  become: yes
+  tasks:
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /tmp/git-2.17.1.tar.gz
+        remote_src: yes
+    - name: Ejecutando instalación
+      shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install; make install install-doc install-html install-info
+      args:
+        chdir: /tmp/git-2.17.1/
+    - name: Comprobacion de instalación
+      command: git --version

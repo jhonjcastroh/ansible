@@ -1,9 +1,23 @@
-- hosts: all
+- name: Inatalación de Java
+  hosts: all
   become: yes
   tasks:
-    ################################ (Instalacion JAVA) ##################################
+    # - name: Descargar archivo de instalación JRE
+    #   get_url:
+    #     url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jre-8u201-linux-x64.tar.gz
+    #     dest: /usr/java
+    #     mode: a+x
+    #     ignore_errors: yes
+    - name: Descargar archivo de instalación JDK
+      get_url:
+        url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
+        dest: /usr/java
+        mode: a+x
+      ignore_errors: yes
     - name: Crea Carpeta JAVA
-      file: path=/usr/java state=directory
+      file:
+        path: /usr/java
+        state: directory
     - name: Descomprime Archivo
       unarchive:
         src: /tmp/jdk-8u201-linux-x64.tar.gz
@@ -26,6 +40,3 @@
         path: /etc/environment
         line: "JAVA_HOME=/usr/java/jdk-java"
         create: yes
-    - name: reboot
-      reboot:
-        reboot_timeout: 300
