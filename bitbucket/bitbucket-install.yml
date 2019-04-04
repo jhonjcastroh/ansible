@@ -64,10 +64,10 @@
     - name: Descomprimiendo archivo de instalacion
       unarchive:
         src: /tmp/atlassian-bitbucket-6.1.3.tar.gz
-        dest: /opt/
+        dest: /tmp/
         remote_src: yes
     - name: Ejecutar archivo de Instalación
-      shell: printf '\n\n\n\n\n\n\n\nn\n' | /opt/./atlassian-bitbucket-6.1.3.bin
+      shell: printf '\n\n\n\n\n\n\n\nn\n' | /tmp/./atlassian-bitbucket-6.1.3.bin
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
@@ -76,4 +76,4 @@
         regexp: '^SELINUX=' 
         line: 'SELINUX=disabled'
     - name: firewall rhel7
-      command: systemctl stop firewalld
+      command: systemctl stop firewalld 
