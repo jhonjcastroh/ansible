@@ -61,8 +61,13 @@
         url: https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.1.3.tar.gz
         dest: /opt/
         mode: a+x
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /tmp/atlassian-bitbucket-6.1.3.tar.gz
+        dest: /opt/
+        remote_src: yes
     - name: Ejecutar archivo de Instalación
-      shell: printf '\n\n\n\n\n\n\n\nn\n' | /opt/./atlassian-bitbucket-6.1.3-x64.bin
+      shell: printf '\n\n\n\n\n\n\n\nn\n' | /opt/./atlassian-bitbucket-6.1.3.bin
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
