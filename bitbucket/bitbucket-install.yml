@@ -36,24 +36,25 @@
         line: "JAVA_HOME=/usr/java/jdk-java"
         create: yes
     ########## Instalación Git ############
-    - name: Instalación de Git Debian o Ubuntu
-      command: apt install git-all
-      when: ansible_facts['os_family'] == "Debian"
-      ignore_errors: yes
-    - name: Instalación de Git Redhat o CentOS
-      command: yum install git-all
-      when: ansible_facts['os_family'] == "Redhat"
-      ignore_errors: yes
-    - name: Descomprimiendo archivo de instalacion
-      unarchive:
-        src: /tmp/git-2.17.1.tar.gz
-        remote_src: yes
-    - name: Ejecutando instalación
-      shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install
-      args:
-        chdir: /tmp/git-2.17.1/
-    - name: Comprobacion de instalación
-      command: git --version
+    # - name: Instalación de Git Debian o Ubuntu
+    #   command: apt install git-all
+    #   when: ansible_facts['os_family'] == "Debian"
+    #   ignore_errors: yes
+    # - name: Instalación de Git Redhat o CentOS
+    #   command: yum install git-all
+    #   when: ansible_facts['os_family'] == "Redhat"
+    #   ignore_errors: yes
+    # - name: Descomprimiendo archivo de instalacion
+    #   unarchive:
+    #     src: /tmp/git-2.17.1.tar.gz
+    #     dest: /tmp/
+    #     remote_src: yes
+    # - name: Ejecutando instalación
+    #   shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install
+    #   args:
+    #     chdir: /tmp/git-2.17.1/
+    # - name: Comprobacion de instalación
+    #   command: git --version
     ########## Instalación Bitbucket ############
     - name: Descargar bin y darle permiso de ejecución
       get_url:
