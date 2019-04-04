@@ -3,66 +3,66 @@
   become: yes
   tasks:
     ########## Instalación Java ############
-    # - name: Descargar archivo de instalación JDK
-    #   get_url:
-    #     url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
-    #     dest: /tmp/
-    #     mode: a+x
-    #   ignore_errors: yes
-    # - name: Crea Carpeta JAVA
-    #   file: 
-    #     path: /usr/java
-    #     state: directory
-    # - name: Descomprime Archivo
-    #   unarchive:
-    #     src: /tmp/jdk-8u201-linux-x64.tar.gz
-    #     dest: /usr/java
-    #     remote_src: yes
-    # - name: Renombra carpeta java
-    #   command: mv /usr/java/jdk1.8.0_201 /usr/java/jdk-java
-    # - name: Crea y exportar Variable JAVA
-    #   shell: export JAVA_HOME=/usr/java/jdk-java
-    # - name: Crea y exporta Variable PATH
-    #   shell: export PATH=$JAVA_HOME/bin:$PATH
-    # - name: Respaldo Archivo Profile
-    #   command: cp /etc/profile /etc/profile-b-java.bkp
-    # - name: Agrega JAVA_HOME y PATH al archivo Profile
-    #   shell: sed -i '$a JAVA_HOME=/usr/java/jdk-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
-    # - name: Source Archivo Profile
-    #   shell: source /etc/profile
-    # - name: Agrega JAVA_HOME al anchivo Environment
-    #   lineinfile:
-    #     path: /etc/environment
-    #     line: "JAVA_HOME=/usr/java/jdk-java"
-    #     create: yes
-    ########## Instalación Git ############
-    # - name: Instalación de Git Debian o Ubuntu
-    #   command: apt install git-all
-    #   when: ansible_facts['os_family'] == "Debian"
-    #   ignore_errors: yes
-    # - name: Instalación de Git Redhat o CentOS
-    #   command: yum install git-all
-    #   when: ansible_facts['os_family'] == "Redhat"
-    #   ignore_errors: yes
-    # - name: Descomprimiendo archivo de instalacion
-    #   unarchive:
-    #     src: /tmp/git-2.17.1.tar.gz
-    #     dest: /tmp/
-    #     remote_src: yes
-    # - name: Ejecutando instalación
-    #   shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install
-    #   args:
-    #     chdir: /tmp/git-2.17.1/
-    # - name: Comprobacion de instalación
-    #   command: git --version
+    - name: Descargar archivo de instalación JDK
+      get_url:
+        url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
+        dest: /tmp/
+        mode: a+x
+      ignore_errors: yes
+    - name: Crea Carpeta JAVA
+      file: 
+        path: /usr/java
+        state: directory
+    - name: Descomprime Archivo
+      unarchive:
+        src: /tmp/jdk-8u201-linux-x64.tar.gz
+        dest: /usr/java
+        remote_src: yes
+    - name: Renombra carpeta java
+      command: mv /usr/java/jdk1.8.0_201 /usr/java/jdk-java
+    - name: Crea y exportar Variable JAVA
+      shell: export JAVA_HOME=/usr/java/jdk-java
+    - name: Crea y exporta Variable PATH
+      shell: export PATH=$JAVA_HOME/bin:$PATH
+    - name: Respaldo Archivo Profile
+      command: cp /etc/profile /etc/profile-b-java.bkp
+    - name: Agrega JAVA_HOME y PATH al archivo Profile
+      shell: sed -i '$a JAVA_HOME=/usr/java/jdk-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
+    - name: Source Archivo Profile
+      shell: source /etc/profile
+    - name: Agrega JAVA_HOME al anchivo Environment
+      lineinfile:
+        path: /etc/environment
+        line: "JAVA_HOME=/usr/java/jdk-java"
+        create: yes
+    ######### Instalación Git ############
+    - name: Instalación de Git Debian o Ubuntu
+      command: apt install git-all
+      when: ansible_facts['os_family'] == "Debian"
+      ignore_errors: yes
+    - name: Instalación de Git Redhat o CentOS
+      command: yum install git-all
+      when: ansible_facts['os_family'] == "Redhat"
+      ignore_errors: yes
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /tmp/git-2.17.1.tar.gz
+        dest: /tmp/
+        remote_src: yes
+    - name: Ejecutando instalación
+      shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install
+      args:
+        chdir: /tmp/git-2.17.1/
+    - name: Comprobacion de instalación
+      command: git --version
     ########## Instalación Bitbucket ############
     - name: Descargar bin y darle permiso de ejecución
       get_url:
         url: https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.1.2-x64.bin
-        dest: /tmp/
+        dest: /opt/
         mode: a+x
     - name: Ejecutar archivo de Instalación
-      shell: printf '\n\n\n\n\n\n\n\nn\n' | /tmp/./atlassian-bitbucket-6.1.3.bin
+      shell: printf '\n\n\n\n\n\n\n\nn\n' | /opt/./atlassian-bitbucket-6.1.2-x64.bin
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
@@ -71,4 +71,4 @@
         regexp: '^SELINUX=' 
         line: 'SELINUX=disabled'
     - name: firewall rhel7
-      command: systemctl stop firewalld 
+      command: systemctl stop firewalld
