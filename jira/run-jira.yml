@@ -28,11 +28,11 @@
         path: /etc/environment
         line: "JAVA_HOME=/usr/java/jdk-java"
         create: yes
-    - name: Crear carpeta para instaladores
+    ################################ (Instalacion JIRA) ##################################
+    - name: Crear carpeta para instaladores Jira
       file:
         path: /opt/jirasoftware
         state: directory
-    # - name: Tranferir archivo (tarea en desarrollo)
     - name: Crea Usuario Jira
       user:
         name: jira
