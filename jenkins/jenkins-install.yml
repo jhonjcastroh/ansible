@@ -3,35 +3,40 @@
   become: yes
   tasks:
     ########## Instalación Java ############
-    # - name: Install OpenJDK 8 JRE
-    #   yum:
-    #     name: java-1.8.0-openjdk
-    # - name: Crea y exportar Variable JAVA
-    #   shell: export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.201.b09-2.el7_6.x86_64
-    # - name: Crea y exporta Variable PATH
-    #   shell: export PATH=$JAVA_HOME/bin:$PATH
-    # - name: Respaldo Archivo Profile
-    #   command: cp /etc/profile /etc/profile-b-java.bkp
-    # - name: Agrega JAVA_HOME y PATH al archivo Profile
-    #   shell: sed -i '$a JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.201.b09-2.el7_6.x86_64' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
-    # - name: Source Archivo Profile
-    #   shell: source /etc/profile
-    # - name: Agrega JAVA_HOME al anchivo Environment
-    #   lineinfile:
-    #     path: /etc/environment
-    #     line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.201.b09-2.el7_6.x86_64"
-    #     create: yes
+    - name: Install OpenJDK 8 JRE
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
+    - name: Crea y exportar Variable JAVA
+      shell: export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.201.b09-2.el7_6.x86_64
+    - name: Crea y exporta Variable PATH
+      shell: export PATH=$JAVA_HOME/bin:$PATH
+    - name: Respaldo Archivo Profile
+      command: cp /etc/profile /etc/profile-b-java.bkp
+    - name: Agrega JAVA_HOME y PATH al archivo Profile
+      shell: sed -i '$a JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.201.b09-2.el7_6.x86_64' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
+    - name: Source Archivo Profile
+      shell: source /etc/profile
+    - name: Agrega JAVA_HOME al anchivo Environment
+      lineinfile:
+        path: /etc/environment
+        line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.201.b09-2.el7_6.x86_64"
+        create: yes
     ######### Instalación Jenkins ############
-    - name: Descargar archivo war de instalación de Jenkins
-      get_url:
-        url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
-        dest: /tmp/
-        mode: a+x
-        remote_src: yes
-    - name: Instalando Jenkins
-      command: java -jar jenkins.war
-      args:
-        chdir: /tmp
+    - name: Enable Jenkins Repository
+      shell:  curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+    - name: Add the repository
+      shell: sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    - name: Install Jenkins
+      yum:
+        name: jenkins
+        state: latest
+    - name: Start Service Jenkins
+      service:
+        name: jenkins
+        state: started
+    - name: 
+      command: sudo systemctl enable jenkins
     - name: Deshabilitar SELinux
       command: setenforce 0
     - name: firewall rhel7
