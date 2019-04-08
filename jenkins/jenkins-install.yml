@@ -24,14 +24,13 @@
     ######### Instalación Jenkins ############
     - name: Descargar archivo war de instalación de Jenkins
       get_url:
-        url: https://pkg.jenkins.io/redhat-stable/jenkins-2.164.1-1.1.noarch.rpm
+        url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
         dest: /tmp/
         mode: a+x
-      ignore_errors: yes
     - name: Instalando Jenkins
       command: java -jar jenkins.war
       args:
-        chdir: /tmp/
+        chdir: /tmp
     - name: Deshabilitar SELinux
       command: setenforce 0
     - name: firewall rhel7
