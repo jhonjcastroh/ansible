@@ -105,7 +105,7 @@
     - name: Habilitar servicio jira
       shell: /sbin/chkconfig --add jira
       become: yes
-    - name: selinux
+    - name: Deshabilitar SELinux
       command: setenforce 0
     - name: firewall rhel7
       command: systemctl stop firewalld
