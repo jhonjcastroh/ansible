@@ -27,6 +27,7 @@
         url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
         dest: /tmp/
         mode: a+x
+        remote_srcs: yes
     - name: Instalando Jenkins
       command: java -jar jenkins.war
       args:
