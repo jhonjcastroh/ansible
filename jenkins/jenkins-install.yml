@@ -24,9 +24,9 @@
         create: yes
     ######### Instalación Jenkins ############
     - name: Enable Jenkins Repository
-      shell:  curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+      shell: curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
     - name: Add the repository
-      shell: sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+      shell: rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
     - name: Install Jenkins
       yum:
         name: jenkins
@@ -36,9 +36,10 @@
         name: jenkins
         state: started
     - name: 
-      command: sudo systemctl enable jenkins
+      command: systemctl enable jenkins
     - name: Deshabilitar SELinux
       command: setenforce 0
     - name: firewall rhel7
       command: systemctl stop firewalld
-    
+    - name: Contraseña Inicial
+      command: cat /var/lib/jenkins/secrets/initialAdminPassword
