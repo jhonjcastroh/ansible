@@ -67,9 +67,10 @@
         line: "bamboo.home=/var/atlassian/application/bamboo"
         create: yes
     - name: Start Bamboo
-      shell: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
-      # become_user: bamboo
-      # become_method: su
+      at:
+        command: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
+        count: 1
+        units: minutes
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
