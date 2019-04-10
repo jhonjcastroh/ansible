@@ -53,19 +53,19 @@
     #     src: /tmp/atlassian-bamboo-6.8.1.tar.gz
     #     dest: /tmp/
     #     remote_src: yes
-    - name: Crear carpeta y permisos para instaladores
-      file:
-        path: /opt/atlassian/bamboo/
-        state: directory
-        owner: bamboo
-        group: bamboo
-        mode: u=rwx,go-rwx
-        recurse: yes
-    - name: Agrega JIRA_  HOME al archivo Profile
-      lineinfile:
-        path: /tmp/atlassian-bamboo-6.8.1/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
-        line: "bamboo.home=/var/atlassian/application/bamboo"
-        create: yes
+    # - name: Crear carpeta y permisos para instaladores
+    #   file:
+    #     path: /opt/atlassian/bamboo/
+    #     state: directory
+    #     owner: bamboo
+    #     group: bamboo
+    #     mode: u=rwx,go-rwx
+    #     recurse: yes
+    # - name: Agrega JIRA_  HOME al archivo Profile
+    #   lineinfile:
+    #     path: /tmp/atlassian-bamboo-6.8.1/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
+    #     line: "bamboo.home=/var/atlassian/application/bamboo"
+    #     create: yes
     - name: Start Bamboo
       at:
         command: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
