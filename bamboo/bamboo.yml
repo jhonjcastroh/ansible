@@ -94,7 +94,7 @@
     #     line: "JIRA_HOME=/home/jirasoftware-home"
     #     create: yes
     - name: Start Bamboo
-      shell: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
+      command: /tmp/atlassian-bamboo-6.8.1/bin/./start-bamboo.sh
       become_user: bamboo
       become_method: sudo
     - name: Desactivar SELinux
