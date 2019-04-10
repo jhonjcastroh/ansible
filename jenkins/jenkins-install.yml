@@ -42,4 +42,4 @@
     - name: firewall rhel7
       command: systemctl stop firewalld
     - name: Contraseña Inicial
-      command: cat /var/lib/jenkins/secrets/initialAdminPassword
+      shell: cat /var/lib/jenkins/secrets/initialAdminPassword
