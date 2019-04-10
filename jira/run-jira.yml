@@ -95,7 +95,6 @@
         path: /etc/environment
         line: "JIRA_HOME=/home/jirasoftware-home"
         create: yes
-    # - name: Copiar Archivo para Starting JIRA Automaticamente desde un hosts remoto
     - name: Copiar archivo para start de servicio jira
       copy:
         src: /tmp/jira
