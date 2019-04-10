@@ -48,31 +48,31 @@
     #     dest: /tmp/
     #     mode: a+x
     #   ignore_errors: yes
-    - name: Descomprimiendo archivo de instalacion
-      unarchive:
-        src: /tmp/atlassian-bamboo-6.8.1.tar.gz
-        dest: /opt/atlassian/bamboo/
-        owner: bamboo
-        group: bamboo
-        mode: u=rwx,go-rwx
-        remote_src: yes
-    - name: Crear carpeta y permisos para instaladores
-      file:
-        path: /opt/atlassian/bamboo//var/atlassian/application-data/bamboo
-        state: directory
-        owner: bamboo
-        group: bamboo
-        mode: u=rwx,go-rwx
-        recurse: yes
-    - name:  
-      shell: ln -s atlassian-bamboo-5.14.3.1 current
-    - name: Agrega bamboo.home
-      lineinfile:
-        path: /opt/atlassian/bamboo/current/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
-        line: "bamboo.home=/var/atlassian/application-data/bamboo"
-        create: yes
+    # - name: Descomprimiendo archivo de instalacion
+    #   unarchive:
+    #     src: /tmp/atlassian-bamboo-6.8.1.tar.gz
+    #     dest: /opt/atlassian/bamboo/
+    #     owner: bamboo
+    #     group: bamboo
+    #     mode: u=rwx,go-rwx
+    #     remote_src: yes
+    # - name: Crear carpeta y permisos para instaladores
+    #   file:
+    #     path: /opt/atlassian/bamboo//var/atlassian/application-data/bamboo
+    #     state: directory
+    #     owner: bamboo
+    #     group: bamboo
+    #     mode: u=rwx,go-rwx
+    #     recurse: yes
+    # - name:  
+    #   shell: ln -s atlassian-bamboo-5.14.3.1 current
+    # - name: Agrega bamboo.home
+    #   lineinfile:
+    #     path: /opt/atlassian/bamboo/current/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
+    #     line: "bamboo.home=/var/atlassian/application-data/bamboo"
+    #     create: yes
     - name: Start Bamboo
-      shell: sh /opt/atlassian/bamboo/current/bin/start-bamboo.sh
+      shell: sh /opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
       become: yes
       become_method: su
       become_user: bamboo
