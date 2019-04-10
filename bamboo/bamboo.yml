@@ -66,8 +66,19 @@
     #     path: /tmp/atlassian-bamboo-6.8.1/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
     #     line: "bamboo.home=/var/atlassian/application/bamboo"
     #     create: yes
-    - name: Start Bamboo
-      shell: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
+    # - name: Start Bamboo
+    #   shell: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
+    - name: Start Bamboo at
+      at:
+        command: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
+        count: 1
+        units: minutes
+      environment:
+        CATALINA_BASE: /tmp/atlassian-bamboo-6.8.1 
+        CATALINA_HOME: /tmp/atlassian-bamboo-6.8.1 
+        CATALINA_TMPDIR: /tmp/atlassian-bamboo-6.8.1/temp 
+        JRE_HOME: /usr/java/jdk-java
+        CLASSPATH: /tmp/atlassian-bamboo-6.8.1/bin/bootstrap.jar:/tmp/atlassian-bamboo-6.8.1/bin/tomcat-juli.jar
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
