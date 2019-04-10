@@ -40,28 +40,28 @@
     #   user:
     #     name: bamboo
     #     state: present
-    - name: Remover Password Usuario Bamboo
-      command: passwd -d bamboo
-    - name: Descargar bin y darle permiso de ejecución
-      get_url:
-        url: https://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-6.8.1.tar.gz
-        dest: /tmp/
-        mode: a+x
-      ignore_errors: yes
-    - name: Descomprimiendo archivo de instalacion
-      unarchive:
-        src: /tmp/atlassian-bamboo-6.8.1.tar.gz
-        dest: /tmp/
-        remote_src: yes
+    # - name: Remover Password Usuario Bamboo
+    #   command: passwd -d bamboo
+    # - name: Descargar bin y darle permiso de ejecución
+    #   get_url:
+    #     url: https://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-6.8.1.tar.gz
+    #     dest: /tmp/
+    #     mode: a+x
+    #   ignore_errors: yes
+    # - name: Descomprimiendo archivo de instalacion
+    #   unarchive:
+    #     src: /tmp/atlassian-bamboo-6.8.1.tar.gz
+    #     dest: /tmp/
+    #     remote_src: yes
     - name: Crear carpeta y permisos para instaladores
       file:
         path: /opt/atlassian/bamboo/
         state: directory
-        owner: bambo
-        group: bambo
+        owner: bamboo
+        group: bamboo
         mode: u=rwx,go-rwx
         recurse: yes
-    - name: Agrega JIRA_HOME al archivo Profile
+    - name: Agrega JIRA_  HOME al archivo Profile
       lineinfile:
         path: /tmp/atlassian-bamboo-6.8.1/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
         line: "bamboo.home=/var/atlassian/application/bamboo"
