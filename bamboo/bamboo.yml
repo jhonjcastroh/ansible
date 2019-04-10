@@ -71,6 +71,11 @@
         command: sh /tmp/atlassian-bamboo-6.8.1/bin/start-bamboo.sh
         count: 1
         units: minutes
+      environment:
+        JRE_HOME: /usr/java/jdk-java
+        CLASSPATH: /tmp/atlassian-bamboo-6.8.1/bin/bootstrap.jar:/tmp/atlassian-bamboo-6.8.1/bin/tomcat-juli.jar
+        PATH: /usr/java/jdk-java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
