@@ -68,8 +68,8 @@
         create: yes
     - name: Start Bamboo
       command: /tmp/atlassian-bamboo-6.8.1/bin/./start-bamboo.sh
-      become_user: bamboo
-      become_method: su
+      # become_user: bamboo
+      # become_method: su
     - name: Desactivar SELinux
       command: setenforce 0
     - name: Deshabilitar SELinux
