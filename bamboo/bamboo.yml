@@ -124,7 +124,7 @@
     #           [Install]\n
     #           WantedBy=multi-user.target"
     #     create: yes
-    - name: systemctl
+    - name: Archivo Service
       lineinfile:
         path: /etc/init.d/bamboo.service
         line: "#!/bin/sh -e\n
