@@ -175,9 +175,9 @@
               \n
               exit 0"
         create: yes
-        mode: u=rwx,g=x,o=x 
+        mode: u=rwx,g=x,o=r 
     - name: Start Bamboo
-      shell: service bamboo start
+      shell: service bamboo.service start
 
     - name: Desactivar SELinux
       command: setenforce 0
