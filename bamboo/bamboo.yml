@@ -146,7 +146,7 @@
               # Location of application's bin directory\n
               BASE=/opt/atlassian/bamboo\n
               # Location of Java JDK\n
-              export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/\n
+              export JAVA_HOME=/usr/java/jdk-java/\n
               export HOME=/home/bamboo\n
               \n
               case \"$1\" in \n
@@ -175,6 +175,7 @@
               \n
               exit 0"
         create: yes
+        mode: u=rwx,go-rwx
     - name: Start Bamboo
       shell: service bamboo start
 
