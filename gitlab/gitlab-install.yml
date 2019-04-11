@@ -23,7 +23,7 @@
       shell: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
     - name: Install GitLab
       yum:
-        name: jenkinsgitlab-ce
+        name: gitlab-ce
         state: latest
     - name: Configurando URL {{ ansible_ssh_host }}
       lineinfile:
