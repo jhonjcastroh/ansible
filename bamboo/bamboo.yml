@@ -107,74 +107,75 @@
     #     path: /etc/environment
     #     line: "BAMBOO_HOME=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/"
     #     create: yes
-    - name: systemctl
-      lineinfile:
-        path: /etc/systemd/system/bamboo.service
-        line: "[Unit]\n
-              Description=Atlassian Bamboo\n
-              After=syslog.target network.target\n
-              \n
-              [Service]\n
-              Type=forking\n
-              User=bamboo\n
-              ExecStart=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/start-bamboo.sh\n
-              ExecStop=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/stop-bamboo.sh\n
-              SuccessExitStatus=143\n
-              \n
-              [Install]\n
-              WantedBy=multi-user.target"
-        create: yes
-    - name: Enable Bamboo
-      command: systemctl enable bamboo.service
-    - name: Enable Bamboo
-      command: systemctl start bamboo
-    
-    # - name: Archivo Service
+
+    # - name: servicio con systemctl
     #   lineinfile:
-    #     path: /etc/init.d/bamboo.service
-    #     line: "#!/bin/sh -e\n
-    #           # bamboo startup script\n
-    #           #chkconfig: 2345 80 05\n
-    #           #description: bamboo\n
+    #     path: /etc/systemd/system/bamboo.service
+    #     line: "[Unit]\n
+    #           Description=Atlassian Bamboo\n
+    #           After=syslog.target network.target\n
     #           \n
-    #           # Define some variables\n
-    #           # Name of app ( bamboo, Confluence, etc )\n
-    #           APP=bamboo\n
-    #           # Name of the user to run as\n
-    #           USER=bamboo\n
-    #           # Location of application's bin directory\n
-    #           BASE=/opt/atlassian/bamboo\n
-    #           # Location of Java JDK\n
-    #           export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/\n
-    #           export HOME=/home/bamboo\n
+    #           [Service]\n
+    #           Type=forking\n
+    #           User=bamboo\n
+    #           ExecStart=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/start-bamboo.sh\n
+    #           ExecStop=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/stop-bamboo.sh\n
+    #           SuccessExitStatus=143\n
     #           \n
-    #           case "$1" in\n
-    #           # Start command\n
-    #           start)\n
-    #             echo "Starting $APP"\n
-    #             /bin/su -m $USER -c "cd $BASE/logs && $BASE/bin/startup.sh &> /dev/null"\n
-    #             ;;\n
-    #           # Stop command\n
-    #           stop)\n
-    #             echo "Stopping $APP"\n
-    #             /bin/su -m $USER -c "$BASE/bin/shutdown.sh &> /dev/null"\n
-    #             echo "$APP stopped successfully"\n
-    #             ;;\n
-    #             # Restart command\n
-    #             restart)\n
-    #                 $0 stop\n
-    #                 sleep 5\n
-    #                 $0 start\n
-    #                 ;;\n
-    #           *)\n
-    #             echo "Usage: /etc/init.d/$APP {start|restart|stop}"\n
-    #             exit 1\n
-    #             ;;\n
-    #           esac\n
-    #           \n
-    #           exit 0"
+    #           [Install]\n
+    #           WantedBy=multi-user.target"
+    #     create: yes
+    # - name: Enable Bamboo
+    #   command: systemctl enable bamboo.service
     # - name: Start Bamboo
-    #   shell: service bamboo start
+    #   command: systemctl start bamboo
+    
+    - name: Archivo Service
+      lineinfile:
+        path: /etc/init.d/bamboo.service
+        line: "#!/bin/sh -e\n
+              # bamboo startup script\n
+              #chkconfig: 2345 80 05\n
+              #description: bamboo\n
+              \n
+              # Define some variables\n
+              # Name of app ( bamboo, Confluence, etc )\n
+              APP=bamboo\n
+              # Name of the user to run as\n
+              USER=bamboo\n
+              # Location of application's bin directory\n
+              BASE=/opt/atlassian/bamboo\n
+              # Location of Java JDK\n
+              export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/\n
+              export HOME=/home/bamboo\n
+              \n
+              case \"$1\" in \n
+              # Start command\n
+              start)\n
+                echo \"Starting $APP\"\n
+                /bin/su -m $USER -c \"cd $BASE/logs && $BASE/bin/startup.sh &> /dev/null\"\n
+                ;;\n
+              # Stop command\n
+              stop)\n
+                echo \"Stopping $APP\"\n
+                /bin/su -m $USER -c \"$BASE/bin/shutdown.sh &> /dev/null\"\n
+                echo \"$APP stopped successfully\"\n
+                ;;\n
+                # Restart command\n
+                restart)\n
+                    $0 stop\n
+                    sleep 5\n
+                    $0 start\n
+                    ;;\n
+              *)\n
+                echo \"Usage: /etc/init.d/$APP {start|restart|stop}\"\n
+                exit 1\n
+                ;;\n
+              esac\n
+              \n
+              exit 0"
+    - name: Start Bamboo
+      shell: service bamboo start
 
     - name: Desactivar SELinux
       command: setenforce 0
