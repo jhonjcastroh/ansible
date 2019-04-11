@@ -14,7 +14,7 @@
     - name: Start postfix
       service:
         name: postfix
-        stated: started
+        state: started
     - name: Enabled postfix
       service:
         name: postfix
