@@ -2,40 +2,40 @@
   hosts: all
   become: yes
   tasks:
-    ########## Instalación Java ############
-    - name: Descargar archivo de instalación JDK
-      get_url:
-        url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
-        dest: /tmp/
-        mode: a+x
-      ignore_errors: yes
-    - name: Crea Carpeta JAVA
-      file: 
-        path: /usr/java
-        state: directory
-    - name: Descomprime Archivo
-      unarchive:
-        src: /tmp/jdk-8u201-linux-x64.tar.gz
-        dest: /usr/java
-        remote_src: yes
-    - name: Renombra carpeta java
-      command: mv /usr/java/jdk1.8.0_201 /usr/java/jdk-java
-    - name: Crea y exportar Variable JAVA
-      shell: export JAVA_HOME=/usr/java/jdk-java
-    - name: Crea y exporta Variable PATH
-      shell: export PATH=$JAVA_HOME/bin:$PATH
-    - name: Respaldo Archivo Profile
-      command: cp /etc/profile /etc/profile-b-java.bkp
-    - name: Agrega JAVA_HOME y PATH al archivo Profile
-      shell: sed -i '$a JAVA_HOME=/usr/java/jdk-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
-    - name: Source Archivo Profile
-      shell: source /etc/profile
-    - name: Agrega JAVA_HOME al anchivo Environment
-      lineinfile:
-        path: /etc/environment
-        line: "JAVA_HOME=/usr/java/jdk-java"
-        create: yes
-    # ########## Instalación Bitbucket ############
+    ######### Instalación Java ############
+    # - name: Descargar archivo de instalación JDK
+    #   get_url:
+    #     url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
+    #     dest: /tmp/
+    #     mode: a+x
+    #   ignore_errors: yes
+    # - name: Crea Carpeta JAVA
+    #   file: 
+    #     path: /usr/java
+    #     state: directory
+    # - name: Descomprime Archivo
+    #   unarchive:
+    #     src: /tmp/jdk-8u201-linux-x64.tar.gz
+    #     dest: /usr/java
+    #     remote_src: yes
+    # - name: Renombra carpeta java
+    #   command: mv /usr/java/jdk1.8.0_201 /usr/java/jdk-java
+    # - name: Crea y exportar Variable JAVA
+    #   shell: export JAVA_HOME=/usr/java/jdk-java
+    # - name: Crea y exporta Variable PATH
+    #   shell: export PATH=$JAVA_HOME/bin:$PATH
+    # - name: Respaldo Archivo Profile
+    #   command: cp /etc/profile /etc/profile-b-java.bkp
+    # - name: Agrega JAVA_HOME y PATH al archivo Profile
+    #   shell: sed -i '$a JAVA_HOME=/usr/java/jdk-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
+    # - name: Source Archivo Profile
+    #   shell: source /etc/profile
+    # - name: Agrega JAVA_HOME al anchivo Environment
+    #   lineinfile:
+    #     path: /etc/environment
+    #     line: "JAVA_HOME=/usr/java/jdk-java"
+    #     create: yes
+    ########## Instalación Bitbucket ############
     - name: Crea Usuario Bamboo
       user:
         name: bamboo
@@ -51,7 +51,10 @@
     - name: Descomprimiendo archivo de instalacion
       unarchive:
         src: /tmp/atlassian-bamboo-6.8.1.tar.gz
-        dest: /tmp/
+        dest: /opt/atlassian/bamboo/
+        owner: bamboo
+        group: bamboo
+        mode: u=rwx,go-rwx
         remote_src: yes
     - name: Crear carpeta y permisos para instaladores
       file:
@@ -61,14 +64,16 @@
         group: bamboo
         mode: u=rwx,go-rwx
         recurse: yes
-    - name: Agrega bamboo.home
+    - name:  comando ln
+      shell: ln -s atlassian-bamboo-5.14.3.1 current
+    - name: Agrega bamboo.home a bamboo-init.properties
       lineinfile:
         path: /opt/atlassian/bamboo/atlassian-bamboo-6.8.1/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
         line: "bamboo.home=/home/bamboo"
         create: yes
 
     - name: Crea y exporta Variable BAMBOO_HOME
-      shell: export BAMBOO_HOME=/home/bamboo
+      shell: export BAMBOO_HOME=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/
     - name: Respaldo Archivo Profile
       copy:
         src: /etc/profile
@@ -78,7 +83,7 @@
     - name: Agrega BAMBOO_HOME al archivo Profile
       lineinfile:
         path: /etc/profile
-        line: "BAMBOO_HOME=/home/bamboo"
+        line: "BAMBOO_HOME=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/"
         create: yes
     - name: Agrega export BAMBOO_HOME al archivo Profile
       lineinfile:
@@ -100,8 +105,69 @@
     - name: Agrega BAMBOO_HOME al anchivo Environment
       lineinfile:
         path: /etc/environment
-        line: "BAMBOO_HOME=/home/bamboo"
+        line: "BAMBOO_HOME=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/"
         create: yes
+    # - name: systemctl
+    #   lineinfile:
+    #     path: /etc/systemd/system/bamboo
+    #     line: "[Unit]\n
+    #           Description=Atlassian Bamboo\n
+    #           After=syslog.target network.target\n
+    #           \n
+    #           [Service]\n
+    #           Type=forking\n
+    #           User=bamboo\n
+    #           ExecStart=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/start-bamboo.sh\n
+    #           ExecStop=/opt/atlassian/bamboo/atlassian-bamboo-6.8.1/bin/stop-bamboo.sh\n
+    #           SuccessExitStatus=143\n
+    #           \n
+    #           [Install]\n
+    #           WantedBy=multi-user.target"
+    #     create: yes
+    - name: systemctl
+      lineinfile:
+        path: /etc/init.d/bamboo.service
+        line: "#!/bin/sh -e\n
+              # bamboo startup script\n
+              #chkconfig: 2345 80 05\n
+              #description: bamboo\n
+              \n
+              # Define some variables\n
+              # Name of app ( bamboo, Confluence, etc )\n
+              APP=bamboo\n
+              # Name of the user to run as\n
+              USER=bamboo\n
+              # Location of application's bin directory\n
+              BASE=/opt/atlassian/bamboo\n
+              # Location of Java JDK\n
+              export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/\n
+              export HOME=/home/bamboo\n
+              \n
+              case "$1" in\n
+              # Start command\n
+              start)\n
+                echo "Starting $APP"\n
+                /bin/su -m $USER -c "cd $BASE/logs && $BASE/bin/startup.sh &> /dev/null"\n
+                ;;\n
+              # Stop command\n
+              stop)\n
+                echo "Stopping $APP"\n
+                /bin/su -m $USER -c "$BASE/bin/shutdown.sh &> /dev/null"\n
+                echo "$APP stopped successfully"\n
+                ;;\n
+                # Restart command\n
+                restart)\n
+                    $0 stop\n
+                    sleep 5\n
+                    $0 start\n
+                    ;;\n
+              *)\n
+                echo "Usage: /etc/init.d/$APP {start|restart|stop}"\n
+                exit 1\n
+                ;;\n
+              esac\n
+              \n
+              exit 0"
     - name: Start Bamboo
       shell: service bamboo start
 
