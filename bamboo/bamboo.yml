@@ -175,7 +175,7 @@
               \n
               exit 0"
         create: yes
-        mode: u=rwx,g=rx,o=r 
+        mode: u=rwx,g=x,o=x 
     - name: Start Bamboo
       shell: service bamboo start
 
