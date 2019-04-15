@@ -2,15 +2,15 @@
   hosts: all
   become: yes
   tasks:
-    - name: Instalacion de packetes requeridos
-      yum:
-        name: "{{ packages }}"
-      vars:
-        packages:
-        #- yum-utils
-        - yum-config-manager
-        - makedevice-mapper-persistent-data
-        - lvm2
+    # - name: Instalacion de packetes requeridos
+    #   yum:
+    #     name: "{{ packages }}"
+    #   vars:
+    #     packages:
+    #     - yum-utils
+    #     - yum-config-manager
+    #     - makedevice-mapper-persistent-data
+    #     - lvm2
     - name: Habilitando Repo
       shell: "yum-config-manager \
             --add-repo \
