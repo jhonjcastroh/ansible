@@ -3,7 +3,7 @@
   become: yes
   roles:
     - java-install
-    - /etc/ansible/roles/app/git-install
+    - /app/git-install
   tasks:
     ########## Instalación Java ############
     # - name: Descargar archivo de instalación JDK
