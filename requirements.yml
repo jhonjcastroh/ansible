@@ -1,5 +1,5 @@
 # from galaxy
-- src: /etc/ansible/roles/java-install
+- src: /etc/ansible/roles/
 
 # # from GitHub
 # - src: https://github.com/bennojoy/nginx
