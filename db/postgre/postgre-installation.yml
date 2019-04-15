@@ -8,3 +8,6 @@
         packages:
         - postgresql-server 
         - postgresql-contrib
+    - command: postgresql-setup initdb
+    - command: systemctl start postgresql
+    - command: systemctl enable postgresql
