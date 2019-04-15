@@ -1,0 +1,23 @@
+- name: Instalacion de packetes requeridos
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - yum-utils
+    - yum-config-manager
+    - makedevice-mapper-persistent-data
+    - lvm2
+- name: Habilitando Repo
+  shell: "yum-config-manager \
+        --add-repo \
+        https://download.docker.com/linux/centos/docker-ce.repo"
+- name: Instalación de Docker
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+- name: Start Docker
+  command: systemctl start docker

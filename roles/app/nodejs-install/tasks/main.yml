@@ -1,0 +1,13 @@
+- name: Instalacion de packetes requeridos
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - gcc-c++ 
+    - make
+- name: 
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+- name: Instalación de NodeJS
+  yum:
+    name: nodejs
+    state: latest
