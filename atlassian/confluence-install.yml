@@ -1,0 +1,15 @@
+- name: Instalacion de Confluence
+  hosts: all
+  become: yes
+  roles:
+    - app/java-install
+    - firewall-turnoff
+  tasks:
+    ########## Instalación Confluence ############
+    - name: Descargar bin y darle permiso de ejecución
+      get_url:
+        url: https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-6.14.3-x64.bin
+        dest: /opt/
+        mode: a+x
+    - name: Ejecutar archivo de Instalación
+      shell: printf '\n\n\n\n\n\n\n' | /opt/./atlassian-confluence-6.14.3-x64.bin

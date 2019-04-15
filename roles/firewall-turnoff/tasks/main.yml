@@ -1,0 +1,9 @@
+- name: selinux
+  command: setenforce 0
+- name: Deshabilitar SELinux
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX=' 
+    line: 'SELINUX=disabled'
+- name: firewall rhel7
+  command: systemctl stop firewalld

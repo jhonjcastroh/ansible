@@ -1,0 +1,16 @@
+- name: Instalacion de Bitbucket
+  hosts: all
+  become: yes
+  roles:
+    - app/java-install
+    - app/git-install
+    - firewall-turnoff
+  tasks:
+    ########## Instalación Bitbucket ############
+    - name: Descargar bin y darle permiso de ejecución
+      get_url:
+        url: https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.1.2-x64.bin
+        dest: /opt/
+        mode: a+x
+    - name: Ejecutar archivo de Instalación
+      shell: printf '\n\n\n\n\n\n\n\nn\n' | /opt/./atlassian-bitbucket-6.1.2-x64.bin
