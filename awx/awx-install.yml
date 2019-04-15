@@ -29,7 +29,6 @@
         clone: yes
         repo: https://github.com/ansible/awx.git
         dest: /home/
-        create: yes
     - name: Modificar dir PostgreSQL
       lineinfile:
         path: /root/awx/installer/inventory
