@@ -3,7 +3,7 @@
     name: epel-release
 - yum:
     name: python-setuptools    
-- name: instalar Python
+- name: Descargar get-pip.py
   get_url:
     url: https://bootstrap.pypa.io/get-pip.py
     dest: /root
