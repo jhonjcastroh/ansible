@@ -1,0 +1,51 @@
+- name: Instalacion de GitLab
+  hosts: all
+  become: yes
+  tasks:
+    - name: Instalacion de packetes requeridos
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - gcc-c++ 
+        - make
+    - name: 
+      shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+    - name: Instalacion de packetes requeridos
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - python
+        - ansible
+        - docker
+        - git
+        - nodejs
+        - epel-release
+        - python-pip
+    - name: Descargar Docker-Compose
+      shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    - name: Permiso de Ejecución a Docker Compouse
+      command: chmod +x /usr/local/bin/docker-compose
+    - name: Descargar Proyecto AWX
+      git:
+        clone: yes
+        repo: https://github.com/ansible/awx.git
+        dest: /
+    - name: Modificar dir PostgreSQL
+      lineinfile:
+        path: /root/awx/installer/inventory
+        regexp: '^postgres_data_dir=/tmp/pgdocker' 
+        line: 'postgres_data_dir=/var/lib/awx/pgdocker'
+    - name: Modificar dir Docker Compose
+      lineinfile:
+        path: /root/awx/installer/inventory
+        regexp: '^docker_compose_dir=/tmp/awxcompose' 
+        line: docker_compose_dir=/var/lib/awx'
+    - name: Instalcion de docker-py
+      pip:
+        name: 
+        - docker-py
+        - docker-compose
+    - name: Ejecutando Playbook de Instalación en Docker de AWX
+      shell: ansible-playbook -i inventory install.yml
