@@ -37,7 +37,7 @@
       shell: sed -i '$a JAVA_HOME=/usr/java/jdk-java' /etc/profile; sed -i '$a export JAVA_HOME' /etc/profile; sed -i '$a PATH=$JAVA_HOME/bin:$PATH' /etc/profile; sed -i '$a export PATH' /etc/profile
     - name: Source Archivo Profile
       shell: source /etc/profile
-    - name: Agrega JIRA_HOME al anchivo Environment
+    - name: Agrega JAVA_HOME al anchivo Environment
       lineinfile:
         path: /etc/environment
         line: "JAVA_HOME=/usr/java/jdk-java"

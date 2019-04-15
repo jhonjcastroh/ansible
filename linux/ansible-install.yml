@@ -1,0 +1,8 @@
+- name: Instalacion de Ansible
+  hosts: all
+  become: yes
+  tasks:
+    - name: Inatalacion de Ansible
+      yum:
+        name: ansible
+        state: latest
