@@ -9,7 +9,7 @@
     - app/nodejs-install
     - app/make-install
   tasks:
-    - name: 
+    - name: RPM
       shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
     - name: Instalacion de packetes requeridos
       yum:
@@ -28,7 +28,8 @@
       git:
         clone: yes
         repo: https://github.com/ansible/awx.git
-        dest: /
+        dest: /home/
+        create: yes
     - name: Modificar dir PostgreSQL
       lineinfile:
         path: /root/awx/installer/inventory
