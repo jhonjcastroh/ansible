@@ -1,0 +1,13 @@
+- name: Instalacion de MySQL
+  hosts: all
+  tasks:
+    - name: Crea Usuario mysql
+      user:
+        name: mysql
+        group: mysql
+        state: present
+    - name: Descomprimiendo archivo de instalacion
+      unarchive:
+        src: /tmp/mysql-8.0.15-linux-glibc2.12-x86_64.tar.xz
+        dest: /usr/local/
+        remote_src: yes

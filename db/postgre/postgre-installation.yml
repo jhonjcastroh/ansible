@@ -1,0 +1,10 @@
+- name: Instalacion de Postgre
+  hosts: all
+  tasks:
+    - name: Instalacion de Postgre
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - postgresql-server 
+        - postgresql-contrib
