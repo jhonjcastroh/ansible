@@ -37,4 +37,4 @@
         - docker-py
         - docker-compose
     - name: Ejecutando Playbook de Instalación en Docker de AWX
-      shell: ansible-playbook -i inventory install.yml
+      shell: ansible-playbook -i /root/awx/installer/inventory /root/awx/installer/install.yml
