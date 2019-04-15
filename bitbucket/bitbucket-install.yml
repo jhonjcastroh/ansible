@@ -2,8 +2,8 @@
   hosts: all
   become: yes
   roles:
-    - { role: java-install } 
-    - git-install
+    - /roles/app/java-install
+    - /roles/app/git-install
   tasks:
     ########## Instalación Java ############
     # - name: Descargar archivo de instalación JDK
