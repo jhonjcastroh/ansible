@@ -17,7 +17,7 @@
       vars:
         packages:
         - epel-release
-        - makecache
+        #- makecache
         - python-pip
       ignore_errors: yes
     - name: Descargar Docker-Compose
