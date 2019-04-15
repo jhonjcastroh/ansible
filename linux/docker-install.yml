@@ -7,7 +7,7 @@
         name: "{{ packages }}"
       vars:
         packages:
-        - yum-utils
+        #- yum-utils
         - yum-config-manager
         - makedevice-mapper-persistent-data
         - lvm2
