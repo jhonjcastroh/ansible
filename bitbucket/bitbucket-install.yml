@@ -41,6 +41,8 @@
     #     line: "JAVA_HOME=/usr/java/jdk-java"
     #     create: yes
     ######### Instalación Git ############
+    - include_role:
+        name: /app/git-install
     # - name: Instalación de Git Debian o Ubuntu
     #   command: apt install git-all
     #   when: ansible_facts['os_family'] == "Debian"
