@@ -8,7 +8,7 @@
     # - app/git-install
     # - app/nodejs-install
     # - app/make-install
-    - app/python-pip-install
+    # - app/python-pip-install
   tasks:
     # - name: RPM
     #   shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
@@ -37,4 +37,4 @@
         - docker-py
         - docker-compose
     - name: Ejecutando Playbook de Instalación en Docker de AWX
-      shell: ansible-playbook -i inventory /root/awx/installer/install.yml
+      shell: ansible-playbook -i inventory install.yml
