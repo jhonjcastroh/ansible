@@ -1,12 +1,10 @@
 - name: Instalacion de Bitbucket
   hosts: all
   become: yes
-  # roles:
-  #   - java-install
-  #   - /app/git-install
+  roles:
+    - ..app/java-install
+    - /app/git-install
   tasks:
-    - include_role:
-        name: /app/java-install
     ########## Instalación Java ############
     # - name: Descargar archivo de instalación JDK
     #   get_url:
@@ -41,8 +39,6 @@
     #     line: "JAVA_HOME=/usr/java/jdk-java"
     #     create: yes
     ######### Instalación Git ############
-    - include_role:
-        name: /app/git-install
     # - name: Instalación de Git Debian o Ubuntu
     #   command: apt install git-all
     #   when: ansible_facts['os_family'] == "Debian"
