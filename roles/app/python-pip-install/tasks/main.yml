@@ -6,5 +6,6 @@
 - name: instalar Python
   get_url:
     url: https://bootstrap.pypa.io/get-pip.py
+    dest: /root
 - name: Instalando pip
   command: python get-pip.py
