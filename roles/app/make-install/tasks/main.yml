@@ -1,0 +1,7 @@
+- name: Instalacion de packetes requeridos
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - gcc-c++ 
+    - make

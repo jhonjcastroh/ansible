@@ -1,14 +1,14 @@
-- name: Instalacion de GitLab
+- name: Instalacion de AWX
   hosts: all
   become: yes
+  roles:
+    - app/python-install
+    - app/ansible-install
+    - app/docker-install
+    - app/git-install
+    - app/nodejs-install
+    - app/make-install
   tasks:
-    - name: Instalacion de packetes requeridos
-      yum:
-        name: "{{ packages }}"
-      vars:
-        packages:
-        - gcc-c++ 
-        - make
     - name: 
       shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
     - name: Instalacion de packetes requeridos
@@ -16,11 +16,6 @@
         name: "{{ packages }}"
       vars:
         packages:
-        - python
-        - ansible
-        - docker
-        - git
-        - nodejs
         - epel-release
         - python-pip
     - name: Descargar Docker-Compose

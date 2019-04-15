@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   roles:
-    - java-install
+    - app/java-install
     - firewall-turnoff
   tasks:
     ######### Instalación Bamboo ############

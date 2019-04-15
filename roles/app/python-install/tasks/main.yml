@@ -1,0 +1,4 @@
+- name: instalar Python
+  yum:
+    name: python
+    state: latest
