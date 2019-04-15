@@ -1,11 +1,18 @@
+- name:
+  yum:
+    name: git
+    state: latest
+  ignore_errors: yes
 - name: Descomprimiendo archivo de instalacion
   unarchive:
     src: /tmp/git-2.17.1.tar.gz
     dest: /tmp/
     remote_src: yes
+  ignore_errors: yes
 - name: Ejecutando instalación
   shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install
   args:
     chdir: /tmp/git-2.17.1/
+  ignore_errors: yes
 - name: Comprobacion de instalación
   command: git --version
