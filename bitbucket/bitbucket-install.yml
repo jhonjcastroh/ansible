@@ -6,7 +6,7 @@
   #   - /app/git-install
   tasks:
     - include_role:
-        name: java-install
+        name: /app/java-install
     ########## Instalación Java ############
     # - name: Descargar archivo de instalación JDK
     #   get_url:
