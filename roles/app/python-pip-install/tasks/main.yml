@@ -1,0 +1,7 @@
+- name: Instalacion de epel-release
+  yum:
+    name: epel-release
+- name: instalar Python
+  shell: curl “https://bootstrap.pypa.io/get-pip.py” -o “get-pip.py”
+- name: Instalando pip
+  command: python get-pip.py
