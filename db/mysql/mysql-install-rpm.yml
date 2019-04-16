@@ -20,4 +20,4 @@
       command: grep 'temporary password' /var/log/mysqld.log
       register: pwmysql
     - name: Instalando y configurando MySQL 
-      command: "printf '{{pwmysql.stdout}}\nTsoft*2019\nTsoft*2019\ny\ny\ny\ny\ny\ny\n' | mysql_secure_installation"
+      command: "printf '{{pwmysql.stdout}}\nTsoft*2019\nTsoft*2019\nn\nn\nn\nn\nn\n' | mysql_secure_installation"
