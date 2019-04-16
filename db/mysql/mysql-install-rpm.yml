@@ -1,13 +1,13 @@
 - name: Instalacion de MySQL con RPM
   hosts: all
   tasks:
-    # - name: descargar RPM
-    #   get_url:
-    #     url: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
-    #     dest: /root
-    #     mode: a+x
-    # - name: Ejecucion de Archivo RPM
-    #   shell: rpm -ivh /root/mysql80-community-release-el7-2.noarch.rpm
+    - name: descargar RPM
+      get_url:
+        url: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
+        dest: /root
+        mode: a+x
+    - name: Ejecucion de Archivo RPM
+      shell: rpm -ivh /root/mysql80-community-release-el7-2.noarch.rpm
     - name: Instalar MySQL Server
       yum:
         name: mysql-server
@@ -18,4 +18,4 @@
       command: grep 'temporary password' /var/log/mysqld.log
       register: pwmysql
     - name:
-      command: printf '{{pwmysql.stdout}}\nTsoft*2019\ny\ny\ny\ny\ny\ny\n' | mysql_secure_installation
+      command: printf '{{pwmysql.stdout}}\nTsoft*2019\nTsoft*2019\ny\ny\ny\ny\ny\ny\n' | mysql_secure_installation
