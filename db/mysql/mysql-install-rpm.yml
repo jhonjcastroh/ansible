@@ -1,5 +1,6 @@
 - name: Instalacion de MySQL con RPM
   hosts: all
+  become: yes
   tasks:
 #     - name: descargar RPM
 #       get_url:
