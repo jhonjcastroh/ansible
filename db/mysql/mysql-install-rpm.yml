@@ -1,6 +1,6 @@
-# - name: Instalacion de MySQL con RPM
-#   hosts: all
-#   tasks:
+- name: Instalacion de MySQL con RPM
+  hosts: all
+  tasks:
 #     - name: descargar RPM
 #       get_url:
 #         url: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
