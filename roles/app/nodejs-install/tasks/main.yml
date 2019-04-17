@@ -11,4 +11,4 @@
 - name: Instalación de NodeJS
   yum:
     name: nodejs
-    state: latest
+    state: present
