@@ -2,11 +2,12 @@
   hosts: all
   become: yes
   tasks:
-    - name: Actualizar los paquetes a la última actualización
-      package:
-        name: "*"
-        state: latest  
     #### Ubuntu ####
+    - name: Actualizar los paquetes a la última actualización
+      apt:
+        name: "*"
+        state: latest
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
     - name: Instalacion de packetes requeridos
       apt:
         name: "{{ packages }}"
