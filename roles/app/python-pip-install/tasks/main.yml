@@ -1,11 +1,14 @@
 - name: Instalacion de epel-release
   yum:
     name: epel-release
+  ignore_errors: yes
 - yum:
     name: python-setuptools    
+  ignore_errors: yes
 - name: Descargar get-pip.py
   get_url:
     url: https://bootstrap.pypa.io/get-pip.py
     dest: /root
 - name: Instalando pip
   command: python get-pip.py
+  ignore_errors: yes
