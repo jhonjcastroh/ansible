@@ -2,3 +2,4 @@
   yum:
     name: ansible
     state: latest
+  ignore_errors: yes
