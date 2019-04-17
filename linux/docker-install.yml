@@ -1,7 +1,6 @@
 - name: Instalacion de Docker
   hosts: all
   become: yes
-  become_user: ubuntu
   tasks:
     - name: Actualizar los paquetes a la última actualización
       package:
