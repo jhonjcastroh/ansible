@@ -10,5 +10,5 @@
     url: https://bootstrap.pypa.io/get-pip.py
     dest: /root
 - name: Instalando pip
-  command: python get-pip.py
+  command: python /root/get-pip.py
   ignore_errors: yes
