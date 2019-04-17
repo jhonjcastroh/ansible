@@ -1,5 +1,5 @@
 - name: Instalacion de packetes requeridos
-  yum:
+  package:
     name: "{{ packages }}"
   vars:
     packages:
@@ -9,7 +9,7 @@
 - shell: "curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -"
   ignore_errors: yes
 - name: Instalación de NodeJS
-  yum:
+  package:
     name: nodejs
     state: latest
   ignore_errors: yes
