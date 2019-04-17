@@ -5,3 +5,4 @@
     packages:
     - gcc-c++ 
     - make
+  ignore_errors: yes
