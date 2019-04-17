@@ -1,5 +1,5 @@
 - name: Inatalacion de Ansible
   yum:
     name: ansible
-    state: latest
+    state: present
   ignore_errors: yes

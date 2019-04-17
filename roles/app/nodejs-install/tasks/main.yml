@@ -5,6 +5,7 @@
     packages:
     - gcc-c++ 
     - make
+  ignore_errors: yes
 - name: 
   shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
 - name: Instalación de NodeJS
