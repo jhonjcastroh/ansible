@@ -2,25 +2,25 @@
   hosts: all
   become: yes
   roles:
-    # - app/python-install
-    # - app/ansible-install
-    # - app/docker-install
-    # - app/git-install
-    # - app/nodejs-install
-    # - app/make-install
-    # - app/python-pip-install
+    - app/python-install
+    - app/ansible-install
+    - app/docker-install
+    - app/git-install
+    - app/nodejs-install
+    - app/make-install
+    - app/python-pip-install
   tasks:
-    # - name: RPM
-    #   shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
-    # - name: Descargar Docker-Compose
-    #   shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    # - name: Permiso de Ejecución a Docker Compouse
-    #   command: chmod +x /usr/local/bin/docker-compose
-    # - name: Descargar Proyecto AWX
-    #   git:
-    #     clone: yes
-    #     repo: https://github.com/ansible/awx.git
-    #     dest: /root/awx
+    - name: RPM
+      shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+    - name: Descargar Docker-Compose
+      shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    - name: Permiso de Ejecución a Docker Compouse
+      command: chmod +x /usr/local/bin/docker-compose
+    - name: Descargar Proyecto AWX
+      git:
+        clone: yes
+        repo: https://github.com/ansible/awx.git
+        dest: /root/awx
     - name: Modificar dir PostgreSQL
       lineinfile:
         path: /root/awx/installer/inventory
@@ -34,7 +34,7 @@
     - name: Instalcion de docker-py
       pip:
         name: 
-        - docker-py
         - docker-compose
+        - docker-py
     - name: Ejecutando Playbook de Instalación en Docker de AWX
       shell: ansible-playbook -i /root/awx/installer/inventory /root/awx/installer/install.yml
