@@ -3,10 +3,11 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - gcc-c++ 
     - make
+    - gcc-c++ 
   ignore_errors: yes
 - shell: "curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -"
+  ignore_errors: yes
 - name: Instalación de NodeJS
   yum:
     name: nodejs
