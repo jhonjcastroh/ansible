@@ -1,5 +1,6 @@
 - name: Instalacion de Docker
   hosts: all
+  become: yes
   tasks:
     - name: Actualizar los paquetes a la última actualización
       package:
