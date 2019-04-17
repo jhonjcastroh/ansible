@@ -11,4 +11,6 @@
 - name: Instalación de NodeJS
   yum:
     name: nodejs
-    state: present
+    state: latest
+  ignore_errors: yes
+  
