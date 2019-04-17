@@ -1,8 +1,10 @@
-- name: Actualizar los paquetes a la última actualización
-  package:
-    name: "*"
-    state: latest  
 #### Ubuntu ####
+- name: Actualizar los paquetes a la última actualización
+  apt:
+    name: "*"
+    state: latest
+    force_apt_get: True
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Instalacion de packetes requeridos
   apt:
     name: "{{ packages }}"
@@ -16,7 +18,9 @@
     - software-properties-common
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Agrega GPG Key
-  apt_key: https://download.docker.com/linux/ubuntu/gpg
+  apt_key: 
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Agregar repositorio 
   apt_repository:
