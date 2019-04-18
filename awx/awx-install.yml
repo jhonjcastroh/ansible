@@ -14,10 +14,10 @@
     ########## Centos - Redhat #############
     - name: Descargar Proyecto AWX
       git:
-        clone: yes
         repo: https://github.com/ansible/awx.git
         dest: /root/awx
-        update: yes
+        clone: yes
+        verify_commit: yes
     - name: Modificar dir PostgreSQL
       lineinfile:
         path: /root/awx/installer/inventory
