@@ -5,7 +5,10 @@
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 ### Ubuntu ###
 - apt:
-  name: software-properties-common
+    name: software-properties-common
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- apt_repository:
+    repo: universe
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - apt_repository:
     repo: ppa:ansible/ansible
