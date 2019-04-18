@@ -1,14 +1,23 @@
-- name: Instalacion de epel-release
+- name: Instalacion de paquetes necesarios
   yum:
-    name: epel-release
+    name: 
+    - epel-release
+    - python-setuptools
+    - python3-pip
   ignore_errors: yes
-- yum:
-    name: python-setuptools    
-  ignore_errors: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+- apt:
+    name: 
+    - epel-release
+    - python-setuptools
+    - python3-pip
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Descargar get-pip.py
   get_url:
     url: https://bootstrap.pypa.io/get-pip.py
     dest: /root
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: Instalando pip
   command: python /root/get-pip.py
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   ignore_errors: yes
