@@ -8,6 +8,6 @@
     repo: ppa:ansible/ansible
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - apt:
-    name: ansible
+    name: latest
     state: present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
