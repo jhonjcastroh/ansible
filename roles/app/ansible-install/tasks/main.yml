@@ -8,7 +8,11 @@
     name: software-properties-common
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - apt_repository:
-    repo: universe
+    repo: "{{ item }}"
+  loop:
+    - "deb http://archive.ubuntu.com/ubuntu/ bionic universe"
+    - "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe"
+    - "deb http://security.ubuntu.com/ubuntu/ bionic-security universe"
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - apt_repository:
     repo: ppa:ansible/ansible
