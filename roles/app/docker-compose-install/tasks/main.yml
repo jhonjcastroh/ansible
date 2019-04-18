@@ -1,0 +1,16 @@
+#### Ubuntu ####
+- name: Actualizar los paquetes a la última actualización
+  apt:
+    name: "*"
+    state: latest
+    force_apt_get: True
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: Descargar Docker-Compose
+  shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+- name: Permiso de Ejecución a Docker Compouse
+  command: chmod +x /usr/local/bin/docker-compose
+- name: Instalcion de Compose con pip
+  pip:
+    name: 
+    - docker-compose
+  ignore_errors: yes

@@ -9,13 +9,9 @@
     - app/nodejs-install
     - app/make-install
     - app/python-pip-install
+    - app/docker-compose-install
   tasks:
-    - name: RPM
-      shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
-    - name: Descargar Docker-Compose
-      shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    - name: Permiso de Ejecución a Docker Compouse
-      command: chmod +x /usr/local/bin/docker-compose
+    ########## Centos - Redhat #############
     - name: Descargar Proyecto AWX
       git:
         clone: yes
