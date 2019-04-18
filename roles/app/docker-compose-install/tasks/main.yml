@@ -13,4 +13,5 @@
   pip:
     name: 
     - docker-compose
+    executable: pip-3.3
   ignore_errors: yes
