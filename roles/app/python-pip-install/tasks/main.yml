@@ -1,5 +1,4 @@
-- name: Instalacion de paquetes necesarios
-  yum:
+- yum:
     name: 
     - epel-release
     - python-setuptools
@@ -11,6 +10,7 @@
     - epel-release
     - python-setuptools
     - python3-pip
+  ignore_errors: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Descargar get-pip.py
   get_url:
