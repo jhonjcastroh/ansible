@@ -1,5 +1,9 @@
-- name: Inatalacion de Ansible
+- name: Instalacion de Ansible
   yum:
     name: ansible
-    state: present
-  ignore_errors: yes
+    state: latest
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+- apt:
+    name: ansible
+    state: latest
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
