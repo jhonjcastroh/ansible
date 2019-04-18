@@ -29,8 +29,7 @@
         line: docker_compose_dir=/var/lib/awx
     - name: Instalcion de docker-py
       pip:
-        name: 
-        - docker-compose
-        - docker-py
+        name: docker-py
+        state: present
     - name: Ejecutando Playbook de Instalación en Docker de AWX
       shell: ansible-playbook -i /root/awx/installer/inventory /root/awx/installer/install.yml

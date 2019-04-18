@@ -1,12 +1,16 @@
 - yum:
-    name: 
+    name: "{{ packages }}"
+  vars:
+    packages:
     - epel-release
     - python-setuptools
     - python3-pip
   ignore_errors: yes
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - apt:
-    name: 
+    name: "{{ packages }}"
+  vars:
+    packages:
     - epel-release
     - python-setuptools
     - python3-pip
