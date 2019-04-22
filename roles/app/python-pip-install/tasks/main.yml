@@ -6,7 +6,7 @@
 - name: Instalacion de Packetes y Pip
   yum:
     name: "{{ packages }}"
-    state: present
+    state: latest
   vars:
     packages:
     - epel-release
