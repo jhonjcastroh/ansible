@@ -1,4 +1,8 @@
 ########## Centos - Redhat #############
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
 - name: Instalacion de Packetes y Pip
   yum:
     name: "{{ packages }}"
