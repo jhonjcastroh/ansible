@@ -1,17 +1,15 @@
 #### Ubuntu ####
-- name: Actualizar los paquetes a la última actualización
-  apt:
-    name: "*"
+- yum:
+    name: "{{ packages }}"
     state: latest
-    force_apt_get: True
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-- name: Descargar Docker-Compose
-  shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-- name: Permiso de Ejecución a Docker Compouse
-  command: chmod +x /usr/local/bin/docker-compose
+  vars:
+    packages:
+    - epel-release
+    #- python-setuptools
+    - python-pip
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: Instalcion de Compose con pip
   pip:
     name: 
     - docker-compose
-    executable: pip-3.3
-  ignore_errors: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

@@ -5,7 +5,7 @@
     packages:
     - epel-release
     - python-setuptools
-    - python3-pip
+    - python-pip
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - apt:
     name: "{{ packages }}"

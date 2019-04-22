@@ -48,7 +48,9 @@
   vars:
     packages:
     - docker-ce
-    - docker-ce-cli
-    - containerd.io
+- name: User
+  shell: usermod -aG docker $(whoami)
+- name: Enable Docker Service
+  command: systemctl enable docker.service
 - name: Start Docker
-  command: systemctl start docker
+  command: systemctl start docker.service

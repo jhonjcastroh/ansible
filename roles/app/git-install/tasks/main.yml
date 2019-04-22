@@ -1,17 +1,18 @@
-- name:
+- name: Instalar git
   yum:
     name: git
     state: latest
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: Descomprimiendo archivo de instalacion
   unarchive:
     src: /tmp/git-2.17.1.tar.gz
     dest: /tmp/
     remote_src: yes
-  ignore_errors: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Ejecutando instalación
   shell: make configure; ./configure --prefix=/usr; make all; make all doc info; make install
   args:
     chdir: /tmp/git-2.17.1/
-  ignore_errors: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Comprobacion de instalación
   command: git --version
