@@ -1,9 +1,9 @@
 ########## Centos - Redhat #############
-- name: upgrade all packages
-  yum:
-    name: '*'
-    state: latest
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+# - name: upgrade all packages
+#   yum:
+#     name: '*'
+#     state: latest
+#   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: Instalacion de epel-release
   yum:
     name: epel-release
@@ -24,12 +24,3 @@
     - python3-pip
   ignore_errors: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-- name: Descargar get-pip.py
-  get_url:
-    url: https://bootstrap.pypa.io/get-pip.py
-    dest: /root
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-- name: Instalando pip
-  command: python /root/get-pip.py
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-  ignore_errors: yes
