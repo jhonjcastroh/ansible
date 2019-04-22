@@ -25,7 +25,6 @@
 - name: Agregar repositorio 
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
-    
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 ### Centos Redhat ###
 - name: Instalacion de packetes requeridos en Centos-Redhat
@@ -46,10 +45,7 @@
 #######
 - name: Instalación Docker CE
   package:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - docker-ce
+    name: docker-ce
 - name: User
   shell: usermod -aG docker $(whoami)
 - name: Enable Docker Service
