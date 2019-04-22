@@ -1,12 +1,15 @@
-- yum:
+########## Centos - Redhat #############
+- name: Instalacion de Packetes y Pip
+  yum:
     name: "{{ packages }}"
-    state: latest
+    state: present
   vars:
     packages:
     - epel-release
     - python-setuptools
     - python-pip
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+########## Ubuntu #############
 - apt:
     name: "{{ packages }}"
   vars:
