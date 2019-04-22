@@ -2,8 +2,8 @@
   hosts: all
   become: yes
   roles:
-    - app/python-install
-    - app/ansible-install
+    # - app/python-install
+    # - app/ansible-install
     - app/docker-install
     - app/git-install
     - app/nodejs-install
