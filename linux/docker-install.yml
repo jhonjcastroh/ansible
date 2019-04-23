@@ -43,6 +43,7 @@
     - name: Agregar repositorio Centos-Redhat
       yum_repository:
         name: docker-ce
+        description: Docker CE YUM repo
         baseurl: https://download.docker.com/linux/centos/docker-ce.repo
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     #######
