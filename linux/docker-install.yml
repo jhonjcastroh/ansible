@@ -46,14 +46,13 @@
         description: Docker CE YUM repo
         baseurl: https://download.docker.com/linux/centos/docker-ce.repo
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-    #######
+
     - name: Instalación Docker CE
       package:
-        name: "{{ packages }}"
-      vars:
-        packages:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
+        name: docker-ce
+    - name: User
+      shell: usermod -aG docker $(whoami)
+    - name: Enable Docker Service
+      command: systemctl enable docker.service
     - name: Start Docker
-      command: systemctl start docker
+      command: systemctl start docker.service
