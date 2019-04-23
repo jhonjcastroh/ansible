@@ -1,4 +1,3 @@
-#### Ubuntu ####
 - yum:
     name: "{{ packages }}"
     state: latest
