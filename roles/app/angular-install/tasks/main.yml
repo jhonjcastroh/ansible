@@ -1,0 +1,6 @@
+- include_role:
+    name: nodejs-install
+- name: Instalando Angula-CLI
+  npm:
+    name: "@angular/cli"
+    global: yes

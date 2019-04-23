@@ -1,0 +1,6 @@
+- include_role:
+    name: nodejs-install
+- name: Instalación de TypeScript
+  npm:
+    name: "typescript"
+    global: yes
