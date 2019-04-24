@@ -39,7 +39,7 @@
         - yum-utils
         - device-mapper-persistent-data
         - lvm2
-      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+      when: ansible_facts['os_family'] == "RedHat"
     - name: Agregar repositorio Centos-Redhat
       shell: yum-config-manager \
             --add-repo \
@@ -48,8 +48,8 @@
       #   name: docker-ce
       #   description: Docker CE YUM repo
       #   baseurl: https://download.docker.com/linux/centos/docker-ce.repo
-      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
+      when: ansible_facts['os_family'] == "RedHat"
+    #### INSTALACION DE DOCKER ####
     - name: Instalación Docker CE
       package:
         name:  "{{ packages }}"
@@ -60,7 +60,10 @@
         - containerd.io
     - name: User
       shell: usermod -aG docker $(whoami)
+    ### HABILITANDO SERVICIO PARA REDHAT 7 ###
     - name: Enable Docker Service
       command: systemctl enable docker.service
+      when: ansible_facts['os_family'] == "RedHat"and ansible_facts['distribution_major_version'] >= "7"
     - name: Start Docker
       command: systemctl start docker.service
+      when: ansible_facts['os_family'] == "RedHat"and ansible_facts['distribution_major_version'] >= "7"
