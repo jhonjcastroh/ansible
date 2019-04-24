@@ -1,0 +1,30 @@
+- name: Instalacion de GoCD
+  hosts: all
+  become: yes
+  roles:
+    - app/java-install
+  tasks:
+    - name: Crea Usuario go
+      user:
+        name: go
+        state: present
+    - name: Remover Password Usuario go
+      command: passwd -d go
+    - name:
+      get_url:
+        url: https://download.gocd.org/gocd.repo -o /etc/yum.repos.d/gocd.repo
+      when: ansible_facts['os_family'] == "RedHat"
+    - name: Instalación de GoCD Server
+      package: go-server
+    - name: Start de Servicio go-server
+      command: systemctl start go-server
+    - name: Habilitar de Servicio go-server
+      command: systemctl enable go-server
+    - name: Creanado directorio de artefactos
+      file:
+        path: /opt/artifacts
+        state: directory
+        owner: go
+        group: go
+        mode: u=rwx,go-rwx
+        recurse: yes
