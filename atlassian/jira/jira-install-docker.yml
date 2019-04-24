@@ -1,0 +1,7 @@
+- name: Instalacion de Jira
+  hosts: all
+  roles:
+    - app/docker-ce
+  tasks:
+    - name: Creando contenedor Jira
+      command: docker run --detach --publish 8080:8080 cptactionhank/atlassian-jira:latest
