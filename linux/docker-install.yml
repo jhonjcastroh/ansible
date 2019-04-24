@@ -41,10 +41,13 @@
         - lvm2
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - name: Agregar repositorio Centos-Redhat
-      yum_repository:
-        name: docker-ce
-        description: Docker CE YUM repo
-        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+      shell: yum-config-manager \
+            --add-repo \
+            https://download.docker.com/linux/centos/docker-ce.repo
+      # yum_repository:
+      #   name: docker-ce
+      #   description: Docker CE YUM repo
+      #   baseurl: https://download.docker.com/linux/centos/docker-ce.repo
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
     - name: Instalación Docker CE
