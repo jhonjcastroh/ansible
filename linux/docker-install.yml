@@ -49,7 +49,12 @@
 
     - name: Instalación Docker CE
       package:
-        name: docker-ce
+        name:  "{{ packages }}"
+      vars:
+        packages:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
     - name: User
       shell: usermod -aG docker $(whoami)
     - name: Enable Docker Service
