@@ -1,4 +1,4 @@
-- name: Instalando Angula-CLI
+- name: Instalando OpenJDK
   package:
     name: java-1.8.0-openjdk-devel
     state: present
