@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   roles:
-    - app/java-install
+    - app/openjdk-install
   tasks:
     - name: Crea Usuario go
       user:
