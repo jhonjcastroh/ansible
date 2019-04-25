@@ -11,7 +11,7 @@
   # - name: Nuevo Proyecto Angular
   #   command: ng new devops-test
   - name: Levantando Server
-    command: ng serve --open
+    command: ng serve --host 192.168.200.227 --port 4200
     args:
       chdir: devops-test/
     #command: ng serve --host {{  }} --port 4200
