@@ -1,6 +1,10 @@
 - include_role:
     name: nodejs-install
-- name: Instalando Angula-CLI
+- name: Instalando WebPack
   npm:
     name: "webpack"
+    global: yes
+- name: Instalando WebPack-CLI
+  npm:
+    name: "webpack-cli"
     global: yes
