@@ -1,0 +1,10 @@
+- name: Instalacion de PostgreSQL
+  include: postgre/postgre-installation.yml
+  tasks:
+- name: Instalacion de Qtest
+  hosts: all
+  become: yes
+  roles:
+    - java-install
+  tasks:
+    - name:
