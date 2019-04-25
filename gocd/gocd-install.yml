@@ -17,7 +17,7 @@
       #   baseurl: https://download.gocd.org/gocd.repo -o /etc/yum.repos.d/gocd.repo
       shell: yum-config-manager \
              --add-repo \
-             https://download.gocd.org/gocd.repo -o /etc/yum.repos.d/gocd.repo
+             https://download.gocd.org/gocd.repo
       when: ansible_facts['os_family'] == "RedHat"
     - name: Instalación de GoCD Server
       package: 
