@@ -2,5 +2,10 @@
     name: nodejs-install
 - name: Instalando Angula-CLI
   npm:
-    name: "@angular/cli"
+    name: "@angular/cli@latest"
     global: yes
+- name: Nuevo Proyecto Angular
+  command: ng new devops-test
+- name: Levantando Server
+  command: ng serve --open
+  #command: ng serve --host {{  }} --port 4200

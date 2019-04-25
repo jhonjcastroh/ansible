@@ -15,7 +15,9 @@
         url: https://download.gocd.org/gocd.repo -o /etc/yum.repos.d/gocd.repo
       when: ansible_facts['os_family'] == "RedHat"
     - name: Instalación de GoCD Server
-      package: go-server
+      package: 
+        name: go-server
+        state: present
     - name: Start de Servicio go-server
       command: systemctl start go-server
     - name: Habilitar de Servicio go-server

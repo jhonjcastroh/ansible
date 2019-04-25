@@ -1,0 +1,6 @@
+- include_role:
+    name: nodejs-install
+- name: NPM Update
+  npm:
+    name: "npm@latest"
+    global: yes
