@@ -1,15 +1,15 @@
 - name: Instalación Proyecto de Angular
   hosts: all
   become: yes
-  roles:
-  - app/nodejs-install
+  # roles:
+  # - app/nodejs-install
   tasks:
-  - name: Instalando Angula-CLI
-    npm:
-      name: "@angular/cli@latest"
-      global: yes
-  - name: Nuevo Proyecto Angular
-    command: ng new devops-test
+  # - name: Instalando Angula-CLI
+  #   npm:
+  #     name: "@angular/cli@latest"
+  #     global: yes
+  # - name: Nuevo Proyecto Angular
+  #   command: ng new devops-test
   - name: Levantando Server
     command: ng serve --open
     args:
