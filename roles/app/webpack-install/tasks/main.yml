@@ -1,5 +1,5 @@
 - include_role:
-    name: app/nodejs-install
+    name: nodejs-install
 - name: Instalando WebPack
   npm:
     name: "webpack"
