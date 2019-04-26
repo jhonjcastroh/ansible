@@ -1,0 +1,7 @@
+- name: Plantilla para correr Contenedores docker con imagenes de Doker Hub
+  hosts: all
+  roles:
+    - app/docker-install
+  tasks:
+    - name: Creando contenedor desde Docker Hub
+      command: docker run --name {{ container-name }} -d -p {{ port-in }}:{{ port-out }} {{ image-owner }}/{{ image-name }}:{{image-tag}}
