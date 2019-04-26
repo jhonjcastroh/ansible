@@ -14,6 +14,6 @@
     command: ng serve --host {{ ansible_ssh_host }} --port 4200
     args:
       chdir: devops-test/
-    async: 15
+    async: 20
     poll: 0
     #command: ng serve --host {{  }} --port 4200
