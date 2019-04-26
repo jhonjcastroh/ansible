@@ -11,7 +11,7 @@
   # - name: Nuevo Proyecto Angular
   #   command: ng new devops-test
   - name: Levantando Server en {{ ansible_ssh_host }}
-    command: ng serve --host {{ ansible_ssh_host }} --port 4200
+    command: "ng serve --host {{ ansible_ssh_host }} --port 4200"
     args:
       chdir: devops-test/
     async: 20
