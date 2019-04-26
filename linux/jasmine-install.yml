@@ -2,6 +2,7 @@
   hosts: all
   become: yes
   roles:
+    - app/nodejs-install
     - app/webpack-install
     - app/npm-install
   tasks:

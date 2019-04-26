@@ -1,5 +1,3 @@
-- include_role:
-    name: app/nodejs-install
 - name: NPM Update
   npm:
     name: "npm@latest"
