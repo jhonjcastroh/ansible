@@ -15,7 +15,7 @@
   #     repo: https://github.com/devrafalko/webpack-karma-jasmine.git
   #     dest: /
   - name: Start Karma
-    command: printf '\n\n\n\n\n\n\n' | karma start
+    command: "printf '\n\n\n\n\n\n\n' | karma start"
     args:
       chdir: webpack-karma-jasmine/sample
   - 
