@@ -4,4 +4,4 @@
     - app/docker-install
   tasks:
     - name: Creando contenedor desde Docker Hub
-      command: docker run --name {{ container-name }} -d -p {{ port-in }}:{{ port-out }} {{ image-owner }}/{{ image-name }}:{{image-tag}}
+      command: docker run --name {{ containerName }} -d -p {{ portIn }}:{{ portOut }} {{ imageOwner }}/{{ imageName }}:{{imageTag}}
