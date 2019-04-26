@@ -1,4 +1,4 @@
-- name: Instalación Proyecto de Jasmine + Karma
+- name: Instalación Proyecto de Jasmine + Karma 
   hosts: all
   become: yes
   roles:
