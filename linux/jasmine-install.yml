@@ -20,5 +20,7 @@
       chdir: webpack-karma-jasmine/sample
   - name: test
     command: npm test
+    args:
+      chdir: webpack-karma-jasmine/sample
     async: 20
     poll: 0
