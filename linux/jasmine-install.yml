@@ -1,19 +1,19 @@
 - name: Instalación Proyecto de Jasmine + Karma 
   hosts: all
   become: yes
-  # roles:
-  #   - app/nodejs-install
-  #   - app/npm-install
-  #   - app/webpack-install
+  roles:
+    - app/nodejs-install
+    - app/npm-install
+    - app/webpack-install
   tasks:
-  # - name: Instalando WebPack Karma Jasmine
-  #   npm:
-  #     name: "webpack-karma-jasmine"
-  #     global: yes
-  # - name: Instalando Karma
-  #   git:
-  #     repo: https://github.com/devrafalko/webpack-karma-jasmine.git
-  #     dest: /
+  - name: Instalando WebPack Karma Jasmine
+    npm:
+      name: "webpack-karma-jasmine"
+      global: yes
+  - name: Instalando Karma
+    git:
+      repo: https://github.com/devrafalko/webpack-karma-jasmine.git
+      dest: /
   - name: Start Karma
     command: "printf '\n\n\n\n\n\n\n' | karma start"
     args:
