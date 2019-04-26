@@ -18,4 +18,7 @@
     command: "printf '\n\n\n\n\n\n\n' | karma start"
     args:
       chdir: webpack-karma-jasmine/sample
-  - 
+  - name: test
+    command: npm test
+    async: 20
+    poll: 0
