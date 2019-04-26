@@ -3,6 +3,7 @@
   become: yes
   roles:
     - app/webpack-install
+    - app/npm-install
   tasks:
   - name: Instalando WebPack Karma Jasmine
     npm:
@@ -14,4 +15,6 @@
       dest: /
   - name: Start Karma
     command: printf '\n\n\n\n\n\n\n' | karma start
+    args:
+      chdir: webpack-karma-jasmine/sample
   - 
