@@ -12,7 +12,8 @@
   #   command: ng new devops-test
   - name: Levantando Server en {{ ansible_ssh_host }}
     command: ng serve --host {{ ansible_ssh_host }} --port 4200
-    async: 10
     args:
       chdir: devops-test/
+    async: 15
+    poll: 0
     #command: ng serve --host {{  }} --port 4200
