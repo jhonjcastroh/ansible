@@ -1,0 +1,13 @@
+- name: Descargar archivo 
+  get_url:
+    url: https://dl.google.com/go/go{{ version_golang }}.linux-amd64.tar.gz
+    dest: /tmp
+- name: Descomprime archivo
+  unarchive:
+    src: /tmp/go{{ version_golang }}.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+- name: Export GOROOT
+  shell: export GOROOT=/usr/local/go/bin
+- name: Export PATH
+  shell: export PATH=$PATH:$GORO
