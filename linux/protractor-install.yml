@@ -11,3 +11,5 @@
       global: yes
   - name: actualizando y start de protractor
     shell: webdriver-manager update; webdriver-manager start
+    async: 20
+    poll: 0
