@@ -14,7 +14,7 @@
       dest: /usr/local
       remote_src: yes
   - name: Export GOROOT
-    command: export GOROOT=/usr/local/go/bin
+    shell: export GOROOT=/usr/local/go/bin
   - name: Export PATH
     command: export PATH=$PATH:$GOROOT
   - command: source ~/.bash_profile
