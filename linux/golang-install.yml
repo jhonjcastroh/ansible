@@ -23,4 +23,3 @@
       path: /etc/environment
       line: GOROOT=/usr/local/go/bin
       create: yes
-  
