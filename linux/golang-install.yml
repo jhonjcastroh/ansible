@@ -17,5 +17,5 @@
     shell: export GOROOT=/usr/local/go/bin
   - name: Export PATH
     shell: export PATH=$PATH:$GOROOT
-  - command: source ~/.bash_profile
+  - shell: source /etc/profile
   
