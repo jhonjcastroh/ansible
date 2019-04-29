@@ -10,5 +10,10 @@
 - name: Export GOROOT
   shell: export GOROOT=/usr/local/go/bin
 - name: Export PATH
-  shell: export PATH=$PATH:$GORO
+  shell: export PATH=$PATH:$GOROOT
 - shell: source /etc/profile
+- name: Agrega GOROOT al anchivo Environment
+  lineinfile:
+  path: /etc/environment
+  line: GOROOT=/usr/local/go/bin
+  create: yes
