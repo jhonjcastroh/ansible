@@ -44,7 +44,7 @@
       state: present
     when: ansible_facts['os_family'] == "Debian"
   - name: Añadiendo repositorio de Kubernetes
-    command: "cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+    shell: "cat <<EOF > /etc/yum.repos.d/kubernetes.repo
               [kubernetes]
               name=Kubernetes
               baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
