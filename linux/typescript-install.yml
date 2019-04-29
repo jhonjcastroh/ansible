@@ -1,0 +1,11 @@
+- name: Instalación Proyecto de Jasmine + Karma 
+  hosts: all
+  become: yes
+  roles:
+    - app/nodejs-install
+    - app/npm-install
+  tasks:
+  - name: Instalación de TypeScript
+    npm:
+      name: "typescript"
+      global: yes
