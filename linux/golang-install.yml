@@ -20,7 +20,7 @@
   - shell: source /etc/profile
   - name: Agrega GOROOT al anchivo Environment
     lineinfile:
-    path: /etc/environment
-    line: GOROOT=/usr/local/go/bin
-    create: yes
+      path: /etc/environment
+      line: GOROOT=/usr/local/go/bin
+      create: yes
   
