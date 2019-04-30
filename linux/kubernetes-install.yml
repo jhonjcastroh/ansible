@@ -4,6 +4,7 @@
   roles:
     - app/golang-install
     - app/docker-install
+    - firewall-turnoff
   tasks:
   - name: Actualizar los paquetes a la última actualización
     apt:
@@ -40,7 +41,12 @@
     when: ansible_facts['os_family'] == "Debian"
   - name: Instalación de Kubernetes
     apt:
-      name: kubectl
+      name: "{{ packages }}"
+      vars:
+        packages:
+          - kubectl
+          - kubelet
+          - kubeadm
       state: present
     when: ansible_facts['os_family'] == "Debian"
   - name: Añadiendo repositorio de Kubernetes
@@ -49,10 +55,18 @@
       line: "[kubernetes]\nname=Kubernetes\nbaseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
       create: yes
     when: ansible_facts['os_family'] == "RedHat"
+  - name: Actualizar los paquetes a la última actualización
+    yum:
+      name: "*"
+      state: latest
+    when: ansible_facts['os_family'] == "Debian"
   - name: Instalación de packetes requeridos en Centos-Redhat
     yum:
-      name: kubectl
+      name: "{{ packages }}"
+      vars:
+        packages:
+          - kubectl
+          - kubelet
+          - kubeadm
       state: present
     when: ansible_facts['os_family'] == "RedHat"
-  # - name: Instalando entorno
-  #   shell: go get -u sigs.k8s.io/kind && kind create cluster
