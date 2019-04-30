@@ -90,7 +90,13 @@
     when: ansible_facts['os_family'] == "RedHat"
   - name: Instalación de cri-o
     yum:
-      name: cri-o
+      name: 
+      - cri-o
+      - crio
       state: present
       disable_gpg_check: yes
     when: ansible_facts['os_family'] == "RedHat"
+  - name: Habilitando servicio kubelet
+    service:
+      name: crio
+      state: started
