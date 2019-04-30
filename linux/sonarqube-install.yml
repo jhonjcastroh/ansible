@@ -1,0 +1,31 @@
+- name: Instalación Proyecto de Kubernetes
+  hosts: all
+  become: yes
+  roles:
+    - app/openjdk-install
+    - db/postgresql-install
+    - firewall-turnoff
+  tasks:
+  #### Database
+  - command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
+  #### Web
+  # - name: Descargando zip
+  #   get_url:
+  #     url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
+  #     dest: /tmp
+  - name: Descomprimiendo archivo zip
+    unarchive:
+      src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
+      dest: /usr/local
+      remote_src: yes
+
+  # - name: Export SONARQUBE-HOME
+  #   shell: export SONARQUBE-HOME=/usr/local/go/bin
+  # - name: Export PATH
+  #   shell: export PATH=$PATH:$GOROOT
+  # - shell: source /etc/profile
+  # - name: Agrega GOROOT al anchivo Environment
+  #   lineinfile:
+  #     path: /etc/environment
+  #     line: GOROOT=/usr/local/go/bin
+  #     create: yes
