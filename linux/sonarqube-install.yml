@@ -7,7 +7,6 @@
     - firewall-turnoff
   tasks:
   #### Database
-  - command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
   #### Web
   # - name: Descargando zip
   #   get_url:
@@ -19,6 +18,7 @@
       dest: /usr/local
       remote_src: yes
 
+  - command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
   # - name: Export SONARQUBE-HOME
   #   shell: export SONARQUBE-HOME=/usr/local/go/bin
   # - name: Export PATH
