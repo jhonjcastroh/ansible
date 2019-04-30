@@ -17,15 +17,15 @@
       dest: /usr/local
       remote_src: yes
   #- command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
-  - name: Export SONARQUBE-HOME
-    shell: export SONARQUBE-HOME=/usr/local/sonarqube-7.7/bin
+  - name: Export SONARQUBE_HOME
+    shell: export SONARQUBE_HOME=/usr/local/sonarqube-7.7/bin
   - name: Export PATH
-    shell: export PATH=$PATH:$SONARQUBE-HOME
+    shell: export PATH=$PATH:$SONARQUBE_HOME
   - shell: source /etc/profile
-  - name: Agrega SONARQUBE-HOME al anchivo Environment
+  - name: Agrega SONARQUBE_HOME al anchivo Environment
     lineinfile:
       path: /etc/environment
-      line: SONARQUBE-HOME=/usr/local/go/bin
+      line: SONARQUBE_HOME=/usr/local/go/bin
       create: yes
   - name: Habilitando postgresql en archivo de conf
     lineinfile:
