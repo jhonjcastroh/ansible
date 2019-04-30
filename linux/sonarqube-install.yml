@@ -6,7 +6,6 @@
     - db/postgresql-install
     - firewall-turnoff
   tasks:
-  #### Database
   #### Web
   # - name: Descargando zip
   #   get_url:
@@ -17,15 +16,29 @@
       src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
       dest: /usr/local
       remote_src: yes
+  #- command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
+  - name: Export SONARQUBE-HOME
+    shell: export SONARQUBE-HOME=/usr/local/sonarqube-7.7/bin
+  - name: Export PATH
+    shell: export PATH=$PATH:$SONARQUBE-HOME
+  - shell: source /etc/profile
+  - name: Agrega SONARQUBE-HOME al anchivo Environment
+    lineinfile:
+      path: /etc/environment
+      line: SONARQUBE-HOME=/usr/local/go/bin
+      create: yes
+  - name: Habilitando postgresql en archivo de conf
+    lineinfile:
+      path: /usr/local/sonarqube-7.7/conf/sonar.properties
+      regexp: '^#sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube?currentSchema=my_schema'
+      line: "sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube"
+      create: yes
 
-  - command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
-  # - name: Export SONARQUBE-HOME
-  #   shell: export SONARQUBE-HOME=/usr/local/go/bin
-  # - name: Export PATH
-  #   shell: export PATH=$PATH:$GOROOT
-  # - shell: source /etc/profile
-  # - name: Agrega GOROOT al anchivo Environment
-  #   lineinfile:
-  #     path: /etc/environment
-  #     line: GOROOT=/usr/local/go/bin
-  #     create: yes
+  - name: Agregando usuario y pass de la db al archivo de conf
+    lineinfile:
+      path: /usr/local/sonarqube-7.7/conf/sonar.properties
+      regexp: "^#sonar.jdbc.username=\n#sonar.jdbc.password=\n"
+      line: "sonar.jdbc.username=sonarqube\nsonar.jdbc.password=mypassword\n
+            sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube"
+      create: yes
+  
