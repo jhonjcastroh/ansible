@@ -73,12 +73,12 @@
       enabled: yes
   - command: modprobe overlay
   - command: modprobe br_netfilter
-  # - name: Añadiendo repositorio de Kubernetes
-  #   lineinfile:
-  #     path: /etc/sysctl.d/99-kubernetes-cri.conf
-  #     line: "net.bridge.bridge-nf-call-iptables  = 1\nnet.ipv4.ip_forward                 = 1\nnet.bridge.bridge-nf-call-ip6tables = 1"
-  #     create: yes
-  #   when: ansible_facts['os_family'] == "RedHat"
+  - name: Añadiendo archivo para instalación de cri-o
+    lineinfile:
+      path: /etc/sysctl.d/99-kubernetes-cri.conf
+      line: "net.bridge.bridge-nf-call-iptables  = 1\nnet.ipv4.ip_forward                 = 1\nnet.bridge.bridge-nf-call-ip6tables = 1"
+      create: yes
+    when: ansible_facts['os_family'] == "RedHat"
   - command: "yum-config-manager --add-repo=https://cbs.centos.org/repos/paas7-crio-311-candidate/x86_64/os/"
   - name: Instalación de cri-o
     yum:
