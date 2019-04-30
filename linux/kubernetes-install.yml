@@ -1,4 +1,4 @@
-- name: Instalación Proyecto de Jasmine + Karma 
+- name: Instalación Proyecto de Kubernetes
   hosts: all
   become: yes
   roles:
@@ -59,7 +59,7 @@
     yum:
       name: "*"
       state: latest
-    when: ansible_facts['os_family'] == "Debian"
+    when: ansible_facts['os_family'] == "redHat"
   - name: Instalación de packetes requeridos en Centos-Redhat
     yum:
       name: "{{ packages }}"
