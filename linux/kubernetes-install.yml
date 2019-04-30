@@ -44,15 +44,18 @@
       state: present
     when: ansible_facts['os_family'] == "Debian"
   - name: Añadiendo repositorio de Kubernetes
-    shell: "cat <<EOF > /etc/yum.repos.d/kubernetes.repo /
-              [kubernetes] /
-              name=Kubernetes
-              baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 /
-              enabled=1 /
-              gpgcheck=1 /
-              repo_gpgcheck=1 /
-              gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg /
+    lineinfile:
+        path: /etc/yum.repos.d/kubernetes.repo
+        line: "<<EOF >\n
+              [kubernetes]\n
+              name=Kubernetes\n
+              baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64\n
+              enabled=1\n
+              gpgcheck=1\n
+              repo_gpgcheck=1\n
+              gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg\n
               EOF"
+        create: yes
     when: ansible_facts['os_family'] == "RedHat"
   - name: Instalación de packetes requeridos en Centos-Redhat
     yum:
