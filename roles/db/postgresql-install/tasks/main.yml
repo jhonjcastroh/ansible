@@ -6,5 +6,6 @@
     - postgresql-server 
     - postgresql-contrib
 - command: postgresql-setup initdb
+  ignore_errors: yes
 - command: systemctl start postgresql
 - command: systemctl enable postgresql
