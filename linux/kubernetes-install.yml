@@ -58,7 +58,7 @@
     yum:
       name: "*"
       state: latest
-    when: ansible_facts['os_family'] == "redHat"
+    when: ansible_facts['os_family'] == "RedHat"
   - name: Instalación de Kubernetes Centos-Redhat
     yum:
       name:
@@ -67,3 +67,7 @@
         - kubeadm
       state: present
     when: ansible_facts['os_family'] == "RedHat"
+  - name: Habilitando servicio kubelet
+    service:
+      name: kubelet
+      enabled: yes
