@@ -1,93 +1,93 @@
 - name: Instalación Proyecto de Kubernetes
   hosts: all
   become: yes
-  roles:
-    - app/golang-install
-    - app/docker-install
-    - firewall-turnoff
+  # roles:
+  #   - app/golang-install
+  #   - app/docker-install
+  #   - firewall-turnoff
   tasks:
-  - name: Actualizar los paquetes a la última actualización
-    apt:
-      name: "*"
-      state: latest
-      force_apt_get: True
-    when: ansible_facts['os_family'] == "Debian"
-  - name: Instalacion de packetes requeridos
-    apt:
-      name: "{{ packages }}"
-      state: present
-    vars:
-      packages:
-      - apt-transport-https
-    when: ansible_facts['os_family'] == "Debian"
-  - name: Agrega GPG Key
-    apt_key: 
-      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-      state: present
-    when: ansible_facts['os_family'] == "Debian"
-  - name: Agregar repositorio 
-    apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
-    when: ansible_facts['os_family'] == "Debian"
+  # - name: Actualizar los paquetes a la última actualización
+  #   apt:
+  #     name: "*"
+  #     state: latest
+  #     force_apt_get: True
+  #   when: ansible_facts['os_family'] == "Debian"
+  # - name: Instalacion de packetes requeridos
+  #   apt:
+  #     name: "{{ packages }}"
+  #     state: present
+  #   vars:
+  #     packages:
+  #     - apt-transport-https
+  #   when: ansible_facts['os_family'] == "Debian"
+  # - name: Agrega GPG Key
+  #   apt_key: 
+  #     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+  #     state: present
+  #   when: ansible_facts['os_family'] == "Debian"
+  # - name: Agregar repositorio 
+  #   apt_repository:
+  #     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+  #   when: ansible_facts['os_family'] == "Debian"
     
-  - name: Instalación de Kubernetes
-    command: "echo 'deb https://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list"
-    when: ansible_facts['os_family'] == "Debian"
-  - name: Actualizar los paquetes a la última actualización
-    apt:
-      name: "*"
-      state: latest
-      force_apt_get: True
-    when: ansible_facts['os_family'] == "Debian"
-  - name: Instalación de Kubernetes
-    apt:
-      name: "{{ packages }}"
-    vars:
-      packages:
-        - kubectl
-        - kubelet
-        - kubeadm
-    when: ansible_facts['os_family'] == "Debian"
-  - name: Añadiendo repositorio de Kubernetes
-    lineinfile:
-      path: /etc/yum.repos.d/kubernetes.repo
-      line: "[kubernetes]\nname=Kubernetes\nbaseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
-      create: yes
-    when: ansible_facts['os_family'] == "RedHat"
-  - name: Actualizar los paquetes a la última actualización
-    yum:
-      name: "*"
-      state: latest
-    when: ansible_facts['os_family'] == "RedHat"
-  - name: Instalación de Kubernetes Centos-Redhat
-    yum:
-      name:
-        - kubectl
-        - kubelet
-        - kubeadm
-      state: present
-    when: ansible_facts['os_family'] == "RedHat"
-  - name: Habilitando servicio kubelet
-    service:
-      name: kubelet
-      enabled: yes
-  - command: modprobe overlay
-    when: ansible_facts['os_family'] == "RedHat"
-  - command: modprobe br_netfilter
-    when: ansible_facts['os_family'] == "RedHat"
-  - name: Añadiendo archivo para instalación de cri-o
-    lineinfile:
-      path: /etc/sysctl.d/99-kubernetes-cri.conf
-      line: "net.bridge.bridge-nf-call-iptables  = 1\nnet.ipv4.ip_forward                 = 1\nnet.bridge.bridge-nf-call-ip6tables = 1"
-      create: yes
-    when: ansible_facts['os_family'] == "RedHat"
-  - name: Añadiendo repo de cri-o
-    yum_repository:
-      name: cri-o
-      description: cri-o YUM repo
-      file: external_repos
-      baseurl: https://cbs.centos.org/repos/paas7-crio-311-candidate/x86_64/os/
-    when: ansible_facts['os_family'] == "RedHat"
+  # - name: Instalación de Kubernetes
+  #   command: "echo 'deb https://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list"
+  #   when: ansible_facts['os_family'] == "Debian"
+  # - name: Actualizar los paquetes a la última actualización
+  #   apt:
+  #     name: "*"
+  #     state: latest
+  #     force_apt_get: True
+  #   when: ansible_facts['os_family'] == "Debian"
+  # - name: Instalación de Kubernetes
+  #   apt:
+  #     name: "{{ packages }}"
+  #   vars:
+  #     packages:
+  #       - kubectl
+  #       - kubelet
+  #       - kubeadm
+  #   when: ansible_facts['os_family'] == "Debian"
+  # - name: Añadiendo repositorio de Kubernetes
+  #   lineinfile:
+  #     path: /etc/yum.repos.d/kubernetes.repo
+  #     line: "[kubernetes]\nname=Kubernetes\nbaseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+  #     create: yes
+  #   when: ansible_facts['os_family'] == "RedHat"
+  # - name: Actualizar los paquetes a la última actualización
+  #   yum:
+  #     name: "*"
+  #     state: latest
+  #   when: ansible_facts['os_family'] == "RedHat"
+  # - name: Instalación de Kubernetes Centos-Redhat
+  #   yum:
+  #     name:
+  #       - kubectl
+  #       - kubelet
+  #       - kubeadm
+  #     state: present
+  #   when: ansible_facts['os_family'] == "RedHat"
+  # - name: Habilitando servicio kubelet
+  #   service:
+  #     name: kubelet
+  #     enabled: yes
+  # - command: modprobe overlay
+  #   when: ansible_facts['os_family'] == "RedHat"
+  # - command: modprobe br_netfilter
+  #   when: ansible_facts['os_family'] == "RedHat"
+  # - name: Añadiendo archivo para instalación de cri-o
+  #   lineinfile:
+  #     path: /etc/sysctl.d/99-kubernetes-cri.conf
+  #     line: "net.bridge.bridge-nf-call-iptables  = 1\nnet.ipv4.ip_forward                 = 1\nnet.bridge.bridge-nf-call-ip6tables = 1"
+  #     create: yes
+  #   when: ansible_facts['os_family'] == "RedHat"
+  # - name: Añadiendo repo de cri-o
+  #   yum_repository:
+  #     name: cri-o
+  #     description: cri-o YUM repo
+  #     file: external_repos
+  #     baseurl: https://cbs.centos.org/repos/paas7-crio-311-candidate/x86_64/os/
+  #   when: ansible_facts['os_family'] == "RedHat"
   - name: Instalación de cri-o
     yum:
       name: 
