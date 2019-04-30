@@ -60,7 +60,7 @@
       name: "*"
       state: latest
     when: ansible_facts['os_family'] == "redHat"
-  - name: Instalación de packetes requeridos en Centos-Redhat
+  - name: Instalación de Kubernetes Centos-Redhat
     yum:
       name: "{{ packages }}"
       vars:
