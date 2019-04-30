@@ -1,21 +1,16 @@
 - name: Instalación Proyecto de Kubernetes
   hosts: all
   become: yes
-  roles:
-    - app/openjdk-install
-    - db/postgresql-install
-    - firewall-turnoff
+  # roles:
+  #   - app/openjdk-install
+  #   - db/postgresql-install
+  #   - firewall-turnoff
   tasks:
-  #### Web
-  # - name: Descargando zip
-  #   get_url:
-  #     url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
-  #     dest: /tmp
-  - name: Descomprimiendo archivo zip
-    unarchive:
-      src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
-      dest: /usr/local
-      remote_src: yes
+  # - name: Descomprimiendo archivo zip
+  #   unarchive:
+  #     src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
+  #     dest: /usr/local
+  #     remote_src: yes
   #- command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
   - name: Export SONARQUBE_HOME
     shell: export SONARQUBE_HOME=/usr/local/sonarqube-7.7/bin
@@ -25,7 +20,7 @@
   - name: Agrega SONARQUBE_HOME al anchivo Environment
     lineinfile:
       path: /etc/environment
-      line: SONARQUBE_HOME=/usr/local/go/bin
+      line: SONARQUBE_HOME=/usr/local/sonarqube-7.7/bin
       create: yes
   - name: Habilitando postgresql en archivo de conf
     lineinfile:
@@ -38,7 +33,6 @@
     lineinfile:
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
       regexp: "^#sonar.jdbc.username=\n#sonar.jdbc.password=\n"
-      line: "sonar.jdbc.username=sonarqube\nsonar.jdbc.password=mypassword\n
-            sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube"
+      line: "sonar.jdbc.username=sonarqube\nsonar.jdbc.password=mypassword\n"
       create: yes
   
