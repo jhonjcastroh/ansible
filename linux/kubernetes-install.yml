@@ -42,12 +42,11 @@
   - name: Instalación de Kubernetes
     apt:
       name: "{{ packages }}"
-      vars:
-        packages:
-          - kubectl
-          - kubelet
-          - kubeadm
-      state: present
+    vars:
+      packages:
+        - kubectl
+        - kubelet
+        - kubeadm
     when: ansible_facts['os_family'] == "Debian"
   - name: Añadiendo repositorio de Kubernetes
     lineinfile:
@@ -62,11 +61,9 @@
     when: ansible_facts['os_family'] == "redHat"
   - name: Instalación de Kubernetes Centos-Redhat
     yum:
-      name: "{{ packages }}"
-      vars:
-        packages:
-          - kubectl
-          - kubelet
-          - kubeadm
+      name:
+        - kubectl
+        - kubelet
+        - kubeadm
       state: present
     when: ansible_facts['os_family'] == "RedHat"
