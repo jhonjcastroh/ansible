@@ -63,15 +63,15 @@
     lineinfile:
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
       regexp: '^#sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube?currentSchema=my_schema'
-      line: "sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube"
+      line: "sonar.jdbc.url=jdbc:postgresql://{{ ansible_ssh_host }}/sonarqube"
       create: yes
   - name: Agregando usuario y pass de la db al archivo de conf
     lineinfile:
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
-      regexp: "^#sonar.jdbc.username=\n#sonar.jdbc.password=\n"
+      regexp: "^#sonar.jdbc.username=
+      #sonar.jdbc.password="
       line: "sonar.jdbc.username=sonar\nsonar.jdbc.password=sonar*2019\n"
-      create: yes
-  
+      
   - name: Configurando host servidor web {{ ansible_ssh_host }}
     lineinfile:
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
