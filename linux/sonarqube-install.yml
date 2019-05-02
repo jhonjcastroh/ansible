@@ -1,16 +1,20 @@
 - name: Instalación Proyecto de Kubernetes
   hosts: all
   become: yes
-  # roles:
-  #   - app/openjdk-install
-  #   - db/postgresql-install
-  #   - firewall-turnoff
+  roles:
+    - app/java-install
+    - db/postgresql-install
+    - firewall-turnoff
   tasks:
-  # - name: Descomprimiendo archivo zip
-  #   unarchive:
-  #     src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
-  #     dest: /usr/local
-  #     remote_src: yes
+  - name: Paquetes requeridos
+    package:
+      name: ntpdate
+      state: present
+  - name: Descomprimiendo archivo zip
+    unarchive:
+      src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
+      dest: /usr/local
+      remote_src: yes
   #- command: ALTER USER mySonarUser SET search_path to mySonarQubeSchema
   - name: Export SONARQUBE_HOME
     shell: export SONARQUBE_HOME=/usr/local/sonarqube-7.7/bin
