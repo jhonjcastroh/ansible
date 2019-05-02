@@ -16,6 +16,8 @@
   service:
     name: postgresql
     enabled: yes
-
 - name: Cambio de pasword de usuario postgres
   command: "printf 'postgresql\npostgresql\n' | passwd postgres"
+- name: Instalando psycopg2
+  pip:
+   name: psycopg2

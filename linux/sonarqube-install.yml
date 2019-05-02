@@ -3,6 +3,8 @@
   become: yes
   roles:
     - app/java-install
+    - app/python-install
+    - app/python-pip-install
     - db/postgresql-install
     - firewall-turnoff
   tasks:
