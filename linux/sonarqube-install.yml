@@ -64,7 +64,6 @@
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
       regexp: '^#sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube?currentSchema=my_schema'
       line: "sonar.jdbc.url=jdbc:postgresql://{{ ansible_ssh_host }}/sonarqube"
-      create: yes
   - name: Agregando usuario y pass de la db al archivo de conf
     lineinfile:
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
@@ -72,23 +71,23 @@
       #sonar.jdbc.password="
       line: "sonar.jdbc.username=sonar\nsonar.jdbc.password=sonar*2019\n"
       
-  - name: Configurando host servidor web {{ ansible_ssh_host }}
-    lineinfile:
-      path: /usr/local/sonarqube-7.7/conf/sonar.properties
-      regexp: "^#sonar.web.host=0.0.0.0"
-      line: "sonar.web.host={{ ansible_ssh_host }}"
-      create: yes
+  # - name: Configurando host servidor web {{ ansible_ssh_host }}
+  #   lineinfile:
+  #     path: /usr/local/sonarqube-7.7/conf/sonar.properties
+  #     regexp: "^#sonar.web.host=0.0.0.0"
+  #     line: "sonar.web.host={{ ansible_ssh_host }}"
+  #     create: yes
 
-  - name: Configurando port servidor web
-    lineinfile:
-      path: /usr/local/sonarqube-7.7/conf/sonar.properties
-      regexp: "^#sonar.port="
-      line: "sonar.web.port=80"
-      create: yes
+  # - name: Configurando port servidor web
+  #   lineinfile:
+  #     path: /usr/local/sonarqube-7.7/conf/sonar.properties
+  #     regexp: "^#sonar.port=9000"
+  #     line: "sonar.web.port=80"
+  #     create: yes
 
-  - name: Configurando port servidor web
-    lineinfile:
-      path: /usr/local/sonarqube-7.7/conf/sonar.properties
-      regexp: "^#sonar.context="
-      line: "sonar.web.context=/sonarqube"
-      create: yes
+  # - name: Configurando port servidor web
+  #   lineinfile:
+  #     path: /usr/local/sonarqube-7.7/conf/sonar.properties
+  #     regexp: "^#sonar.context="
+  #     line: "sonar.web.context=/sonarqube"
+  #     create: yes
