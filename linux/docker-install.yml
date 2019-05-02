@@ -6,20 +6,20 @@
     ################
     # ERROR --->>> Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)\n
     # ERROR --->>> E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
-    - command: killall apt apt-get
-      register: result
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-      ignore_errors: yes
+    # - command: killall apt apt-get
+    #   register: result
+    #   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    #   ignore_errors: yes
       
-    - shell: rm /var/lib/apt/lists/lock; rm /var/cache/apt/archives/lock; rm /var/lib/dpkg/lock*
-      register: result2
-      when: result is failed
-      ignore_errors: yes
+    # - shell: rm /var/lib/apt/lists/lock; rm /var/cache/apt/archives/lock; rm /var/lib/dpkg/lock*
+    #   register: result2
+    #   when: result is failed
+    #   ignore_errors: yes
     
-    - command: dpkg --configure -a
-      register: result3
-      when: result2 is succeeded
-      ignore_errors: yes
+    # - command: dpkg --configure -a
+    #   register: result3
+    #   when: result2 is succeeded
+    #   ignore_errors: yes
     ################
 
     - name: Actualizar los paquetes a la última actualización

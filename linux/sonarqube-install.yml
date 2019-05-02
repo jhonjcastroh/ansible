@@ -33,7 +33,7 @@
   - name: Creando usuario postgres para SonrQube
     postgresql_user:
       name: sonar
-      password: ""
+      password: sonar*2019
   - name: Creacion de Base de datos para SonaQube
     postgresql_db:
       name: sonar
@@ -71,6 +71,6 @@
     lineinfile:
       path: /usr/local/sonarqube-7.7/conf/sonar.properties
       regexp: "^#sonar.jdbc.username=\n#sonar.jdbc.password=\n"
-      line: "sonar.jdbc.username=sonarqube\nsonar.jdbc.password=mypassword\n"
+      line: "sonar.jdbc.username=sonar\nsonar.jdbc.password=sonar*2019\n"
       create: yes
   
