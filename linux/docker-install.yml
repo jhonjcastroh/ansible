@@ -21,7 +21,11 @@
     #   when: result2 is succeeded
     #   ignore_errors: yes
     ################
-
+    - name: Pass options to dpkg on run
+      apt:
+        upgrade: dist
+        update_cache: yes
+        dpkg_options: 'force-confold,force-confdef'
     - name: Actualizar los paquetes a la última actualización
       apt:
         name: "*"
