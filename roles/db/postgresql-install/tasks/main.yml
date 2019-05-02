@@ -6,6 +6,13 @@
     - postgresql-server 
     - postgresql-contrib
 - command: postgresql-setup initdb
-  ignore_errors: yes
-- command: systemctl start postgresql
-- command: systemctl enable postgresql
+
+- service: 
+    name: postgresql
+    state: started
+- service:
+    name: postgresql
+    enabled: yes
+
+- name: Cambio de pasword de usuario postgres
+  command: "printf 'postgresql\npostgresql\n' | passwd postgres"

@@ -6,11 +6,43 @@
     - db/postgresql-install
     - firewall-turnoff
   tasks:
-  - name: Paquetes requeridos
+  ### Configuraciones de Base de Datos
+  - name: Modificacion de anchivo pg_hba.conf
+    lineinfile:
+      path: /var/lib/pgsql/data/pg_hba.conf
+      regexp: '^local   all             all                                     peer'
+      line: "local   all             all                                     trust"
+      owner: root
+      group: root
+  - name: Modificacion de anchivo pg_hba.conf
+    lineinfile:
+      path: /var/lib/pgsql/data/pg_hba.conf
+      regexp: '^host    all             all             127.0.0.1/32            ident'
+      line: "host    all             all             127.0.0.1/32            md5"
+      owner: root
+      group: root
+  - name: Modificacion de anchivo pg_hba.conf
+    lineinfile:
+      path: /var/lib/pgsql/data/pg_hba.conf
+      regexp: '^host    all             all             ::1/128                 ident'
+      line: "host    all             all             ::1/128                 md5"
+      owner: root
+      group: root
+  - name: Creando usuario postgres para SonrQube
+    postgresql_user:
+      name: sonar
+      password: ""
+  - name: Creacion de Base de datos para SonaQube
+    postgresql_db:
+      name: sonar
+      owner: sonar
+
+  ### Instalando SonarQube
+  - name: Paquete requerido
     package:
-      name: ntpdate
+      name: epel-release
       state: present
-  - name: Descomprimiendo archivo zip
+  - name: Obteniendo y descomprimiendo archivo zip
     unarchive:
       src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.7.zip
       dest: /usr/local
