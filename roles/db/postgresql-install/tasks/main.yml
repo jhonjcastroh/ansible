@@ -20,4 +20,4 @@
   command: "printf 'postgresql\npostgresql\n' | passwd postgres"
 - name: Instalando psycopg2
   pip:
-   name: psycopg2
+   name: psycopg2-binary
