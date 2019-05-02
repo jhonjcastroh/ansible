@@ -5,12 +5,15 @@
     packages:
     - postgresql-server 
     - postgresql-contrib
-- command: postgresql-setup initdb
-
-- service: 
+- name: Inicializando PostgreSQL
+  command: postgresql-setup initdb
+  ignore_errors: yes
+- name: Levantando Servicio de Postgre
+  service:
     name: postgresql
     state: started
-- service:
+- name: hanilitando Servicio de Postgre
+  service:
     name: postgresql
     enabled: yes
 
