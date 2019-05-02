@@ -3,34 +3,11 @@
   become: yes
   tasks:
     #### Ubuntu ####
-    ################
-    # ERROR --->>> Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)\n
-    # ERROR --->>> E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
-    # - command: killall apt apt-get
-    #   register: result
-    #   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-    #   ignore_errors: yes
-      
-    # - shell: rm /var/lib/apt/lists/lock; rm /var/cache/apt/archives/lock; rm /var/lib/dpkg/lock*
-    #   register: result2
-    #   when: result is failed
-    #   ignore_errors: yes
-    
-    # - command: dpkg --configure -a
-    #   register: result3
-    #   when: result2 is succeeded
-    #   ignore_errors: yes
-    ################
     - name: Update all packages to the latest version
       apt:
         upgrade: full
       tags: apt
-    - name: Actualizar los paquetes a la última actualización
-      apt:
-        name: "*"
-        state: latest
-        force_apt_get: True
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      when: ansible_facts['os_family'] == 'Debian'
     - name: Instalacion de packetes requeridos
       apt:
         name: "{{ packages }}"
@@ -42,16 +19,16 @@
         - curl
         - gnupg-agent
         - software-properties-common
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      when: ansible_facts['os_family'] == 'Debian'
     - name: Agrega GPG Key
       apt_key: 
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      when: ansible_facts['os_family'] == 'Debian'
     - name: Agregar repositorio 
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      when: ansible_facts['os_family'] == 'Debian'
     ### Centos Redhat ###
     - name: Instalacion de packetes requeridos en Centos-Redhat
       yum:
@@ -82,10 +59,12 @@
         - containerd.io
     - name: User
       shell: usermod -aG docker $(whoami)
-    ### HABILITANDO SERVICIO PARA REDHAT 7 ###
+    ### HABILITANDO SERVICIO ###
     - name: Enable Docker Service
-      command: systemctl enable docker.service
-      when: ansible_facts['os_family'] == "RedHat"and ansible_facts['distribution_major_version'] >= "7"
+      service: 
+        name: docker.service
+        enable: yes
     - name: Start Docker
-      command: systemctl start docker.service
-      when: ansible_facts['os_family'] == "RedHat"and ansible_facts['distribution_major_version'] >= "7"
+      service: 
+        name: docker.service
+        state: started 
