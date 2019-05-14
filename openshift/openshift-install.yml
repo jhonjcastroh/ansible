@@ -1,0 +1,138 @@
+- name: Instalacion de Openshift All In One
+  hosts: all
+  become: yes
+  roles:
+    - app/ansible-install
+  tasks:
+  - name: Agregando Repositorios
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      state: present
+  - name: Habilitando Repositorios
+    command: "subscription-manager repos --enable 'rhel-7-server-rpms' --enable 'rhel-7-server-extras-rpms' --enable 'rhel-7-fast-datapath-rpms' --enable 'rhel-7-server-ose-3.11-rpms' --enable 'rhel-*-optional-rpms' --enable 'rhel-*-extras-rpms'"
+  - command: "subscription-manager repos --enable rhel-7-server-ansible-2.6-rpms"
+  - name: Update all packages to the latest version
+    yum:
+      name: '*'
+      state: latest
+  - name: ensure a list of packages installed
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - wget 
+      - git 
+      - zile 
+      - nano 
+      - net-tools 
+      - docker-1.13.1
+      - bind-utils 
+      - iptables-services
+      - bridge-utils
+      - bash-completion
+      - kexec-tools 
+      - sos 
+      - psacct 
+      - openssl-devel
+      - httpd-tools 
+      - NetworkManager
+      - python-cryptography 
+      - python2-pip 
+      - python-devel  
+      - python-passlib
+      - java-1.8.0-openjdk-headless 
+      - "@Development Tools"
+  - name: Modificar epel.repo
+    lineinfile:
+      path: /etc/yum.repos.d/epel.repo
+      regexp: '^enabled=1'
+      line: 'enabled=0'
+  - name: Iniciando y habilitando Servicio NetworkManager
+    service:
+      name: NetworkManager
+      state: started
+      enabled: yes
+  - name: ensure a list of packages installed
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - ansible
+      - pyOpenSSL
+  - name: Descargar repositorio Openshift
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /install-ocp
+      clone: yes
+      update: yes
+  - name: Fetch 
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /install-ocp/openshift-ansible
+      refspec: '+refs/pull/*:refs/heads/*'
+  - name: Rama de la Versión 3.11
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /install-ocp/openshift-ansible
+      version: release-3.11
+  - name: respaldando archivo hosts
+    command: cp /etc/hosts /etc/hosts.bkp
+  - name: Reescribiendo el archivo hosts {{ openstack.addresses.99500806-6aaa-451a-bbbd-05149fd179df.addr }}
+    lineinfile:
+      insertafter: 
+      path: /etc/hosts
+      line: '127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4\n
+            ::1          localhost localhost.localdomain localhost6 localhost6.localdomain6\n
+            {{ ansibñe_host }}		{{ name }} console console.{{ domain }}'
+  - name: Iniciando y habilitando Servicio docker
+    service:
+      name: docker
+      state: restarted
+      enabled: yes
+  - name: opteniendo tamaño de memoria ram
+    command: 'cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/"'
+    register: memory_master
+  - name: definiendo variable METRICS
+    command: export METRICS="False"
+    when: memory.stout < 4194304
+  - name: definiendo variable LOGGING
+    command: export LOGGING="False"
+    when: memory.stout < 8388608
+
+  - name: Obtener http proxy 
+    command: echo ${HTTPS_PROXY:-${https_proxy:-${HTTP_PROXY:-${http_proxy}}}}
+    register: http_proxy_cluster
+  - name: Modificar inventario si el HTTPS_PROXY tiene contenido
+    lineinfile: 
+      path: /install-ocp/openshift-ansible/inventory.ini
+      line: "openshift_http_proxy=\"{{ http_proxy_cluster.stout }}\"\n
+            openshift_https_proxy=\"{{ http_proxy_cluster.stout }}\""
+      create: yes
+    when: http_proxy_cluster.stout is defined
+  
+  - name: Creando archivo para htpasswd
+    file:
+      path: /etc/origin/master/htpasswd
+      state: touch
+      mode: "o=rw"
+      
+  - name: Prerequisitos
+    command: "ansible-playbook -i /install-ocp/openshift-ansible/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
+  - name: Desplegando
+    command: "ansible-playbook -i /install-ocp/openshift-ansible/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml"
+    
+  - name: Creando usuario admin Openshift
+    command: "htpasswd -b /etc/origin/master/htpasswd {{ user_ocp }} {{ pass_ocp }}"    
+  - name: Add project role Admin to a user
+    #command: oc adm policy add-cluster-role-to-user cluster-admin {{ USERNAME }}
+    oc:
+      state: present
+      inline:
+        kind: RoleBinding
+        metadata:
+          name: admin
+          namespace: mynamespace
+        roleRef:
+          name: cluster-admin
+        userNames: admin
+        token: << redacted >>

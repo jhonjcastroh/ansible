@@ -1,6 +1,8 @@
 - name: Instalacion de Docker
   hosts: all
   become: yes
+  become_user: linux
+  become_method: sudo
   tasks:
     #### Ubuntu ####
     - name: Update all packages to the latest version
@@ -16,7 +18,6 @@
         packages:
         - apt-transport-https
         - ca-certificates
-        - curl
         - gnupg-agent
         - software-properties-common
       when: ansible_facts['os_family'] == 'Debian'
@@ -25,7 +26,7 @@
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
       when: ansible_facts['os_family'] == 'Debian'
-    - name: Agregar repositorio 
+    - name: Agregar repositorio
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
       when: ansible_facts['os_family'] == 'Debian'
