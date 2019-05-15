@@ -4,6 +4,13 @@
   roles:
     - app/ansible-install
   tasks:
+  - name: Register as user with password and auto-subscribe to available content.
+    redhat_subscription:
+      state: present
+      username: {{ user_redhat }}
+      password: {{ pass_redhat }}
+      auto_attach: true
+      pool_ids: {{ pool_ids_ocp }}
   - name: Agregando Repositorios
     yum:
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -117,10 +124,10 @@
       mode: "o=rw"
       
   - name: Prerequisitos
-    command: "ansible-playbook -i /install-ocp/openshift-ansible/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
+    command: "ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
   - name: Desplegando
-    command: "ansible-playbook -i /install-ocp/openshift-ansible/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml"
-    
+    command: "ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml"
+
   - name: Creando usuario admin Openshift
     command: "htpasswd -b /etc/origin/master/htpasswd {{ user_ocp }} {{ pass_ocp }}"    
   - name: Add project role Admin to a user
