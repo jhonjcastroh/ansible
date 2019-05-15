@@ -1,8 +1,8 @@
 - name: upgrade all packages
-  package:
+  apt:
     name: '*'
     state: latest
-  force_apt_get: True
+    force_apt_get: True
   when: ansible_facts['os_family'] == "Debian"
 - name: upgrade all packages
   yum:
