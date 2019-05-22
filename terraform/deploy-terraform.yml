@@ -1,6 +1,9 @@
-- name: Ejecución
+- name: Ejecución terraform
   hosts: all
   tasks:
     - terraform:
         project_path: "{{ project_dir }}"
+        variables_file: "{{ variables_file_path }}"
         state: present
+
+
