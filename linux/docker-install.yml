@@ -1,8 +1,7 @@
 - name: Instalacion de Docker
   hosts: all
   become: yes
-  become_user: linux
-  become_method: sudo
+  become_user: root
   tasks:
     #### Ubuntu ####
     - name: Update all packages to the latest version
@@ -62,10 +61,10 @@
       shell: usermod -aG docker $(whoami)
     ### HABILITANDO SERVICIO ###
     - name: Enable Docker Service
-      service: 
+      service:
         name: docker.service
         enabled: yes
     - name: Start Docker
-      service: 
+      service:
         name: docker.service
-        state: started 
+        state: started
