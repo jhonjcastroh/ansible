@@ -7,10 +7,10 @@
   - name: Register as user with password and auto-subscribe to available content.
     redhat_subscription:
       state: present
-      username: {{ user_redhat }}
-      password: {{ pass_redhat }}
+      username: "{{ user_redhat }}"
+      password: "{{ pass_redhat }}"
       auto_attach: true
-      pool_ids: {{ pool_ids_ocp }}
+      pool_ids: "{{ pool_ids_ocp }}"
   - name: Agregando Repositorios
     yum:
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
