@@ -1,5 +1,6 @@
 - name: Ejecución terraform
   hosts: all
+  become: yes
   tasks:
     - terraform:
         project_path: "{{ project_dir }}"
