@@ -23,6 +23,7 @@
     yum:
       name: '*'
       state: latest
+    ignore_errors: yes
   - name: ensure a list of packages installed
     yum:
       name: "{{ packages }}"
