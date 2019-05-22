@@ -1,6 +1,7 @@
 - name: Instalacion de Openshift All In One
   hosts: all
   become: yes
+  become_user: root
   roles:
     - app/ansible-install
   tasks:
