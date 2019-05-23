@@ -1,7 +1,10 @@
 - name: Ejecución terraform
   hosts: all
+  become_user: ansibleadmin
   tasks:
     - terraform:
         project_path: "{{ project_dir }}"
         variables_file: "{{ variables_file_path }}"
         state: present
+      environment:
+        PATH: "/home/ansibleadmin/bin:/home/ansibleadmin/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ansibleadmin/terraform"
