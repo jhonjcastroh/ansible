@@ -123,13 +123,17 @@
   #           openshift_https_proxy=\"{{ http_proxy_cluster.stdout }}\""
   #     create: yes
   #   when: http_proxy_cluster.stdout is defined
-  
+  - name: Creando ditectorio para htpasswd
+    file:
+      path: /etc/origin/master
+      state: directory
+      recuse: yes
+      mode: "u=r,g=r,o=rw"
   - name: Creando archivo htpasswd
     file:
       path: /etc/origin/master/htpasswd
       state: touch
       mode: "u=r,g=r,o=rw"
-    check_mode: yes
   - name: Prerequisitos
     command: "ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
   - name: Desplegando
