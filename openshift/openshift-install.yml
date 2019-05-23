@@ -106,6 +106,10 @@
   - name: opteniendo tamaño de memoria ram
     shell: cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/"
     register: memory_master
+  - name: check contents for emptiness
+    debug:
+      msg: "Directory is empty"
+    when: memory_master.stdout != ""
   - name: definiendo variable METRICS
     command: export METRICS="False"
     when: \"{{memory_master.stout}}\" < 4194304
