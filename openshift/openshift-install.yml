@@ -2,9 +2,9 @@
   hosts: all
   become: yes
   become_user: root
-  roles:
+  # roles:
   #   - app/ansible-install
-    - app/docker-install
+  #   - app/docker-install
   tasks:
   # - name: Register as user with password and auto-subscribe to available content.
   #   redhat_subscription:
@@ -108,7 +108,7 @@
     register: memory_master
   - name: definiendo variable METRICS
     command: export METRICS="False"
-    when: memory_master.stout < 4194304
+    when: memory_master.stout < "4194304"
   - name: definiendo variable LOGGING
     command: export LOGGING="False"
     when: memory_master.stout < 8388608
