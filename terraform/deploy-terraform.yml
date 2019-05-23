@@ -1,6 +1,5 @@
 - name: Ejecución terraform
   hosts: all
-  become_user: ansibleadmin
   tasks:
     - terraform:
         project_path: "{{ project_dir }}"
