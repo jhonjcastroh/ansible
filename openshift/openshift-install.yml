@@ -127,8 +127,7 @@
   - name: Creando archivo htpasswd
     file:
       path: /etc/origin/master/htpasswd
-      owner: root
-      group: root
+      state: touch
       mode: "u=r,g=r,o=rw"
   - name: Prerequisitos
     command: "ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
