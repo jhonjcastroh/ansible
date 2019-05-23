@@ -127,7 +127,7 @@
     file:
       path: /etc/origin/master
       state: directory
-      recuse: yes
+      recurse: yes
       mode: "u=r,g=r,o=rw"
   - name: Creando archivo htpasswd
     file:
