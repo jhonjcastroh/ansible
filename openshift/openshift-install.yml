@@ -2,9 +2,8 @@
   hosts: all
   become: yes
   become_user: root
-  roles:
+  # roles:
   #   - app/ansible-install
-    - app/docker-install
   tasks:
   # - name: Register as user with password and auto-subscribe to available content.
   #   redhat_subscription:
