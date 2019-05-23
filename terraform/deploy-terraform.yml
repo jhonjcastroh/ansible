@@ -8,4 +8,4 @@
         force_init: yes
         state: present
       environment:
-        PATH: "/home/ansibleadmin/bin:/home/ansibleadmin/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/terraform/terraform"
+        PATH: "/home/ansibleadmin/bin:/home/ansibleadmin/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/terraform"
