@@ -129,6 +129,7 @@
       path: /etc/origin/master/htpasswd
       state: touch
       mode: "u=r,g=r,o=rw"
+    check_mode: yes
   - name: Prerequisitos
     command: "ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
   - name: Desplegando
