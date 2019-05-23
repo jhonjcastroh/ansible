@@ -5,7 +5,6 @@
     - terraform:
         project_path: "{{ project_dir }}"
         variables_file: "{{ variables_file_path }}"
-        force_init: yes
         state: present
       environment:
         PATH: "/home/ansibleadmin/bin:/home/ansibleadmin/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/terraform"
