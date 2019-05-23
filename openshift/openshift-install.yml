@@ -103,33 +103,33 @@
   # #     name: docker
   # #     state: started
   # #     enabled: yes
-  - name: opteniendo tamaño de memoria ram
-    shell: cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/"
-    register: memory_master
-  - name: definiendo variable METRICS
-    command: export METRICS="False"
-    when: memory_master.stdout < 4194304
-  - name: definiendo variable LOGGING
-    command: export LOGGING="False"
-    when: memory_master.stdout < 8388608
+  # - name: opteniendo tamaño de memoria ram
+  #   shell: cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/"
+  #   register: memory_master
+  # - name: definiendo variable METRICS
+  #   command: export METRICS="False"
+  #   when: memory_master.stdout < 4194304
+  # - name: definiendo variable LOGGING
+  #   command: export LOGGING="False"
+  #   when: memory_master.stdout < 8388608
 
-  - name: Obtener http proxy 
-    command: echo ${HTTPS_PROXY:-${https_proxy:-${HTTP_PROXY:-${http_proxy}}}}
-    register: http_proxy_cluster
-  - name: Modificar inventario si el HTTPS_PROXY tiene contenido
-    lineinfile: 
-      path: /install-ocp/openshift-ansible/inventory.ini
-      line: "openshift_http_proxy=\"{{ http_proxy_cluster.stdout }}\"\n
-            openshift_https_proxy=\"{{ http_proxy_cluster.stdout }}\""
-      create: yes
-    when: http_proxy_cluster.stdout is defined
+  # - name: Obtener http proxy 
+  #   command: echo ${HTTPS_PROXY:-${https_proxy:-${HTTP_PROXY:-${http_proxy}}}}
+  #   register: http_proxy_cluster
+  # - name: Modificar inventario si el HTTPS_PROXY tiene contenido
+  #   lineinfile: 
+  #     path: /install-ocp/openshift-ansible/inventory.ini
+  #     line: "openshift_http_proxy=\"{{ http_proxy_cluster.stdout }}\"\n
+  #           openshift_https_proxy=\"{{ http_proxy_cluster.stdout }}\""
+  #     create: yes
+  #   when: http_proxy_cluster.stdout is defined
   
-  - name: Creando archivo para htpasswd
+  - name: Creando archivo htpasswd
     file:
       path: /etc/origin/master/htpasswd
-      state: touch
-      mode: "o=rw"
-      
+      owner: root
+      group: root
+      mode: "u=r,g=r,o=rw"
   - name: Prerequisitos
     command: "ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml"
   - name: Desplegando
