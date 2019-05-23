@@ -106,9 +106,9 @@
   - name: opteniendo tamaño de memoria ram
     shell: cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/"
     register: memory_master
-  - name: definiendo variable METRICS "{{ memory_master.stout }}"
+  - name: definiendo variable METRICS
     command: export METRICS="False"
-    when: memory_master.stout < "4194304"
+    when: \"{{memory_master.stout}}\" < 4194304
   - name: definiendo variable LOGGING
     command: export LOGGING="False"
     when: memory_master.stout < 8388608
