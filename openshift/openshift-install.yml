@@ -86,13 +86,13 @@
       version: release-3.11
   - name: respaldando archivo hosts
     command: cp /etc/hosts /etc/hosts.bkp
-  - name: Reescribiendo el archivo hosts
+  - name: Reescribiendo el archivo hosts {{ openstack.addresses.99500806-6aaa-451a-bbbd-05149fd179df.addr }}
     lineinfile:
       insertafter: 
       path: /etc/hosts
       line: '127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4\n
             ::1          localhost localhost.localdomain localhost6 localhost6.localdomain6\n
-            {{ ansible_host }}		{{ name }} console console.{{ domain }}'
+            {{ ansible_host }}		{{ openstack.name }} console console.{{ domain }}'
   - name: Iniciando y habilitando Servicio docker
     service:
       name: docker
