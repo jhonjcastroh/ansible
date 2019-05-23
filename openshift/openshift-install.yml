@@ -2,8 +2,9 @@
   hosts: all
   become: yes
   become_user: root
-  # roles:
+  roles:
   #   - app/ansible-install
+    - app/docker-install
   tasks:
   # - name: Register as user with password and auto-subscribe to available content.
   #   redhat_subscription:
@@ -93,15 +94,15 @@
   #     line: '127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4\n
   #           ::1          localhost localhost.localdomain localhost6 localhost6.localdomain6\n
   #           {{ ansible_host }}		{{ openstack.name }} console console.{{ domain }}'
-  - name: Enable Docker Service
-    service:
-      name: docker
-      enabled: yes
-  - name: Iniciando y habilitando Servicio docker
-    service:
-      name: docker
-      state: started
-      enabled: yes
+  # # - name: Enable Docker Service
+  # #   service:
+  # #     name: docker
+  # #     enabled: yes
+  # # - name: Iniciando y habilitando Servicio docker
+  # #   service:
+  # #     name: docker
+  # #     state: started
+  # #     enabled: yes
   - name: opteniendo tamaño de memoria ram
     command: 'cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/"'
     register: memory_master
