@@ -1,10 +1,9 @@
 #### Ubuntu ####
-- name: Actualizar los paquetes a la última actualización
+- name: Update all packages to the latest version
   apt:
-    name: "*"
-    state: latest
-    force_apt_get: True
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    upgrade: full
+  tags: apt
+  when: ansible_facts['os_family'] == 'Debian'
 - name: Instalacion de packetes requeridos
   apt:
     name: "{{ packages }}"
@@ -13,19 +12,18 @@
     packages:
     - apt-transport-https
     - ca-certificates
-    - curl
     - gnupg-agent
     - software-properties-common
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_facts['os_family'] == 'Debian'
 - name: Agrega GPG Key
   apt_key: 
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-- name: Agregar repositorio 
+  when: ansible_facts['os_family'] == 'Debian'
+- name: Agregar repositorio
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_facts['os_family'] == 'Debian'
 ### Centos Redhat ###
 - name: Instalacion de packetes requeridos en Centos-Redhat
   yum:
@@ -56,10 +54,12 @@
     - containerd.io
 - name: User
   shell: usermod -aG docker $(whoami)
-### HABILITANDO SERVICIO PARA REDHAT 7 ###
+### HABILITANDO SERVICIO ###
 - name: Enable Docker Service
-  command: systemctl enable docker.service
-  when: ansible_facts['os_family'] == "RedHat"and ansible_facts['distribution_major_version'] >= "7"
+  service:
+    name: docker.service
+    enabled: yes
 - name: Start Docker
-  command: systemctl start docker.service
-  when: ansible_facts['os_family'] == "RedHat"and ansible_facts['distribution_major_version'] >= "7"
+  service:
+    name: docker.service
+    state: started
