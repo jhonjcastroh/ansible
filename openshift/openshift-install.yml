@@ -2,88 +2,88 @@
   hosts: all
   become: yes
   become_user: root
-  roles:
-    - app/ansible-install
+  # roles:
+  #   - app/ansible-install
   tasks:
-  - name: Register as user with password and auto-subscribe to available content.
-    redhat_subscription:
-      state: present
-      username: "{{ user_redhat }}"
-      password: "{{ pass_redhat }}"
-      auto_attach: true
-      pool_ids: "{{ pool_ids_ocp }}"
-  - name: Agregando Repositorios
-    yum:
-      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-      state: present
-  - name: Habilitando Repositorios
-    command: "subscription-manager repos --enable 'rhel-7-server-rpms' --enable 'rhel-7-server-extras-rpms' --enable 'rhel-7-fast-datapath-rpms' --enable 'rhel-7-server-ose-3.11-rpms' --enable 'rhel-*-optional-rpms' --enable 'rhel-*-extras-rpms'"
-  - command: "subscription-manager repos --enable rhel-7-server-ansible-2.6-rpms"
-  - name: Update all packages to the latest version
-    yum:
-      name: '*'
-      state: latest
-    ignore_errors: yes
-  - name: ensure a list of packages installed
-    yum:
-      name: "{{ packages }}"
-    vars:
-      packages:
-      - wget 
-      - git 
-      - zile 
-      - nano 
-      - net-tools 
-      - docker-1.13.1
-      - bind-utils 
-      - iptables-services
-      - bridge-utils
-      - bash-completion
-      - kexec-tools 
-      - sos 
-      - psacct 
-      - openssl-devel
-      - httpd-tools 
-      - NetworkManager
-      - python-cryptography 
-      - python2-pip 
-      - python-devel  
-      - python-passlib
-      - java-1.8.0-openjdk-headless 
-      - "@Development Tools"
-  - name: Modificar epel.repo
-    lineinfile:
-      path: /etc/yum.repos.d/epel.repo
-      regexp: '^enabled=1'
-      line: 'enabled=0'
-  - name: Iniciando y habilitando Servicio NetworkManager
-    service:
-      name: NetworkManager
-      state: started
-      enabled: yes
-  - name: ensure a list of packages installed
-    yum:
-      name: "{{ packages }}"
-    vars:
-      packages:
-      - ansible
-      - pyOpenSSL
-  - name: Descargar repositorio Openshift
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp
-      clone: yes
-      update: yes
-  - name: Fetch 
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp/openshift-ansible
-      refspec: '+refs/pull/*:refs/heads/*'
-  - name: Rama de la Versión 3.11
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp/openshift-ansible
-      version: release-3.11
+  # - name: Register as user with password and auto-subscribe to available content.
+  #   redhat_subscription:
+  #     state: present
+  #     username: "{{ user_redhat }}"
+  #     password: "{{ pass_redhat }}"
+  #     auto_attach: true
+  #     pool_ids: "{{ pool_ids_ocp }}"
+  # - name: Agregando Repositorios
+  #   yum:
+  #     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  #     state: present
+  # - name: Habilitando Repositorios
+  #   command: "subscription-manager repos --enable 'rhel-7-server-rpms' --enable 'rhel-7-server-extras-rpms' --enable 'rhel-7-fast-datapath-rpms' --enable 'rhel-7-server-ose-3.11-rpms' --enable 'rhel-*-optional-rpms' --enable 'rhel-*-extras-rpms'"
+  # - command: "subscription-manager repos --enable rhel-7-server-ansible-2.6-rpms"
+  # - name: Update all packages to the latest version
+  #   yum:
+  #     name: '*'
+  #     state: latest
+  #   ignore_errors: yes
+  # - name: ensure a list of packages installed
+  #   yum:
+  #     name: "{{ packages }}"
+  #   vars:
+  #     packages:
+  #     - wget 
+  #     - git 
+  #     - zile 
+  #     - nano 
+  #     - net-tools 
+  #     - docker-1.13.1
+  #     - bind-utils 
+  #     - iptables-services
+  #     - bridge-utils
+  #     - bash-completion
+  #     - kexec-tools 
+  #     - sos 
+  #     - psacct 
+  #     - openssl-devel
+  #     - httpd-tools 
+  #     - NetworkManager
+  #     - python-cryptography 
+  #     - python2-pip 
+  #     - python-devel  
+  #     - python-passlib
+  #     - java-1.8.0-openjdk-headless 
+  #     - "@Development Tools"
+  # - name: Modificar epel.repo
+  #   lineinfile:
+  #     path: /etc/yum.repos.d/epel.repo
+  #     regexp: '^enabled=1'
+  #     line: 'enabled=0'
+  # - name: Iniciando y habilitando Servicio NetworkManager
+  #   service:
+  #     name: NetworkManager
+  #     state: started
+  #     enabled: yes
+  # - name: ensure a list of packages installed
+  #   yum:
+  #     name: "{{ packages }}"
+  #   vars:
+  #     packages:
+  #     - ansible
+  #     - pyOpenSSL
+  # - name: Descargar repositorio Openshift
+  #   git:
+  #     repo: https://github.com/openshift/openshift-ansible.git
+  #     dest: /install-ocp
+  #     clone: yes
+  #     update: yes
+  # - name: Fetch 
+  #   git:
+  #     repo: https://github.com/openshift/openshift-ansible.git
+  #     dest: /install-ocp/openshift-ansible
+  #     refspec: '+refs/pull/*:refs/heads/*'
+  # - name: Rama de la Versión 3.11
+  #   git:
+  #     repo: https://github.com/openshift/openshift-ansible.git
+  #     dest: /install-ocp/openshift-ansible
+  #     version: release-3.11
   - name: respaldando archivo hosts
     command: cp /etc/hosts /etc/hosts.bkp
   - name: Reescribiendo el archivo hosts {{ openstack.addresses.99500806-6aaa-451a-bbbd-05149fd179df.addr }}
