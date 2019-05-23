@@ -108,10 +108,10 @@
     register: memory_master
   - name: definiendo variable METRICS
     command: export METRICS="False"
-    when: memory.stout < 4194304
+    when: memory_master.stout < 4194304
   - name: definiendo variable LOGGING
     command: export LOGGING="False"
-    when: memory.stout < 8388608
+    when: memory_master.stout < 8388608
 
   - name: Obtener http proxy 
     command: echo ${HTTPS_PROXY:-${https_proxy:-${HTTP_PROXY:-${http_proxy}}}}
