@@ -86,7 +86,7 @@
   #     version: release-3.11
   - name: respaldando archivo hosts
     command: cp /etc/hosts /etc/hosts.bkp
-  - name: Reescribiendo el archivo hosts {{ openstack.addresses.99500806-6aaa-451a-bbbd-05149fd179df.addr }}
+  - name: Reescribiendo el archivo hosts
     lineinfile:
       insertafter: 
       path: /etc/hosts
