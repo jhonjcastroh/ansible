@@ -3,7 +3,13 @@
 - name: Deshabilitar SELinux
   lineinfile:
     path: /etc/selinux/config
-    regexp: '^SELINUX=' 
+    regexp: '^SELINUX='
     line: 'SELINUX=disabled'
-- name: firewall rhel7
-  command: systemctl stop firewalld
+- name: Stop service httpd, if started
+  service:
+    name: firewalld
+    state: stopped
+- name: firewall
+  service: 
+    name: firewalld
+    enabled: no 

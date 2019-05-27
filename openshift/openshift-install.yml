@@ -134,11 +134,19 @@
   #     path: /etc/origin/master/htpasswd
   #     state: touch
   #     mode: "u=r,g=r,o=rw"
-  - name: Prerequisitos
-    shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
-  - name: Desplegando
-    shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
+- name: Prerequisitos
+  hosts: 
+  import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
 
+  # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+- name: Desplegando
+  shell: ansible-playbook -i /install-ocp/inventory.ini 
+
+- name: Instalacion de Openshift All In One
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
   - name: Creando usuario admin Openshift
     command: "htpasswd -b /etc/origin/master/htpasswd {{ user_ocp }} {{ pass_ocp }}"    
   - name: Add project role Admin to a user
