@@ -1,0 +1,97 @@
+# Jmeter Stack
+version: "3.7"
+services:
+  influxdb:
+    image: "influxdb"
+    hostname: "influxdb"
+    ports:
+      - "8086:8086"
+    environment:
+      - "INFLUXDB_DB=performance"
+      - "INFLUXDB_USER=performance"
+      - "INFLUXDB_USER_PASSWORD=performance"
+    volumes:
+      - "influxdb:/var/lib/influxdb"
+    networks:
+      - "performance"
+    deploy:
+      placement:
+        constraints:
+          - "node.role == manager"
+  grafana:
+    image: "grafana/grafana"
+    hostname: "grafana"
+    depends_on:
+      - "influxdb"
+    ports:
+      - "80:3000"
+    volumes:
+      - "grafana:/var/lib/grafana"
+    networks:
+      - "performance"
+    deploy:
+      placement:
+        constraints:
+          - "node.role == manager"
+  visualizer:
+    image: "dockersamples/visualizer"
+    hostname: "visualizer"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - "performance"
+    deploy:
+      placement:
+        constraints:
+          - "node.role == manager"
+  master:
+    image: "tsoftglobal/jmeter:master"
+    hostname: "jmeter-master"
+    stdin_open: true
+    tty: true
+    volumes:
+      - "results:/jmeter/apache-jmeter/bin/results"
+    environment:
+      - "GIT={{ hostvars['manager01']['jmeter_stack_git'] }}"
+    networks:
+      - "performance"
+    deploy:
+      placement:
+        constraints:
+          - "node.role == manager"
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: "3072M"
+        reservations:
+          cpus: "1.5"
+          memory: "3072M"
+  slave:
+    image: "tsoftglobal/jmeter:slave"
+    hostname: "jmeter-slave"
+    depends_on:
+      - "master"
+    environment:
+      - "GIT={{ hostvars['manager01']['jmeter_stack_git'] }}"
+    networks:
+      - "performance"
+    deploy:
+      replicas: {{ hostvars['manager01']['jmeter_stack_slave_replicas'] }}
+      placement:
+        constraints:
+          - "node.role == worker"
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: "3072M"
+        reservations:
+          cpus: "1.5"
+          memory: "3072M"
+networks:
+  performance:
+volumes:
+  results:
+  influxdb:
+  grafana:

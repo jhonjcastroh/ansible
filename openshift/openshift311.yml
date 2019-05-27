@@ -1,0 +1,999 @@
+ansible_host: 170.84.211.119
+ansible_ssh_host: 170.84.211.119
+openstack:
+  'OS-DCF:diskConfig': MANUAL
+  'OS-EXT-AZ:availability_zone': sa-chile-1a
+  'OS-EXT-SRV-ATTR:host': sa-chile-1a-2.sa-chile-1
+  'OS-EXT-SRV-ATTR:hypervisor_hostname': nova002@35
+  'OS-EXT-SRV-ATTR:instance_name': instance-00051933
+  'OS-EXT-STS:power_state': 1
+  'OS-EXT-STS:task_state': null
+  'OS-EXT-STS:vm_state': active
+  'OS-SRV-USG:launched_at': '2019-05-22T14:14:35.000000'
+  'OS-SRV-USG:terminated_at': null
+  accessIPv4: 170.84.211.119
+  accessIPv6: ''
+  addresses:
+    99500806-6aaa-451a-bbbd-05149fd179df:
+      - 'OS-EXT-IPS-MAC:mac_addr': 'fa:16:6e:35:de:4d'
+        'OS-EXT-IPS:type': fixed
+        addr: 172.16.10.27
+        version: 4
+      - 'OS-EXT-IPS-MAC:mac_addr': 'fa:16:6e:35:de:4d'
+        'OS-EXT-IPS:type': floating
+        addr: 170.84.211.119
+        version: 4
+  adminPass: null
+  az: sa-chile-1a
+  cloud: devstack
+  config_drive: ''
+  created: '2019-05-22T14:14:21Z'
+  created_at: '2019-05-22T14:14:21Z'
+  disk_config: MANUAL
+  flavor:
+    id: s3.2xlarge.2
+    name: s3.2xlarge.2
+  has_config_drive: false
+  hostId: 4a80b3c2fedd5c020224b72d48b8b388e98ba893efafe82867ab0fac
+  host_id: 4a80b3c2fedd5c020224b72d48b8b388e98ba893efafe82867ab0fac
+  id: eb489dfc-d3de-4b69-a54a-fb45f949762c
+  image:
+    id: 894c9d08-45ad-49ea-8081-a72a2c697c2f
+    name: Red Hat Enterprise Linux 7.4 64bit
+  interface_ip: 170.84.211.119
+  key_name: KeyPair-Nebula
+  launched_at: '2019-05-22T14:14:35.000000'
+  location:
+    cloud: devstack
+    project:
+      domain_id: null
+      domain_name: tsoft
+      id: 131d890deb5247d7a847128e90dca946
+      name: sa-chile-1
+    region_name: ''
+    zone: sa-chile-1a
+  metadata: {}
+  name: openshift311-ansible
+  networks: {}
+  'os-extended-volumes:volumes_attached':
+    - id: 216ea8e9-510c-4517-8e67-e084c1e10303
+  power_state: 1
+  private_v4: 170.84.211.119
+  progress: 0
+  project_id: 131d890deb5247d7a847128e90dca946
+  properties:
+    'OS-DCF:diskConfig': MANUAL
+    'OS-EXT-AZ:availability_zone': sa-chile-1a
+    'OS-EXT-SRV-ATTR:host': sa-chile-1a-2.sa-chile-1
+    'OS-EXT-SRV-ATTR:hypervisor_hostname': nova002@35
+    'OS-EXT-SRV-ATTR:instance_name': instance-00051933
+    'OS-EXT-STS:power_state': 1
+    'OS-EXT-STS:task_state': null
+    'OS-EXT-STS:vm_state': active
+    'OS-SRV-USG:launched_at': '2019-05-22T14:14:35.000000'
+    'OS-SRV-USG:terminated_at': null
+    'os-extended-volumes:volumes_attached':
+      - id: 216ea8e9-510c-4517-8e67-e084c1e10303
+  public_v4: 170.84.211.119
+  public_v6: ''
+  region: ''
+  security_groups:
+    - description: default
+      id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+      location:
+        cloud: devstack
+        project:
+          domain_id: null
+          domain_name: tsoft
+          id: 131d890deb5247d7a847128e90dca946
+          name: sa-chile-1
+        region_name: ''
+        zone: null
+      name: default
+      project_id: 131d890deb5247d7a847128e90dca946
+      properties: {}
+      security_group_rules:
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 85647359-5c61-4156-9cfe-b4d1a903e0df
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8000
+          port_range_min: 8000
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 35484b14-d3fa-4485-9abb-397de6f560fc
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 7990
+          port_range_min: 7990
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 55fc2436-5e9e-4386-928f-f8596b28985c
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 22
+          port_range_min: 22
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 4682cccb-06a2-4944-9905-ed717a73801e
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 9080
+          port_range_min: 9080
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 7887d685-128e-4f56-8294-d3a1b107afc2
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 5080
+          port_range_min: 5080
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 72042093-c85a-473e-a7c3-b1219eaac725
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8081
+          port_range_min: 8081
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 9f3431e6-409e-4fa6-8aa5-2668e41a9cc5
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 4080
+          port_range_min: 4080
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: c3295f10-1229-4229-a867-99b484a80d0b
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 3080
+          port_range_min: 3080
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 25b0874f-5568-49d5-8751-66f421673b40
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 6980
+          port_range_min: 6980
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 82d3d123-bc3c-4cf2-b611-c1456f5c38a6
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 6080
+          port_range_min: 6080
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: dfa39213-bba9-41fb-80e5-da171f37d186
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8080
+          port_range_min: 8080
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 18538d49-fa7d-4a3a-907f-4954b9498542
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 80
+          port_range_min: 80
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 0afb060b-8432-4d89-884c-0c828376f957
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8085
+          port_range_min: 8085
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: b2d615de-c00c-4242-aed5-99fd61dc7aa3
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 9200
+          port_range_min: 9200
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: f5b70747-55ef-46ac-9d79-9ebe599a8e60
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 6443
+          port_range_min: 6443
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: c26d3e24-b985-4e9f-9c4f-2de60eaa9b29
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 9191
+          port_range_min: 9191
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: cdf40be4-293c-454e-b607-1d0d359b7d71
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8090
+          port_range_min: 8090
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 771cc267-4740-411b-b788-4fc67d5257a1
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 4200
+          port_range_min: 4200
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 1fe75c4d-4d7e-4460-a8bd-0eda97c68286
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8079
+          port_range_min: 8079
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: c790cc6e-3eda-46b8-b800-a8f380de8015
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8083
+          port_range_min: 8083
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: b6f693b0-46f5-4696-9d80-f6e8f499d24c
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8084
+          port_range_min: 8084
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 35ab241c-d43e-42a9-9e5f-e5c7ec60b24f
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 0
+          port_range_min: 8
+          project_id: ''
+          properties:
+            group: {}
+          protocol: icmp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 02124f41-5cd8-4b3a-961f-847875b9cc97
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 389
+          port_range_min: 389
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 75135423-74a4-4663-9018-bd6f3e61107a
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 9000
+          port_range_min: 9000
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 47a56e3b-5c5e-4697-b095-0b724c711330
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 7991
+          port_range_min: 7991
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 232f5d32-aa47-41bd-9b6f-f18b14151396
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8086
+          port_range_min: 8086
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 93a81751-b355-4dcc-90cb-a9faaaae3210
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 3306
+          port_range_min: 3306
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: d3daad67-14c3-41cd-9240-e4bf129dcc27
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8087
+          port_range_min: 8087
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: 91683b3a-c526-4fda-b984-a6d045f5fd69
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8082
+          port_range_min: 8082
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: ecb65396-5b74-4105-8546-71f0e2b322fe
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 5000
+          port_range_min: 5000
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: cbfe0490-c159-49e8-a98c-92525cdc1930
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 8443
+          port_range_min: 8443
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group: {}
+          id: b9cd6161-642f-4576-89a1-fd66a4808a1c
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: 443
+          port_range_min: 443
+          project_id: ''
+          properties:
+            group: {}
+          protocol: tcp
+          remote_group_id: null
+          remote_ip_prefix: 0.0.0.0/0
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group:
+            name: default
+            tenant_id: 131d890deb5247d7a847128e90dca946
+          id: 62df4891-553e-40f4-bfad-b875b542c6a1
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: null
+          port_range_min: null
+          project_id: ''
+          properties:
+            group:
+              name: default
+              tenant_id: 131d890deb5247d7a847128e90dca946
+          protocol: null
+          remote_group_id: null
+          remote_ip_prefix: null
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+        - direction: ingress
+          ethertype: IPv4
+          group:
+            name: default
+            tenant_id: 131d890deb5247d7a847128e90dca946
+          id: 929e48fb-2ca6-4c72-bbe9-1c2c6ff20fa8
+          location:
+            cloud: devstack
+            project:
+              domain_id: null
+              domain_name: tsoft
+              id: 131d890deb5247d7a847128e90dca946
+              name: sa-chile-1
+            region_name: ''
+            zone: null
+          port_range_max: null
+          port_range_min: null
+          project_id: ''
+          properties:
+            group:
+              name: default
+              tenant_id: 131d890deb5247d7a847128e90dca946
+          protocol: null
+          remote_group_id: null
+          remote_ip_prefix: null
+          security_group_id: d34c1a69-ad81-4055-ae4b-37eca23a59fe
+          tenant_id: ''
+      tenant_id: 131d890deb5247d7a847128e90dca946
+  status: ACTIVE
+  task_state: null
+  tenant_id: 131d890deb5247d7a847128e90dca946
+  terminated_at: null
+  updated: '2019-05-22T15:29:13Z'
+  user_id: abc0fb9a10684ad2943edd9ebdfc828a
+  vm_state: active
+  volumes:
+    - attachments:
+        - attached_at: '2019-05-22T14:14:30.695624'
+          attachment_id: 79153d60-9044-4280-8399-4cc478917fc3
+          device: /dev/vda
+          host_name: null
+          id: 216ea8e9-510c-4517-8e67-e084c1e10303
+          server_id: eb489dfc-d3de-4b69-a54a-fb45f949762c
+          volume_id: 216ea8e9-510c-4517-8e67-e084c1e10303
+      availability_zone: sa-chile-1a
+      bootable: true
+      can_multiattach: false
+      consistencygroup_id: null
+      created_at: '2019-05-22T14:14:24.433408'
+      description: ''
+      device: /dev/vda
+      display_description: ''
+      display_name: ecs-ef6c
+      encrypted: false
+      host: 'sa-chile-1a-2.sa-chile-1#SATA'
+      id: 216ea8e9-510c-4517-8e67-e084c1e10303
+      is_bootable: true
+      is_encrypted: false
+      location:
+        cloud: devstack
+        project:
+          domain_id: null
+          domain_name: tsoft
+          id: 131d890deb5247d7a847128e90dca946
+          name: sa-chile-1
+        region_name: ''
+        zone: sa-chile-1a
+      metadata:
+        attached_mode: rw
+        readonly: 'False'
+      migration_status: null
+      multiattach: false
+      name: ecs-ef6c
+      'os-vol-host-attr:host': 'sa-chile-1a-2.sa-chile-1#SATA'
+      'os-vol-mig-status-attr:migstat': null
+      'os-vol-mig-status-attr:name_id': null
+      'os-vol-tenant-attr:tenant_id': 131d890deb5247d7a847128e90dca946
+      'os-volume-replication:extended_status': null
+      properties:
+        'os-vol-host-attr:host': 'sa-chile-1a-2.sa-chile-1#SATA'
+        'os-vol-mig-status-attr:migstat': null
+        'os-vol-mig-status-attr:name_id': null
+        'os-vol-tenant-attr:tenant_id': 131d890deb5247d7a847128e90dca946
+        'os-volume-replication:extended_status': null
+        shareable: false
+        source_volid: null
+        user_id: abc0fb9a10684ad2943edd9ebdfc828a
+        volume_image_metadata:
+          __image_source_type: uds
+          __imagetype: gold
+          __isregistered: 'true'
+          __os_bit: '64'
+          __os_type: Linux
+          __os_version: Red Hat Enterprise Linux 7.4 64bit
+          __platform: RedHat
+          __quick_start: 'True'
+          __support_kvm: 'true'
+          __support_xen: 'true'
+          checksum: d41d8cd98f00b204e9800998ecf8427e
+          container_format: bare
+          disk_format: vhd
+          hw_vif_multiqueue_enabled: 'true'
+          image_id: 894c9d08-45ad-49ea-8081-a72a2c697c2f
+          image_name: Red Hat Enterprise Linux 7.4 64bit
+          min_disk: '40'
+          min_ram: '1024'
+          size: '0'
+          virtual_env_type: FusionCompute
+      replication_driver: null
+      replication_extended_status: null
+      replication_status: disabled
+      shareable: false
+      size: 40
+      snapshot_id: null
+      source_volid: null
+      source_volume_id: null
+      status: in-use
+      updated_at: '2019-05-22T14:14:30.729821'
+      user_id: abc0fb9a10684ad2943edd9ebdfc828a
+      volume_image_metadata:
+        __image_source_type: uds
+        __imagetype: gold
+        __isregistered: 'true'
+        __os_bit: '64'
+        __os_type: Linux
+        __os_version: Red Hat Enterprise Linux 7.4 64bit
+        __platform: RedHat
+        __quick_start: 'True'
+        __support_kvm: 'true'
+        __support_xen: 'true'
+        checksum: d41d8cd98f00b204e9800998ecf8427e
+        container_format: bare
+        disk_format: vhd
+        hw_vif_multiqueue_enabled: 'true'
+        image_id: 894c9d08-45ad-49ea-8081-a72a2c697c2f
+        image_name: Red Hat Enterprise Linux 7.4 64bit
+        min_disk: '40'
+        min_ram: '1024'
+        size: '0'
+        virtual_env_type: FusionCompute
+      volume_type: SATA

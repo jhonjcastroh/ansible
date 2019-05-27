@@ -1,0 +1,8 @@
+- name: Obtener IP de los esclavos
+  shell: docker ps -q
+  register: contenedores
+
+- name: Obteniendo direccion IP de los esclavos
+  shell: docker inspect --format '{''{.Name}''} - {''{range .NetworkSettings.Networks}''}{''{.IPAddress}''}{''{end}''}' {{item}} | grep jmeter-stack_slave | grep -oP "\d+\.\d+\.\d+\.\d+"
+  register: ip
+  with_items: "{{ contenedores.stdout_lines }}"
