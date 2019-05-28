@@ -13,4 +13,4 @@
     group: "{{ ansible_ssh_user }}"
 
 - name: Ejecutar servicios del stack de Jmeter
-  shell: docker stack deploy -c /home/{{ hostvars['jhon-1']['ansible_ssh_user'] }}/performance/jmeter-stack-compose.yml jmeter-stack
+  shell: docker stack deploy -c /home/{{ ansible_ssh_user }}/performance/jmeter-stack-compose.yml jmeter-stack

@@ -54,7 +54,7 @@ services:
     volumes:
       - "results:/jmeter/apache-jmeter/bin/results"
     environment:
-      - "GIT={{ hostvars['jhon-1']['jmeter_stack_git'] }}"
+      - "GIT={{ jmeter_stack_git }}"
     networks:
       - "performance"
     deploy:
@@ -74,11 +74,11 @@ services:
     depends_on:
       - "master"
     environment:
-      - "GIT={{ hostvars['jhon-1']['jmeter_stack_git'] }}"
+      - "GIT={{ jmeter_stack_git }}"
     networks:
       - "performance"
     deploy:
-      replicas: {{ hostvars['jhon-1']['jmeter_stack_slave_replicas'] }}
+      replicas: {{ jmeter_stack_slave_replicas }}
       placement:
         constraints:
           - "node.role == worker"
