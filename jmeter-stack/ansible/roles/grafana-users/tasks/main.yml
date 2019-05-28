@@ -9,7 +9,7 @@
     headers:
       Accept: application/json
       Content-Type: application/json
-      Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+      Authorization: Basic {{hostvars['jhon-1']['token']['stdout']}}
     body: "{{ lookup('file','grafana-user.json') }}"
     body_format: json
 
@@ -20,6 +20,6 @@
     headers:
       Accept: application/json
       Content-Type: application/json
-      Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+      Authorization: Basic {{hostvars['jhon-1']['token']['stdout']}}
     body: "{{ lookup('file','grafana-passwd.json') }}"
     body_format: json
