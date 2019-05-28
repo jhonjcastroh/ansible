@@ -1,12 +1,12 @@
 - name: Instala dependencias
   apt: 
-    name: {{item}} 
+    name: "{{ item }}"
     update_cache: yes
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
+    with_items:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
   when: ansible_facts['os_family'] == "Debian"
 - name: Agrega GPG Key
   apt_key: 
