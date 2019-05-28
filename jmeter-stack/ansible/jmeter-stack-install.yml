@@ -4,11 +4,11 @@
   roles:
     - docker-install
 
-- name: Inicia Swarm
-  hosts: meta-instancia_manager
-  become: true
-  roles:
-    - docker-swarm-init
+# - name: Inicia Swarm
+#   hosts: meta-instancia_manager
+#   become: true
+#   roles:
+#     - docker-swarm-init
 
 - name: Agrega Workers al Swarm
   hosts: meta-instancia_workers
