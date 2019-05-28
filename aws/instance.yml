@@ -1,0 +1,62 @@
+- hosts: localhost
+  gather_facts: False
+
+  tasks:
+
+    - name: Provision a set of instances
+      ec2:
+         key_name: my_key
+         group: test
+         instance_type: t2.micro
+         image: "{{ ami_id }}"
+         wait: true
+         exact_count: 5
+         count_tag:
+            Name: Demo
+         instance_tags:
+            Name: Demo
+      register: ec2
+
+- hosts: localhost
+  gather_facts: False
+  tasks:
+
+    - name: Provision a set of instances
+      ec2:
+         key_name: my_key
+         group: test
+         instance_type: t2.micro
+         image: "{{ ami_id }}"
+         wait: true
+         exact_count: 5
+         count_tag:
+            Name: Demo
+         instance_tags:
+            Name: Demo
+      register: ec2
+      
+    - name: Add all instance public IPs to host group
+      add_host: hostname={{ item.public_ip }} groups=ec2hosts
+      loop: "{{ ec2.instances }}"
+
+    - name: fetch raw ip ranges for aws s3
+      set_fact:
+        raw_s3_ranges: "{{ lookup('aws_service_ip_ranges', region='eu-central-1', service='S3', wantlist=True) }}"
+
+    - name: prepare list structure for ec2_group module
+      set_fact:
+        s3_ranges: "{{ s3_ranges | default([]) + [{'proto': 'all', 'cidr_ip': item, 'rule_desc': 'S3 Service IP range'}] }}"
+      with_items: "{{ raw_s3_ranges }}"
+
+    - name: set S3 IP ranges to egress rules
+      ec2_group:
+        name: aws_s3_ip_ranges
+        description: allow outgoing traffic to aws S3 service
+        region: eu-central-1
+        state: present
+        vpc_id: vpc-123456
+        purge_rules: true
+        purge_rules_egress: true
+        rules: []
+        rules_egress: "{{ s3_ranges }}"
+        tags:
