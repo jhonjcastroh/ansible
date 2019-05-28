@@ -23,8 +23,9 @@
     update_cache: yes
   when: ansible_facts['os_family'] == "Debian"
 - name: Ejecutar Docker sin sudo
-  shell: usermod -aG docker {{ hostvars['meta-instancia_manager']['ansible_ssh_user'] }}
+  shell: usermod -aG docker {{ hostvars['jhon-0001']['ansible_ssh_user'] }}
   when: ansible_facts['os_family'] == "Debian"
+
 - name: Instalacion de packetes requeridos en Centos-Redhat
   yum:
     name: "{{ packages }}"
