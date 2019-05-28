@@ -1,5 +1,13 @@
 - name: Crear carpeta de utilidades
-  file: path=/home/{{ hostvars['jhon-1']['ansible_ssh_user'] }}/performance/utils state=directory owner={{ hostvars['jhon-1']['ansible_ssh_user'] }} group={{ hostvars['jhon-1']['ansible_ssh_user'] }}
+  file: 
+    path: /home/{{ ansible_ssh_user }}/performance/utils 
+    state: directory
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
 
 - name: Copiar archivo para obtener ip de los esclavos
-  copy: src=getSlavesIp.sh dest=/home/{{ hostvars['jhon-1']['ansible_ssh_user'] }}/performance/utils owner={{ hostvars['jhon-1']['ansible_ssh_user'] }} group={{ hostvars['jhon-1']['ansible_ssh_user'] }}
+  copy:
+    src: getSlavesIp.sh
+    dest: /home/{{ ansible_ssh_user }}/performance/utils
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"

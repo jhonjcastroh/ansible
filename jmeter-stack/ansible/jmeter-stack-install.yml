@@ -22,11 +22,11 @@
 #   roles:
 #     - docker-stack-deploy
 
-- name: Scripts de utilidad para el manager
-  hosts: meta-instancia_manager
-  become: true
-  roles:
-    - scripts-utils-manager
+# - name: Scripts de utilidad para el manager
+#   hosts: meta-instancia_manager
+#   become: true
+#   roles:
+#     - scripts-utils-manager
 
 - name: Scripts de utilidad para los workers
   hosts: meta-instancia_workers
