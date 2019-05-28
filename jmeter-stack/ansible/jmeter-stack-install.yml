@@ -1,8 +1,8 @@
-- name: Instala Docker
-  hosts: all
-  become: true
-  roles:
-    - docker-install
+# - name: Instala Docker
+#   hosts: all
+#   become: true
+#   roles:
+#     - docker-install
 
 # - name: Inicia Swarm
 #   hosts: meta-instancia_manager
@@ -28,11 +28,11 @@
 #   roles:
 #     - scripts-utils-manager
 
-- name: Scripts de utilidad para los workers
-  hosts: meta-instancia_workers
-  become: true
-  roles:
-    - scripts-utils-workers
+# - name: Scripts de utilidad para los workers
+#   hosts: meta-instancia_workers
+#   become: true
+#   roles:
+#     - scripts-utils-workers
 
 - name: Configuracion Inicial de Grafana
   hosts: meta-instancia_manager

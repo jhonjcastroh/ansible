@@ -9,6 +9,6 @@
     headers:
       Accept: application/json
       Content-Type: application/json
-      Authorization: Basic {{hostvars['jhon-1']['token']['stdout']}}
+      Authorization: Basic {{ token.stdout }}
     body: "{{ lookup('file','grafana-datasource.json') }}"
     body_format: json
