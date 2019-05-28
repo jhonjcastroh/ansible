@@ -1,2 +1,2 @@
 - name: Agregar worker al cluster
-  shell: "docker swarm join --token {{hostvars['meta-instancia_manager']['worker_token']['stdout']}} {{hostvars['meta-instancia_manager']['ansible_eth0']['ipv4']['address']}}:2377"
+  shell: "docker swarm join --token {{ worker_token.stdout }} {{hostvars['8622477f-0c69-4b92-b306-4b71a7a65600']['ansible_eth0']['ipv4']['address']}}:2377"
