@@ -26,7 +26,7 @@
   hosts: meta-instancia_manager
   become: true
   roles:
-    - scripts-utils-meta-instancia_manager
+    - scripts-utils-manager
 
 - name: Scripts de utilidad para los workers
   hosts: meta-instancia_workers
