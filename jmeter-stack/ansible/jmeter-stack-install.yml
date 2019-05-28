@@ -16,11 +16,11 @@
 #   roles:
 #     - docker-swarm-join
 
-- name: Inicia Stack de Jmeter
-  hosts: meta-instancia_manager
-  become: true
-  roles:
-    - docker-stack-deploy
+# - name: Inicia Stack de Jmeter
+#   hosts: meta-instancia_manager
+#   become: true
+#   roles:
+#     - docker-stack-deploy
 
 - name: Scripts de utilidad para el manager
   hosts: meta-instancia_manager
