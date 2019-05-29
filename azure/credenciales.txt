@@ -1,0 +1,34 @@
+Id de la suscripcion
+ac46bd0e-db91-4d3a-b02b-48c218bf7efb
+
+Id. de directorio (inquilino)
+024e2589-9812-4d22-bae5-edb9856aa2cf
+
+Id. de aplicación (cliente)
+5e3634e0-6d9c-40b6-b261-bfb64105ea68
+
+nebula secret
+E.n5plSH9_]sBUH.0GMYyrwLwlVAY4]p
+
+usuario
+tscloudform@outlook.com
+
+password
+20*tscf@18
+
+
+
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "ac46bd0e-db91-4d3a-b02b-48c218bf7efb",
+    "isDefault": true,
+    "name": "Pago por uso",
+    "state": "Enabled",
+    "tenantId": "024e2589-9812-4d22-bae5-edb9856aa2cf",
+    "user": {
+      "name": "tscloudform@outlook.com",
+      "type": "user"
+    }
+  }
+]
