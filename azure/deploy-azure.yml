@@ -3,6 +3,7 @@
   tasks:
     - name: Create VM with defaults
       azure_rm_virtualmachine:
+        auth_source: cli
         resource_group: test-nebula
         name: test-awx
         admin_username: centos
