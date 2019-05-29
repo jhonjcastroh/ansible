@@ -8,6 +8,7 @@
         name: test-awx
         admin_username: centos
         admin_password: Ts0ft*201919
+        vm_size: Standard_D2s_v3
         image:
           offer: CentOS
           publisher: OpenLogic
