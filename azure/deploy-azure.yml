@@ -1,6 +1,4 @@
 - name: Creando una VM en Azure componente por defecto
-  become: yes
-  become_method: sudo
   hosts: all
   tasks:
     - name: Create VM with defaults
@@ -14,4 +12,3 @@
           publisher: OpenLogic
           sku: '7.6'
           version: latest
-      delegate_to: localhost
