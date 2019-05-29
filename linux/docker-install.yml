@@ -1,7 +1,8 @@
 - name: Instalacion de Docker
   hosts: all
   become: yes
-  become_user: centos
+  become_user: root
+  become_method: sudo
   tasks:
     #### Ubuntu ####
     - name: Update all packages to the latest version
