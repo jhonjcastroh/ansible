@@ -1,6 +1,6 @@
 - name: Instalacion de Docker
   hosts: all
-  become: yes
+  #become: yes
   #become_user: root
   tasks:
     #### Ubuntu ####
