@@ -69,22 +69,22 @@
       packages:
       - ansible
       - pyOpenSSL
-  - name: Descargar repositorio Openshift
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp
-      clone: yes
-      update: yes
-  - name: Fetch 
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp/openshift-ansible
-      refspec: '+refs/pull/*:refs/heads/*'
-  - name: Rama de la Versión 3.11
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp/openshift-ansible
-      version: release-3.11
+  # - name: Descargar repositorio Openshift
+  #   git:
+  #     repo: https://github.com/openshift/openshift-ansible.git
+  #     dest: /install-ocp
+  #     clone: yes
+  #     update: yes
+  # - name: Fetch 
+  #   git:
+  #     repo: https://github.com/openshift/openshift-ansible.git
+  #     dest: /install-ocp/openshift-ansible
+  #     refspec: '+refs/pull/*:refs/heads/*'
+  # - name: Rama de la Versión 3.11
+  #   git:
+  #     repo: https://github.com/openshift/openshift-ansible.git
+  #     dest: /install-ocp/openshift-ansible
+  #     version: release-3.11
   - name: respaldando archivo hosts
     command: cp /etc/hosts /etc/hosts.bkp
   - name: Reescribiendo el archivo hosts
@@ -143,7 +143,7 @@
       - node
 
 - name: Prerequisitos
-  import_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+  include_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
   # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
 
 - name: Desplegando
