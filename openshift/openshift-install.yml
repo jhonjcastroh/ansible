@@ -1,3 +1,24 @@
+---
+- name: Instalacion de Openshift All In One
+  hosts: localhost
+  tasks:
+  - name: Descargar repositorio Openshift
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /install-ocp
+      clone: yes
+      update: yes
+  - name: Fetch 
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /install-ocp/openshift-ansible
+      refspec: '+refs/pull/*:refs/heads/*'
+  - name: Rama de la Versión 3.11
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /install-ocp/openshift-ansible
+      version: release-3.11
+
 - name: Instalacion de Openshift All In One
   hosts: all
   become: yes
@@ -68,26 +89,7 @@
     vars:
       packages:
       - ansible
-      - pyOpenSSL
-  - name: Descargar repositorio Openshift
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp
-      clone: yes
-      update: yes
-    delegate_to: localhost
-  - name: Fetch 
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp/openshift-ansible
-      refspec: '+refs/pull/*:refs/heads/*'
-    delegate_to: localhost
-  - name: Rama de la Versión 3.11
-    git:
-      repo: https://github.com/openshift/openshift-ansible.git
-      dest: /install-ocp/openshift-ansible
-      version: release-3.11
-    delegate_to: localhost  
+      - pyOpenSSL  
   - name: respaldando archivo hosts
     command: cp /etc/hosts /etc/hosts.bkp
   - name: Reescribiendo el archivo hosts
