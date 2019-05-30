@@ -3,6 +3,7 @@
   tasks:
     - name: Remove a VM and all resources that were autocreated
       azure_rm_virtualmachine:
+        auth_source: cli
         resource_group: test-nebula
         name: "{{ vm_name }}"
         remove_on_absent: all_autocreated
