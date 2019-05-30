@@ -136,11 +136,14 @@
       mode: "u=r,g=r,o=rw"
 
 - name: Prerequisitos
-  import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
-
+  import_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+  remote_src: yes
   # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+
 - name: Desplegando
-  shell: ansible-playbook -i /install-ocp/inventory.ini 
+  import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
+  remote_src: yes
+  # shell: ansible-playbook -i /install-ocp/inventory.ini 
 
 - name: Instalacion de Openshift All In One
   hosts: all
