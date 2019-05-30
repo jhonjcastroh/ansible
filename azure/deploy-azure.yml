@@ -5,8 +5,8 @@
       azure_rm_virtualmachine:
         auth_source: cli
         resource_group: test-nebula
-        name: test-awx-2
-        admin_username: root
+        name: test-azure
+        admin_username: centos
         admin_password: Ts0ft*201919
         vm_size: Standard_D2s_v3
         image:
