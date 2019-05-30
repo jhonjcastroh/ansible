@@ -142,19 +142,14 @@
       - etcd
       - node
 
-- name: Prerequisitos
-  import_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
-  # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+  - name: Prerequisitos
+    import_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+    # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
 
-- name: Desplegando
-  import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
-  # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
+  - name: Desplegando
+    import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
+    # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
 
-- name: Configuraciones finales - Openshift All In One
-  hosts: all
-  become: yes
-  become_user: root
-  tasks:
   - name: Creando usuario admin Openshift
     command: "htpasswd -b /etc/origin/master/htpasswd {{ user_ocp }} {{ pass_ocp }}"    
   - name: Add project role Admin to a user
