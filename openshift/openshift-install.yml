@@ -143,11 +143,11 @@
       - node
 
 - name: Prerequisitos
-  import_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
+  import_playbook: /root/install-ocp/openshift-ansible/playbooks/prerequisites.yml
   # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
 
 - name: Desplegando
-  import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
+  import_playbook: /root/install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
   # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
 
 
