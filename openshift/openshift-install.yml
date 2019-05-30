@@ -75,16 +75,19 @@
       dest: /install-ocp
       clone: yes
       update: yes
+    delegate_to: localhost
   - name: Fetch 
     git:
       repo: https://github.com/openshift/openshift-ansible.git
       dest: /install-ocp/openshift-ansible
       refspec: '+refs/pull/*:refs/heads/*'
+    delegate_to: localhost
   - name: Rama de la Versión 3.11
     git:
       repo: https://github.com/openshift/openshift-ansible.git
       dest: /install-ocp/openshift-ansible
       version: release-3.11
+    delegate_to: localhost  
   - name: respaldando archivo hosts
     command: cp /etc/hosts /etc/hosts.bkp
   - name: Reescribiendo el archivo hosts
@@ -152,6 +155,7 @@
 
   - name: Creando usuario admin Openshift
     command: "htpasswd -b /etc/origin/master/htpasswd {{ user_ocp }} {{ pass_ocp }}"    
+  
   - name: Add project role Admin to a user
     #command: oc adm policy add-cluster-role-to-user cluster-admin {{ USERNAME }}
     oc:
