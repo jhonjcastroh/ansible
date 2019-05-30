@@ -134,18 +134,23 @@
       path: /etc/origin/master/htpasswd
       state: touch
       mode: "u=r,g=r,o=rw"
+  - name: Add host to multiple groups
+    add_host:
+      hostname: '{{ computer_name }}'
+      groups:
+      - masters
+      - etcd
+      - node
 
 - name: Prerequisitos
   import_playbook: /install-ocp/openshift-ansible/playbooks/prerequisites.yml
-  remote_src: yes
   # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/prerequisites.yml
 
 - name: Desplegando
   import_playbook: /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
-  remote_src: yes
-  # shell: ansible-playbook -i /install-ocp/inventory.ini 
+  # shell: ansible-playbook -i /install-ocp/inventory.ini /install-ocp/openshift-ansible/playbooks/deploy_cluster.yml
 
-- name: Instalacion de Openshift All In One
+- name: Configuraciones finales - Openshift All In One
   hosts: all
   become: yes
   become_user: root
