@@ -14,3 +14,14 @@
           publisher: OpenLogic
           sku: '7.6'
           version: latest
+        data_disks:
+        - lun: 0
+          disk_size_gb: 64
+          managed_disk_type: Standard_LRS
+          caching: ReadWrite
+          storage_account_name: nebula2019
+        - lun: 1
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+          caching: ReadWrite
+          storage_account_name: nebula2019
