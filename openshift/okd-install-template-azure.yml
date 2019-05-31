@@ -6,32 +6,32 @@
         resource_group: test-nebula
         auth_source: cli
         name: OKDNebula
-        template_link: 'https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json'
+        template_link: https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json
         parameters:
-          masterVmSize: 
+          masterVmSize:
             value: Standard_D2s_v3
-          infraVmSize: 
+          infraVmSize:
             value: Standard_D2s_v3
-          nodeVmSize: 
+          nodeVmSize:
             value: Standard_D2s_v3
-          storageKind: 
+          storageKind:
             value: managed
-          openshiftClusterPrefix: 
+          openshiftClusterPrefix:
             value: nebuCluster
-          masterInstanceCount: 
+          masterInstanceCount:
             value: 1
-          infraInstanceCount: 
+          infraInstanceCount:
             value: 1
-          nodeInstanceCount: 
+          nodeInstanceCount:
             value: 1
-          dataDiskSize: 
+          dataDiskSize:
             value: 128
-          adminUsername: 
+          adminUsername:
             value: adm
-          openshiftPassword: 
+          openshiftPassword:
             value: adm2019
-          sshPublicKey: 
-            value: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIWIWChoWfpNYyRrccD1ogmv1dSobo95h6BMAQcoyto6U9MjRjcGL76IQJJWlv4ieDM/R4kGq8G9Sxw8PmmRVvg0nZvP4enpxieQgBUo6LeB7KyJRzma5+1+j2uMnevRQl+m5MoPJrLGLXUKYa9Ymcu1+RWgMbRALNqn3nW9k08bgjzE8hdEsjbq1iVYCuD1hJWEP2JYaPtFu4+Lt8ZsB+JLz0E+bL4kO4Iu1dDWopF73pYCDZD553+Gw9RjEykZcivbnaKxVRzdOLL2uSybgDlSSzLrd1DtRaDUvyZXI0hIheQIG3yZN4X/6kEyPe7Y0kNxn7gEiiHEcnylc1L49l root@Ansible-Server"
+          sshPublicKey:
+            value: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIWIWChoWfpNYyRrccD1ogmv1dSobo95h6BMAQcoyto6U9MjRjcGL76IQJJWlv4ieDM/R4kGq8G9Sxw8PmmRVvg0nZvP4enpxieQgBUo6LeB7KyJRzma5+1+j2uMnevRQl+m5MoPJrLGLXUKYa9Ymcu1+RWgMbRALNqn3nW9k08bgjzE8hdEsjbq1iVYCuD1hJWEP2JYaPtFu4+Lt8ZsB+JLz0E+bL4kO4Iu1dDWopF73pYCDZD553+Gw9RjEykZcivbnaKxVRzdOLL2uSybgDlSSzLrd1DtRaDUvyZXI0hIheQIG3yZN4X/6kEyPe7Y0kNxn7gEiiHEcnylc1L49l root@Ansible-Server
           enableMetrics: 
             value: true
           enableLogging: 
