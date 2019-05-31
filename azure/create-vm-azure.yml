@@ -10,7 +10,6 @@
         admin_password: Ts0ft*201919
         vm_size: Standard_D2s_v3
         managed_disk_type: Standard_LRS
-        storage_account_name: nebulatest2019
         image:
           offer: CentOS
           publisher: OpenLogic
