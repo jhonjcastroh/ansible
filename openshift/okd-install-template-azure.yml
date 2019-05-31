@@ -5,7 +5,8 @@
       azure_rm_deployment:
         resource_group: test-nebula
         auth_source: cli
-        # name: OKDNebula
+        location: eastus
+        name: OKDNebula
         parameters:
           masterVmSize:
             value: Standard_D2s_v3
