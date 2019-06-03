@@ -6,7 +6,7 @@
         resource_group: test-nebula
         auth_source: cli
         location: eastus
-        name: OKDNebula
+        #name: OKDNebula
         parameters:
           masterVmSize:
             value: Standard_D2s_v3
