@@ -10,7 +10,7 @@
         admin_password: Ts0ft*201919
         vm_size: Standard_D2s_v3
         managed_disk_type: Standard_LRS
-        os_type: linux
+        os_type: Linux
         open_ports: 8443
         image:
           offer: CentOS
