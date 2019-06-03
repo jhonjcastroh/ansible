@@ -42,8 +42,8 @@
             value: sercret-nebu-key
           keyVaultSecret:
             value: dslnfjdfhalfnasjlfnaslfnak{}
-          enableAzure:
-            value: true
+          # enableAzure:
+          #   value: true
           aadClientId:
             value: 5e3634e0-6d9c-40b6-b261-bfb64105ea68
           aadClientSecret:
