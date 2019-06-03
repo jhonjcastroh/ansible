@@ -49,5 +49,7 @@
           aadClientSecret: 
             value: E.n5plSH9_]sBUH.0GMYyrwLwlVAY4]p
           defaultSubDomainType: 
+            value: custom
+          defaultSubDomain:
             value: jhon.local
         template_link: https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json
