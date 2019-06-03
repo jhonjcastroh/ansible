@@ -8,12 +8,14 @@
         location: eastus
         #name: OKDNebula
         parameters:
+          _artifactsLocation:
+            value: https://raw.githubusercontent.com/Microsoft/openshift-origin/master
           masterVmSize:
-            value: Standard_D2s_v3
+            value: Standard_D2_v2
           infraVmSize:
-            value: Standard_D2s_v3
+            value: Standard_D2_v2
           nodeVmSize:
-            value: Standard_D2s_v3
+            value: Standard_D2_v2
           storageKind:
             value: managed
           openshiftClusterPrefix:
@@ -44,8 +46,8 @@
             value: sercret-nebu-key
           keyVaultSecret:
             value: dslnfjdfhalfnasjlfnaslfnak{}
-          # enableAzure:
-          #   value: true
+          enableAzure:
+            value: true
           aadClientId:
             value: 5e3634e0-6d9c-40b6-b261-bfb64105ea68
           aadClientSecret:
