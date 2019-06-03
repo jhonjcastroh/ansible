@@ -31,7 +31,7 @@
           openshiftPassword:
             value: 20*tscf@18
           sshPublicKey:
-            value: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDxpHkh7PMIJGzdg7r/JDqZ6/CeLrLcaiYLmeLEndLhpIJm7mDIUpSInqc2YyvOWUSVXGweBHtIP2EKTR3fo9lganUpsRpO0W/eFfEqpZzLnf7HSEnmG6vnKJvWglAZc5vP6vAbaeRrzCM4Kvc2/USreNPFt/zC51ny1C4cQYQlIDjzQ+WUMTFm3TigU5/RtjLrO+YJojuxMCiRMZ2xXFCuLsqvrjGCbA0dz3D1iVMIokmActCL5FXfIi4qFkr2XYwapfDdtmC4xKCS/Wo4ne/IEV00haFPsttaWqhZQh1FKG90yGRN9gqdzGNSD7Sjxu5UuixtdW2x2Fj5qzuZtrLz
+            value: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxpHkh7PMIJGzdg7r/JDqZ6/CeLrLcaiYLmeLEndLhpIJm7mDIUpSInqc2YyvOWUSVXGweBHtIP2EKTR3fo9lganUpsRpO0W/eFfEqpZzLnf7HSEnmG6vnKJvWglAZc5vP6vAbaeRrzCM4Kvc2/USreNPFt/zC51ny1C4cQYQlIDjzQ+WUMTFm3TigU5/RtjLrO+YJojuxMCiRMZ2xXFCuLsqvrjGCbA0dz3D1iVMIokmActCL5FXfIi4qFkr2XYwapfDdtmC4xKCS/Wo4ne/IEV00haFPsttaWqhZQh1FKG90yGRN9gqdzGNSD7Sjxu5UuixtdW2x2Fj5qzuZtrLz
             # value: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClXSx8d6BXip3bmkxVCX5qrRaAChmNKFGg4IQyU1Vgh+2x2jadmoc/elBkNBo4nOp1IsFYo29DsMCMi8U4peDMAKY7mniJ495rGzPpcshUJD62qoHLLnfM7IiW2rImF6Q/d83nZ/z8KGkkOAS4KLbSIvKAi568chgQYjCyUOSuAkEj8dmKsI3sXcJ19frFs4Xc4Ay/GNt+6cq1JEi3KxtftOcmx5RgsP6VqcPK6MsEK7XirRM8S6k9uWWw9INSn0ReDh0ZTLUUNiDb9j+6p45Ycxp+lzaJ/+WoLdgjSaofY7NKgkOJwE9cl1fZKkREJs244p+eul48gn/GRBaYB6q9 ea1bad11-0580-4968-b16a-a699d7b4@cc-20b6f941-7fb556ddb7-v5x5s
           # enableMetrics:
           #   value: true
