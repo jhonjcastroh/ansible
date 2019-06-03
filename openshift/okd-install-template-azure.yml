@@ -31,7 +31,7 @@
           openshiftPassword:
             value: 20*tscf@18
           sshPublicKey:
-            value: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIWIWChoWfpNYyRrccD1ogmv1dSobo95h6BMAQcoyto6U9MjRjcGL76IQJJWlv4ieDM/R4kGq8G9Sxw8PmmRVvg0nZvP4enpxieQgBUo6LeB7KyJRzma5+1+j2uMnevRQl+m5MoPJrLGLXUKYa9Ymcu1+RWgMbRALNqn3nW9k08bgjzE8hdEsjbq1iVYCuD1hJWEP2JYaPtFu4+Lt8ZsB+JLz0E+bL4kO4Iu1dDWopF73pYCDZD553+Gw9RjEykZcivbnaKxVRzdOLL2uSybgDlSSzLrd1DtRaDUvyZXI0hIheQIG3yZN4X/6kEyPe7Y0kNxn7gEiiHEcnylc1L49l root@Ansible-Server
+            value: AAAAB3NzaC1yc2EAAAADAQABAAABAQDIWIWChoWfpNYyRrccD1ogmv1dSobo95h6BMAQcoyto6U9MjRjcGL76IQJJWlv4ieDM/R4kGq8G9Sxw8PmmRVvg0nZvP4enpxieQgBUo6LeB7KyJRzma5+1+j2uMnevRQl+m5MoPJrLGLXUKYa9Ymcu1+RWgMbRALNqn3nW9k08bgjzE8hdEsjbq1iVYCuD1hJWEP2JYaPtFu4+Lt8ZsB+JLz0E+bL4kO4Iu1dDWopF73pYCDZD553+Gw9RjEykZcivbnaKxVRzdOLL2uSybgDlSSzLrd1DtRaDUvyZXI0hIheQIG3yZN4X/6kEyPe7Y0kNxn7gEiiHEcnylc1L49l
           # enableMetrics:
           #   value: true
           # enableLogging:
