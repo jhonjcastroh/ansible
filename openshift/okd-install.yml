@@ -3,45 +3,45 @@
   become: yes
   become_user: root
   tasks:
-    - name: particion fdisk /dev/sdc
-      # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdc"
-      shell: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdb"
+    # - name: particion fdisk /dev/sdc
+    #   # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdc"
+    #   shell: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdb"
 
-    - name: particion fdisk /dev/sdd
-      # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdd"
-      shell: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdc"
+    # - name: particion fdisk /dev/sdd
+    #   # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdd"
+    #   shell: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdc"
 
-    - name: partprobe
-      command: partprobe
-    - name: Create a directory origin
-      file:
-        path: /var/lib/origin
-        state: directory
-        mode: '0755'
-    - name: Create a directory docker
-      file:
-        path: /var/lib/docker
-        state: directory
-        mode: '0755'
-    - command: mkfs.xfs /dev/vdb1
-    # - command: mkfs.xfs /dev/sdc1
-    - command: mkfs.xfs /dev/vdc1
-    # - command: mkfs.xfs /dev/sdc1
-    - name: Add a line to a file fstab
-      lineinfile:
-        path: /etc/fstab
-        line: "/dev/vdb1 /var/lib/origin  xfs defaults  0 0\n/dev/vdc1 /var/lib/docker  xfs defaults  0 0"
-    #     line: "/dev/sdc1 /var/lib/origin  xfs defaults  0 0\n/dev/sdd1 /var/lib/docker  xfs defaults  0 0"
-        create: yes
-    - command: "mount -a"
-    - name: upgrade all packages
-      yum:
-        name: '*'
-        state: latest
-    - name: install the latest version of git
-      yum:
-        name: git
-        state: latest
+    # - name: partprobe
+    #   command: partprobe
+    # - name: Create a directory origin
+    #   file:
+    #     path: /var/lib/origin
+    #     state: directory
+    #     mode: '0755'
+    # - name: Create a directory docker
+    #   file:
+    #     path: /var/lib/docker
+    #     state: directory
+    #     mode: '0755'
+    # - command: mkfs.xfs /dev/vdb1
+    # # - command: mkfs.xfs /dev/sdc1
+    # - command: mkfs.xfs /dev/vdc1
+    # # - command: mkfs.xfs /dev/sdc1
+    # - name: Add a line to a file fstab
+    #   lineinfile:
+    #     path: /etc/fstab
+    #     line: "/dev/vdb1 /var/lib/origin  xfs defaults  0 0\n/dev/vdc1 /var/lib/docker  xfs defaults  0 0"
+    # #     line: "/dev/sdc1 /var/lib/origin  xfs defaults  0 0\n/dev/sdd1 /var/lib/docker  xfs defaults  0 0"
+    #     create: yes
+    # - command: "mount -a"
+    # - name: upgrade all packages
+    #   yum:
+    #     name: '*'
+    #     state: latest
+    # - name: install the latest version of git
+    #   yum:
+    #     name: git
+    #     state: latest
     # - name: Unconditionally reboot the machine with all defaults
     #   reboot:
     - git:
