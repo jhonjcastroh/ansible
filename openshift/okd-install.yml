@@ -44,11 +44,11 @@
     #     state: latest
     # - name: Unconditionally reboot the machine with all defaults
     #   reboot:
-    - git:
-        repo: 'https://github.com/gshipley/installcentos.git'
-        dest: /root/okd/
-        clone: yes
-        update: yes
+    # - git:
+    #     repo: 'https://github.com/gshipley/installcentos.git'
+    #     dest: /root/okd/
+    #     clone: yes
+    #     update: yes
     - name: ejecucion de instalador okd
-      shell: printf 'dominio.local\nadm\npassword\n\n\n\n2\n' | /root/okd/installcentos./install-openshift.sh
+      shell: printf 'dominio.local\nadm\npassword\n\n\n\n2\n' | /root/okd./install-openshift.sh
     
