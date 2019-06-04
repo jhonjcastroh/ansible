@@ -46,9 +46,9 @@
     #   reboot:
     - git:
         repo: 'https://github.com/gshipley/installcentos.git'
-        dest: /
+        dest: ~/
         clone: yes
         update: yes
     - name: particion fdisk /dev/sdc
-      command: printf 'dominio.local\nuser\npassword\n\n\n\n2\n' | /installcentos./install-openshift.sh
+      command: printf 'dominio.local\nadm\npassword\n\n\n\n2\n' | /installcentos./install-openshift.sh
     
