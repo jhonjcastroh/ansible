@@ -7,7 +7,7 @@
         auth_source: cli
         location: eastus
         #name: OKDNebula
-        parameters: /home/ansibleadmin/params.json
+        parameters_link: /home/ansibleadmin/params.json
         #   location:
         #     value: East US
         #   masterVmSize:
