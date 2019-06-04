@@ -3,57 +3,55 @@
   tasks:
     - name: Create Azure Deploy OKD
       azure_rm_deployment:
-        resource_group: test-nebula
+        resource_group: ocp-nebula
         auth_source: cli
         location: eastus
         #name: OKDNebula
-        parameters:
-          _artifactsLocation:
-            value: https://raw.githubusercontent.com/Microsoft/openshift-origin/master
-          masterVmSize:
-            value: Standard_D2_v2
-          infraVmSize:
-            value: Standard_D2_v2
-          nodeVmSize:
-            value: Standard_D2_v2
-          storageKind:
-            value: managed
-          openshiftClusterPrefix:
-            value: nebuCluster
-          masterInstanceCount:
-            value: 1
-          infraInstanceCount:
-            value: 1
-          nodeInstanceCount:
-            value: 1
-          dataDiskSize:
-            value: 128
-          adminUsername:
-            value: tscloudform@outlook.com
-          openshiftPassword:
-            value: 20*tscf@18
-          sshPublicKey:
-            # value: /root/.ssh/id_rsa.pub
-            # value: /home/ea1bad11-0580-4968-b16a-a699d7b4/.ssh/id_rsa.pub
-            value:  /home/nebula/.ssh/id_rsa.pub
-          # enableMetrics:
-          #   value: true
-          # enableLogging:
-          #   value: true
-          keyVaultResourceGroup:
-            value: test-nebula
-          keyVaultName:
-            value: sercret-nebu-key
-          keyVaultSecret:
-            value: dslnfjdfhalfnasjlfnaslfnak{}
-          # enableAzure:
-          #   value: true
-          aadClientId:
-            value: 5e3634e0-6d9c-40b6-b261-bfb64105ea68
-          aadClientSecret:
-            value: E.n5plSH9_]sBUH.0GMYyrwLwlVAY4]p
-          defaultSubDomainType:
-            value: custom
-          defaultSubDomain:
-            value: jhon.local
-        template_link: https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json
+        parameters: /home/ansibleadmin/params.json
+        #   location:
+        #     value: East US
+        #   masterVmSize:
+        #     value: Standard_D2_v2
+        #   infraVmSize:
+        #     value: Standard_D2_v2
+        #   nodeVmSize:
+        #     value: Standard_D2_v2
+        #   storageKind:
+        #     value: managed
+        #   openshiftClusterPrefix:
+        #     value: nebuCluster
+        #   masterInstanceCount:
+        #     value: 1
+        #   infraInstanceCount:
+        #     value: 1
+        #   nodeInstanceCount:
+        #     value: 1
+        #   dataDiskSize:
+        #     value: 128
+        #   adminUsername:
+        #     value: tscloudform@outlook.com
+        #   openshiftPassword:
+        #     value: 20*tscf@18
+        #   sshPublicKey:
+        #     value:  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDwii0yjMkFVvjxv7ZrkjKcwc6ROu7rlVN6aa6SuBkY9NIYxZLa8wl2HTeqMPD8UG3KQ7264JqJMucLtQ+tTb0+5DsjLo1Ec1/zzmKNcd3ldbKdqHIkDyZQu4H10PIGAzQmAzcngIjhkVpHx/XKIMYiK3X/gzl6z3RTTJaDEJZ9qSd17aeHBG4HAQkHe8Yef8c/CE0NbhJvvZbbpzGmYdn2+Fj5lZ3ZIOmOPC1B01yyN4M1sLGsKO0hw6r/4lNxZvQiDorp4wirbDWoDOT8WhDKQVB6nS6/PmcfMXOVZ3Di3Xhfnd47J0y8huHWywxLwqkjKfJPvWHsq1t97j1ANWZ
+        #   # enableMetrics:
+        #   #   value: true
+        #   # enableLogging:
+        #   #   value: true
+        #   keyVaultResourceGroup:
+        #     value: test-nebula
+        #   keyVaultName:
+        #     value: sercret-nebu-key
+        #   keyVaultSecret:
+        #     value: dslnfjdfhalfnasjlfnaslfnak{}
+        #   # enableAzure:
+        #   #   value: true
+        #   aadClientId:
+        #     value: 5e3634e0-6d9c-40b6-b261-bfb64105ea68
+        #   aadClientSecret:
+        #     value: E.n5plSH9_]sBUH.0GMYyrwLwlVAY4]p
+        #   defaultSubDomainType:
+        #     value: custom
+        #   defaultSubDomain:
+        #     value: jhon.local
+        # template_link: https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json
