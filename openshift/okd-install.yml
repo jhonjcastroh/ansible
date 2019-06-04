@@ -4,26 +4,30 @@
   become_user: root
   tasks:
     - name: particion fdisk /dev/sdc
-      command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdc"
+      # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdc"
+      command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdb"
+
     - name: particion fdisk /dev/sdd
-      command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdd"
+      # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdd"
+      command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdc"
+
     - name: partprobe
       command: partprobe
-    - name: Create a directory origin
-      file:
-        path: /var/lib/origin
-        state: directory
-        mode: '0755'
-    - name: Create a directory docker
-      file:
-        path: /var/lib/docker
-        state: directory
-        mode: '0755'
-    - name: Add a line to a file fstab
-      lineinfile:
-        path: /etc/fstab
-        line: "/dev/sdc1 /var/lib/origin  xfs defaults  0 0\n/dev/sdd1 /var/lib/docker  xfs defaults  0 0"
-        create: yes
+    # - name: Create a directory origin
+    #   file:
+    #     path: /var/lib/origin
+    #     state: directory
+    #     mode: '0755'
+    # - name: Create a directory docker
+    #   file:
+    #     path: /var/lib/docker
+    #     state: directory
+    #     mode: '0755'
+    # - name: Add a line to a file fstab
+    #   lineinfile:
+    #     path: /etc/fstab
+    #     line: "/dev/sdc1 /var/lib/origin  xfs defaults  0 0\n/dev/sdd1 /var/lib/docker  xfs defaults  0 0"
+    #     create: yes
     - command: "mount -a"
     - name: upgrade all packages
       yum:
