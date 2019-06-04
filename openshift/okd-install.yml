@@ -2,6 +2,9 @@
   hosts: all
   become: yes
   become_user: root
+  roles:
+    - app/git-install
+    - app/ansible-install
   tasks:
     - name: particion fdisk /dev/sdc
       command: printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdc
