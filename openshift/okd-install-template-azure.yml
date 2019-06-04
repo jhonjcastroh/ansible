@@ -54,4 +54,4 @@
         #     value: custom
         #   defaultSubDomain:
         #     value: jhon.local
-        # template_link: https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json
+        template_link: https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json
