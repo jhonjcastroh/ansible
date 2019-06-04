@@ -5,11 +5,11 @@
   tasks:
     - name: particion fdisk /dev/sdc
       # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdc"
-      command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdb"
+      shell: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdb"
 
     - name: particion fdisk /dev/sdd
       # command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/sdd"
-      command: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdc"
+      shell: "printf 'n\n\n\n\n\nw\n' | fdisk /dev/vdc"
 
     - name: partprobe
       command: partprobe
@@ -27,7 +27,7 @@
     #   lineinfile:
     #     path: /etc/fstab
     #     line: "/dev/vdb1 /var/lib/origin  xfs defaults  0 0\n/dev/vdc1 /var/lib/docker  xfs defaults  0 0"
-    #     line: "/dev/sdc1 /var/lib/origin  xfs defaults  0 0\n/dev/sdd1 /var/lib/docker  xfs defaults  0 0"
+    # #     line: "/dev/sdc1 /var/lib/origin  xfs defaults  0 0\n/dev/sdd1 /var/lib/docker  xfs defaults  0 0"
     #     create: yes
     - command: "mount -a"
     - name: upgrade all packages
