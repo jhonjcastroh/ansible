@@ -6,7 +6,7 @@
       shell: wall $(date)
       async: 45
       poll: 0
-      loop: "{{ durations }}"
+      loop: 2
       loop_control:
         loop_var: "async_item"
       register: async_results
