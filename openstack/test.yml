@@ -5,4 +5,4 @@
     - name: mensaje en consola
       shell: wall "hola mundo"
       async: 10
-      poll: 0
+      poll: 2
