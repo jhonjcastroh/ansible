@@ -1,0 +1,15 @@
+---
+clouds:
+  telefonicaopencloud:
+    auth:
+      auth-url: https://iam.sa-chile-1.telefonicaopencloud.com:443/v3
+      project-name: sa-chile-1
+      username: nebulatsoft
+      project-domain-name: sa-chile-1
+      user-domain-name: tsoft
+      password: nebula@2019
+    region_name: sa-chile-1
+    interface: public
+    identity_api_version: 3
+
+#openstack --os-auth-url=https://iam.sa-chile-1.telefonicaopencloud.com:443/v3 --os-project-name=sa-chile-1 --os-username=nebulatsoft --os-password=nebula@2019 --os-identity-api-version=3 --os-domain-name=tsoft

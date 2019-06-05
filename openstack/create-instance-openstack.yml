@@ -1,0 +1,25 @@
+- name: Crear Instancia Openstack 
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create a new instance and attaches to a network and passes metadata to the instance
+      os_server:
+          state: present
+          auth:
+            auth_url: https://iam.sa-chile-1.telefonicaopencloud.com:443/v3
+            project_name: sa-chile-1
+            username: nebulatsoft
+            project-domain-name: sa-chile-1
+            user-domain-name: tsoft
+            password: nebula@2019
+          region_name: sa-chile-1
+          interface: public
+          identity_api_version: 3
+          name: vm1-test-ansible-jhon
+          image: 81a6c4d8-2c0a-4150-9781-6c1cf09cbe6f
+          key_name: KeyPair-Nebula
+          timeout: 300
+          flavor: s3.2xlarge.24
+          auto_ip: yes
+          network: devopsready
+          
