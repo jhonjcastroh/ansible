@@ -3,10 +3,10 @@
   become: yes
   tasks:
     - name: mensaje en consola
-      shell: wall $(date)
+      shell: "wall hola mundo {{ async_item }}"
       async: 45
       poll: 0
-      loop: "2"
+      loop: [1,2]
       loop_control:
         loop_var: "async_item"
       register: async_results
