@@ -1,19 +1,23 @@
 - name: Instalacion de Docker
   hosts: all
+  gather_facts: no
   become: yes
-  become_user: root
-  become_method: sudo
   tasks:
     #### Ubuntu ####
+    - name: Esperando Coneccion SSH 2 min max
+      wait_for_connection:
+        delay: 15
+        timeout: 120
     - name: Update all packages to the latest version
+      register: result_apt
+      until: result_apt.failed == false
+      retries: 24
+      delay: 15
       apt:
         update_cache: yes
       tags: apt
-      register: result
-      until: result.failed == false
-      retries: 24
-      delay: 15
       when: ansible_facts['os_family'] == 'Debian'
+    # - debug: var=result_apt
     - name: Instalacion de packetes requeridos
       apt:
         name: "{{ packages }}"
@@ -22,6 +26,7 @@
         packages:
         - apt-transport-https
         - ca-certificates
+        - curl
         - gnupg-agent
         - software-properties-common
       when: ansible_facts['os_family'] == 'Debian'
@@ -30,18 +35,18 @@
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
       when: ansible_facts['os_family'] == 'Debian'
-    - name: Agregar repositorio
+    - name: Agregar repositorio 
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
       when: ansible_facts['os_family'] == 'Debian'
     ### Centos Redhat ###
     - name: Update all packages to the latest version
-      apt:
-        update_cache: yes
-      register: result
-      until: result.failed == false
+      register: result_yum
+      until: result_yum.failed == false
       retries: 24
       delay: 15
+      apt:
+        update_cache: yes
       when: ansible_facts['os_family'] == 'RedHat'
     - name: Instalacion de packetes requeridos en Centos-Redhat
       yum:
@@ -63,6 +68,7 @@
       when: ansible_facts['os_family'] == "RedHat"
     #### INSTALACION DE DOCKER ####
     - name: Instalación Docker CE
+      register: result
       package:
         name:  "{{ packages }}"
       vars:
@@ -70,14 +76,18 @@
         - docker-ce
         - docker-ce-cli
         - containerd.io
+      until: result.failed == false
+      retries: 30
+      delay: 15
+    #- debug: var=result2
     - name: User
       shell: usermod -aG docker $(whoami)
     ### HABILITANDO SERVICIO ###
     - name: Enable Docker Service
-      service:
+      service: 
         name: docker.service
         enabled: yes
     - name: Start Docker
-      service:
+      service: 
         name: docker.service
-        state: started
+        state: started 
