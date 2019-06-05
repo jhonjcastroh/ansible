@@ -50,5 +50,5 @@
     #     clone: yes
     #     update: yes
     - name: Ejecucion de instalador OKD
-      shell: printf 'dominio.local\nadm\npassword\n\n\n\n2\n' | /root/okd/./install-openshift.sh
+      shell: "sudo printf 'dominio.local\nadm\npassword\n\n\n\n2\n' | /root/okd/./install-openshift.sh"
     

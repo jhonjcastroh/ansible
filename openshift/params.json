@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "baseUrl": {
+            "value": "https://gallery.azure.com/artifact/20151001/redhat.openshift-container-platformocp.1.0.3/Artifacts"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "openshiftClusterPrefix": {
+            "value": "ocpcluster"
+        },
+        "adminUsername": {
+            "value": "admin"
+        },
+        "clusterSize": {
+            "value": "small"
+        },
+        "openshiftPassword": {
+            "value": "ocp123++"
+        },
+        "rhsmUsername": {
+            "value": "joselsalinas"
+        },
+        "rhsmPassword": {
+            "value": "In2708jo"
+        },
+        "rhsmPoolId": {
+            "value": "8a85f98c61954f5101619a9c3b9855a9"
+        },
+        "sshPublicKey": {
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDwii0yjMkFVvjxv7ZrkjKcwc6ROu7rlVN6aa6SuBkY9NIYxZLa8wl2HTeqMPD8UG3KQ7264JqJMucLtQ+tTb0+5DsjLo1Ec1/zzmKNcd3ldbKdqHIkDyZQu4H10PIGAzQmAzcngIjhkVpHx/XKIMYiK3X/gzl6z3RTTJaDEJZ9qSd17aeHBG4HAQkHe8Yef8c/CE0NbhJvvZbbpzGmYdn2+Fj5lZ3ZIOmOPC1B01yyN4M1sLGsKO0hw6r/4lNxZvQiDorp4wirbDWoDOT8WhDKQVB6nS6/PmcfMXOVZ3Di3Xhfnd47J0y8huHWywxLwqkjKfJPvWHsq1t97j1ANWZ"
+        },
+        "keyVaultResourceGroup": {
+            "value": "test-nebula"
+        },
+        "keyVaultName": {
+            "value": "ocp-jhon"
+        },
+        "keyVaultSecret": {
+            "value": "ocp-jhon-secret"
+        },
+        "enableAzure": {
+            "value": "false"
+        },
+        "aadClientId": {
+            "value": "5e3634e0-6d9c-40b6-b261-bfb64105ea68"
+        },
+        "aadClientSecret": {
+            "value": "E.n5plSH9_]sBUH.0GMYyrwLwlVAY4]p"
+        },
+        "defaultSubDomainType": {
+            "value": "custom"
+        },
+        "defaultSubDomain": {
+            "value": "jhon.local"
+        }
+    }
+}

@@ -1,3 +1,5 @@
+cambiar hostname
+
 fdisk -l
 
 fdisk /dev/sdc n (enter) (enter) (enter) (enter) w
@@ -23,7 +25,8 @@ yum install -y git
 
 git clone https://github.com/gshipley/installcentos.git
 
+
+selinux enforcing
+
 ./install-openshift.sh dominio.local  user password  (enter)(enter)(enter) 2
 
-
-fatal: [10.0.0.8]: FAILED! => {"attempts": 30, "changed": true, "cmd": ["oc", "get", "crd", "servicemonitors.monitoring.coreos.com", "-n", "openshift-monitoring", "--config=/tmp/openshift-cluster-monitoring-ansible-qnzqHH/admin.kubeconfig"], "delta": "0:00:00.307460", "end": "2019-05-31 15:15:16.187049", "msg": "non-zero return code", "rc": 1, "start": "2019-05-31 15:15:15.879589", "stderr": "No resources found.\nError from server (NotFound): customresourcedefinitions.apiextensions.k8s.io \"servicemonitors.monitoring.coreos.com\" not found", "stderr_lines": ["No resources found.", "Error from server (NotFound): customresourcedefinitions.apiextensions.k8s.io \"servicemonitors.monitoring.coreos.com\" not found"], "stdout": "", "stdout_lines": []}

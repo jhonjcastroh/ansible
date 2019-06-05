@@ -5,9 +5,9 @@
       azure_rm_virtualmachine:
         auth_source: cli
         resource_group: test-nebula
-        name: "{{ vm_name }}"
         admin_username: nebula
         admin_password: Ts0ft*201919
+        name: "{{ vm_name }}"
         vm_size: Standard_D2s_v3
         managed_disk_type: Standard_LRS
         os_type: Linux
