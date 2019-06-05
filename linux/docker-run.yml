@@ -1,0 +1,11 @@
+- name: Instalacion de App en Docker
+  hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+    - name: Esperando Coneccion SSH 2 min max
+      wait_for_connection:
+        delay: 15
+        timeout: 120
+    - name: Docker run
+      command: 'docker run --name {{ name }} -d -p {{ externalPort }}:{{ internalPort }} {{ image }}'
