@@ -1,6 +1,5 @@
 - name: Crear Instancia Openstack 
   hosts: all
-  become: yes
   tasks:
     - name: Create a new instance and attaches to a network and passes metadata to the instance
       os_server:
@@ -15,7 +14,7 @@
           region_name: sa-chile-1
           interface: public
           identity_api_version: 3
-          name: vm1-test-ansible-jhon
+          name: "{{ vm_name }}"
           image: 81a6c4d8-2c0a-4150-9781-6c1cf09cbe6f
           key_name: KeyPair-Nebula
           timeout: 300
