@@ -1,5 +1,6 @@
 - name: Instalacion de Docker
   hosts: all
+  gather_facts: no
   become: yes
   tasks:
     #### Ubuntu ####
