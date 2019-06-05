@@ -4,5 +4,9 @@
   tasks:
     - name: mensaje en consola
       shell: wall $(date)
-      async: 10
-      poll: 2
+      async: 45
+      poll: 0
+      loop: "{{ durations }}"
+      loop_control:
+        loop_var: "async_item"
+      register: async_results
