@@ -21,7 +21,7 @@
           flavor: s3.2xlarge.24
           auto_ip: yes
           network: devopsready
-      loop: "{{vm_name_list}}"
+      loop: "{{ vm_name_list }}"
       loop_control:
         loop_var: "vm_name"
       
