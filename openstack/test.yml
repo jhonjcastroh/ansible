@@ -3,6 +3,6 @@
   become: yes
   tasks:
     - name: mensaje en consola
-      shell: wall "hola mundo"
+      shell: wall $(date)
       async: 10
       poll: 2
