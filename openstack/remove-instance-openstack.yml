@@ -13,6 +13,8 @@
             password: nebula@2019
           region_name: sa-chile-1
           interface: public
-          identity_api_version: 3
           name: "{{ vm_name }}"
+      loop: "{{ vm_name_list }}"
+      loop_control:
+        loop_var: "vm_name"
           
