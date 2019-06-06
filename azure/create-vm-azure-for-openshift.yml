@@ -17,6 +17,17 @@
           publisher: OpenLogic
           sku: '7.6'
           version: latest
+        data_disks:
+        - lun: 0
+          disk_size_gb: 50
+          managed_disk_type: Standard_LRS
+          caching: ReadWrite
+          storage_account_name: nebulatest2019
+        - lun: 1
+          disk_size_gb: 50
+          managed_disk_type: Standard_LRS
+          caching: ReadWrite
+          storage_account_name: nebulatest2019
       loop: "{{ vm_name_list }}"
       loop_control:
         loop_var: "vm_name"

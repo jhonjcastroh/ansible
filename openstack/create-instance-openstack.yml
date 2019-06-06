@@ -14,10 +14,10 @@
           region_name: sa-chile-1
           interface: public
           name: "{{ vm_name }}"
-          image: 81a6c4d8-2c0a-4150-9781-6c1cf09cbe6f
+          image: "{{ image_id }}"
           key_name: KeyPair-Nebula
           timeout: 300
-          flavor: s3.2xlarge.2
+          flavor: "{{ flavor }}"
           auto_ip: yes
           network: 99500806-6aaa-451a-bbbd-05149fd179df
       loop: "{{ vm_name_list }}"
