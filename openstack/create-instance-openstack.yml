@@ -1,5 +1,4 @@
 - name: Crear Instancia Openstack
-  become: yes
   hosts: all
   tasks:
     - name: Create a new instance and attaches to a network and passes metadata to the instance
