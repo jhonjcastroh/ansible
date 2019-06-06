@@ -5,7 +5,7 @@
       os_server:
           state: present
           auth:
-            auth_url: https://iam.sa-chile-1.telefonicaopencloud.com:443/v3
+            auth_url: https://iam.sa-chile-1.telefonicaopencloud.com
             project_name: sa-chile-1
             username: nebulatsoft
             project-domain-name: sa-chile-1
