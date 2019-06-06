@@ -20,3 +20,6 @@ clouds:
 # export OS_IDENTITY_API_VERSION=3
 # export OS_DOMAIN_NAME=tsoft
 
+#sudo pip3 install virtualenv https://www.unixmen.com/install-virtualenv-virtualenvwrapper-ubuntu/
+#apt install python-gnocchi https://ask.openstack.org/en/question/117087/gnocchi-500-internal-server-error/
+

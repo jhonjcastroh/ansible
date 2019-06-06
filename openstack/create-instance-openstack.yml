@@ -17,7 +17,7 @@
           image: 81a6c4d8-2c0a-4150-9781-6c1cf09cbe6f
           key_name: KeyPair-Nebula
           timeout: 300
-          flavor: s3.2xlarge.24
+          flavor: s3.2xlarge.2
           auto_ip: yes
           network: devopsready
       loop: "{{ vm_name_list }}"
