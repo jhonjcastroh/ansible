@@ -3,7 +3,7 @@
   tasks:
     - name: Create Azure Deploy OKD
       azure_rm_deployment:
-        resource_group: ocp-nebula
+        resource_group: nebula
         auth_source: cli
         location: eastus
         #name: OKDNebula
