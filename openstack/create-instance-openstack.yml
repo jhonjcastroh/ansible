@@ -19,7 +19,7 @@
           timeout: 300
           flavor: s3.2xlarge.2
           auto_ip: yes
-          network: devopsready
+          network: 99500806-6aaa-451a-bbbd-05149fd179df
       loop: "{{ vm_name_list }}"
       loop_control:
         loop_var: "vm_name"
