@@ -1,5 +1,7 @@
 - name: Instalacion de OKD desde Template Azure
   hosts: all
+  become: yes
+  become_user: root
   tasks:
     - name: Create Azure Deploy OKD
       azure_rm_deployment:
