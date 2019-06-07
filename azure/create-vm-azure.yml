@@ -4,9 +4,9 @@
     - name: Create VM with defaults
       azure_rm_virtualmachine:
         auth_source: cli
-        resource_group: test-nebula
-        admin_username: nebula
-        admin_password: Ts0ft*201919
+        resource_group: "{{ resource_group }}"
+        admin_username: "{{ user_vm }}"
+        admin_password: "{{ pass_vm }}"
         name: "{{ vm_name }}"
         vm_size: "{{ flavor }}"
         managed_disk_type: Standard_LRS
