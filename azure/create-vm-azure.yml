@@ -19,4 +19,4 @@
           version: latest
       loop: "{{ vm_name_list }}"
       loop_control:
-        loop_var: "vm_name"
+        loop_var: vm_name
