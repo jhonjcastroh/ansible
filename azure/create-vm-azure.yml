@@ -1,7 +1,5 @@
 - name: Creando una VM en Azure componente por defecto
   hosts: all
-  become: yes
-  become_user: root
   tasks:
     - name: Create VM with defaults
       azure_rm_virtualmachine:
