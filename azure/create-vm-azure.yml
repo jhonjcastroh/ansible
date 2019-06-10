@@ -4,19 +4,28 @@
     - name: Create VM with defaults
       azure_rm_virtualmachine:
         auth_source: cli
-        resource_group: "{{ resource_group }}"
-        admin_username: "{{ user_vm }}"
-        admin_password: "{{ pass_vm }}"
-        name: "{{ vm_name }}"
-        vm_size: "{{ flavor }}"
-        managed_disk_type: Standard_LRS
-        os_type: Linux
-        open_ports: 8443
+        resource_group: nebula
+        name: testvm10
+        admin_username: chouseknecht
+        admin_password: hola
         image:
           offer: CentOS
           publisher: OpenLogic
-          sku: '7.6'
+          sku: '7.1'
           version: latest
+        # resource_group: "{{ resource_group }}"
+        # admin_username: "{{ user_vm }}"
+        # admin_password: "{{ pass_vm }}"
+        # name: "{{ vm_name }}"
+        # vm_size: "{{ flavor }}"
+        # managed_disk_type: Standard_LRS
+        # os_type: Linux
+        # open_ports: 8443
+        # image:
+        #   offer: CentOS
+        #   publisher: OpenLogic
+        #   sku: '7.6'
+        #   version: latest
       loop: "{{ vm_name_list }}"
       loop_control:
         loop_var: vm_name
