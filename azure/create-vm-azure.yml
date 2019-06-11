@@ -1,5 +1,5 @@
 - name: Creando una VM en Azure componentes por defecto
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Create VM with defaults
       azure_rm_virtualmachine:
@@ -21,3 +21,4 @@
         loop_var: vm_name
       environment:
         ANSIBLE_KEEP_REMOTE_FILES: 1
+      delegate_to: localhost
