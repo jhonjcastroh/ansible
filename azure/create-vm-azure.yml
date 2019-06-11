@@ -3,7 +3,7 @@
   tasks:
     - name: Create VM with defaults
       azure_rm_virtualmachine:
-        auth_source: cli
+        auth_source: credential_file
         resource_group: "{{ resource_group }}"
         admin_username: "{{ user_vm }}"
         admin_password: "{{ pass_vm }}"
