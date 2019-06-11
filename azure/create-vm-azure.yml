@@ -20,4 +20,4 @@
       loop_control:
         loop_var: vm_name
       environment:
-        ANSIBLE_KEEP_REMOTE_FILES: 1
+        ANSIBLE_KEEP_REMOTE_FILES: True
