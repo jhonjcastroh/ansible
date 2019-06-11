@@ -1,22 +1,23 @@
 Id de la suscripcion
 ac46bd0e-db91-4d3a-b02b-48c218bf7efb
 
-Id. de directorio (inquilino)
-024e2589-9812-4d22-bae5-edb9856aa2cf
-
 Id. de aplicación (cliente)
 5e3634e0-6d9c-40b6-b261-bfb64105ea68
 
 nebula secret
 E.n5plSH9_]sBUH.0GMYyrwLwlVAY4]p
 
+Id. de directorio (inquilino) tenant
+024e2589-9812-4d22-bae5-edb9856aa2cf
+
 usuario
 tscloudform@outlook.com
+ea1bad11-0580-4968-b16a-a699d7b466e22d9747df-693b-49ae-883d-5e4b6ebb7d99
 
 password
 20*tscf@18
 
-
+"Failed to get credentials. Either pass as parameters, set environment variables, define a profile in ~/.azure/credentials, or log in with Azure CLI (`az login`)"
 
 [
   {
