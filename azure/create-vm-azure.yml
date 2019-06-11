@@ -1,4 +1,4 @@
-- name: Creando una VM en Azure componente por defecto
+- name: Creando una VM en Azure componentes por defecto
   hosts: all
   tasks:
     - name: Create VM with defaults
@@ -19,3 +19,5 @@
       loop: "{{ vm_name_list }}"
       loop_control:
         loop_var: vm_name
+      environment:
+        ANSIBLE_KEEP_REMOTE_FILES: 1
