@@ -21,4 +21,4 @@
         loop_var: vm_name
       environment:
         ANSIBLE_KEEP_REMOTE_FILES: 1
-      #delegate_to: localhost
+      delegate_to: localhost
