@@ -11,14 +11,13 @@
         vm_size: "{{ flavor }}"
         managed_disk_type: Standard_LRS
         open_ports: 8443
+        network_interface_names: nebula-vnet 
         image:
           offer: CentOS
           publisher: OpenLogic
           sku: '7.6'
           version: latest
-      # loop: "{{ vm_name_list }}"
-      # loop_control:
-      #   loop_var: vm_name
-      # environment:
-      #   ANSIBLE_KEEP_REMOTE_FILES: 1
+      loop: "{{ vm_name_list }}"
+      loop_control:
+        loop_var: vm_name
       delegate_to: localhost
