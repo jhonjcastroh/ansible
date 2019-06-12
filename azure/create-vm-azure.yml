@@ -16,9 +16,9 @@
           publisher: OpenLogic
           sku: '7.6'
           version: latest
-      loop: "{{ vm_name_list }}"
-      loop_control:
-        loop_var: vm_name
-      environment:
-        ANSIBLE_KEEP_REMOTE_FILES: 1
+      # loop: "{{ vm_name_list }}"
+      # loop_control:
+      #   loop_var: vm_name
+      # environment:
+      #   ANSIBLE_KEEP_REMOTE_FILES: 1
       delegate_to: localhost
