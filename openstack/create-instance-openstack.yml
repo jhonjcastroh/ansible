@@ -24,7 +24,7 @@
       # loop_control:
       #   loop_var: "vm_name"
       
-    - name: Creació y/o asignación de IP Elástica
+    - name: Creación y/o asignación de IP Elástica
       os_floating_ip:
         auth:
           auth_url: https://iam.sa-chile-1.telefonicaopencloud.com:443/v3
