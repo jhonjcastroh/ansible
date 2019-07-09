@@ -23,3 +23,4 @@ clouds:
 #sudo pip3 install virtualenv https://www.unixmen.com/install-virtualenv-virtualenvwrapper-ubuntu/
 #apt install python-gnocchi https://ask.openstack.org/en/question/117087/gnocchi-500-internal-server-error/
 
+#ansible-playbook -i /home/ansibleadmin/github/ansible/hosts /home/ansibleadmin/github/ansible/azure/create-vm-azure.yml --extra-vars "vm_name_list=[j,c] image_id=81a6c4d8-2c0a-4150-9781-6c1cf09cbe6f flavor=c2.2xlarge"

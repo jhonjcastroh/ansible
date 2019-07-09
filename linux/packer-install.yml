@@ -1,0 +1,10 @@
+- name: Creando una VM en Azure componentes por defecto
+  hosts: all
+  tasks:
+  - name: Descargar zip
+    command: sudo wget https://releases.hashicorp.com/packer/1.4.1/packer_1.4.1_linux_amd64.zip
+  - name: Descomprimir zip
+    command: sudo unzip /usr/local/packer/packer_1.4.1_linux_amd64.zip
+  - name: Agregar a PATH
+    command: export PATH="$PATH:/usr/local/packer"
+  - command: source /etc/environment
