@@ -6,8 +6,8 @@
 - cluster: CLU01
 
 # VM settings
-#- vm_name: Ansible-Test
-#- template_name: rhel74
+- vm_name: Windows-Ans
+- template_name: Windows2012
 - datastore: Test
 - network: VM Network
 - folder: /TSOFT
