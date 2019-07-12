@@ -1,6 +1,9 @@
 ---
 - name: Ejecutar comando Win
   hosts: all
+  gather_facts: False
+  vars_files:
+    - vars_conexion_win.yml
   remote_user: Administrator
   tasks:
     - name: run ipconfig
