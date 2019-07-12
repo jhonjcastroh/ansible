@@ -1,12 +1,14 @@
 ---
 - name: Creación de usuario Windows
   hosts: all
-  remote_user: Administrator
+  vars_files:
+    - vars_conexion_win.yml
+
   tasks:
     - name: Ensure user bob is present
       win_user:
-        name: "{{ user }}"
-        password: "{{ pass }}"
+        name: jsegura
+        password: Tsoft*2017
         state: present
         groups:
           - Administrators

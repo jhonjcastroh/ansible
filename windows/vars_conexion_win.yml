@@ -1,0 +1,6 @@
+# Conexion con los servidores Windows
+- ansible_connection: winrm
+- ansible_ssh_user: Administrator
+- ansible_ssh_pass: Ts0ft*2019
+- ansible_winrm_server_cert_validation: ignore
+- ansible_ssh_port: 5985
