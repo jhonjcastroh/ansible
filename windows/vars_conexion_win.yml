@@ -2,6 +2,6 @@
 - ansible_connection: winrm
 - ansible_winrm_transport: basic
 - ansible_user: Administrator
-- ansible_pass: Ts0ft*2019
+- ansible_password: Ts0ft*2019
 - ansible_winrm_server_cert_validation: ignore
 - ansible_port: 5985
