@@ -1,12 +1,8 @@
 - name: Prueba 7 Remover una VM
   hosts: localhost
-  # remote_user: root
-  # become: true
   gather_facts: False
   vars_files:
     - vcenter_vars.yml
-  #vars:
-  #  ansible_pyhton_interpreter: "/usr/bin/env python3"
   tasks:
     - name: Get VM "{{ vm_name }}" uuid
       vmware_guest_facts:
