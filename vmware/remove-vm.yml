@@ -1,7 +1,7 @@
 - name: Prueba 7 Remover una VM
   hosts: localhost
-  remote_user: root
-  become: true
+  # remote_user: root
+  # become: true
   gather_facts: False
   vars_files:
     - vcenter_vars.yml
