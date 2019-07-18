@@ -36,12 +36,10 @@
           wait_for_ip_address: yes
       delegate_to: localhost
       register: deploy_vm
-
-- name: Instalación de VMware Tools for Linux
-  hosts: all
-  become: yes
-  roles:
-    - role: ruzickap.vmwaretools
+    - import_role: 
+        name: ruzickap.vmwaretools
+        vars: 
+          host: "{{ vm_name }}"
       when: ansible_virtualization_type == 'VMware' and ansible_system == "Linux"
       ignore_errors: yes
 
