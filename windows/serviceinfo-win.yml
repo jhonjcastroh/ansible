@@ -8,3 +8,5 @@
       win_service:
         name: winrm
       register: service_info
+    - debug:
+        var: service_info
