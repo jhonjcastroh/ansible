@@ -42,12 +42,12 @@
         name: ruzickap.vmwaretools
       vars: 
         host: "{{ vm_name }}"
-      when: ansible_virtualization_type == 'VMware' and ansible_system == "Linux"
+      when: ansible_virtualization_type == 'VMware' and ansible_system == 'Linux'
       ignore_errors: yes
     - name: Instalación de VMware Tools for Windows
       import_role:
         name: oatakan.windows_vmware_tools
       vars: 
         host: "{{ vm_name }}"
-      when: ansible_virtualization_type == 'VMware' and ansible_system == "Windows"
+      when: ansible_virtualization_type == 'VMware' and ansible_system == 'Windows'
       ignore_errors: yes
