@@ -25,10 +25,13 @@
           num_cpus: "{{ num_cpus }}"
           num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
           scsi: paravirtual
+        cdrom:
+          type: "iso"
+          iso_path: "ISO/{{ cd_image }}"
         networks:
         - name: "{{ network }}"
-          ip: "{{ ip_asigned }}"
-          netmask: "{{ mask_asigned }}"
+          # ip: "{{ ip_asigned }}"
+          # netmask: "{{ mask_asigned }}"
           device_type: vmxnet3
           wait_for_ip_address: yes
       delegate_to: localhost
