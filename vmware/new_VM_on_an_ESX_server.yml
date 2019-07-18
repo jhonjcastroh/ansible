@@ -4,7 +4,7 @@
     - vcenter_vars.yml
   hosts: localhost
   tasks:
-  - vmware_guest:
+  - vsphere_guest:
       vcenter_hostname: "{{ vcenter_server }}"
       username: "{{ vcenter_user }}"
       password: "{{ vcenter_pass }}"
