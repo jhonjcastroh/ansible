@@ -26,8 +26,8 @@
           num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
           scsi: paravirtual
         cdrom:
-          type: "iso"
-          iso_path: "ISO/{{ cd_image }}"
+          type: iso
+          iso_path: "[{{ datastore }}] {{ cd_image }}"
         networks:
         - name: "{{ network }}"
           # ip: "{{ ip_asigned }}"
