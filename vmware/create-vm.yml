@@ -40,6 +40,8 @@
   
 - name: Instalación de VMware Tools
   hosts: "{{ vm_name }}"
+  vars_files:
+    - vcenter_vars.yml
   tasks:
     - name: Instalación de VMware Tools for Linux
       import_role:
