@@ -19,7 +19,7 @@
 - dns_server: 8.8.8.8
 - memory_mb: 2048
 - num_cpus: 2
-- num_cpu_cores_per_socket: 2
+- num_cpu_cores_per_socket: 1
 
 
 
