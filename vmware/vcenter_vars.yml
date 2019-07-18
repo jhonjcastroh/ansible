@@ -14,11 +14,12 @@
 - vm_name: Windows-Test
 - template_name: Windows2016
 - network: VM Network
+- ip_asigned: 10.41.101.235
+- mask_asigned: 255.255.255.0
 - dns_server: 8.8.8.8
 - memory_mb: 2048
 - num_cpus: 2
 - num_cpu_cores_per_socket: 2
-
 
 
 
