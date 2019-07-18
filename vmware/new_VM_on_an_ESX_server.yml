@@ -1,44 +1,45 @@
 - vsphere_guest:
-    vcenter_hostname: vcenter.mydomain.local
-    username: myuser
-    password: mypass
-    guest: newvm001
+    vcenter_hostname: "{{ vcenter_server }}"
+    username: "{{ vcenter_user }}"
+    password: "{{ vcenter_pass }}"
+    guest: "{{ vm_name }}"
     state: powered_on
     vm_extra_config:
       vcpu.hotadd: yes
       mem.hotadd:  yes
-      notes: This is a test VM
-      folder: MyFolder
+      notes: Esta es una prueba
+      folder: "{{ folder }}"
     vm_disk:
       disk1:
-        size_gb: 10
+        size_gb: 50
         type: thin
-        datastore: storage001
+        datastore: "{{ datastore }}"
         # VMs can be put into folders. The value given here is either the full path
         # to the folder (e.g. production/customerA/lamp) or just the last component
         # of the path (e.g. lamp):
-        folder: production/customerA/lamp
+        # folder: "{{ vm_disk_folder }}"
     vm_nic:
       nic1:
         type: vmxnet3
-        network: VM Network
+        network: "{{ network }}"
         network_type: standard
-      nic2:
-        type: vmxnet3
-        network: dvSwitch Network
-        network_type: dvs
+      #nic2:
+      #  type: vmxnet3
+      #  network: dvSwitch Network
+      #  network_type: dvs
     vm_hardware:
-      memory_mb: 2048
-      num_cpus: 2
-      osid: centos64Guest
+      memory_mb: "{{ memory_mb }}"
+      num_cpus: "{{ num_cpus }}"
+      num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
+      osid: "{{ osid }}"
       scsi: paravirtual
       vm_cdrom:
         type: "iso"
-        iso_path: "DatastoreName/cd-image.iso"
-      vm_floppy:
-        type: "image"
-        image_path: "DatastoreName/floppy-image.flp"
+        iso_path: "ISO/{{ cd_image }}"
+      #vm_floppy:
+      #  type: "image"
+      #  image_path: "DatastoreName/floppy-image.flp"
     esxi:
-      datacenter: MyDatacenter
-      hostname: esx001.mydomain.local
+      datacenter: "{{ datacenter }}"
+      hostname: "{{ hotname_datacenter }}"
   delegate_to: localhost
