@@ -1,5 +1,6 @@
 #CLIENT
 192.168.200.213
+Windows-Test
 
 [all:vars]
 #ansible_connection=local
