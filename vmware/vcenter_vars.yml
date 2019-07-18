@@ -1,6 +1,6 @@
 # Global Settings
 - vcenter_server: 10.41.101.5
-- vcenter_user: administrator@tsoftlatam.local
+- vcenter_username: administrator@tsoftlatam.local
 - vcenter_pass: 20*Ts@18
 - datacenter: VTSOFT
 - cluster: CLU01
