@@ -25,5 +25,5 @@
         password: "{{ vcenter_pass }}"
         validate_certs: no
         uuid: "{{ vm_factss.instance.hw_product_uuid }}"
-        state: poweredoff
+        state: poweredon
       delegate_to: localhost

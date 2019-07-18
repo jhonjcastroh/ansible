@@ -11,6 +11,9 @@
         password: "{{ vcenter_pass }}"
         validate_certs: False
         datacenter: "{{ datacenter }}"
-        folder: "{{ folder }}"
         name: "{{ vm_name }}"
+        schema: "vsphere"
       register: vm_facts
+    - debug:
+        var: vm_facts
+        verbosity: 2
