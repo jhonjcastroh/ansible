@@ -43,9 +43,10 @@
   roles:
     - role: ruzickap.vmwaretools
       when: ansible_virtualization_type == 'VMware' and ansible_system == "Linux"
+      ignore_errors: yes
 
 - name: Instalación de VMware Tools for Windows
-  hosts: all
+  hosts: "{{ vm_name }}"
   roles:
     - role: oatakan.windows_vmware_tools
       when: ansible_virtualization_type == 'VMware' and ansible_system == "Windows"
