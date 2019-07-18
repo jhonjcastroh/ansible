@@ -1,35 +1,40 @@
-- name: Guest Creation
+- name: Clone a virtual machine from existing template customize
   gather_facts: False
   vars_files:
     - vcenter_vars.yml
   hosts: localhost
   tasks:
-    - name: Clone a virtual machine {{ vm_name }} from existing template {{ template_name }} customize
+    - name: Clone a vm {{ vm_name }} from template {{ template_name }} customize
       vmware_guest:
-        name: "{{ vm_name }}"
         template: "{{ template_name }}"
         hostname: "{{ vcenter_server }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         validate_certs: no
-        folder: "{{ folder }}"
         datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vm_name }}"
+        guest_id: "{{ osid }}"
         disk:
           - datastore: "{{ datastore }}"
-            size_gb: 40
+            size_gb: 50
             type: thin
         hardware:
           hotadd_memory: True
-          memory_mb: "{{memory_mb}}"
+          memory_mb: "{{ memory_mb }}"
           hotadd_cpu: True
           num_cpus: "{{ num_cpus }}"
           num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
-          networks:
-            - name: "{{ network }}"
-              ip: "{{ ip_asigned }}"
-              netmask: "{{ mask_asigned }}"
+          scsi: paravirtual
+        networks:
+          - name: "{{ network }}"
+            # ip: "{{ ip_asigned }}"
+            # netmask: "{{ mask_asigned }}"
+            device_type: vmxnet3
+            wait_for_ip_address: yes
         cluster: "{{ cluster }}"
         customization:
           dns_servers: "{{ dns_server }}"
         wait_for_ip_address: yes
-      register: vm_result
+      delegate_to: localhost
+      register: deploy_vm

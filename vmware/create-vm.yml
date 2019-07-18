@@ -18,9 +18,9 @@
         # This is hostname of particular ESXi server on which user wants VM to be deployed
         # esxi_hostname: "{{ esxi_hostname }}"
         disk:
-        - size_gb: 50
+        - datastore: "{{ datastore }}"
+          size_gb: 50
           type: thin
-          datastore: "{{ datastore }}"
         hardware:
           memory_mb: "{{ memory_mb }}"
           num_cpus: "{{ num_cpus }}"
