@@ -1,4 +1,4 @@
-- name: Prueba 7 Remover una VM
+- name: Remover una VM de VMware
   hosts: localhost
   gather_facts: False
   vars_files:
