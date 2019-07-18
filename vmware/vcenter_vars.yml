@@ -13,7 +13,7 @@
 - hotname_datacenter: srvvc01.tsoftlatam.local
 
 # VM settings
-- vm_name: Windows-Test
+- vm_name: windows-test
 - template_name: Windows2016
 - network: VM Network
 - ip_asigned: 10.41.101.235
