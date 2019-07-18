@@ -1,0 +1,35 @@
+- name: Guest Creation
+  gather_facts: False
+  vars_files:
+    - vcenter_vars.yml
+  hosts: localhost
+  tasks:
+  - vmware_guest:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: no
+    folder: "{{ folder }}"
+    name: "{{ vm_name }}"
+    state: poweredon
+    guest_id: "{{ osid }}"
+    # This is hostname of particular ESXi server on which user wants VM to be deployed
+    # esxi_hostname: "{{ esxi_hostname }}"
+    disk:
+    - size_gb: 50
+      type: thin
+      datastore: "{{ datastore }}"
+    hardware:
+      memory_mb: "{{ memory_mb }}"
+      num_cpus: "{{ num_cpus }}"
+      num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
+      scsi: paravirtual
+    networks:
+     networks:
+      name: "{{ network }}"
+      ip: "{{ ip_asigned }}"
+      netmask: "{{ mask_asigned }}"
+      device_type: vmxnet3
+      wait_for_ip_address: yes
+  delegate_to: localhost
+  register: deploy_vm
