@@ -1,4 +1,4 @@
-- name: Guest Creation
+- name: Creación de VM en VMware
   gather_facts: False
   vars_files:
     - vcenter_vars.yml
@@ -37,8 +37,15 @@
       delegate_to: localhost
       register: deploy_vm
 
-- hosts: all
+- name: Instalación de VMware Tools for Linux
+  hosts: all
   become: yes
   roles:
     - role: ruzickap.vmwaretools
-      when: ansible_virtualization_type == 'VMware'
+      when: ansible_virtualization_type == 'VMware' and ansible_system == "Linux"
+
+- name: Instalación de VMware Tools for Windows
+  hosts: all
+  roles:
+    - role: oatakan.windows_vmware_tools
+      when: ansible_virtualization_type == 'VMware' and ansible_system == "Windows"
