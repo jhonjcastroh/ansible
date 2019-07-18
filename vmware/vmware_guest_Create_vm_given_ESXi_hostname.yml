@@ -36,13 +36,9 @@
           wait_for_ip_address: yes
       delegate_to: localhost
       register: deploy_vm
-    - name: Wait for VMware tools to become available by name
-      vmware_guest_tools_wait:
-        hostname: "{{ vcenter_server }}"
-        username: "{{ vcenter_user }}"
-        password: "{{ vcenter_pass }}"
-        validate_certs: no
-        name: "{{ vm_name }}"
-        folder: "{{ folder }}"
-      delegate_to: localhost
-      register: facts
+
+- hosts: all
+  become: yes
+  roles:
+    - role: ruzickap.vmwaretools
+      when: ansible_virtualization_type == 'VMware'
