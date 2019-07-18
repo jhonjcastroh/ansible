@@ -1,45 +1,51 @@
-- vsphere_guest:
-    vcenter_hostname: "{{ vcenter_server }}"
-    username: "{{ vcenter_user }}"
-    password: "{{ vcenter_pass }}"
-    guest: "{{ vm_name }}"
-    state: powered_on
-    vm_extra_config:
-      vcpu.hotadd: yes
-      mem.hotadd:  yes
-      notes: Esta es una prueba
-      folder: "{{ folder }}"
-    vm_disk:
-      disk1:
-        size_gb: 50
-        type: thin
-        datastore: "{{ datastore }}"
-        # VMs can be put into folders. The value given here is either the full path
-        # to the folder (e.g. production/customerA/lamp) or just the last component
-        # of the path (e.g. lamp):
-        # folder: "{{ vm_disk_folder }}"
-    vm_nic:
-      nic1:
-        type: vmxnet3
-        network: "{{ network }}"
-        network_type: standard
-      #nic2:
-      #  type: vmxnet3
-      #  network: dvSwitch Network
-      #  network_type: dvs
-    vm_hardware:
-      memory_mb: "{{ memory_mb }}"
-      num_cpus: "{{ num_cpus }}"
-      num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
-      osid: "{{ osid }}"
-      scsi: paravirtual
-      vm_cdrom:
-        type: "iso"
-        iso_path: "ISO/{{ cd_image }}"
-      #vm_floppy:
-      #  type: "image"
-      #  image_path: "DatastoreName/floppy-image.flp"
-    esxi:
-      datacenter: "{{ datacenter }}"
-      hostname: "{{ hotname_datacenter }}"
-  delegate_to: localhost
+- name: Guest Creation
+  gather_facts: False
+  vars_files:
+    - vcenter_vars.yml
+  hosts: localhost
+  tasks:
+  - vsphere_guest:
+      vcenter_hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      guest: "{{ vm_name }}"
+      state: powered_on
+      vm_extra_config:
+        vcpu.hotadd: yes
+        mem.hotadd:  yes
+        notes: Esta es una prueba
+        folder: "{{ folder }}"
+      vm_disk:
+        disk1:
+          size_gb: 50
+          type: thin
+          datastore: "{{ datastore }}"
+          # VMs can be put into folders. The value given here is either the full path
+          # to the folder (e.g. production/customerA/lamp) or just the last component
+          # of the path (e.g. lamp):
+          # folder: "{{ vm_disk_folder }}"
+      vm_nic:
+        nic1:
+          type: vmxnet3
+          network: "{{ network }}"
+          network_type: standard
+        #nic2:
+        #  type: vmxnet3
+        #  network: dvSwitch Network
+        #  network_type: dvs
+      vm_hardware:
+        memory_mb: "{{ memory_mb }}"
+        num_cpus: "{{ num_cpus }}"
+        num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
+        osid: "{{ osid }}"
+        scsi: paravirtual
+        vm_cdrom:
+          type: "iso"
+          iso_path: "ISO/{{ cd_image }}"
+        #vm_floppy:
+        #  type: "image"
+        #  image_path: "DatastoreName/floppy-image.flp"
+      esxi:
+        datacenter: "{{ datacenter }}"
+        hostname: "{{ hotname_datacenter }}"
+    delegate_to: localhost
