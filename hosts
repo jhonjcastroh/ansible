@@ -1,5 +1,7 @@
 #CLIENT
 10.41.101.201
+192.168.200.213
+
 [all:vars]
 #ansible_connection=local
 ansible_python_interpreter=/usr/bin/python3
