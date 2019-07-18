@@ -15,6 +15,7 @@
         folder: "{{ folder }}"
         name: "{{ vm_name }}"
         guest_id: "{{ osid }}"
+        state: poweredon
         disk:
           - datastore: "{{ datastore }}"
             size_gb: 50
