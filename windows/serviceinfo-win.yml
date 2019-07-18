@@ -1,4 +1,10 @@
-- name: Check if a service is installed
-  win_service:
-    name: winrm
-  register: service_info
+- name: Revisar estado de Servicio
+  hosts: all
+  gather_facts: False
+  vars_files:
+    - vars_conexion_win.yml
+  tasks:
+    - name: Check if a service is installed
+      win_service:
+        name: winrm
+      register: service_info
