@@ -4,7 +4,8 @@
     - vcenter_vars.yml
   hosts: localhost
   tasks:
-    - vmware_guest:
+    - name: Creando VM en VMware
+      vmware_guest:
         hostname: "{{ vcenter_server }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
@@ -43,9 +44,10 @@
         host: "{{ vm_name }}"
       when: ansible_virtualization_type == 'VMware' and ansible_system == "Linux"
       ignore_errors: yes
-
-- name: Instalación de VMware Tools for Windows
-  hosts: "{{ vm_name }}"
-  roles:
-    - role: oatakan.windows_vmware_tools
+    - name: Instalación de VMware Tools for Windows
+      import_role:
+        name: oatakan.windows_vmware_tools
+      vars: 
+        host: "{{ vm_name }}"
       when: ansible_virtualization_type == 'VMware' and ansible_system == "Windows"
+      ignore_errors: yes
