@@ -25,7 +25,6 @@
       num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
       scsi: paravirtual
     networks:
-     networks:
       name: "{{ network }}"
       ip: "{{ ip_asigned }}"
       netmask: "{{ mask_asigned }}"
