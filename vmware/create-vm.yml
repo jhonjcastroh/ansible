@@ -1,0 +1,39 @@
+- name: Creación de VM en VMware
+  gather_facts: False
+  vars_files:
+    - vcenter_vars.yml
+  hosts: localhost
+  tasks:
+    - name: Creando VM en VMware
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        datacenter: "{{ datacenter }}" 
+        folder: "{{ folder }}"
+        name: "{{ vm_name }}"
+        state: poweredon
+        guest_id: "{{ osid }}"
+        # This is hostname of particular ESXi server on which user wants VM to be deployed
+        # esxi_hostname: "{{ esxi_hostname }}"
+        disk:
+        - datastore: "{{ datastore }}"
+          size_gb: 50
+          type: thin
+        hardware:
+          memory_mb: "{{ memory_mb }}"
+          num_cpus: "{{ num_cpus }}"
+          num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
+          scsi: paravirtual
+        cdrom:
+          type: iso
+          iso_path: "[{{ datastore_ISO }}] {{ cd_image }}"
+        networks:
+        - name: "{{ network }}"
+          # ip: "{{ ip_asigned }}"
+          # netmask: "{{ mask_asigned }}"
+          device_type: vmxnet3
+          wait_for_ip_address: yes
+      delegate_to: localhost
+      register: deploy_vm
