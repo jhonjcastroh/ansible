@@ -19,8 +19,8 @@
         disk:
           - size_gb: 50
             type: thin
-            autoselect_datastore: True
-        #   datastore: "{{ datastore }}"
+            # autoselect_datastore: True
+            datastore: "{{ datastore }}"
         hardware:
           hotadd_memory: True
           memory_mb: "{{ memory_mb }}"
