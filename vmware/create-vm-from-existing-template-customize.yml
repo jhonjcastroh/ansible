@@ -14,7 +14,7 @@
         datacenter: "{{ datacenter }}"
         folder: "{{ folder }}"
         name: "{{ vm_name }}"
-        guest_id: "{{ osid }}"
+        # guest_id: "{{ osid }}"
         state: poweredon
         disk:
           - datastore: "{{ datastore }}"
