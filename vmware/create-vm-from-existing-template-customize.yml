@@ -17,9 +17,9 @@
         # guest_id: "{{ osid }}"
         # state: poweredon
         disk:
-          - datastore: "{{ datastore }}"
-            size_gb: 50
+          - size_gb: 50
             type: thin
+            datastore: "{{ datastore }}"
         hardware:
           hotadd_memory: True
           memory_mb: "{{ memory_mb }}"
