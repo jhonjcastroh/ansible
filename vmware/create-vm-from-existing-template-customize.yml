@@ -12,14 +12,14 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         validate_certs: no
-        folder: "{{ folder }}"
+        # folder: "{{ folder }}"
         datacenter: "{{ datacenter }}"
         # guest_id: "{{ osid }}"
         # state: poweredon
         disk:
           - size_gb: 50
             type: thin
-            datastore: "{{ datastore }}"
+        #   datastore: "{{ datastore }}"
         hardware:
           hotadd_memory: True
           memory_mb: "{{ memory_mb }}"
