@@ -6,7 +6,7 @@
 - cluster: CLU01
 
 # VM settings
-#- vm_name: Ansible-Test
+- vm_name: Ansible-Test
 #- template_name: rhel74
 - datastore: Test
 - network: VM Network
