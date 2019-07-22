@@ -1,10 +1,10 @@
-- name: Clone a virtual machine from existing template customize
-  gather_facts: False
+- name: Deploy VM from existing template {{ template_name }}
+  gather_facts: no
   vars_files:
-    - vcenter_vars.yml
+    - vcenter_variables.yml
   hosts: localhost
   tasks:
-    - name: Clone a vm {{ vm_name }} from template {{ template_name }} customize
+    - name: Clone a virtual machine {{ vm_name }} from existing template {{ template_name }} customize
       vmware_guest:
         name: "{{ vm_name }}"
         template: "{{ template_name }}"
@@ -15,20 +15,19 @@
         folder: "{{ folder }}"
         datacenter: "{{ datacenter }}"
         disk:
-          - size_gb: 50
+          - datastore: "{{ datastore }}"
+            size_gb: 40
             type: thin
-            datastore: "{{ datastore }}"
         hardware:
           hotadd_memory: True
-          memory_mb: "{{ memory_mb }}"
+          memory_mb: "{{memory_mb}}"
           hotadd_cpu: True
           num_cpus: "{{ num_cpus }}"
           num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
-        networks:
-          - name: "{{ network }}"
-            # ip: "{{ ip_asigned }}"
-            # netmask: "{{ mask_asigned }}"
-            # device_type: vmxnet3
+          networks:
+            - name: "{{ network }}"
+              # ip: "{{ ip_asigned }}"
+              # netmask: "{{ mask_asigned }}"
         cluster: "{{ cluster }}"
         wait_for_ip_address: yes
-      register: deploy_vm
+      register: vm_result

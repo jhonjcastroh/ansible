@@ -1,7 +1,7 @@
 - name: Prueba 4 Obtener datos cambiar nombre y encontrar carpeta
   gather_facts: False
   vars_files:
-    - vcenter_vars.yml
+    - vcenter_variables.yml
   hosts: localhost
   tasks:
     - name: "Find folder for VM - {{ vm_name }}"

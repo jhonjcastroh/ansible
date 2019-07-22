@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: False
   vars_files:
-    - vcenter_vars.yml
+    - vcenter_variables.yml
   tasks:
     - name: Get VM "{{ vm_name }}" uuid
       vmware_guest_facts:

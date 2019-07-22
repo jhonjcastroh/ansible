@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: False
   vars_files:
-    - vcenter_vars.yml
+    - vcenter_variables.yml
   #vars:
   #  ansible_pyhton_interpreter: "/usr/bin/env python3"
   tasks:

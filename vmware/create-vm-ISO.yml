@@ -1,7 +1,7 @@
 - name: Creación de VM en VMware
   gather_facts: False
   vars_files:
-    - vcenter_vars.yml
+    - vcenter_variables.yml
   hosts: localhost
   tasks:
     - name: Creando VM en VMware
