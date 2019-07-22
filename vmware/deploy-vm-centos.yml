@@ -26,8 +26,8 @@
           num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
           networks:
             - name: "{{ network }}"
-              ip: "{{ ip_asigned }}"
-              netmask: "{{ mask_asigned }}"
+              # ip: "{{ ip_asigned }}"
+              # netmask: "{{ mask_asigned }}"
         cluster: "{{ cluster }}"
         wait_for_ip_address: yes
       register: vm_result

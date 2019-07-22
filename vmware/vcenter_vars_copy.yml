@@ -12,7 +12,9 @@
 - network: VM Network
 - folder: /TSOFT
 - dns_server: 8.8.8.8
-
+- memory_mb: 2048
+- num_cpus: 2
+- num_cpu_cores_per_socket: 1
 # VM Remote Credecial's
 #- user: root
 #- pass: tsoft*2018
