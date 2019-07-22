@@ -7,7 +7,7 @@
 
 # VM settings
 - vm_name: Ansible-Test
-#- template_name: rhel74
+- template_name: Windows2016
 - datastore: Test
 - network: VM Network
 - folder: /TSOFT
