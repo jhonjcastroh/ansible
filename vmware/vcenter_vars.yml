@@ -4,7 +4,7 @@
 - vcenter_pass: 20*Ts@18
 - datacenter: VTSOFT
 - cluster: CLU01
-- datastore: backup2
+- datastore: Test
 #- vm_disk_folder: Test
 - folder: /VTSOFT/vm
 - osid: windows7Server64Guest
